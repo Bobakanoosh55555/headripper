@@ -3,31 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Judge Buzzer</title>
-    <!-- Include Firebase Libraries -->
+    <!-- Include Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+
     <script>
-        // Initialize Firebase first
+        // Firebase configuration
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "firebase/app";
+        import { getAnalytics } from "firebase/analytics";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
-            apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
-            authDomain: "combo-video-contest.firebaseapp.com",
-            databaseURL: "https://combo-video-contest-default-rtdb.firebaseio.com",
-            projectId: "combo-video-contest",
-            storageBucket: "combo-video-contest.firebasestorage.app",
-            messagingSenderId: "748133929680",
-            appId: "1:748133929680:web:281b09877fb3fb12da44d5",
-            measurementId: "G-0FCENJ0MYE"
+          apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
+          authDomain: "combo-video-contest.firebaseapp.com",
+          databaseURL: "https://combo-video-contest-default-rtdb.firebaseio.com",
+          projectId: "combo-video-contest",
+          storageBucket: "combo-video-contest.firebasestorage.app",
+          messagingSenderId: "748133929680",
+          appId: "1:748133929680:web:281b09877fb3fb12da44d5",
+          measurementId: "G-0FCENJ0MYE"
         };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
 
-        // Initialize Firebase App
-        firebase.initializeApp(firebaseConfig);
+        // Initialize Realtime Database
+        const database = firebase.database(app); // Use the initialized app here
 
-        // Initialize Firebase Database reference
-        const db = firebase.database();
-
-        // Function to send data when the button is clicked
+        // Function to send the buzz data
         function sendBuzz() {
-            db.ref('buzzers').push({
+            database.ref('buzzers').push({
                 clicked: true,
                 timestamp: new Date().toISOString()
             }).then(() => {
@@ -39,6 +49,7 @@
     </script>
 </head>
 <body>
+    <!-- Button to trigger the "Buzz" action -->
     <button onclick="sendBuzz()">Buzz!</button>
 </body>
 </html>
