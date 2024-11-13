@@ -7,7 +7,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
     <script>
-        // Initialize Firebase
+        // Initialize Firebase first
         const firebaseConfig = {
             apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
             authDomain: "combo-video-contest.firebaseapp.com",
@@ -18,14 +18,22 @@
             appId: "1:748133929680:web:281b09877fb3fb12da44d5",
             measurementId: "G-0FCENJ0MYE"
         };
+
+        // Initialize Firebase App
         firebase.initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
+
+        // Initialize Firebase Database reference
         const db = firebase.database();
 
+        // Function to send data when the button is clicked
         function sendBuzz() {
             db.ref('buzzers').push({
                 clicked: true,
                 timestamp: new Date().toISOString()
+            }).then(() => {
+                console.log('Buzz recorded successfully!');
+            }).catch(error => {
+                console.error('Error recording buzz:', error);
             });
         }
     </script>
