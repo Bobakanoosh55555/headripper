@@ -2,21 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Pages</title>
+    <title>Judge Buzzer</title>
+    <!-- Include Firebase Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
+            authDomain: "combo-video-contest.firebaseapp.com",
+            databaseURL: "https://combo-video-contest-default-rtdb.firebaseio.com",
+            projectId: "combo-video-contest",
+            storageBucket: "combo-video-contest.firebasestorage.app",
+            messagingSenderId: "748133929680",
+            appId: "1:748133929680:web:281b09877fb3fb12da44d5",
+            measurementId: "G-0FCENJ0MYE"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = firebase.database();
+
+        function sendBuzz() {
+            db.ref('buzzers').push({
+                clicked: true,
+                timestamp: new Date().toISOString()
+            });
+        }
+    </script>
 </head>
 <body>
-    <h1>Welcome to my Interactive Website</h1>
-    <button id="changePageButton">Click to Change Something!</button>
-
-    <script>
-        document.getElementById("changePageButton").onclick = function() {
-            // Save a flag in localStorage
-            localStorage.setItem("buttonClicked", "true");
-
-            // Redirect to result.html
-            window.location.href = "result.html";
-        };
-    </script>
+    <button onclick="sendBuzz()">Buzz!</button>
 </body>
 </html>
