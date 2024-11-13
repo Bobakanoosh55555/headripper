@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Judge Buzzer</title>
-    <!-- Include Firebase SDK -->
+    <!-- Include Firebase SDK (ensure this is loaded before your own script) -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
 
+    <!-- Your script where sendBuzz is defined -->
     <script>
-        // Firebase configuration
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "firebase/app";
         import { getAnalytics } from "firebase/analytics";
@@ -32,10 +32,10 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
 
-        // Initialize Realtime Database
-        const database = firebase.database(app); // Use the initialized app here
+        // Initialize the Realtime Database
+        const database = firebase.database(app);
 
-        // Function to send the buzz data
+        // Define the sendBuzz function
         function sendBuzz() {
             database.ref('buzzers').push({
                 clicked: true,
@@ -49,7 +49,7 @@
     </script>
 </head>
 <body>
-    <!-- Button to trigger the "Buzz" action -->
+    <!-- Button that will trigger the sendBuzz function when clicked -->
     <button onclick="sendBuzz()">Buzz!</button>
 </body>
 </html>
