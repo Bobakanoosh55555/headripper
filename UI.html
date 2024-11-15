@@ -38,13 +38,14 @@
             const buzzerDisplay = document.getElementById('buzzerDisplay');
             buzzerDisplay.innerText = "BUZZ! Someone pressed the button!";
             buzzerDisplay.style.backgroundColor = "red";
-
-            // Reset the display after a short period
-            setTimeout(() => {
-                buzzerDisplay.innerText = "Waiting for buzz...";
-                buzzerDisplay.style.backgroundColor = "transparent";
-            }, 3000); // Clear after 3 seconds
         });
+
+        // Function to reset (unbuzz) the buzzer display
+        function unbuzzBuzzer() {
+            const buzzerDisplay = document.getElementById('buzzerDisplay');
+            buzzerDisplay.innerText = "Waiting for buzz...";
+            buzzerDisplay.style.backgroundColor = "transparent";
+        }
     </script>
 
     <style>
@@ -55,11 +56,18 @@
             text-align: center;
             background-color: transparent;
             transition: background-color 0.5s;
+            margin-bottom: 20px;
+        }
+        #unbuzzButton {
+            font-size: 1em;
+            padding: 10px 20px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <h1>Live Buzzer Display</h1>
     <div id="buzzerDisplay">Waiting for buzz...</div>
+    <button id="unbuzzButton" onclick="unbuzzBuzzer()">Unbuzz</button>
 </body>
 </html>
