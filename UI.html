@@ -61,10 +61,8 @@
 
                 if (existingBuzzX.style.color !== '#d22f2f') {
                     existingBuzzX.style.color = '#d22f2f'; // Change color to indicate buzz
-                    if (!usersWhoHaveBuzzed.has(buzzData.user)) {
-                        buzzerSound.play(); // Play buzzer sound only if the user hasn't already been marked
-                        usersWhoHaveBuzzed.add(buzzData.user); // Mark user as having buzzed
-                    }
+                    buzzerSound.play(); // Play buzzer sound only if X was not already red
+                    usersWhoHaveBuzzed.add(buzzData.user); // Mark user as having buzzed
                 }
             } else {
                 // Create a new X for each unique buzzer event
@@ -96,10 +94,8 @@
                 usersWhoBuzzed.set(buzzData.user, buzzWrapper);
 
                 // Play buzzer sound for the first buzz
-                if (!usersWhoHaveBuzzed.has(buzzData.user)) {
-                    buzzerSound.play();
-                    usersWhoHaveBuzzed.add(buzzData.user); // Mark user as having buzzed
-                }
+                buzzerSound.play();
+                usersWhoHaveBuzzed.add(buzzData.user); // Mark user as having buzzed
             }
         });
 
