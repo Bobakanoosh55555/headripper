@@ -36,6 +36,7 @@
 
         // Keep track of users who have buzzed and their corresponding box elements
         const usersWhoBuzzed = new Map(); // Map to track user and corresponding buzz box
+        const usersWhoHaveBuzzed = new Set(); // Set to keep track of users who have already buzzed red
 
         // Create a new audio object for the buzzer sound
         const buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
@@ -57,9 +58,13 @@
                 // Update the existing X to indicate a new buzz only if it was previously gray
                 const existingBuzzWrapper = usersWhoBuzzed.get(buzzData.user);
                 const existingBuzzX = existingBuzzWrapper.querySelector('.buzzX');
+
                 if (existingBuzzX.style.color !== '#d22f2f') {
                     existingBuzzX.style.color = '#d22f2f'; // Change color to indicate buzz
-                    buzzerSound.play(); // Play buzzer sound only if X was not already red
+                    if (!usersWhoHaveBuzzed.has(buzzData.user)) {
+                        buzzerSound.play(); // Play buzzer sound only if the user hasn't already been marked
+                        usersWhoHaveBuzzed.add(buzzData.user); // Mark user as having buzzed
+                    }
                 }
             } else {
                 // Create a new X for each unique buzzer event
@@ -91,7 +96,10 @@
                 usersWhoBuzzed.set(buzzData.user, buzzWrapper);
 
                 // Play buzzer sound for the first buzz
-                buzzerSound.play();
+                if (!usersWhoHaveBuzzed.has(buzzData.user)) {
+                    buzzerSound.play();
+                    usersWhoHaveBuzzed.add(buzzData.user); // Mark user as having buzzed
+                }
             }
         });
 
@@ -110,7 +118,8 @@
                 buzzX.style.color = '#4B4B4B'; // Dark gray color for reset
             });
 
-            // Note: Do NOT clear the usersWhoBuzzed map so we can retain the reference to the existing buzz elements.
+            // Clear the set that keeps track of users who have buzzed
+            usersWhoHaveBuzzed.clear();
         };
     </script>
 
