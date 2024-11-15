@@ -37,36 +37,22 @@
         // Keep track of users who have buzzed and their corresponding elements
         const usersWhoBuzzed = new Map(); // Map to track users and their corresponding elements
 
-        let buzzerSound = null;
+        // Create a new audio object for the buzzer sound
+        const buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
+        buzzerSound.volume = 0.5; // Set initial volume to 50%
 
-        // Function to initialize the buzzer sound on user interaction
-        function initializeBuzzerSound() {
-            if (!buzzerSound) {
-                // Initialize the audio object
-                buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
-                buzzerSound.volume = 0.5; // Set initial volume to 50%
-                console.log("Buzzer sound initialized.");
-            }
-        }
-
-        // Function to play the buzzer sound safely
+        // Function to play the buzzer sound
         function playBuzzerSound() {
-            if (buzzerSound) {
-                buzzerSound.play().then(() => {
-                    console.log("Buzzer sound played successfully.");
-                }).catch((error) => {
-                    console.error("Failed to play buzzer sound:", error);
-                });
-            } else {
-                console.error("Buzzer sound not initialized yet.");
-            }
+            buzzerSound.play().then(() => {
+                console.log("Buzzer sound played successfully.");
+            }).catch((error) => {
+                console.error("Failed to play buzzer sound:", error);
+            });
         }
 
         // Function to handle volume slider change
         window.updateVolume = function updateVolume(value) {
-            if (buzzerSound) {
-                buzzerSound.volume = value / 100;
-            }
+            buzzerSound.volume = value / 100;
         };
 
         // Listen for new buzzer entries and update the display
@@ -197,7 +183,7 @@
         }
     </style>
 </head>
-<body onclick="initializeBuzzerSound()">
+<body>
     <h1>Live Buzzer Display</h1>
     <button id="clearButton" onclick="clearAllBuzzes()">Clear All Buzzes</button>
 
