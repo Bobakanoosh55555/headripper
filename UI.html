@@ -47,11 +47,15 @@
                 console.log(`User ${buzzData.user} has already buzzed. Updating existing box.`);
                 // Update the existing box to indicate a new buzz
                 const existingBuzzBox = usersWhoBuzzed.get(buzzData.user);
-                existingBuzzBox.style.backgroundColor = '#d22f2f'; // Lighter red
+                existingBuzzBox.querySelector('.buzzBox').style.backgroundColor = '#d22f2f'; // Lighter red
                 existingBuzzBox.querySelector('.boxText').innerText = 'BUZZ!';
             } else {
                 // Create a new box for each unique buzzer event
                 const buzzContainer = document.getElementById('buzzContainer');
+
+                // Create a wrapper for the box and user name
+                const buzzWrapper = document.createElement('div');
+                buzzWrapper.classList.add('buzzWrapper');
 
                 const newBuzzBox = document.createElement('div');
                 newBuzzBox.classList.add('buzzBox');
@@ -67,11 +71,15 @@
                 userName.classList.add('userName');
                 userName.innerText = buzzData.user;
 
-                buzzContainer.appendChild(newBuzzBox);
-                buzzContainer.appendChild(userName);
+                // Append box and name to the wrapper
+                buzzWrapper.appendChild(newBuzzBox);
+                buzzWrapper.appendChild(userName);
+
+                // Append the wrapper to the container
+                buzzContainer.appendChild(buzzWrapper);
 
                 // Track the user and their corresponding buzz box
-                usersWhoBuzzed.set(buzzData.user, newBuzzBox);
+                usersWhoBuzzed.set(buzzData.user, buzzWrapper);
             }
         });
 
@@ -85,7 +93,8 @@
             });
 
             // Update UI: turn all buzz boxes dark grey and remove the "BUZZ!" text
-            usersWhoBuzzed.forEach((buzzBox) => {
+            usersWhoBuzzed.forEach((buzzWrapper) => {
+                const buzzBox = buzzWrapper.querySelector('.buzzBox');
                 buzzBox.style.backgroundColor = '#4B4B4B'; // Darker gray
                 buzzBox.querySelector('.boxText').innerText = '';
             });
@@ -116,6 +125,11 @@
             margin-top: 20px;
             padding-bottom: 40px; /* Padding below the squares */
         }
+        .buzzWrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         .buzzBox {
             width: 100px;
             height: 100px;
@@ -127,10 +141,10 @@
             position: relative;
         }
         .userName {
-            text-align: center;
             margin-top: 10px; /* Space between square and user name */
             font-size: 1em;
             color: white;
+            text-align: center;
         }
         .boxText {
             font-size: 1.2em;
