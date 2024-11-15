@@ -34,8 +34,8 @@
         // Set up a reference to the 'buzzers' node in the database
         const buzzersRef = ref(database, 'buzzers');
 
-        // Keep track of users who have buzzed and their corresponding states
-        const usersWhoBuzzed = new Map(); // Map to track user and corresponding buzz box and state
+        // Keep track of users who have buzzed and their corresponding elements
+        const usersWhoBuzzed = new Map(); // Map to track users and their corresponding elements
 
         // Create a new audio object for the buzzer sound
         const buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
@@ -52,19 +52,17 @@
             console.log('New buzzer detected:', buzzData);
 
             if (usersWhoBuzzed.has(buzzData.user)) {
-                // The user already exists, update the existing X if it's not already red
+                // The user already exists, but let's check if the user has been cleared
                 const { buzzWrapper, hasBuzzed } = usersWhoBuzzed.get(buzzData.user);
                 const existingBuzzX = buzzWrapper.querySelector('.buzzX');
 
                 if (!hasBuzzed) {
-                    existingBuzzX.style.color = '#d22f2f'; // Change color to indicate buzz
-                    buzzerSound.play(); // Play buzzer sound as this is the transition to red
-
-                    // Update the user's buzz state to true
-                    usersWhoBuzzed.set(buzzData.user, { buzzWrapper, hasBuzzed: true });
+                    existingBuzzX.style.color = '#d22f2f'; // Change color to red for buzz in
+                    buzzerSound.play(); // Play buzzer sound
+                    usersWhoBuzzed.set(buzzData.user, { buzzWrapper, hasBuzzed: true }); // Mark as buzzed
                 }
             } else {
-                // Create a new X for the user's first buzz
+                // This is the user's first buzz
                 const buzzContainer = document.getElementById('buzzContainer');
 
                 // Create a wrapper for the X and user name
@@ -89,7 +87,7 @@
                 // Append the wrapper to the container
                 buzzContainer.appendChild(buzzWrapper);
 
-                // Track the user and their corresponding buzz element, set hasBuzzed initially to false
+                // Track the user and their corresponding buzz element, initially set hasBuzzed to true
                 usersWhoBuzzed.set(buzzData.user, { buzzWrapper, hasBuzzed: true });
 
                 // Play buzzer sound for the first buzz
