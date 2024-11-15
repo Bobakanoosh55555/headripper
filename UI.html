@@ -36,7 +36,6 @@
 
         // Keep track of users who have buzzed and their corresponding box elements
         const usersWhoBuzzed = new Map(); // Map to track user and corresponding buzz box
-        const usersWhoHaveBuzzed = new Set(); // Set to keep track of users who have already buzzed red
 
         // Create a new audio object for the buzzer sound
         const buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
@@ -52,20 +51,17 @@
             const buzzData = snapshot.val();
             console.log('New buzzer detected:', buzzData);
 
-            // Check if the user has already buzzed
             if (usersWhoBuzzed.has(buzzData.user)) {
-                console.log(`User ${buzzData.user} has already buzzed. Updating existing X.`);
-                // Update the existing X to indicate a new buzz only if it was previously gray
+                // The user already exists, update the existing X if it's not already red
                 const existingBuzzWrapper = usersWhoBuzzed.get(buzzData.user);
                 const existingBuzzX = existingBuzzWrapper.querySelector('.buzzX');
 
                 if (existingBuzzX.style.color !== '#d22f2f') {
                     existingBuzzX.style.color = '#d22f2f'; // Change color to indicate buzz
-                    buzzerSound.play(); // Play buzzer sound only if X was not already red
-                    usersWhoHaveBuzzed.add(buzzData.user); // Mark user as having buzzed
+                    buzzerSound.play(); // Play buzzer sound as this is the transition to red
                 }
             } else {
-                // Create a new X for each unique buzzer event
+                // Create a new X for the user's first buzz
                 const buzzContainer = document.getElementById('buzzContainer');
 
                 // Create a wrapper for the X and user name
@@ -95,7 +91,6 @@
 
                 // Play buzzer sound for the first buzz
                 buzzerSound.play();
-                usersWhoHaveBuzzed.add(buzzData.user); // Mark user as having buzzed
             }
         });
 
@@ -113,9 +108,6 @@
                 const buzzX = buzzWrapper.querySelector('.buzzX');
                 buzzX.style.color = '#4B4B4B'; // Dark gray color for reset
             });
-
-            // Clear the set that keeps track of users who have buzzed
-            usersWhoHaveBuzzed.clear();
         };
     </script>
 
