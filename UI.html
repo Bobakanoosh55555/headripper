@@ -30,35 +30,44 @@
         const buzzersRef = ref(database, 'buzzers');
 
         // Keep track of users who have buzzed
-        const usersWhoBuzzed = new Set();
+        const usersWhoBuzzed = new Map(); // Map to track user and corresponding buzz box
 
         // Listen for new buzzer entries and update the display
         onChildAdded(buzzersRef, (snapshot) => {
             const buzzData = snapshot.val();
             console.log('New buzzer detected:', buzzData);
 
-            // If the user has already buzzed, ignore this entry
+            // Check if the user has already buzzed
             if (usersWhoBuzzed.has(buzzData.user)) {
-                console.log(`User ${buzzData.user} has already buzzed. Ignoring.`);
-                return;
+                console.log(`User ${buzzData.user} has already buzzed. Updating existing box.`);
+                // Update the existing box to indicate a new buzz
+                const existingBuzzBox = usersWhoBuzzed.get(buzzData.user);
+                existingBuzzBox.style.backgroundColor = 'red';
+                existingBuzzBox.querySelector('.boxText').innerText = 'BUZZ!';
+            } else {
+                // Create a new box for each unique buzzer event
+                const buzzContainer = document.getElementById('buzzContainer');
+
+                const newBuzzBox = document.createElement('div');
+                newBuzzBox.classList.add('buzzBox');
+
+                // Add text to indicate buzzing
+                const boxText = document.createElement('div');
+                boxText.classList.add('boxText');
+                boxText.innerText = 'BUZZ!';
+                newBuzzBox.appendChild(boxText);
+
+                // Add the user's name below the box
+                const userName = document.createElement('div');
+                userName.classList.add('userName');
+                userName.innerText = buzzData.user;
+
+                newBuzzBox.appendChild(userName);
+                buzzContainer.appendChild(newBuzzBox);
+
+                // Track the user and their corresponding buzz box
+                usersWhoBuzzed.set(buzzData.user, newBuzzBox);
             }
-
-            // Mark this user as having buzzed
-            usersWhoBuzzed.add(buzzData.user);
-
-            // Create a new box for each buzzer event
-            const buzzContainer = document.getElementById('buzzContainer');
-
-            const newBuzzBox = document.createElement('div');
-            newBuzzBox.classList.add('buzzBox');
-            newBuzzBox.innerText = "BUZZ!";
-
-            const userName = document.createElement('div');
-            userName.classList.add('userName');
-            userName.innerText = buzzData.user;
-
-            newBuzzBox.appendChild(userName);
-            buzzContainer.appendChild(newBuzzBox);
         });
 
         // Function to clear all buzzes from UI and database
@@ -70,14 +79,13 @@
                 console.error('Error clearing buzzes:', error);
             });
 
-            // Update UI: turn all buzz boxes dark grey and remove text
-            const buzzBoxes = document.querySelectorAll('.buzzBox');
-            buzzBoxes.forEach((box) => {
-                box.style.backgroundColor = 'darkgrey';
-                box.innerText = '';
+            // Update UI: turn all buzz boxes dark grey and remove the "BUZZ!" text
+            usersWhoBuzzed.forEach((buzzBox) => {
+                buzzBox.style.backgroundColor = 'darkgrey';
+                buzzBox.querySelector('.boxText').innerText = '';
             });
 
-            // Clear the usersWhoBuzzed set
+            // Clear the usersWhoBuzzed map (only after turning boxes grey)
             usersWhoBuzzed.clear();
         };
     </script>
@@ -98,14 +106,20 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            flex-direction: column;
         }
         .userName {
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
+            bottom: -15px;
             font-size: 1em;
             color: black;
+        }
+        .boxText {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
         }
         #clearButton {
             margin-top: 20px;
