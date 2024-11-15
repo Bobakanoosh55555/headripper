@@ -70,8 +70,12 @@
                 console.error('Error clearing buzzes:', error);
             });
 
-            // Clear the UI
-            document.getElementById('buzzContainer').innerHTML = '';
+            // Update UI: turn all buzz boxes dark grey and remove text
+            const buzzBoxes = document.querySelectorAll('.buzzBox');
+            buzzBoxes.forEach((box) => {
+                box.style.backgroundColor = 'darkgrey';
+                box.innerText = '';
+            });
 
             // Clear the usersWhoBuzzed set
             usersWhoBuzzed.clear();
