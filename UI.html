@@ -44,41 +44,37 @@
 
             // Check if the user has already buzzed
             if (usersWhoBuzzed.has(buzzData.user)) {
-                console.log(`User ${buzzData.user} has already buzzed. Updating existing box.`);
-                // Update the existing box to indicate a new buzz
-                const existingBuzzBox = usersWhoBuzzed.get(buzzData.user);
-                existingBuzzBox.querySelector('.buzzBox').style.backgroundColor = '#d22f2f'; // Lighter red
-                existingBuzzBox.querySelector('.boxText').innerText = 'BUZZ!';
+                console.log(`User ${buzzData.user} has already buzzed. Updating existing X.`);
+                // Update the existing X to indicate a new buzz
+                const existingBuzzWrapper = usersWhoBuzzed.get(buzzData.user);
+                const existingBuzzX = existingBuzzWrapper.querySelector('.buzzX');
+                existingBuzzX.style.color = '#d22f2f'; // Change color to indicate buzz
             } else {
-                // Create a new box for each unique buzzer event
+                // Create a new X for each unique buzzer event
                 const buzzContainer = document.getElementById('buzzContainer');
 
-                // Create a wrapper for the box and user name
+                // Create a wrapper for the X and user name
                 const buzzWrapper = document.createElement('div');
                 buzzWrapper.classList.add('buzzWrapper');
 
-                const newBuzzBox = document.createElement('div');
-                newBuzzBox.classList.add('buzzBox');
+                // Create the X to represent a buzz
+                const newBuzzX = document.createElement('div');
+                newBuzzX.classList.add('buzzX');
+                newBuzzX.innerText = 'X';
 
-                // Add text to indicate buzzing
-                const boxText = document.createElement('div');
-                boxText.classList.add('boxText');
-                boxText.innerText = 'BUZZ!';
-                newBuzzBox.appendChild(boxText);
-
-                // Add the user's name below the box
+                // Add the user's name below the X
                 const userName = document.createElement('div');
                 userName.classList.add('userName');
                 userName.innerText = buzzData.user;
 
-                // Append box and name to the wrapper
-                buzzWrapper.appendChild(newBuzzBox);
+                // Append the X and name to the wrapper
+                buzzWrapper.appendChild(newBuzzX);
                 buzzWrapper.appendChild(userName);
 
                 // Append the wrapper to the container
                 buzzContainer.appendChild(buzzWrapper);
 
-                // Track the user and their corresponding buzz box
+                // Track the user and their corresponding buzz element
                 usersWhoBuzzed.set(buzzData.user, buzzWrapper);
             }
         });
@@ -92,14 +88,13 @@
                 console.error('Error clearing buzzes:', error);
             });
 
-            // Update UI: turn all buzz boxes dark grey and remove the "BUZZ!" text
+            // Update UI: change all X's to dark gray to indicate reset
             usersWhoBuzzed.forEach((buzzWrapper) => {
-                const buzzBox = buzzWrapper.querySelector('.buzzBox');
-                buzzBox.style.backgroundColor = '#4B4B4B'; // Darker gray
-                buzzBox.querySelector('.boxText').innerText = '';
+                const buzzX = buzzWrapper.querySelector('.buzzX');
+                buzzX.style.color = '#4B4B4B'; // Dark gray color for reset
             });
 
-            // Do NOT clear the usersWhoBuzzed map, as we need to retain the boxes and user associations.
+            // Do NOT clear the usersWhoBuzzed map, as we need to retain the elements and user associations.
         };
     </script>
 
@@ -121,9 +116,9 @@
         #buzzContainer {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px; /* More space between squares and names */
+            gap: 40px; /* More space between X's and names */
             margin-top: 20px;
-            padding-bottom: 40px; /* Padding below the squares */
+            padding-bottom: 40px; /* Padding below the X's */
             justify-content: center;
         }
         .buzzWrapper {
@@ -131,24 +126,16 @@
             flex-direction: column;
             align-items: center;
         }
-        .buzzBox {
-            width: 100px;
-            height: 100px;
-            background-color: #d22f2f; /* Lighter red */
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+        .buzzX {
+            font-size: 5em;
+            color: #4B4B4B; /* Initial dark gray color */
+            font-weight: bold;
         }
         .userName {
-            margin-top: 10px; /* Space between square and user name */
+            margin-top: 10px; /* Space between X and user name */
             font-size: 1em;
             color: white;
             text-align: center;
-        }
-        .boxText {
-            font-size: 1.2em;
         }
         #clearButton {
             margin-top: 20px;
