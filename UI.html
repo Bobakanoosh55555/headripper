@@ -37,6 +37,15 @@
         // Keep track of users who have buzzed and their corresponding box elements
         const usersWhoBuzzed = new Map(); // Map to track user and corresponding buzz box
 
+        // Create a new audio object for the buzzer sound
+        const buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
+        buzzerSound.volume = 0.5; // Set initial volume to 50%
+
+        // Function to handle volume slider change
+        window.updateVolume = function updateVolume(value) {
+            buzzerSound.volume = value / 100;
+        };
+
         // Listen for new buzzer entries and update the display
         onChildAdded(buzzersRef, (snapshot) => {
             const buzzData = snapshot.val();
@@ -48,7 +57,10 @@
                 // Update the existing X to indicate a new buzz
                 const existingBuzzWrapper = usersWhoBuzzed.get(buzzData.user);
                 const existingBuzzX = existingBuzzWrapper.querySelector('.buzzX');
-                existingBuzzX.style.color = '#d22f2f'; // Change color to indicate buzz
+                if (existingBuzzX.style.color !== '#d22f2f') {
+                    existingBuzzX.style.color = '#d22f2f'; // Change color to indicate buzz
+                    buzzerSound.play(); // Play buzzer sound
+                }
             } else {
                 // Create a new X for each unique buzzer event
                 const buzzContainer = document.getElementById('buzzContainer');
@@ -77,6 +89,9 @@
 
                 // Track the user and their corresponding buzz element
                 usersWhoBuzzed.set(buzzData.user, buzzWrapper);
+
+                // Play buzzer sound for the first buzz
+                buzzerSound.play();
             }
         });
 
@@ -152,11 +167,22 @@
         #clearButton:hover {
             background-color: #555555;
         }
+        #volumeControl {
+            margin-top: 15px;
+            font-size: 1em;
+        }
     </style>
 </head>
 <body>
     <h1>Live Buzzer Display</h1>
     <button id="clearButton" onclick="clearAllBuzzes()">Clear All Buzzes</button>
+
+    <!-- Volume Control Slider -->
+    <div id="volumeControl">
+        <label for="volumeSlider">Volume:</label>
+        <input type="range" id="volumeSlider" min="0" max="100" value="50" oninput="updateVolume(this.value)">
+    </div>
+
     <div id="buzzContainer"></div>
 </body>
 </html>
