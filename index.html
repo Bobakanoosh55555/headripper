@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Judge Buzzer</title>
 
+    <!-- Import Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+
     <!-- Firebase SDK (for Firebase v9 and above) -->
     <script type="module">
         // Import the functions you need from the SDKs
@@ -25,31 +30,6 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Function to handle login
-        window.login = function login() {
-            const name = document.getElementById("nameInput").value;
-            const password = document.getElementById("passwordInput").value;
-
-            if (password === "shmung") {
-                if (name.trim() === "") {
-                    alert("Please enter your name.");
-                    return;
-                }
-                
-                // Hide login form and show buzzer button
-                document.getElementById("loginForm").style.display = "none";
-                document.getElementById("buzzerSection").style.display = "block";
-
-                // Store the user's name for later use
-                window.currentUserName = name;
-
-                // Display the user's name in the welcome message
-                document.getElementById("userNameDisplay").innerText = name;
-            } else {
-                alert("Incorrect password. Please try again.");
-            }
-        };
-
         // Define sendBuzz function globally
         window.sendBuzz = function sendBuzz() {
             const name = window.currentUserName || "Anonymous";
@@ -64,11 +44,62 @@
                 console.error('Error recording buzz:', error);
             });
         };
+
+        // Function to handle login
+        window.login = function login() {
+            const name = document.getElementById("nameInput").value;
+            const password = document.getElementById("passwordInput").value;
+
+            if (password === "shmung") {
+                if (name.trim() === "") {
+                    alert("Please enter your name.");
+                    return;
+                }
+
+                // Hide login form and show buzzer button
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("buzzerSection").style.display = "block";
+
+                // Store the user's name for later use
+                window.currentUserName = name;
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        };
     </script>
 
     <style>
-        #buzzerSection {
-            display: none; /* Hidden by default until login is successful */
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #1e1e30; /* Darker gray/purple background */
+            color: white;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        #loginForm, #buzzerSection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label, input {
+            margin-bottom: 10px;
+        }
+        button {
+            margin-top: 15px;
+            font-size: 1em;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #444444;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+        button:hover {
+            background-color: #555555;
         }
     </style>
 </head>
@@ -78,15 +109,13 @@
         <h2>Login</h2>
         <label for="nameInput">Name:</label>
         <input type="text" id="nameInput" required>
-        <br><br>
         <label for="passwordInput">Password:</label>
         <input type="password" id="passwordInput" required>
-        <br><br>
         <button onclick="login()">Login</button>
     </div>
 
     <!-- Buzzer Button Section (Hidden until login is successful) -->
-    <div id="buzzerSection">
+    <div id="buzzerSection" style="display: none;">
         <h2>Welcome, <span id="userNameDisplay"></span>!</h2>
         <button onclick="sendBuzz()">Buzz!</button>
     </div>
