@@ -54,7 +54,7 @@
             // Check if the user has already buzzed
             if (usersWhoBuzzed.has(buzzData.user)) {
                 console.log(`User ${buzzData.user} has already buzzed. Updating existing X.`);
-                // Update the existing X to indicate a new buzz
+                // Update the existing X to indicate a new buzz only if it was previously gray
                 const existingBuzzWrapper = usersWhoBuzzed.get(buzzData.user);
                 const existingBuzzX = existingBuzzWrapper.querySelector('.buzzX');
                 if (existingBuzzX.style.color !== '#d22f2f') {
@@ -110,8 +110,7 @@
                 buzzX.style.color = '#4B4B4B'; // Dark gray color for reset
             });
 
-            // Clear the usersWhoBuzzed map so the users can buzz again after reset
-            usersWhoBuzzed.clear();
+            // Note: Do NOT clear the usersWhoBuzzed map so we can retain the reference to the existing buzz elements.
         };
     </script>
 
