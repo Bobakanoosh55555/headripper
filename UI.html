@@ -34,8 +34,9 @@
         // Set up a reference to the 'buzzers' node in the database
         const buzzersRef = ref(database, 'buzzers');
 
-        // Keep track of users who have buzzed and their corresponding box elements
+        // Keep track of users who have buzzed and their corresponding box elements and states
         const usersWhoBuzzed = new Map(); // Map to track user and corresponding buzz box
+        const userBuzzStates = new Map(); // Map to track user buzz state (true if user has buzzed red)
 
         // Create a new audio object for the buzzer sound
         const buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
@@ -59,6 +60,7 @@
                 if (existingBuzzX.style.color !== '#d22f2f') {
                     existingBuzzX.style.color = '#d22f2f'; // Change color to indicate buzz
                     buzzerSound.play(); // Play buzzer sound as this is the transition to red
+                    userBuzzStates.set(buzzData.user, true); // Mark user as buzzed in red
                 }
             } else {
                 // Create a new X for the user's first buzz
@@ -91,6 +93,9 @@
 
                 // Play buzzer sound for the first buzz
                 buzzerSound.play();
+
+                // Set the user buzz state to true (indicating they have buzzed in red)
+                userBuzzStates.set(buzzData.user, true);
             }
         });
 
@@ -104,9 +109,10 @@
             });
 
             // Update UI: change all X's to dark gray to indicate reset
-            usersWhoBuzzed.forEach((buzzWrapper) => {
+            usersWhoBuzzed.forEach((buzzWrapper, user) => {
                 const buzzX = buzzWrapper.querySelector('.buzzX');
                 buzzX.style.color = '#4B4B4B'; // Dark gray color for reset
+                userBuzzStates.set(user, false); // Reset user buzz state
             });
         };
     </script>
