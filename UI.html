@@ -46,6 +46,9 @@
             buzzerDisplay.innerText = "Waiting for buzz...";
             buzzerDisplay.style.backgroundColor = "transparent";
         }
+
+        // Attach the unbuzz function to the window object to make it globally accessible
+        window.unbuzzBuzzer = unbuzzBuzzer;
     </script>
 
     <style>
