@@ -110,7 +110,8 @@
                 buzzX.style.color = '#4B4B4B'; // Dark gray color for reset
             });
 
-            // Do NOT clear the usersWhoBuzzed map, as we need to retain the elements and user associations.
+            // Clear the usersWhoBuzzed map so the users can buzz again after reset
+            usersWhoBuzzed.clear();
         };
     </script>
 
