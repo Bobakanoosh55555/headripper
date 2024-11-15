@@ -29,7 +29,7 @@
         // Set up a reference to the 'buzzers' node in the database
         const buzzersRef = ref(database, 'buzzers');
 
-        // Keep track of users who have buzzed
+        // Keep track of users who have buzzed and their corresponding box elements
         const usersWhoBuzzed = new Map(); // Map to track user and corresponding buzz box
 
         // Listen for new buzzer entries and update the display
@@ -85,8 +85,7 @@
                 buzzBox.querySelector('.boxText').innerText = '';
             });
 
-            // Clear the usersWhoBuzzed map (only after turning boxes grey)
-            usersWhoBuzzed.clear();
+            // Do NOT clear the usersWhoBuzzed map, as we need to retain the boxes and user associations.
         };
     </script>
 
