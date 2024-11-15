@@ -29,10 +29,22 @@
         // Set up a reference to the 'buzzers' node in the database
         const buzzersRef = ref(database, 'buzzers');
 
+        // Keep track of users who have buzzed
+        const usersWhoBuzzed = new Set();
+
         // Listen for new buzzer entries and update the display
         onChildAdded(buzzersRef, (snapshot) => {
             const buzzData = snapshot.val();
             console.log('New buzzer detected:', buzzData);
+
+            // If the user has already buzzed, ignore this entry
+            if (usersWhoBuzzed.has(buzzData.user)) {
+                console.log(`User ${buzzData.user} has already buzzed. Ignoring.`);
+                return;
+            }
+
+            // Mark this user as having buzzed
+            usersWhoBuzzed.add(buzzData.user);
 
             // Create a new box for each buzzer event
             const buzzContainer = document.getElementById('buzzContainer');
@@ -60,6 +72,9 @@
 
             // Clear the UI
             document.getElementById('buzzContainer').innerHTML = '';
+
+            // Clear the usersWhoBuzzed set
+            usersWhoBuzzed.clear();
         };
     </script>
 
