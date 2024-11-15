@@ -38,35 +38,13 @@
         const usersWhoBuzzed = new Map(); // Map to track users and their corresponding elements
 
         // Create a new audio object for the buzzer sound
-        let buzzerSound = null;
-
-        window.addEventListener('load', () => {
-            // Initialize the audio object once the window loads
-            buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
-            buzzerSound.volume = 0.5; // Set initial volume to 50%
-            buzzerSound.load(); // Load the audio object explicitly
-            console.log("Buzzer sound loaded and ready.");
-        });
+        const buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
+        buzzerSound.volume = 0.5; // Set initial volume to 50%
 
         // Function to handle volume slider change
         window.updateVolume = function updateVolume(value) {
-            if (buzzerSound) {
-                buzzerSound.volume = value / 100;
-            }
+            buzzerSound.volume = value / 100;
         };
-
-        // Function to play the buzzer sound with debugging
-        function playBuzzerSound() {
-            if (buzzerSound) {
-                buzzerSound.play().then(() => {
-                    console.log("Buzzer sound played successfully.");
-                }).catch((error) => {
-                    console.error("Failed to play buzzer sound:", error);
-                });
-            } else {
-                console.error("Buzzer sound not initialized yet.");
-            }
-        }
 
         // Listen for new buzzer entries and update the display
         onChildAdded(buzzersRef, (snapshot) => {
@@ -80,11 +58,10 @@
 
                 if (!hasBuzzed) {
                     existingBuzzX.style.color = '#d22f2f'; // Change color to red for buzz in
-                    playBuzzerSound(); // Play buzzer sound
                     usersWhoBuzzed.set(buzzData.user, { buzzWrapper, hasBuzzed: true }); // Mark as buzzed
                 }
             } else {
-                // This is the user's first buzz
+                // This is the user's first buzz, create a new X for them
                 const buzzContainer = document.getElementById('buzzContainer');
 
                 // Create a wrapper for the X and user name
@@ -112,8 +89,12 @@
                 // Track the user and their corresponding buzz element, initially set hasBuzzed to true
                 usersWhoBuzzed.set(buzzData.user, { buzzWrapper, hasBuzzed: true });
 
-                // Play buzzer sound for the first buzz
-                playBuzzerSound();
+                // Play buzzer sound for the new X
+                buzzerSound.play().then(() => {
+                    console.log("Buzzer sound played successfully.");
+                }).catch((error) => {
+                    console.error("Failed to play buzzer sound:", error);
+                });
             }
         });
 
