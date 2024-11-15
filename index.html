@@ -31,12 +31,20 @@
             const password = document.getElementById("passwordInput").value;
 
             if (password === "shmung") {
+                if (name.trim() === "") {
+                    alert("Please enter your name.");
+                    return;
+                }
+                
                 // Hide login form and show buzzer button
                 document.getElementById("loginForm").style.display = "none";
                 document.getElementById("buzzerSection").style.display = "block";
 
                 // Store the user's name for later use
                 window.currentUserName = name;
+
+                // Display the user's name in the welcome message
+                document.getElementById("userNameDisplay").innerText = name;
             } else {
                 alert("Incorrect password. Please try again.");
             }
@@ -82,27 +90,5 @@
         <h2>Welcome, <span id="userNameDisplay"></span>!</h2>
         <button onclick="sendBuzz()">Buzz!</button>
     </div>
-
-    <script>
-        // Update the displayed user name when login is successful
-        window.login = function login() {
-            const name = document.getElementById("nameInput").value;
-            const password = document.getElementById("passwordInput").value;
-
-            if (password === "shmung") {
-                // Hide login form and show buzzer button
-                document.getElementById("loginForm").style.display = "none";
-                document.getElementById("buzzerSection").style.display = "block";
-
-                // Store the user's name for later use
-                window.currentUserName = name;
-
-                // Display the user's name in the welcome message
-                document.getElementById("userNameDisplay").innerText = name;
-            } else {
-                alert("Incorrect password. Please try again.");
-            }
-        };
-    </script>
 </body>
 </html>
