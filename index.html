@@ -6,29 +6,48 @@
 
     <!-- Firebase SDK (for Firebase v9 and above) -->
     <script type="module">
-
-        // Import the functions you need from the SDKs you need
+        // Import the functions you need from the SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
         const firebaseConfig = {
-          apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
-          authDomain: "combo-video-contest.firebaseapp.com",
-          databaseURL: "https://combo-video-contest-default-rtdb.firebaseio.com",
-          projectId: "combo-video-contest",
-          storageBucket: "combo-video-contest.firebasestorage.app",
-          messagingSenderId: "748133929680",
-          appId: "1:748133929680:web:281b09877fb3fb12da44d5",
-          measurementId: "G-0FCENJ0MYE"
+            apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
+            authDomain: "combo-video-contest.firebaseapp.com",
+            databaseURL: "https://combo-video-contest-default-rtdb.firebaseio.com",
+            projectId: "combo-video-contest",
+            storageBucket: "combo-video-contest.firebasestorage.app",
+            messagingSenderId: "748133929680",
+            appId: "1:748133929680:web:281b09877fb3fb12da44d5",
+            measurementId: "G-0FCENJ0MYE"
         };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
+        // Function to handle login
+        window.login = function login() {
+            const name = document.getElementById("nameInput").value;
+            const password = document.getElementById("passwordInput").value;
+
+            if (password === "shmung") {
+                // Hide login form and show buzzer button
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("buzzerSection").style.display = "block";
+
+                // Store the user's name for later use
+                window.currentUserName = name;
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        };
+
         // Define sendBuzz function globally
         window.sendBuzz = function sendBuzz() {
+            const name = window.currentUserName || "Anonymous";
+
             push(ref(database, 'buzzers'), {
+                user: name,
                 clicked: true,
                 timestamp: new Date().toISOString()
             }).then(() => {
@@ -38,9 +57,52 @@
             });
         };
     </script>
+
+    <style>
+        #buzzerSection {
+            display: none; /* Hidden by default until login is successful */
+        }
+    </style>
 </head>
 <body>
-    <!-- Button that triggers the sendBuzz function -->
-    <button onclick="sendBuzz()">Buzz!</button>
+    <!-- Login Form -->
+    <div id="loginForm">
+        <h2>Login</h2>
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" required>
+        <br><br>
+        <label for="passwordInput">Password:</label>
+        <input type="password" id="passwordInput" required>
+        <br><br>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Buzzer Button Section (Hidden until login is successful) -->
+    <div id="buzzerSection">
+        <h2>Welcome, <span id="userNameDisplay"></span>!</h2>
+        <button onclick="sendBuzz()">Buzz!</button>
+    </div>
+
+    <script>
+        // Update the displayed user name when login is successful
+        window.login = function login() {
+            const name = document.getElementById("nameInput").value;
+            const password = document.getElementById("passwordInput").value;
+
+            if (password === "shmung") {
+                // Hide login form and show buzzer button
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("buzzerSection").style.display = "block";
+
+                // Store the user's name for later use
+                window.currentUserName = name;
+
+                // Display the user's name in the welcome message
+                document.getElementById("userNameDisplay").innerText = name;
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        };
+    </script>
 </body>
 </html>
