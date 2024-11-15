@@ -59,7 +59,7 @@
                 const existingBuzzX = existingBuzzWrapper.querySelector('.buzzX');
                 if (existingBuzzX.style.color !== '#d22f2f') {
                     existingBuzzX.style.color = '#d22f2f'; // Change color to indicate buzz
-                    buzzerSound.play(); // Play buzzer sound
+                    buzzerSound.play(); // Play buzzer sound only if X was not already red
                 }
             } else {
                 // Create a new X for each unique buzzer event
