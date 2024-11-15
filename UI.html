@@ -41,6 +41,18 @@
         const buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
         buzzerSound.volume = 0.5; // Set initial volume to 50%
 
+        // Attempt to "unlock" audio for browsers by playing it silently initially
+        window.addEventListener('click', () => {
+            buzzerSound.muted = true;
+            buzzerSound.play().then(() => {
+                console.log("Audio unlocked for playback.");
+                buzzerSound.pause();
+                buzzerSound.muted = false;
+            }).catch((error) => {
+                console.error("Failed to unlock audio:", error);
+            });
+        }, { once: true });
+
         // Function to play the buzzer sound
         function playBuzzerSound() {
             buzzerSound.play().then(() => {
