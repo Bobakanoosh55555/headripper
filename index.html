@@ -58,10 +58,13 @@
 
                 // Hide login form and show buzzer button
                 document.getElementById("loginForm").style.display = "none";
-                document.getElementById("buzzerSection").style.display = "block";
+                document.getElementById("buzzerSection").style.display = "flex";
 
                 // Store the user's name for later use
                 window.currentUserName = name;
+
+                // Display the user's name in the welcome message
+                document.getElementById("userNameDisplay").innerText = name;
             } else {
                 alert("Incorrect password. Please try again.");
             }
@@ -101,12 +104,19 @@
         button:hover {
             background-color: #555555;
         }
+        #buzzerSection {
+            display: none; /* Initially hidden until login is successful */
+            text-align: center;
+        }
+        #userNameDisplay {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <!-- Login Form -->
     <div id="loginForm">
-        <h2>Login</h2>
+        <h2>Combo Contest Judge Login</h2>
         <label for="nameInput">Name:</label>
         <input type="text" id="nameInput" required>
         <label for="passwordInput">Password:</label>
@@ -115,7 +125,7 @@
     </div>
 
     <!-- Buzzer Button Section (Hidden until login is successful) -->
-    <div id="buzzerSection" style="display: none;">
+    <div id="buzzerSection">
         <h2>Welcome, <span id="userNameDisplay"></span>!</h2>
         <button onclick="sendBuzz()">Buzz!</button>
     </div>
