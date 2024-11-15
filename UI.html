@@ -34,43 +34,51 @@
             const buzzData = snapshot.val();
             console.log('New buzzer detected:', buzzData);
 
-            // Update the UI with the buzzer event
-            const buzzerDisplay = document.getElementById('buzzerDisplay');
-            buzzerDisplay.innerText = "BUZZ! Someone pressed the button!";
-            buzzerDisplay.style.backgroundColor = "red";
+            // Create a new box for each buzzer event
+            const buzzContainer = document.getElementById('buzzContainer');
+
+            const newBuzzBox = document.createElement('div');
+            newBuzzBox.classList.add('buzzBox');
+            newBuzzBox.innerText = "BUZZ!";
+
+            const userName = document.createElement('div');
+            userName.classList.add('userName');
+            userName.innerText = buzzData.user;
+
+            newBuzzBox.appendChild(userName);
+            buzzContainer.appendChild(newBuzzBox);
         });
-
-        // Function to reset (unbuzz) the buzzer display
-        function unbuzzBuzzer() {
-            const buzzerDisplay = document.getElementById('buzzerDisplay');
-            buzzerDisplay.innerText = "Waiting for buzz...";
-            buzzerDisplay.style.backgroundColor = "transparent";
-        }
-
-        // Attach the unbuzz function to the window object to make it globally accessible
-        window.unbuzzBuzzer = unbuzzBuzzer;
     </script>
 
     <style>
-        #buzzerDisplay {
-            font-size: 2em;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            background-color: transparent;
-            transition: background-color 0.5s;
-            margin-bottom: 20px;
+        #buzzContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
         }
-        #unbuzzButton {
+        .buzzBox {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .userName {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 1em;
-            padding: 10px 20px;
-            cursor: pointer;
+            color: black;
         }
     </style>
 </head>
 <body>
     <h1>Live Buzzer Display</h1>
-    <div id="buzzerDisplay">Waiting for buzz...</div>
-    <button id="unbuzzButton" onclick="unbuzzBuzzer()">Unbuzz</button>
+    <div id="buzzContainer"></div>
 </body>
 </html>
