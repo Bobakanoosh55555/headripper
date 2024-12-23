@@ -20,41 +20,47 @@
     }
 
     /*
-      Subtle background animation:
-      Slowly shift between two gradient states over 30s
-      with an 'alternate' direction so it goes back and forth.
+      We animate the background by shifting its position over time.
+      This creates a slow-moving gradient effect (like a "wave").
     */
-    @keyframes subtleBackground {
+    @keyframes animateBackground {
       0% {
-        background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
       }
       100% {
-        background: linear-gradient(135deg, #2e2e2e, #3a3a3a);
+        background-position: 0% 50%;
       }
     }
 
     body {
-      /* Apply the animation to the entire body */
       font-family: 'Poppins', sans-serif;
       color: #ffffff;
       margin: 0;
       padding: 0;
-      /* Start with one of the gradient states */
+
+      /* Set up a larger background area to scroll across */
       background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
-      animation: subtleBackground 30s infinite alternate;
+      background-size: 200% 200%;       /* allows us to move the gradient */
+      background-position: 0% 50%;      /* initial position */
+      animation: animateBackground 30s ease infinite; 
+      /* 
+        - 30s is the duration for a full cycle
+        - 'ease' controls acceleration
+        - 'infinite' repeats forever
+      */
     }
 
-    /*
-      Title styling with Roboto, no animation, but with a dark drop shadow
-      that's more pronounced than the site's dark background.
-    */
+    /* Title styling (Roboto), no animation, with a dark drop shadow */
     h1 {
       font-family: 'Roboto', sans-serif;
       text-align: center;
       margin-top: 40px;
-      margin-bottom: 200px; /* large space below the title */
+      margin-bottom: 120px;  /* decreased space below the title */
       font-size: 4rem;
-      font-weight: 900; /* Roboto’s boldest weight */
+      font-weight: 900;      /* Roboto’s boldest weight */
       letter-spacing: 1px;
 
       /* A dark drop shadow to stand out against the background */
@@ -69,10 +75,10 @@
       display: grid;
       grid-template-columns: repeat(3, 180px);
       grid-template-rows: repeat(2, 180px);
-      gap: 20px;       
+      gap: 20px;  
       margin: 0 auto 40px auto; 
       /* total width: 3 * 180px + 2 * 20px = 580px */
-      width: 580px;    
+      width: 580px; 
     }
 
     /*
