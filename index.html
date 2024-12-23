@@ -19,15 +19,11 @@
       box-sizing: border-box;
     }
 
-    /*
-      We'll keep the same approach but increase the contrast:
-      - Darker overall body color (#111111)
-      - More contrast in the radial gradient (#333333 to fully transparent)
-    */
+    /* Body baseline: black background */
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #111111; /* Darker than #1e1e1e */
-      color: #ffffff;
+      background-color: #000; /* pure black */
+      color: #fff;
       margin: 0;
       padding: 0;
       
@@ -35,9 +31,9 @@
       overflow: hidden;
     }
 
-    /*
-      Pseudo-element for the radial gradient animation,
-      now with darker center (#333333) and a full 0% -> 100% transparency
+    /* 
+      Swirling pseudo-element for background 
+      (dark gray swirl over black)
     */
     body::before {
       content: "";
@@ -49,13 +45,7 @@
       z-index: -1; 
       pointer-events: none;
       
-      /*
-        Higher contrast radial gradient:
-        - From #333333 at the center (darker gray)
-        - To fully transparent
-      */
-      background: radial-gradient(circle, #333333 15%, transparent 90%);
-      
+      background: radial-gradient(circle, #444 15%, transparent 80%);
       transform: translate(-25%, -25%) scale(1);
       animation: swirlGradient 60s ease-in-out infinite alternate;
     }
@@ -72,7 +62,7 @@
       }
     }
 
-    /* Title styling with a large, dark drop shadow */
+    /* Title: large text shadow for a "heavy" look */
     h1 {
       text-align: center;
       margin-top: 40px;
@@ -83,21 +73,25 @@
       text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.95);
     }
 
-    /*
+    /* 
       3 columns × 2 rows grid
-      each cell: 180px × 180px
-      with 20px gap
+      each cell: 180 × 180, with 20px gap
     */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 180px);
       grid-template-rows: repeat(2, 180px);
       gap: 20px;
-      width: 580px; /* 3×180 + 2×20 */
+      width: 580px; /* 3×180 + 2×20 = 580 */
       margin: 0 auto 40px auto;
     }
 
-    /* Clickable box, sized to 180px × 180px */
+    /*
+      Each box:
+      - 180×180 size
+      - linear gradient background
+      - box-shadow that matches the title's shadow style
+    */
     .box {
       width: 180px;
       height: 180px;
@@ -113,8 +107,12 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px;
+
+      /* The same 4px 4px 8px dark shadow as the title */
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.95);
     }
 
+    /* Scale up on hover */
     .box:hover {
       transform: scale(1.03);
     }
@@ -126,7 +124,7 @@
       object-fit: contain;
     }
 
-    /* Text inside box */
+    /* Text inside the box */
     .box-text {
       font-size: 16px;
       font-weight: 700;
