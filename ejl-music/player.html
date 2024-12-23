@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ed's Music Archive</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         body {
-            font-family: Roboto, sans-serif;
+            font-family: 'Roboto', sans-serif;
             text-align: center;
             background-color: #121212;
             color: #ffffff;
@@ -24,22 +25,59 @@
         }
         .controls button {
             margin: 0 5px;
-            padding: 10px 20px;
+            padding: 10px;
             border: none;
-            border-radius: 5px;
+            border-radius: 50%;
             cursor: pointer;
-            background: #1db954;
+            background: #ff4444;
             color: white;
             font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+        .controls button#prev::before {
+            content: '\25C0'; /* Unicode for left-pointing triangle */
+            font-size: 24px;
+        }
+        .controls button#next::before {
+            content: '\25B6'; /* Unicode for right-pointing triangle */
+            font-size: 24px;
         }
         .controls button:hover {
-            background: #1ed760;
+            background: #ff6666;
         }
         .track-info {
             margin: 10px 0;
         }
         input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
             width: 80%;
+            height: 10px;
+            border-radius: 5px;
+            background: #ff4444;
+            outline: none;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
         }
         .categories {
             margin: 20px 0;
@@ -53,6 +91,7 @@
             background: #555;
             color: white;
             font-size: 14px;
+            font-family: 'Roboto', sans-serif;
         }
         .categories button:hover {
             background: #777;
@@ -75,9 +114,9 @@
     </div>
     <canvas id="visualizer" width="600" height="200"></canvas>
     <div class="controls">
-        <button id="prev">Previous</button>
+        <button id="prev"></button>
         <button id="play-pause">Play</button>
-        <button id="next">Next</button>
+        <button id="next"></button>
     </div>
     <input id="seek-bar" type="range" min="0" max="100" value="0">
 
