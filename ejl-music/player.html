@@ -58,7 +58,7 @@
             position: relative;
         }
         .controls button#play-pause::before {
-            content: '\2759\2759'; /* Unicode for pause icon */
+            content: '\25B6'; /* Unicode for play icon */
             font-size: 24px;
             color: white;
             position: absolute;
@@ -67,7 +67,7 @@
             transform: translate(-50%, -50%);
         }
         .controls button#play-pause.paused::before {
-            content: '\25B6'; /* Unicode for play icon */
+            content: '\2759\2759'; /* Unicode for pause icon */
         }
         input[type="range"] {
             -webkit-appearance: none;
@@ -125,15 +125,15 @@
     </div>
 
     <div class="track-info">
-        <p id="track-title">Track: </p>
+        <p id="track-title">Current Track: </p>
     </div>
     <canvas id="visualizer" width="600" height="200"></canvas>
     <div class="controls">
         <button id="prev"></button>
-        <button id="play-pause"></button>
+        <button id="play-pause" class="paused"></button>
         <button id="next"></button>
     </div>
-    <input id="seek-bar" type="range" min="0" max="100" value="0">
+    <input id="seek-bar" type="range" min="0" max="100" value="0" style="--progress: 0%;">
 
     <script>
         const categories = {
@@ -197,7 +197,8 @@
         const seekBar = document.getElementById('seek-bar');
 
         function updateTrackInfo() {
-            trackTitle.textContent = `Track: ${tracks[currentTrackIndex].split('/').pop()}`;
+            const trackName = tracks[currentTrackIndex].split('/').pop().replace(/\.[^/.]+$/, '');
+            trackTitle.textContent = `Current Track: ${trackName}`;
         }
 
         function selectCategory(category) {
@@ -206,6 +207,7 @@
             currentTrackIndex = 0;
             audio.src = tracks[currentTrackIndex];
             updateTrackInfo();
+            playPauseButton.classList.add('paused');
         }
 
         updateTrackInfo();
