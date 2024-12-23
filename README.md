@@ -1,2 +1,1 @@
-# Combo-Video-Contest
-Combo Video Contest Tools (Experimental)
+Github Pages Repo for www.headripper.com
