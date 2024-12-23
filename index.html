@@ -4,18 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Headripper</title>
-  
-  <!-- Import a stylish Google Font -->
+
+  <!-- Import a cooler Google Font -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap"
     rel="stylesheet"
   />
-  
+
   <style>
-    /* 
-      General reset for consistent styling 
-      (optional, but often helpful) 
-    */
+    /* General reset for consistent styling */
     * {
       margin: 0;
       padding: 0;
@@ -23,7 +20,6 @@
     }
 
     body {
-      /* Different background color */
       background: #1e1e1e;  
       font-family: 'Montserrat', sans-serif;
       color: #ffffff;
@@ -31,16 +27,19 @@
       padding: 0;
     }
 
+    /* Style the title with the "cooler" font (Bebas Neue) */
     h1 {
+      font-family: 'Bebas Neue', sans-serif;
       text-align: center;
-      margin: 40px 0;
-      font-weight: 700;
-      font-size: 2rem;
+      margin-top: 40px;
+      margin-bottom: 80px; /* much larger space below the title */
+      font-size: 4rem; /* larger title size */
+      letter-spacing: 2px; /* optional spacing for a stylish effect */
     }
 
-    /* 
+    /*
       Create a 3x2 grid with 20px gaps.
-      Adjust width/max-width to control how large the grid can get. 
+      The boxes within must remain squares, so we use aspect-ratio.
     */
     .grid {
       display: grid;
@@ -52,27 +51,24 @@
       margin: 0 auto 40px auto; /* center and add some bottom spacing */
     }
 
-    /* 
-      Each box has a dark gray gradient background 
-      and is sized similarly. 
+    /*
+      Each box is now a square because of aspect-ratio: 1.
+      This will keep width/height equal, as long as the browser supports it.
     */
     .box {
+      aspect-ratio: 1;
       background: linear-gradient(135deg, #3a3a3a, #2f2f2f);
       border-radius: 8px;
-      min-height: 150px; /* or 200px, adjust as you like */
       display: flex;
       align-items: center;
       justify-content: center;
       transition: transform 0.3s;
     }
     .box:hover {
-      transform: scale(1.03); /* slight hover effect */
+      transform: scale(1.03);
     }
 
-    /* 
-      First box: contains your link. 
-      We'll style the link to be light blue. 
-    */
+    /* First box: link styling */
     .box1 a {
       color: #1e90ff;
       font-size: 18px;
@@ -86,8 +82,8 @@
     }
 
     /* 
-      Boxes 2–6 are empty placeholders.
-      They just inherit the .box styles above.
+      Boxes 2–6 remain empty placeholders 
+      with the same .box styles.
     */
   </style>
 </head>
