@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Headripper</title>
   
-  <!-- Import a modern Google Font (Poppins) -->
+  <!-- Import Google Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Poppins:wght@400;700&display=swap"
     rel="stylesheet"
   />
   
@@ -27,18 +27,19 @@
       padding: 0;
     }
 
-    /* Title styling */
+    /* Title styling with Oswald font */
     h1 {
+      font-family: 'Oswald', sans-serif;
       text-align: center;
       margin-top: 40px;
-      margin-bottom: 60px; /* large space below the title */
+      margin-bottom: 200px; /* increased space below the title */
       font-size: 3rem;
-      font-weight: 700;
+      font-weight: 500;
     }
 
-    /* 
+    /*
       Grid layout: 3 columns × 2 rows
-      with 20px gaps, centered on the page.
+      gap: 20px for both horizontal & vertical spacing
     */
     .grid {
       display: grid;
@@ -50,10 +51,10 @@
       margin: 0 auto 40px auto; 
     }
 
-    /* 
+    /*
       Each box is a clickable <a> wrapping content.
-      Use aspect-ratio to ensure they stay squares.
-      Added a max-width to keep them smaller.
+      aspect-ratio keeps them square.
+      max-width controls how large they can grow.
     */
     .box {
       display: flex;
@@ -61,26 +62,26 @@
       align-items: center;
       justify-content: space-between; 
       aspect-ratio: 1;
-      max-width: 180px;           /* to keep boxes smaller */
+      max-width: 180px;           
       background: linear-gradient(135deg, #3a3a3a, #2f2f2f);
       border-radius: 8px;
-      text-decoration: none;      /* remove underline from links */
+      text-decoration: none;
       color: #ffffff;
       transition: transform 0.3s;
-      margin: 0 auto;            /* center each box if narrower than its grid cell */
-      cursor: pointer;           /* show pointer when hovering over the box */
-      padding: 10px;             /* space around contents */
+      margin: 0 auto;            
+      cursor: pointer;           
+      padding: 10px;             
     }
 
     .box:hover {
       transform: scale(1.03);
     }
 
-    /* The icon (100×100 px) positioned at top center of the box */
+    /* The icon (100×100 px) positioned at the top center of the box */
     .box img {
       width: 100px; 
       height: 100px;
-      object-fit: contain; /* ensure it doesn't stretch weirdly */
+      object-fit: contain; 
     }
 
     /* The text is displayed at the bottom */
@@ -88,7 +89,7 @@
       font-size: 16px;
       font-weight: 600;
       text-align: center;
-      margin-top: auto; /* push the text down if there's extra space */
+      margin-top: auto; 
     }
   </style>
 </head>
@@ -101,27 +102,27 @@
       <img src="no-icon.png" alt="Icon" />
       <span class="box-text">Combo Video Contest</span>
     </a>
-    <!-- Box #2: Example placeholder (clickable, but no link) -->
+    <!-- Box #2: Example placeholder -->
     <a href="#" class="box">
       <img src="no-icon.png" alt="Icon" />
       <span class="box-text">Placeholder</span>
     </a>
-    <!-- Box #3 -->
+    <!-- Box #3: Placeholder -->
     <a href="#" class="box">
       <img src="no-icon.png" alt="Icon" />
       <span class="box-text">Placeholder</span>
     </a>
-    <!-- Box #4 -->
+    <!-- Box #4: Placeholder -->
     <a href="#" class="box">
       <img src="no-icon.png" alt="Icon" />
       <span class="box-text">Placeholder</span>
     </a>
-    <!-- Box #5 -->
+    <!-- Box #5: Placeholder -->
     <a href="#" class="box">
       <img src="no-icon.png" alt="Icon" />
       <span class="box-text">Placeholder</span>
     </a>
-    <!-- Box #6 -->
+    <!-- Box #6: Placeholder -->
     <a href="#" class="box">
       <img src="no-icon.png" alt="Icon" />
       <span class="box-text">Placeholder</span>
