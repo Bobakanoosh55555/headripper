@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Headripper</title>
   
-  <!-- Import Google Fonts (Roboto for title, Poppins for body if desired) -->
+  <!-- Import Google Fonts (Roboto for everything) -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Poppins:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
     rel="stylesheet"
   />
   
@@ -20,48 +20,44 @@
     }
 
     /*
-      Animate the background by gradually transitioning
-      between two gradient definitions. 
-      This is more broadly compatible than background-position shifts.
+      Animate a subtle radial gradient:
+      - We change the gradient’s center and color stops between keyframes
+      - Over 30s, it transitions from one set of grays to another, then back.
     */
-    @keyframes animateGradient {
+    @keyframes subtleRadial {
       0% {
-        background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+        background: radial-gradient(circle at 50% 50%, #2a2a2a 0%, #1e1e1e 100%);
       }
       50% {
-        background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+        background: radial-gradient(circle at 70% 30%, #3a3a3a 0%, #2a2a2a 100%);
       }
       100% {
-        background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+        background: radial-gradient(circle at 50% 50%, #2a2a2a 0%, #1e1e1e 100%);
       }
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Roboto', sans-serif; /* Use Roboto site-wide */
       color: #ffffff;
       margin: 0;
       padding: 0;
-
-      /* Start with the first gradient */
-      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
-      /* Animate between gradient states over 10 seconds, then reverse */
-      animation: animateGradient 10s ease-in-out infinite alternate;
-      /* 
-        'infinite alternate' means:
-          - go from 0% to 100%
-          - then reverse from 100% back to 0%
-          - repeat
+      
+      /* Start with one radial gradient */
+      background: radial-gradient(circle at 50% 50%, #2a2a2a 0%, #1e1e1e 100%);
+      /*
+        Animate it over 30s, "infinite alternate" so it goes 0→100%→0 forever.
+        'ease-in-out' ensures a smooth transition.
       */
+      animation: subtleRadial 30s ease-in-out infinite alternate;
     }
 
-    /* Title styling (Roboto), with a large dark drop shadow */
+    /* Title styling (Roboto), with a large dark drop shadow, no animation */
     h1 {
-      font-family: 'Roboto', sans-serif;
       text-align: center;
       margin-top: 40px;
-      margin-bottom: 120px;  /* smaller space below the title */
+      margin-bottom: 120px; 
       font-size: 4rem;
-      font-weight: 900;      /* Roboto’s boldest weight */
+      font-weight: 900;        /* Roboto’s boldest weight */
       letter-spacing: 1px;
 
       /*
@@ -123,7 +119,7 @@
     /* The text at the bottom of the box */
     .box-text {
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 700;
       text-align: center;
       margin-top: auto;
     }
