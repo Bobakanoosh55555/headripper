@@ -74,15 +74,14 @@
     }
 
     /* 
-      3 columns × 2 rows grid
-      each cell: 180 × 180, with 20px gap
+      Flexible responsive grid layout
     */
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 180px);
-      grid-template-rows: repeat(2, 180px);
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
-      width: 580px; /* 3×180 + 2×20 = 580 */
+      width: 100%;
+      max-width: 580px; /* Optional: limit the grid's width */
       margin: 0 auto 40px auto;
     }
 
@@ -93,8 +92,8 @@
       - box-shadow that matches the title's shadow style
     */
     .box {
-      width: 180px;
-      height: 180px;
+      width: 100%;
+      aspect-ratio: 1;
       background: linear-gradient(135deg, #3a3a3a, #2f2f2f);
       border-radius: 8px;
       text-decoration: none;
