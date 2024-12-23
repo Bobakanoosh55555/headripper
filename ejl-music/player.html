@@ -22,35 +22,51 @@
         }
         .controls {
             margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .controls button {
-            margin: 0 5px;
+            margin: 0 10px;
             padding: 10px;
             border: none;
-            border-radius: 50%;
+            border-radius: 5px;
             cursor: pointer;
-            background: #ff4444;
+            background: #1db954;
             color: white;
             font-size: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .controls button#prev, .controls button#next {
             width: 50px;
             height: 50px;
+            background: transparent;
+            border: none;
+            clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+            cursor: pointer;
         }
-        .controls button#prev::before {
-            content: '\25C0'; /* Unicode for left-pointing triangle */
+        .controls button#prev {
+            transform: rotate(180deg);
+            background-color: #ff4444;
+        }
+        .controls button#next {
+            background-color: #ff4444;
+        }
+        .controls button#play-pause {
+            width: 60px;
+            height: 60px;
+            background-color: #ff4444;
+            border-radius: 5px;
+        }
+        .controls button#play-pause::before {
+            content: '\25B6'; /* Unicode for play icon */
             font-size: 24px;
+            color: white;
         }
-        .controls button#next::before {
-            content: '\25B6'; /* Unicode for right-pointing triangle */
-            font-size: 24px;
-        }
-        .controls button:hover {
-            background: #ff6666;
-        }
-        .track-info {
-            margin: 10px 0;
+        .controls button#play-pause.paused::before {
+            content: '\2759\2759'; /* Unicode for pause icon */
         }
         input[type="range"] {
             -webkit-appearance: none;
@@ -58,10 +74,8 @@
             width: 80%;
             height: 10px;
             border-radius: 5px;
-            background: #ff4444;
+            background: linear-gradient(to right, #ff4444 0%, #ff4444 var(--progress), #555 var(--progress), #555 100%);
             outline: none;
-            opacity: 0.9;
-            transition: opacity 0.2s;
         }
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -115,7 +129,7 @@
     <canvas id="visualizer" width="600" height="200"></canvas>
     <div class="controls">
         <button id="prev"></button>
-        <button id="play-pause">Play</button>
+        <button id="play-pause"></button>
         <button id="next"></button>
     </div>
     <input id="seek-bar" type="range" min="0" max="100" value="0">
@@ -180,10 +194,10 @@
         playPauseButton.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
-                playPauseButton.textContent = 'Pause';
+                playPauseButton.classList.remove('paused');
             } else {
                 audio.pause();
-                playPauseButton.textContent = 'Play';
+                playPauseButton.classList.add('paused');
             }
         });
 
@@ -192,7 +206,7 @@
             audio.src = tracks[currentTrackIndex];
             updateTrackInfo();
             audio.play();
-            playPauseButton.textContent = 'Pause';
+            playPauseButton.classList.remove('paused');
         });
 
         nextButton.addEventListener('click', () => {
@@ -200,11 +214,13 @@
             audio.src = tracks[currentTrackIndex];
             updateTrackInfo();
             audio.play();
-            playPauseButton.textContent = 'Pause';
+            playPauseButton.classList.remove('paused');
         });
 
         audio.addEventListener('timeupdate', () => {
-            seekBar.value = (audio.currentTime / audio.duration) * 100 || 0;
+            const progress = (audio.currentTime / audio.duration) * 100 || 0;
+            seekBar.style.setProperty('--progress', `${progress}%`);
+            seekBar.value = progress;
         });
 
         seekBar.addEventListener('input', () => {
