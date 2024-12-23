@@ -7,7 +7,7 @@
   
   <!-- Import Google Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Poppins:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;700&display=swap"
     rel="stylesheet"
   />
   
@@ -27,25 +27,31 @@
       padding: 0;
     }
 
-    /* Title styling with Oswald font */
+    /* Title styling with Anton font */
     h1 {
-      font-family: 'Oswald', sans-serif;
+      font-family: 'Anton', sans-serif;
       text-align: center;
       margin-top: 40px;
-      margin-bottom: 200px; /* increased space below the title */
-      font-size: 3rem;
-      font-weight: 500;
+      margin-bottom: 200px; /* 200px space below the title */
+      font-size: 4rem;      /* bigger, bold display */
+      font-weight: 400;     /* Anton is typically bold by default, so 400 is fine */
+      letter-spacing: 1px;  /* optional letter spacing for style */
     }
 
     /*
       Grid layout: 3 columns × 2 rows
-      gap: 20px for both horizontal & vertical spacing
+      We'll explicitly set both row-gap and column-gap to ensure
+      the spacing is respected across browsers.
     */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
-      gap: 20px;
+
+      gap: 20px;           /* The modern, standard property */
+      row-gap: 20px;       /* Additional explicit property */
+      column-gap: 20px;    /* Additional explicit property */
+
       width: 90%;
       max-width: 1200px;
       margin: 0 auto 40px auto; 
@@ -54,42 +60,42 @@
     /*
       Each box is a clickable <a> wrapping content.
       aspect-ratio keeps them square.
-      max-width controls how large they can grow.
+      max-width helps control how large they can grow.
     */
     .box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between; 
+      justify-content: space-between;
       aspect-ratio: 1;
-      max-width: 180px;           
+      max-width: 180px;
       background: linear-gradient(135deg, #3a3a3a, #2f2f2f);
       border-radius: 8px;
       text-decoration: none;
       color: #ffffff;
       transition: transform 0.3s;
-      margin: 0 auto;            
-      cursor: pointer;           
-      padding: 10px;             
+      margin: 0 auto;
+      cursor: pointer;
+      padding: 10px;
     }
 
     .box:hover {
       transform: scale(1.03);
     }
 
-    /* The icon (100×100 px) positioned at the top center of the box */
+    /* The icon (100×100 px) */
     .box img {
-      width: 100px; 
+      width: 100px;
       height: 100px;
       object-fit: contain; 
     }
 
-    /* The text is displayed at the bottom */
+    /* The text at the bottom of the box */
     .box-text {
       font-size: 16px;
       font-weight: 600;
       text-align: center;
-      margin-top: auto; 
+      margin-top: auto;
     }
   </style>
 </head>
