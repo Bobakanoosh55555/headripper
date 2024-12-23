@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Headripper</title>
-
-  <!-- Import a cooler Google Font -->
+  
+  <!-- Import a modern Google Font (Poppins) -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
     rel="stylesheet"
   />
-
+  
   <style>
-    /* General reset for consistent styling */
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -21,25 +21,24 @@
 
     body {
       background: #1e1e1e;  
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       color: #ffffff;
       margin: 0;
       padding: 0;
     }
 
-    /* Style the title with the "cooler" font (Bebas Neue) */
+    /* Title styling */
     h1 {
-      font-family: 'Bebas Neue', sans-serif;
       text-align: center;
       margin-top: 40px;
-      margin-bottom: 80px; /* much larger space below the title */
-      font-size: 4rem; /* larger title size */
-      letter-spacing: 2px; /* optional spacing for a stylish effect */
+      margin-bottom: 60px; /* large space below the title */
+      font-size: 3rem;
+      font-weight: 700;
     }
 
-    /*
-      Create a 3x2 grid with 20px gaps.
-      The boxes within must remain squares, so we use aspect-ratio.
+    /* 
+      Grid layout: 3 columns × 2 rows
+      with 20px gaps, centered on the page.
     */
     .grid {
       display: grid;
@@ -48,63 +47,85 @@
       gap: 20px;
       width: 90%;
       max-width: 1200px;
-      margin: 0 auto 40px auto; /* center and add some bottom spacing */
+      margin: 0 auto 40px auto; 
     }
 
-    /*
-      Each box is now a square because of aspect-ratio: 1.
-      This will keep width/height equal, as long as the browser supports it.
+    /* 
+      Each box is a clickable <a> wrapping content.
+      Use aspect-ratio to ensure they stay squares.
+      Added a max-width to keep them smaller.
     */
     .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between; 
       aspect-ratio: 1;
+      max-width: 180px;           /* to keep boxes smaller */
       background: linear-gradient(135deg, #3a3a3a, #2f2f2f);
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-decoration: none;      /* remove underline from links */
+      color: #ffffff;
       transition: transform 0.3s;
+      margin: 0 auto;            /* center each box if narrower than its grid cell */
+      cursor: pointer;           /* show pointer when hovering over the box */
+      padding: 10px;             /* space around contents */
     }
+
     .box:hover {
       transform: scale(1.03);
     }
 
-    /* First box: link styling */
-    .box1 a {
-      color: #1e90ff;
-      font-size: 18px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-    .box1 a:hover {
-      color: #66bfff;
-      text-shadow: 0 0 5px rgba(102, 191, 255, 0.6);
+    /* The icon (100×100 px) positioned at top center of the box */
+    .box img {
+      width: 100px; 
+      height: 100px;
+      object-fit: contain; /* ensure it doesn't stretch weirdly */
     }
 
-    /* 
-      Boxes 2–6 remain empty placeholders 
-      with the same .box styles.
-    */
+    /* The text is displayed at the bottom */
+    .box-text {
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: auto; /* push the text down if there's extra space */
+    }
   </style>
 </head>
 <body>
   <h1>Welcome to Headripper</h1>
 
   <div class="grid">
-    <!-- Box #1: Contains the link -->
-    <div class="box box1">
-      <a href="combo-video-contest/index.html">Combo Video Contest</a>
-    </div>
-    <!-- Box #2: Empty placeholder -->
-    <div class="box box2"></div>
-    <!-- Box #3: Empty placeholder -->
-    <div class="box box3"></div>
-    <!-- Box #4: Empty placeholder -->
-    <div class="box box4"></div>
-    <!-- Box #5: Empty placeholder -->
-    <div class="box box5"></div>
-    <!-- Box #6: Empty placeholder -->
-    <div class="box box6"></div>
+    <!-- Box #1: Contains the link (entire box clickable) -->
+    <a href="combo-video-contest/index.html" class="box">
+      <img src="no-icon.png" alt="Icon" />
+      <span class="box-text">Combo Video Contest</span>
+    </a>
+    <!-- Box #2: Example placeholder (clickable, but no link) -->
+    <a href="#" class="box">
+      <img src="no-icon.png" alt="Icon" />
+      <span class="box-text">Placeholder</span>
+    </a>
+    <!-- Box #3 -->
+    <a href="#" class="box">
+      <img src="no-icon.png" alt="Icon" />
+      <span class="box-text">Placeholder</span>
+    </a>
+    <!-- Box #4 -->
+    <a href="#" class="box">
+      <img src="no-icon.png" alt="Icon" />
+      <span class="box-text">Placeholder</span>
+    </a>
+    <!-- Box #5 -->
+    <a href="#" class="box">
+      <img src="no-icon.png" alt="Icon" />
+      <span class="box-text">Placeholder</span>
+    </a>
+    <!-- Box #6 -->
+    <a href="#" class="box">
+      <img src="no-icon.png" alt="Icon" />
+      <span class="box-text">Placeholder</span>
+    </a>
   </div>
 </body>
 </html>
