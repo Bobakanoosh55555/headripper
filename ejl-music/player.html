@@ -131,8 +131,26 @@
         }
         .volume-control input[type="range"] {
             margin-left: 10px;
-            width: 70%;
+            width: 30%;
+            height: 10px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #ff4444 0%, #ff4444 var(--volume-progress), #555 var(--volume-progress), #555 100%);
+            outline: none;
             box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+        }
+        .volume-control input[type="range"]::-webkit-slider-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+        }
+        .volume-control input[type="range"]::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
         }
         .volume-icon {
             font-size: 24px;
@@ -142,7 +160,7 @@
     </style>
 </head>
 <body>
-    <h1>Audio Player with Categories</h1>
+    <h1>Ed's Music Archive</h1>
 
     <div class="categories">
         <button onclick="selectCategory('Blastic')">Blastic</button>
@@ -165,7 +183,7 @@
 
     <div class="volume-control">
         <span class="volume-icon">🔊</span>
-        <input id="volume-slider" type="range" min="0" max="100" value="50">
+        <input id="volume-slider" type="range" min="0" max="100" value="50" style="--volume-progress: 50%;">
     </div>
 
     <script>
@@ -283,7 +301,9 @@
         });
 
         volumeSlider.addEventListener('input', () => {
-            audio.volume = volumeSlider.value / 100;
+            const volumeValue = volumeSlider.value;
+            audio.volume = volumeValue / 100;
+            volumeSlider.style.setProperty('--volume-progress', `${volumeValue}%`);
         });
 
         const canvas = document.getElementById('visualizer');
