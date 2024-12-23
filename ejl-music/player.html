@@ -13,20 +13,18 @@
             color: #ffffff;
             margin: 0;
             padding: 0;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
         }
         canvas {
             display: block;
             margin: 20px auto;
             background: #222;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
         }
         .controls {
             margin: 20px 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
         }
         .controls button {
             margin: 0 10px;
@@ -37,7 +35,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
         }
         .controls button#prev, .controls button#next {
             width: 50px;
@@ -45,7 +43,7 @@
             background-color: #ff4444;
             clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
             cursor: pointer;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
         }
         .controls button#prev {
             transform: rotate(0deg);
@@ -59,7 +57,7 @@
             background-color: #ff4444;
             border-radius: 5px;
             position: relative;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
         }
         .controls button#play-pause.paused::before {
             content: '\25B6'; /* Unicode for play icon */
@@ -87,7 +85,7 @@
             border-radius: 5px;
             background: linear-gradient(to right, #ff4444 0%, #ff4444 var(--progress), #555 var(--progress), #555 100%);
             outline: none;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
         }
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -107,7 +105,6 @@
         }
         .categories {
             margin: 20px 0;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
         }
         .categories button {
             margin: 5px;
@@ -118,10 +115,13 @@
             color: white;
             font-size: 14px;
             font-family: 'Roboto', sans-serif;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
         }
         .categories button:hover {
             background: #777;
+        }
+        h1 {
+            text-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
