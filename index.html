@@ -20,57 +20,46 @@
     }
 
     /*
-      1) Body has a solid dark background (#1e1e1e).
-      2) We'll animate a radial gradient in a pseudo-element
-         that covers the entire screen behind everything.
+      We'll keep the same approach but increase the contrast:
+      - Darker overall body color (#111111)
+      - More contrast in the radial gradient (#333333 to fully transparent)
     */
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #1e1e1e;
+      background-color: #111111; /* Darker than #1e1e1e */
       color: #ffffff;
       margin: 0;
       padding: 0;
-
-      /* 
-        Position relative so we can place a pseudo-element
-        behind content with absolute/fixed positioning. 
-      */
+      
       position: relative;
-      overflow: hidden; 
-      /* ensures the pseudo-element won't add scrollbars if it moves around */
+      overflow: hidden;
     }
 
     /*
-      Create a pseudo-element on <body> that:
-      - Sits behind all content (z-index: -1).
-      - Has a radial gradient that we animate by shifting and scaling.
+      Pseudo-element for the radial gradient animation,
+      now with darker center (#333333) and a full 0% -> 100% transparency
     */
     body::before {
       content: "";
-      position: fixed; /* so it stays put even if the page scrolls */
+      position: fixed;
       top: 0;
       left: 0;
       width: 200%;
       height: 200%;
-      z-index: -1; /* behind everything */
-      pointer-events: none; /* so it can’t be clicked */
+      z-index: -1; 
+      pointer-events: none;
       
-      /* 
-        A subtle radial gradient:
-        - Center is #2a2a2a 
-        - Fades to transparent after some distance 
+      /*
+        Higher contrast radial gradient:
+        - From #333333 at the center (darker gray)
+        - To fully transparent
       */
-      background: radial-gradient(circle, #2a2a2a 15%, transparent 80%);
+      background: radial-gradient(circle, #333333 15%, transparent 90%);
       
-      /* Start partially shifted and scaled */
       transform: translate(-25%, -25%) scale(1);
       animation: swirlGradient 60s ease-in-out infinite alternate;
     }
 
-    /*
-      Keyframes to move/scale the radial gradient slightly,
-      giving a slow, swirling effect behind the content.
-    */
     @keyframes swirlGradient {
       0% {
         transform: translate(-25%, -25%) scale(1);
@@ -83,35 +72,32 @@
       }
     }
 
-    /* Title styling (Roboto), no animation, large dark drop shadow */
+    /* Title styling with a large, dark drop shadow */
     h1 {
       text-align: center;
       margin-top: 40px;
       margin-bottom: 120px; 
       font-size: 4rem;
-      font-weight: 900;   /* Roboto’s boldest weight */
+      font-weight: 900;  
       letter-spacing: 1px;
       text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.95);
     }
 
     /*
-      Fixed-width, fixed-height grid so columns don’t expand.
-      3 columns × 2 rows, each box 180px with a 20px gap.
+      3 columns × 2 rows grid
+      each cell: 180px × 180px
+      with 20px gap
     */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 180px);
       grid-template-rows: repeat(2, 180px);
       gap: 20px;
-      /* total width: 3 × 180 + 2 × 20 = 580px */
-      width: 580px;
-      margin: 0 auto 40px auto; 
+      width: 580px; /* 3×180 + 2×20 */
+      margin: 0 auto 40px auto;
     }
 
-    /*
-      Each box is a clickable <a> wrapping content.
-      We fix width & height to 180px to ensure a perfect grid cell.
-    */
+    /* Clickable box, sized to 180px × 180px */
     .box {
       width: 180px;
       height: 180px;
@@ -122,7 +108,6 @@
       transition: transform 0.3s;
       cursor: pointer;
 
-      /* Flex layout to position icon at top, text at bottom */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -134,14 +119,14 @@
       transform: scale(1.03);
     }
 
-    /* Icon (100×100 px) */
+    /* Icon is 100×100 px */
     .box img {
       width: 100px;
       height: 100px;
       object-fit: contain;
     }
 
-    /* Text at the bottom of the box */
+    /* Text inside box */
     .box-text {
       font-size: 16px;
       font-weight: 700;
