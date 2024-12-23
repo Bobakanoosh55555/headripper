@@ -123,10 +123,26 @@
         h1 {
             text-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
         }
+        .volume-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+        }
+        .volume-control input[type="range"] {
+            margin-left: 10px;
+            width: 70%;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+        }
+        .volume-icon {
+            font-size: 24px;
+            color: #ff4444;
+            text-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+        }
     </style>
 </head>
 <body>
-    <h1>Ed's Music Archive</h1>
+    <h1>Audio Player with Categories</h1>
 
     <div class="categories">
         <button onclick="selectCategory('Blastic')">Blastic</button>
@@ -146,6 +162,11 @@
         <button id="next"></button>
     </div>
     <input id="seek-bar" type="range" min="0" max="100" value="0" style="--progress: 0%;">
+
+    <div class="volume-control">
+        <span class="volume-icon">🔊</span>
+        <input id="volume-slider" type="range" min="0" max="100" value="50">
+    </div>
 
     <script>
         const categories = {
@@ -207,6 +228,7 @@
         const nextButton = document.getElementById('next');
         const trackTitle = document.getElementById('track-title');
         const seekBar = document.getElementById('seek-bar');
+        const volumeSlider = document.getElementById('volume-slider');
 
         function updateTrackInfo() {
             const trackName = tracks[currentTrackIndex].split('/').pop().replace(/\.[^/.]+$/, '');
@@ -258,6 +280,10 @@
 
         seekBar.addEventListener('input', () => {
             audio.currentTime = (seekBar.value / 100) * audio.duration;
+        });
+
+        volumeSlider.addEventListener('input', () => {
+            audio.volume = volumeSlider.value / 100;
         });
 
         const canvas = document.getElementById('visualizer');
