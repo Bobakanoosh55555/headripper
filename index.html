@@ -1,52 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation UI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-        }
-        a {
-            text-decoration: none;
-            color: #007BFF;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-        a:hover {
-            color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navigation UI</title>
+  
+  <!-- Import a stylish Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  
+  <style>
+    /* 
+      General Reset/Defaults 
+      (optional but helps to start from a clean slate)
+    */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      /* Use a subtle gradient background */
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      font-family: 'Montserrat', sans-serif;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      /* 
+        Give the container a max-width, center it, 
+        and add some spacing and a slight background effect 
+      */
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.05); /* translucent white overlay */
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700; /* Montserrat bold weight */
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 15px 0;
+    }
+
+    a {
+      color: #ffd700; /* gold color for contrast */
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    a:hover {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Navigation UI</h1>
-        <ul>
-            <li><a href="combo-video-contest/index.html">Go to Page 2 in Subfolder</a></li>
-        </ul>
-    </div>
+  <div class="container">
+    <h1>Welcome to Headripper</h1>
+    <ul>
+      <li><a href="combo-video-contest/index.html">Combo Video Contest</a></li>
+    </ul>
+  </div>
 </body>
 </html>
