@@ -28,7 +28,7 @@
       padding: 0;
       
       position: relative;
-      overflow: hidden;
+      overflow-y: auto; /* Enable vertical scrolling */
     }
 
     /* 
@@ -74,27 +74,26 @@
     }
 
     /* 
-      Flexible responsive grid layout
+      Fixed grid layout with padding
     */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(3, 180px); /* Fixed columns */
       gap: 20px;
-      width: 100%;
-      max-width: 580px; /* Optional: limit the grid's width */
+      justify-content: center;
+      padding: 0 20px; /* Padding to prevent touching edges */
       margin: 0 auto 40px auto;
-      padding: 0 20px; /* Added padding for left and right sides */
     }
 
     /*
       Each box:
-      - 180×180 size
+      - Fixed 180×180 size
       - linear gradient background
       - box-shadow that matches the title's shadow style
     */
     .box {
-      width: 100%;
-      aspect-ratio: 1;
+      width: 180px;
+      height: 180px;
       background: linear-gradient(135deg, #3a3a3a, #2f2f2f);
       border-radius: 8px;
       text-decoration: none;
@@ -130,6 +129,14 @@
       font-weight: 700;
       text-align: center;
       margin-top: auto;
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(auto-fit, 180px); /* Allow wrapping */
+        justify-content: center;
+      }
     }
   </style>
 </head>
