@@ -28,26 +28,54 @@
     }
 
     /*
-      Gentle "pop" animation for the title:
-      It scales up a bit at 50% and scales back down.
+      Neon Flicker Keyframes:
+      We toggle opacity and text-shadow to simulate flickers.
     */
-    @keyframes subtlePop {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.03); }
-      100% { transform: scale(1); }
+    @keyframes neonFlicker {
+      0% {
+        opacity: 1;
+        text-shadow:
+          0 0 5px #0ff,
+          0 0 10px #0ff,
+          0 0 20px #0ff,
+          0 0 40px #0ff,
+          0 0 80px #0ff;
+      }
+      5% {
+        opacity: 0.8;
+      }
+      10% {
+        opacity: 0.2;
+        text-shadow: none;
+      }
+      20% {
+        opacity: 1;
+        text-shadow:
+          0 0 5px #0ff,
+          0 0 10px #0ff,
+          0 0 20px #0ff,
+          0 0 40px #0ff,
+          0 0 80px #0ff;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+      }
     }
 
-    /* Title styling with Roboto, plus the subtle scale animation */
+    /* Title styling with Roboto, plus the neon flicker animation */
     h1 {
       font-family: 'Roboto', sans-serif;
       text-align: center;
       margin-top: 40px;
       margin-bottom: 200px; /* large space below the title */
       font-size: 4rem;
-      font-weight: 900;      /* Roboto’s boldest weight */
+      font-weight: 900; /* Roboto’s boldest weight */
       letter-spacing: 1px;
-      animation: subtlePop 2s ease-in-out infinite;
-      /* If you prefer a slower or faster animation, adjust 2s accordingly */
+      /* Apply the neon flicker animation */
+      animation: neonFlicker 2.5s infinite;
     }
 
     /*
