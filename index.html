@@ -12,9 +12,9 @@
   />
   
   <style>
-    /*
-      General Reset/Defaults
-      (optional but helps to start from a clean slate)
+    /* 
+      General reset for consistent styling 
+      (optional, but often helpful) 
     */
     * {
       margin: 0;
@@ -23,62 +23,92 @@
     }
 
     body {
-      /* Use a solid gray background */
-      background: #2f2f2f;
+      /* Different background color */
+      background: #1e1e1e;  
       font-family: 'Montserrat', sans-serif;
       color: #ffffff;
       margin: 0;
       padding: 0;
     }
 
-    .container {
-      /* 
-        Give the container a max-width, center it,
-        and add some spacing and a slight background effect 
-      */
-      max-width: 800px;
-      margin: 50px auto; /* centers and adds top/bottom space */
-      background: #3a3a3a; /* slightly lighter gray than the body */
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-
     h1 {
       text-align: center;
-      margin-bottom: 40px; /* increased space below the title */
-      font-weight: 700; /* Montserrat bold weight */
+      margin: 40px 0;
+      font-weight: 700;
+      font-size: 2rem;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
+    /* 
+      Create a 3x2 grid with 20px gaps.
+      Adjust width/max-width to control how large the grid can get. 
+    */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto 40px auto; /* center and add some bottom spacing */
     }
 
-    li {
-      margin: 15px 0;
+    /* 
+      Each box has a dark gray gradient background 
+      and is sized similarly. 
+    */
+    .box {
+      background: linear-gradient(135deg, #3a3a3a, #2f2f2f);
+      border-radius: 8px;
+      min-height: 150px; /* or 200px, adjust as you like */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+    .box:hover {
+      transform: scale(1.03); /* slight hover effect */
     }
 
-    a {
-      color: #1e90ff; /* Light blue link color */
-      text-decoration: none;
+    /* 
+      First box: contains your link. 
+      We'll style the link to be light blue. 
+    */
+    .box1 a {
+      color: #1e90ff;
       font-size: 18px;
       font-weight: 600;
+      text-decoration: none;
       transition: color 0.3s, text-shadow 0.3s;
     }
-
-    a:hover {
+    .box1 a:hover {
       color: #66bfff;
       text-shadow: 0 0 5px rgba(102, 191, 255, 0.6);
     }
+
+    /* 
+      Boxes 2–6 are empty placeholders.
+      They just inherit the .box styles above.
+    */
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to Headripper</h1>
-    <ul>
-      <li><a href="combo-video-contest/index.html">Combo Video Contest</a></li>
-    </ul>
+  <h1>Welcome to Headripper</h1>
+
+  <div class="grid">
+    <!-- Box #1: Contains the link -->
+    <div class="box box1">
+      <a href="combo-video-contest/index.html">Combo Video Contest</a>
+    </div>
+    <!-- Box #2: Empty placeholder -->
+    <div class="box box2"></div>
+    <!-- Box #3: Empty placeholder -->
+    <div class="box box3"></div>
+    <!-- Box #4: Empty placeholder -->
+    <div class="box box4"></div>
+    <!-- Box #5: Empty placeholder -->
+    <div class="box box5"></div>
+    <!-- Box #6: Empty placeholder -->
+    <div class="box box6"></div>
   </div>
 </body>
 </html>
