@@ -80,7 +80,8 @@
         input[type="range"] {
             -webkit-appearance: none;
             appearance: none;
-            width: 80%;
+            width: 600px; /* Match visualizer width */
+            max-width: 100%;
             height: 10px;
             border-radius: 5px;
             background: linear-gradient(to right, #ff4444 0%, #ff4444 var(--progress), #555 var(--progress), #555 100%);
@@ -131,7 +132,8 @@
         }
         .volume-control input[type="range"] {
             margin-left: 10px;
-            width: 30%;
+            width: 300px; /* Half of visualizer width */
+            max-width: 100%;
             height: 10px;
             border-radius: 5px;
             background: linear-gradient(to right, #ff4444 0%, #ff4444 var(--volume-progress), #555 var(--volume-progress), #555 100%);
