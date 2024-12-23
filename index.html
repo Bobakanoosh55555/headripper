@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Headripper</title>
   
-  <!-- Import Google Fonts -->
+  <!-- Import Google Fonts (Roboto for title, Poppins for body if desired) -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Poppins:wght@400;700&display=swap"
     rel="stylesheet"
   />
   
@@ -27,31 +27,45 @@
       padding: 0;
     }
 
-    /* Title styling with Anton font */
+    /*
+      Subtle glowing animation for the title:
+      A soft text-shadow pulse over 4 seconds, then repeats.
+    */
+    @keyframes subtleGlow {
+      0% {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      100% {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    /* Title styling with Roboto, plus the subtle animation */
     h1 {
-      font-family: 'Anton', sans-serif;
+      font-family: 'Roboto', sans-serif;
       text-align: center;
       margin-top: 40px;
-      margin-bottom: 200px; /* 200px space below the title */
-      font-size: 4rem;      /* bigger, bold display */
-      font-weight: 400;     /* Anton is typically bold by default, so 400 is fine */
-      letter-spacing: 1px;  /* optional letter spacing for style */
+      margin-bottom: 200px;  /* large space below the title */
+      font-size: 4rem;
+      font-weight: 900;      /* Boldest weight for Roboto */
+      letter-spacing: 1px;
+      animation: subtleGlow 4s ease-in-out infinite;
     }
 
     /*
       Grid layout: 3 columns × 2 rows
-      We'll explicitly set both row-gap and column-gap to ensure
-      the spacing is respected across browsers.
+      Use explicit row-gap, column-gap, and gap for clarity.
     */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
-
-      gap: 20px;           /* The modern, standard property */
-      row-gap: 20px;       /* Additional explicit property */
-      column-gap: 20px;    /* Additional explicit property */
-
+      gap: 20px;          /* standard gap property */
+      row-gap: 20px;      /* older browser fallback */
+      column-gap: 20px;   /* older browser fallback */
       width: 90%;
       max-width: 1200px;
       margin: 0 auto 40px auto; 
@@ -68,7 +82,7 @@
       align-items: center;
       justify-content: space-between;
       aspect-ratio: 1;
-      max-width: 180px;
+      max-width: 180px;  
       background: linear-gradient(135deg, #3a3a3a, #2f2f2f);
       border-radius: 8px;
       text-decoration: none;
@@ -103,12 +117,12 @@
   <h1>Welcome to Headripper</h1>
 
   <div class="grid">
-    <!-- Box #1: Contains the link (entire box clickable) -->
+    <!-- Box #1: Entire box clickable -->
     <a href="combo-video-contest/index.html" class="box">
       <img src="no-icon.png" alt="Icon" />
       <span class="box-text">Combo Video Contest</span>
     </a>
-    <!-- Box #2: Example placeholder -->
+    <!-- Box #2: Placeholder -->
     <a href="#" class="box">
       <img src="no-icon.png" alt="Icon" />
       <span class="box-text">Placeholder</span>
