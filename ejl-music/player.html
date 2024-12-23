@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player with Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 20px auto;
+            background: #222;
+            border-radius: 8px;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        .controls button {
+            margin: 0 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #1db954;
+            color: white;
+            font-size: 16px;
+        }
+        .controls button:hover {
+            background: #1ed760;
+        }
+        .track-info {
+            margin: 10px 0;
+        }
+        input[type="range"] {
+            width: 80%;
+        }
+        .categories {
+            margin: 20px 0;
+        }
+        .categories button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #555;
+            color: white;
+            font-size: 14px;
+        }
+        .categories button:hover {
+            background: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audio Player with Categories</h1>
+
+    <div class="categories">
+        <button onclick="selectCategory('pop')">Pop</button>
+        <button onclick="selectCategory('rock')">Rock</button>
+        <button onclick="selectCategory('jazz')">Jazz</button>
+    </div>
+
+    <div class="track-info">
+        <p id="track-title">Track: </p>
+    </div>
+    <canvas id="visualizer" width="600" height="200"></canvas>
+    <div class="controls">
+        <button id="prev">Previous</button>
+        <button id="play-pause">Play</button>
+        <button id="next">Next</button>
+    </div>
+    <input id="seek-bar" type="range" min="0" max="100" value="0">
+
+    <script>
+        const categories = {
+            pop: [
+                './audio/pop/song1.mp3',
+                './audio/pop/song2.mp3'
+            ],
+            rock: [
+                './audio/rock/song1.mp3',
+                './audio/rock/song2.mp3'
+            ],
+            jazz: [
+                './audio/jazz/song1.mp3',
+                './audio/jazz/song2.mp3'
+            ]
+        };
+
+        let currentCategory = 'pop';
+        let tracks = categories[currentCategory];
+        let currentTrackIndex = 0;
+
+        const audio = new Audio(tracks[currentTrackIndex]);
+        const playPauseButton = document.getElementById('play-pause');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        const trackTitle = document.getElementById('track-title');
+        const seekBar = document.getElementById('seek-bar');
+
+        function updateTrackInfo() {
+            trackTitle.textContent = `Track: ${tracks[currentTrackIndex].split('/').pop()}`;
+        }
+
+        function selectCategory(category) {
+            currentCategory = category;
+            tracks = categories[currentCategory];
+            currentTrackIndex = 0;
+            audio.src = tracks[currentTrackIndex];
+            updateTrackInfo();
+        }
+
+        updateTrackInfo();
+
+        playPauseButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseButton.textContent = 'Pause';
+            } else {
+                audio.pause();
+                playPauseButton.textContent = 'Play';
+            }
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+            audio.src = tracks[currentTrackIndex];
+            updateTrackInfo();
+            audio.play();
+            playPauseButton.textContent = 'Pause';
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+            audio.src = tracks[currentTrackIndex];
+            updateTrackInfo();
+            audio.play();
+            playPauseButton.textContent = 'Pause';
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            seekBar.value = (audio.currentTime / audio.duration) * 100 || 0;
+        });
+
+        seekBar.addEventListener('input', () => {
+            audio.currentTime = (seekBar.value / 100) * audio.duration;
+        });
+
+        const canvas = document.getElementById('visualizer');
+        const canvasCtx = canvas.getContext('2d');
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const analyser = audioCtx.createAnalyser();
+
+        const source = audioCtx.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+
+        analyser.fftSize = 256;
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+
+        function drawVisualizer() {
+            requestAnimationFrame(drawVisualizer);
+
+            analyser.getByteFrequencyData(dataArray);
+
+            canvasCtx.fillStyle = '#222';
+            canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const barWidth = (canvas.width / bufferLength) * 2.5;
+            let barHeight;
+            let x = 0;
+
+            for (let i = 0; i < bufferLength; i++) {
+                barHeight = dataArray[i];
+
+                canvasCtx.fillStyle = `rgb(${barHeight + 100}, 50, 50)`;
+                canvasCtx.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
+
+                x += barWidth + 1;
+            }
+        }
+
+        drawVisualizer();
+
+        document.body.addEventListener('click', () => {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        });
+    </script>
+</body>
+</html>
