@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Headripper</title>
-  
+
   <!-- Import Google Fonts (Roboto for everything) -->
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
     rel="stylesheet"
   />
-  
+
   <style>
     /* Reset */
     * {
@@ -20,72 +20,97 @@
     }
 
     /*
-      Animate a subtle radial gradient:
-      - We change the gradient’s center and color stops between keyframes
-      - Over 30s, it transitions from one set of grays to another, then back.
+      1) Body has a solid dark background (#1e1e1e).
+      2) We'll animate a radial gradient in a pseudo-element
+         that covers the entire screen behind everything.
     */
-    @keyframes subtleRadial {
-      0% {
-        background: radial-gradient(circle at 50% 50%, #2a2a2a 0%, #1e1e1e 100%);
-      }
-      50% {
-        background: radial-gradient(circle at 70% 30%, #3a3a3a 0%, #2a2a2a 100%);
-      }
-      100% {
-        background: radial-gradient(circle at 50% 50%, #2a2a2a 0%, #1e1e1e 100%);
-      }
-    }
-
     body {
-      font-family: 'Roboto', sans-serif; /* Use Roboto site-wide */
+      font-family: 'Roboto', sans-serif;
+      background-color: #1e1e1e;
       color: #ffffff;
       margin: 0;
       padding: 0;
-      
-      /* Start with one radial gradient */
-      background: radial-gradient(circle at 50% 50%, #2a2a2a 0%, #1e1e1e 100%);
-      /*
-        Animate it over 30s, "infinite alternate" so it goes 0→100%→0 forever.
-        'ease-in-out' ensures a smooth transition.
+
+      /* 
+        Position relative so we can place a pseudo-element
+        behind content with absolute/fixed positioning. 
       */
-      animation: subtleRadial 30s ease-in-out infinite alternate;
+      position: relative;
+      overflow: hidden; 
+      /* ensures the pseudo-element won't add scrollbars if it moves around */
     }
 
-    /* Title styling (Roboto), with a large dark drop shadow, no animation */
+    /*
+      Create a pseudo-element on <body> that:
+      - Sits behind all content (z-index: -1).
+      - Has a radial gradient that we animate by shifting and scaling.
+    */
+    body::before {
+      content: "";
+      position: fixed; /* so it stays put even if the page scrolls */
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      z-index: -1; /* behind everything */
+      pointer-events: none; /* so it can’t be clicked */
+      
+      /* 
+        A subtle radial gradient:
+        - Center is #2a2a2a 
+        - Fades to transparent after some distance 
+      */
+      background: radial-gradient(circle, #2a2a2a 15%, transparent 80%);
+      
+      /* Start partially shifted and scaled */
+      transform: translate(-25%, -25%) scale(1);
+      animation: swirlGradient 60s ease-in-out infinite alternate;
+    }
+
+    /*
+      Keyframes to move/scale the radial gradient slightly,
+      giving a slow, swirling effect behind the content.
+    */
+    @keyframes swirlGradient {
+      0% {
+        transform: translate(-25%, -25%) scale(1);
+      }
+      50% {
+        transform: translate(-28%, -28%) scale(1.05);
+      }
+      100% {
+        transform: translate(-22%, -22%) scale(1);
+      }
+    }
+
+    /* Title styling (Roboto), no animation, large dark drop shadow */
     h1 {
       text-align: center;
       margin-top: 40px;
       margin-bottom: 120px; 
       font-size: 4rem;
-      font-weight: 900;        /* Roboto’s boldest weight */
+      font-weight: 900;   /* Roboto’s boldest weight */
       letter-spacing: 1px;
-
-      /*
-        Bigger, darker drop shadow:
-        - Move it 4px right/down
-        - 8px blur
-        - Nearly black
-      */
       text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.95);
     }
 
     /*
-      Fixed-width, fixed-height grid so columns don't expand.
-      3 columns x 2 rows, each box is 180px with a 20px gap.
+      Fixed-width, fixed-height grid so columns don’t expand.
+      3 columns × 2 rows, each box 180px with a 20px gap.
     */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 180px);
       grid-template-rows: repeat(2, 180px);
-      gap: 20px;  
+      gap: 20px;
+      /* total width: 3 × 180 + 2 × 20 = 580px */
+      width: 580px;
       margin: 0 auto 40px auto; 
-      /* total width: 3 * 180px + 2 * 20px = 580px */
-      width: 580px; 
     }
 
     /*
       Each box is a clickable <a> wrapping content.
-      We fix width & height to 180px to ensure a perfect grid.
+      We fix width & height to 180px to ensure a perfect grid cell.
     */
     .box {
       width: 180px;
@@ -97,7 +122,7 @@
       transition: transform 0.3s;
       cursor: pointer;
 
-      /* Flex to arrange icon at top, text at bottom */
+      /* Flex layout to position icon at top, text at bottom */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -109,14 +134,14 @@
       transform: scale(1.03);
     }
 
-    /* The icon (100×100 px) */
+    /* Icon (100×100 px) */
     .box img {
       width: 100px;
       height: 100px;
       object-fit: contain;
     }
 
-    /* The text at the bottom of the box */
+    /* Text at the bottom of the box */
     .box-text {
       font-size: 16px;
       font-weight: 700;
