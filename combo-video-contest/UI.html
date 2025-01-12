@@ -11,11 +11,9 @@
 
     <!-- Firebase SDK (for Firebase v9 and above) -->
     <script type="module">
-        // Import the functions you need from the SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+        import { getDatabase, ref, onValue, remove, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-        // Your Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
             authDomain: "combo-video-contest.firebaseapp.com",
@@ -27,114 +25,94 @@
             measurementId: "G-0FCENJ0MYE"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Reference to the 'buzzers' node
         const buzzersRef = ref(database, 'buzzers');
+        const statusRef = ref(database, 'buzzersStatus');
 
-        // We'll store user -> element references in a Map
-        const usersWhoBuzzed = new Map();
+        const buzzerSound = new Audio('buzzer.mp3');
+        buzzerSound.volume = 0.5;
 
-        // Create a new audio object for the buzzer sound
-        const buzzerSound = new Audio('buzzer.mp3'); // Update path if needed
-        buzzerSound.volume = 0.5; // 50% volume
-
-        // Attempt to unlock audio on first user interaction
         window.addEventListener('click', () => {
             buzzerSound.muted = true;
             buzzerSound.play().then(() => {
-                console.log("Audio unlocked for playback.");
                 buzzerSound.pause();
                 buzzerSound.muted = false;
-            }).catch((error) => {
-                console.error("Failed to unlock audio:", error);
-            });
+            }).catch(console.error);
         }, { once: true });
 
-        // Function to play the buzzer sound
         function playBuzzerSound() {
-            buzzerSound.currentTime = 0; // reset to start
-            buzzerSound.play().then(() => {
-                console.log("Buzzer sound played successfully.");
-            }).catch((error) => {
-                console.error("Failed to play buzzer sound:", error);
-            });
+            buzzerSound.currentTime = 0;
+            buzzerSound.play().catch(console.error);
         }
 
-        // Function to handle volume slider change
         window.updateVolume = function updateVolume(value) {
             buzzerSound.volume = value / 100;
         };
 
-        // Listen for changes to the entire 'buzzers' node
+        let lastBuzzers = new Set();
+
         onValue(buzzersRef, (snapshot) => {
-            // 1. Clear the container in the DOM
             const buzzContainer = document.getElementById('buzzContainer');
-            buzzContainer.innerHTML = "";
+            const currentBuzzers = new Set();
 
-            // 2. Clear our Map
-            usersWhoBuzzed.clear();
-
-            // 3. Re-build the display from snapshot
             snapshot.forEach((childSnapshot) => {
                 const buzzData = childSnapshot.val();
                 const userName = buzzData.user;
                 const clicked = buzzData.clicked;
+                currentBuzzers.add(userName);
 
-                // Create a wrapper
-                const buzzWrapper = document.createElement('div');
-                buzzWrapper.classList.add('buzzWrapper');
+                let buzzElement = document.querySelector(`[data-username="${userName}"]`);
 
-                // Create the X
-                const newBuzzX = document.createElement('div');
-                newBuzzX.classList.add('buzzX');
-                // If clicked is true => red, else => dark gray
-                newBuzzX.style.color = clicked ? '#d22f2f' : '#4B4B4B';
-                newBuzzX.innerText = 'X';
+                if (!buzzElement) {
+                    buzzElement = document.createElement('div');
+                    buzzElement.classList.add('buzzWrapper');
+                    buzzElement.dataset.username = userName;
 
-                // Add the user's name
-                const nameEl = document.createElement('div');
-                nameEl.classList.add('userName');
-                nameEl.innerText = userName;
+                    const newBuzzX = document.createElement('div');
+                    newBuzzX.classList.add('buzzX');
+                    newBuzzX.innerText = 'X';
 
-                // Append to the DOM
-                buzzWrapper.appendChild(newBuzzX);
-                buzzWrapper.appendChild(nameEl);
-                buzzContainer.appendChild(buzzWrapper);
+                    const nameEl = document.createElement('div');
+                    nameEl.classList.add('userName');
+                    nameEl.innerText = userName;
 
-                // Track in our map
-                usersWhoBuzzed.set(userName, { buzzWrapper, hasBuzzed: clicked });
+                    buzzElement.appendChild(newBuzzX);
+                    buzzElement.appendChild(nameEl);
+                    buzzContainer.appendChild(buzzElement);
+                }
+
+                const buzzX = buzzElement.querySelector('.buzzX');
+                buzzX.style.color = clicked ? '#d22f2f' : '#4B4B4B';
+
+                if (!lastBuzzers.has(userName) && clicked) {
+                    playBuzzerSound();
+                }
             });
 
-            // Optional: If you want a sound to play only when a *new* buzz is detected,
-            // you could track previous states. Right now, this code does not 
-            // automatically play the sound on every update. If you'd like that, 
-            // you can add a diff check or simply always play the sound when the user 
-            // is `clicked = true`.
+            lastBuzzers = currentBuzzers;
         });
 
-        // Function to clear all buzzes from UI and database
         window.clearAllBuzzes = function clearAllBuzzes() {
-            // Remove everything from 'buzzers'
-            remove(buzzersRef).then(() => {
-                console.log('All buzzes have been cleared from Firebase.');
-            }).catch((error) => {
-                console.error('Error clearing buzzes:', error);
-            });
-
-            // Also clear the DOM
-            document.getElementById('buzzContainer').innerHTML = '';
-            // And clear our map
-            usersWhoBuzzed.clear();
+            set(statusRef, { cleared: true });
+            remove(buzzersRef).catch(console.error);
         };
+
+        onValue(statusRef, (snapshot) => {
+            const status = snapshot.val();
+            if (status && status.cleared) {
+                const buzzContainer = document.getElementById('buzzContainer');
+                buzzContainer.innerHTML = '';
+                lastBuzzers.clear();
+            }
+        });
     </script>
 
     <style>
         body {
             font-family: 'Raleway', sans-serif;
-            background-color: #1e1e30; /* Darker gray/purple background */
+            background-color: #1e1e30;
             color: white;
             margin: 0;
             display: flex;
@@ -149,7 +127,7 @@
         #buzzContainer {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px; 
+            gap: 40px;
             margin-top: 20px;
             padding-bottom: 40px;
             justify-content: center;
@@ -162,7 +140,7 @@
         .buzzX {
             font-family: 'Fredoka One', sans-serif;
             font-size: 5em;
-            color: #4B4B4B; /* default */
+            color: #4B4B4B;
             font-weight: bold;
         }
         .userName {
@@ -194,7 +172,6 @@
     <h1>Live Buzzer Display</h1>
     <button id="clearButton" onclick="clearAllBuzzes()">Clear All Buzzes</button>
 
-    <!-- Volume Control Slider -->
     <div id="volumeControl">
         <label for="volumeSlider">Volume:</label>
         <input type="range" id="volumeSlider" min="0" max="100" value="50" oninput="updateVolume(this.value)">
