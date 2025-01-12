@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Judge Buzzer</title>
+    <title>User Experience</title>
 
     <!-- Import Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,45 +31,39 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Function to handle the "Buzz!"
-        window.sendBuzz = function sendBuzz() {
-            const name = window.currentUserName || "Anonymous";
-            
-            // Use 'set' so each user can only have 1 record
-            set(ref(database, 'buzzers/' + name), {
-                user: name,
-                clicked: true,
-                timestamp: new Date().toISOString()
-            })
-            .then(() => {
-                console.log('Buzz recorded successfully!');
-                // Disable the button so user can't spam
-                document.getElementById("buzzButton").disabled = true;
-            })
-            .catch(error => {
-                console.error('Error recording buzz:', error);
-            });
+        // Handle Viewer Login
+        window.viewerLogin = function viewerLogin() {
+            const name = document.getElementById("viewerNameInput").value;
+
+            if (name.trim() === "") {
+                alert("Please enter your name.");
+                return;
+            }
+
+            // Store the user's name
+            window.currentUserName = name;
+
+            // Hide login and show viewer screen
+            document.getElementById("viewerLoginForm").style.display = "none";
+            document.getElementById("viewerActions").style.display = "flex";
         };
 
-        // Function to handle login
-        window.login = function login() {
-            const name = document.getElementById("nameInput").value;
-            const password = document.getElementById("passwordInput").value;
+        // Handle Judge Login
+        window.judgeLogin = function judgeLogin() {
+            const name = document.getElementById("judgeNameInput").value;
+            const password = document.getElementById("judgePasswordInput").value;
 
             if (password === "shmung") {
                 if (name.trim() === "") {
                     alert("Please enter your name.");
                     return;
                 }
-                // Hide login form and show buzzer button
-                document.getElementById("loginForm").style.display = "none";
-                document.getElementById("buzzerSection").style.display = "flex";
-
-                // Store the user's name for later use
+                // Store the user's name
                 window.currentUserName = name;
 
-                // Display the user's name in the welcome message
-                document.getElementById("userNameDisplay").innerText = name;
+                // Hide login and show judge screen
+                document.getElementById("judgeLoginForm").style.display = "none";
+                document.getElementById("judgeActions").style.display = "flex";
             } else {
                 alert("Incorrect password. Please try again.");
             }
@@ -79,7 +73,7 @@
     <style>
         body {
             font-family: 'Raleway', sans-serif;
-            background-color: #1e1e30; /* Darker gray/purple background */
+            background-color: #1e1e30;
             color: white;
             margin: 0;
             display: flex;
@@ -88,15 +82,16 @@
             min-height: 100vh;
             flex-direction: column;
         }
-        #loginForm, #buzzerSection {
+        .form-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 20px;
         }
-        label, input {
+        .form-container input {
             margin-bottom: 10px;
         }
-        button {
+        .form-container button {
             margin-top: 15px;
             font-size: 1em;
             padding: 10px 20px;
@@ -106,32 +101,52 @@
             border-radius: 5px;
             color: white;
         }
-        button:hover {
+        .form-container button:hover {
             background-color: #555555;
         }
-        #buzzerSection {
-            display: none; /* Initially hidden until login is successful */
-            text-align: center;
-        }
-        #userNameDisplay {
-            margin-bottom: 20px;
+        #viewerActions, #judgeActions, #viewerLoginForm, #judgeLoginForm {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Login Form -->
-    <div id="loginForm">
-        <h2>Combo Contest Judge Login</h2>
-        <label for="nameInput">Name:</label>
-        <input type="text" id="nameInput" required>
-        <label for="passwordInput">Password:</label>
-        <input type="password" id="passwordInput" required>
-        <button onclick="login()">Login</button>
+    <!-- Role Selection Screen -->
+    <div id="roleSelection">
+        <h2>Are you a Viewer or a Judge?</h2>
+        <button onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('viewerLoginForm').style.display='flex';">Viewer</button>
+        <button onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('judgeLoginForm').style.display='flex';">Judge</button>
     </div>
 
-    <!-- Buzzer Button Section (Hidden until login is successful) -->
-    <div id="buzzerSection">
-        <h2>Welcome, <span id="userNameDisplay"></span>!</h2>
+    <!-- Viewer Login Screen -->
+    <div id="viewerLoginForm" class="form-container">
+        <h2>Viewer Login</h2>
+        <label for="viewerNameInput">Name:</label>
+        <input type="text" id="viewerNameInput">
+        <button onclick="viewerLogin()">Proceed</button>
+    </div>
+
+    <!-- Judge Login Screen -->
+    <div id="judgeLoginForm" class="form-container">
+        <h2>Judge Login</h2>
+        <label for="judgeNameInput">Name:</label>
+        <input type="text" id="judgeNameInput">
+        <label for="judgePasswordInput">Password:</label>
+        <input type="password" id="judgePasswordInput">
+        <button onclick="judgeLogin()">Login</button>
+    </div>
+
+    <!-- Viewer Actions -->
+    <div id="viewerActions" class="form-container">
+        <h2>Welcome, Viewer!</h2>
+        <button>Button 1</button>
+        <button>Button 2</button>
+        <button>Button 3</button>
+        <button>Button 4</button>
+    </div>
+
+    <!-- Judge Actions -->
+    <div id="judgeActions" class="form-container">
+        <h2>Welcome, Judge!</h2>
         <button id="buzzButton" onclick="sendBuzz()">Buzz!</button>
     </div>
 </body>
