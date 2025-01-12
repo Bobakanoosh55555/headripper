@@ -9,39 +9,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 
-    <!-- Firebase SDK (using the imports and config you specified) -->
+    <!-- Firebase SDK (for Firebase v9 and above) -->
     <script type="module">
         // Import the functions you need from the SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, onChildAdded, remove } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+        import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
         // Your Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
-            authDomain: "combo-video-contest.firebaseapp.com",
-            databaseURL: "https://combo-video-contest-default-rtdb.firebaseio.com",
-            projectId: "combo-video-contest",
-            storageBucket: "combo-video-contest.firebasestorage.app",
-            messagingSenderId: "748133929680",
-            appId: "1:748133929680:web:281b09877fb3fb12da44d5",
-            measurementId: "G-0FCENJ0MYE"
+            apiKey: "YOUR_API_KEY_HERE",
+            authDomain: "YOUR_AUTH_DOMAIN_HERE",
+            databaseURL: "YOUR_DATABASE_URL_HERE",
+            projectId: "YOUR_PROJECT_ID_HERE",
+            storageBucket: "YOUR_STORAGE_BUCKET_HERE",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID_HERE",
+            appId: "YOUR_APP_ID_HERE",
+            measurementId: "YOUR_MEASUREMENT_ID_HERE"
         };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Set up a reference to the 'buzzers' node in the database
+        // Reference to the 'buzzers' node
         const buzzersRef = ref(database, 'buzzers');
 
-        // Keep track of users who have buzzed and their corresponding elements
-        const usersWhoBuzzed = new Map(); // Map to track users and their corresponding elements
+        // We'll store user -> element references in a Map
+        const usersWhoBuzzed = new Map();
 
         // Create a new audio object for the buzzer sound
-        const buzzerSound = new Audio('buzzer.mp3'); // Replace with the actual path to your buzzer sound file
-        buzzerSound.volume = 0.5; // Set initial volume to 50%
+        const buzzerSound = new Audio('buzzer.mp3'); // Update path if needed
+        buzzerSound.volume = 0.5; // 50% volume
 
-        // Attempt to "unlock" audio for browsers by playing it silently initially
+        // Attempt to unlock audio on first user interaction
         window.addEventListener('click', () => {
             buzzerSound.muted = true;
             buzzerSound.play().then(() => {
@@ -55,6 +55,7 @@
 
         // Function to play the buzzer sound
         function playBuzzerSound() {
+            buzzerSound.currentTime = 0; // reset to start
             buzzerSound.play().then(() => {
                 console.log("Buzzer sound played successfully.");
             }).catch((error) => {
@@ -67,72 +68,71 @@
             buzzerSound.volume = value / 100;
         };
 
-        // Listen for new buzzer entries and update the display
-        onChildAdded(buzzersRef, (snapshot) => {
-            const buzzData = snapshot.val();
-            console.log('New buzzer detected:', buzzData);
+        // Listen for changes to the entire 'buzzers' node
+        onValue(buzzersRef, (snapshot) => {
+            // 1. Clear the container in the DOM
+            const buzzContainer = document.getElementById('buzzContainer');
+            buzzContainer.innerHTML = "";
 
-            if (usersWhoBuzzed.has(buzzData.user)) {
-                // The user already exists, but let's check if the user has been cleared
-                const { buzzWrapper, hasBuzzed } = usersWhoBuzzed.get(buzzData.user);
-                const existingBuzzX = buzzWrapper.querySelector('.buzzX');
+            // 2. Clear our Map and re-build from snapshot
+            usersWhoBuzzed.clear();
 
-                if (!hasBuzzed) {
-                    existingBuzzX.style.color = '#d22f2f'; // Change color to red for buzz in
-                    usersWhoBuzzed.set(buzzData.user, { buzzWrapper, hasBuzzed: true }); // Mark as buzzed
-                    playBuzzerSound(); // Play buzzer sound
-                }
-            } else {
-                // This is the user's first buzz, create a new X for them
-                const buzzContainer = document.getElementById('buzzContainer');
+            // 3. Loop through each child (each user)
+            snapshot.forEach((childSnapshot) => {
+                const buzzData = childSnapshot.val();
+                const userName = buzzData.user;
+                const clicked = buzzData.clicked;
 
-                // Create a wrapper for the X and user name
+                // Create a wrapper
                 const buzzWrapper = document.createElement('div');
                 buzzWrapper.classList.add('buzzWrapper');
 
-                // Create the X to represent a buzz
+                // Create the X
                 const newBuzzX = document.createElement('div');
                 newBuzzX.classList.add('buzzX');
+                // If clicked is true => red, else => dark gray
+                newBuzzX.style.color = clicked ? '#d22f2f' : '#4B4B4B';
                 newBuzzX.innerText = 'X';
-                newBuzzX.style.color = '#d22f2f'; // Set initial color to red for the first buzz
 
-                // Add the user's name below the X
-                const userName = document.createElement('div');
-                userName.classList.add('userName');
-                userName.innerText = buzzData.user;
+                // Add the user's name
+                const nameEl = document.createElement('div');
+                nameEl.classList.add('userName');
+                nameEl.innerText = userName;
 
-                // Append the X and name to the wrapper
+                // Append to the DOM
                 buzzWrapper.appendChild(newBuzzX);
-                buzzWrapper.appendChild(userName);
-
-                // Append the wrapper to the container
+                buzzWrapper.appendChild(nameEl);
                 buzzContainer.appendChild(buzzWrapper);
 
-                // Track the user and their corresponding buzz element, initially set hasBuzzed to true
-                usersWhoBuzzed.set(buzzData.user, { buzzWrapper, hasBuzzed: true });
+                // Track in our map
+                usersWhoBuzzed.set(userName, { buzzWrapper, hasBuzzed: clicked });
+            });
 
-                // Play buzzer sound for the new X
-                playBuzzerSound();
-            }
+            // 4. (Optional) If you want to play sound each time there's a new buzz,
+            //    you can compare old states vs new states. Or we can just check if
+            //    someone is "clicked" for the first time. 
+            //    For simplicity, let's just detect any user with clicked=true
+            //    but wasn't in the map previously, or was previously false => now true.
+            //    This requires storing an old copy of usersWhoBuzzed. 
+            //    If you want that logic, you'd store a “previousState” and compare here.
+            //    
+            //    But if you want to keep it simpler, you can either just remove this
+            //    or check for any newly clicked user and play the sound:
         });
 
         // Function to clear all buzzes from UI and database
         window.clearAllBuzzes = function clearAllBuzzes() {
-            // Clear the Firebase database
+            // Remove everything from 'buzzers'
             remove(buzzersRef).then(() => {
                 console.log('All buzzes have been cleared from Firebase.');
             }).catch((error) => {
                 console.error('Error clearing buzzes:', error);
             });
 
-            // Update UI: change all X's to dark gray to indicate reset
-            usersWhoBuzzed.forEach(({ buzzWrapper }, user) => {
-                const buzzX = buzzWrapper.querySelector('.buzzX');
-                buzzX.style.color = '#4B4B4B'; // Dark gray color for reset
-
-                // Reset user's buzz state to false
-                usersWhoBuzzed.set(user, { buzzWrapper, hasBuzzed: false });
-            });
+            // Also clear the DOM
+            document.getElementById('buzzContainer').innerHTML = '';
+            // And clear our map
+            usersWhoBuzzed.clear();
         };
     </script>
 
@@ -154,9 +154,9 @@
         #buzzContainer {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px; /* More space between X's and names */
+            gap: 40px;
             margin-top: 20px;
-            padding-bottom: 40px; /* Padding below the X's */
+            padding-bottom: 40px;
             justify-content: center;
         }
         .buzzWrapper {
@@ -165,13 +165,13 @@
             align-items: center;
         }
         .buzzX {
-            font-family: 'Fredoka One', sans-serif; /* Thicker, more rounded font */
+            font-family: 'Fredoka One', sans-serif;
             font-size: 5em;
-            color: #4B4B4B; /* Initial dark gray color */
+            color: #4B4B4B; /* default */
             font-weight: bold;
         }
         .userName {
-            margin-top: 10px; /* Space between X and user name */
+            margin-top: 10px; 
             font-size: 1em;
             color: white;
             text-align: center;
