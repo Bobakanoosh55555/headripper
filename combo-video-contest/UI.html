@@ -12,7 +12,7 @@
     <!-- Firebase SDK (for Firebase v9 and above) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, onValue, remove, set, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+        import { getDatabase, ref, onValue, update, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
@@ -96,12 +96,15 @@
 
         window.clearAllBuzzes = function clearAllBuzzes() {
             set(statusRef, { cleared: true });
-            remove(buzzersRef).then(() => {
-                console.log('All buzzes cleared. Resetting buzzer statuses.');
-
-                // Reset clicked status for all users
-                update(buzzersRef, {});
-            }).catch(console.error);
+            onValue(buzzersRef, (snapshot) => {
+                const updates = {};
+                snapshot.forEach((childSnapshot) => {
+                    updates[`${childSnapshot.key}/clicked`] = false; // Reset clicked to false
+                });
+                update(buzzersRef, updates).then(() => {
+                    console.log('All buzzes cleared and statuses reset.');
+                }).catch(console.error);
+            }, { onlyOnce: true });
         };
 
         onValue(statusRef, (snapshot) => {
