@@ -11,11 +11,9 @@
 
     <!-- Firebase SDK (for Firebase v9 and above) -->
     <script type="module">
-        // Import the functions you need from the SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-        // Your Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
             authDomain: "combo-video-contest.firebaseapp.com",
@@ -27,7 +25,6 @@
             measurementId: "G-0FCENJ0MYE"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
@@ -40,10 +37,8 @@
                 return;
             }
 
-            // Store the user's name
             window.currentUserName = name;
 
-            // Hide login and show viewer screen
             document.getElementById("viewerLoginForm").style.display = "none";
             document.getElementById("viewerActions").style.display = "flex";
         };
@@ -58,15 +53,29 @@
                     alert("Please enter your name.");
                     return;
                 }
-                // Store the user's name
                 window.currentUserName = name;
 
-                // Hide login and show judge screen
                 document.getElementById("judgeLoginForm").style.display = "none";
                 document.getElementById("judgeActions").style.display = "flex";
             } else {
                 alert("Incorrect password. Please try again.");
             }
+        };
+
+        // Handle Viewer Reaction
+        window.addReaction = function addReaction(color) {
+            const name = window.currentUserName;
+            const videoTimestamp = new Date().getTime(); // Placeholder for actual video timestamp
+
+            push(ref(database, 'reactions'), {
+                username: name,
+                timestamp: videoTimestamp,
+                color: color
+            }).then(() => {
+                console.log(`Reaction added: ${color} by ${name}`);
+            }).catch(error => {
+                console.error('Error adding reaction:', error);
+            });
         };
     </script>
 
@@ -104,6 +113,26 @@
         .form-container button:hover {
             background-color: #555555;
         }
+        .reaction-button {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .reaction-red {
+            background-color: red;
+        }
+        .reaction-blue {
+            background-color: blue;
+        }
+        .reaction-green {
+            background-color: green;
+        }
+        .reaction-yellow {
+            background-color: yellow;
+        }
         #viewerActions, #judgeActions, #viewerLoginForm, #judgeLoginForm {
             display: none;
         }
@@ -113,8 +142,8 @@
     <!-- Role Selection Screen -->
     <div id="roleSelection">
         <h2>Are you a Viewer or a Judge?</h2>
-        <button onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('viewerLoginForm').style.display='flex';">Viewer</button>
-        <button onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('judgeLoginForm').style.display='flex';">Judge</button>
+        <button class="form-container button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('viewerLoginForm').style.display='flex';">Viewer</button>
+        <button class="form-container button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('judgeLoginForm').style.display='flex';">Judge</button>
     </div>
 
     <!-- Viewer Login Screen -->
@@ -138,10 +167,12 @@
     <!-- Viewer Actions -->
     <div id="viewerActions" class="form-container">
         <h2>Welcome, Viewer!</h2>
-        <button>Button 1</button>
-        <button>Button 2</button>
-        <button>Button 3</button>
-        <button>Button 4</button>
+        <div>
+            <button class="reaction-button reaction-red" onclick="addReaction('red')"></button>
+            <button class="reaction-button reaction-blue" onclick="addReaction('blue')"></button>
+            <button class="reaction-button reaction-green" onclick="addReaction('green')"></button>
+            <button class="reaction-button reaction-yellow" onclick="addReaction('yellow')"></button>
+        </div>
     </div>
 
     <!-- Judge Actions -->
