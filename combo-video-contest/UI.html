@@ -103,6 +103,13 @@
                 });
                 update(buzzersRef, updates).then(() => {
                     console.log('All buzzes cleared and statuses reset.');
+
+                    // Reset the UI to reflect cleared states
+                    const buzzContainer = document.getElementById('buzzContainer');
+                    buzzContainer.querySelectorAll('.buzzWrapper').forEach((wrapper) => {
+                        const buzzX = wrapper.querySelector('.buzzX');
+                        buzzX.style.color = '#4B4B4B';
+                    });
                 }).catch(console.error);
             }, { onlyOnce: true });
         };
