@@ -13,34 +13,40 @@
     <script type="module">
         // Import the functions you need from the SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
+        // Your Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
-            authDomain: "combo-video-contest.firebaseapp.com",
-            databaseURL: "https://combo-video-contest-default-rtdb.firebaseio.com",
-            projectId: "combo-video-contest",
-            storageBucket: "combo-video-contest.firebasestorage.app",
-            messagingSenderId: "748133929680",
-            appId: "1:748133929680:web:281b09877fb3fb12da44d5",
-            measurementId: "G-0FCENJ0MYE"
+            apiKey: "YOUR_API_KEY_HERE",
+            authDomain: "YOUR_AUTH_DOMAIN_HERE",
+            databaseURL: "YOUR_DATABASE_URL_HERE",
+            projectId: "YOUR_PROJECT_ID_HERE",
+            storageBucket: "YOUR_STORAGE_BUCKET_HERE",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID_HERE",
+            appId: "YOUR_APP_ID_HERE",
+            measurementId: "YOUR_MEASUREMENT_ID_HERE"
         };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Define sendBuzz function globally
+        // Function to handle the "Buzz!"
         window.sendBuzz = function sendBuzz() {
             const name = window.currentUserName || "Anonymous";
-
-            push(ref(database, 'buzzers'), {
+            
+            // Use 'set' so each user can only have 1 record
+            set(ref(database, 'buzzers/' + name), {
                 user: name,
                 clicked: true,
                 timestamp: new Date().toISOString()
-            }).then(() => {
+            })
+            .then(() => {
                 console.log('Buzz recorded successfully!');
-            }).catch(error => {
+                // Disable the button so user can't spam
+                document.getElementById("buzzButton").disabled = true;
+            })
+            .catch(error => {
                 console.error('Error recording buzz:', error);
             });
         };
@@ -55,7 +61,6 @@
                     alert("Please enter your name.");
                     return;
                 }
-
                 // Hide login form and show buzzer button
                 document.getElementById("loginForm").style.display = "none";
                 document.getElementById("buzzerSection").style.display = "flex";
@@ -127,7 +132,7 @@
     <!-- Buzzer Button Section (Hidden until login is successful) -->
     <div id="buzzerSection">
         <h2>Welcome, <span id="userNameDisplay"></span>!</h2>
-        <button onclick="sendBuzz()">Buzz!</button>
+        <button id="buzzButton" onclick="sendBuzz()">Buzz!</button>
     </div>
 </body>
 </html>
