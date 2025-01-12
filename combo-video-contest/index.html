@@ -114,6 +114,20 @@
         .form-container button:hover {
             background-color: #555555;
         }
+        .role-selection-button {
+            font-size: 1.2em;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: #444444;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        .role-selection-button:hover {
+            background-color: #555555;
+        }
         .reaction-button {
             width: 50px;
             height: 50px;
@@ -153,8 +167,8 @@
     <!-- Role Selection Screen -->
     <div id="roleSelection">
         <h2>Are you a Viewer or a Judge?</h2>
-        <button class="form-container button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('viewerLoginForm').style.display='flex';">Viewer</button>
-        <button class="form-container button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('judgeLoginForm').style.display='flex';">Judge</button>
+        <button class="role-selection-button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('viewerLoginForm').style.display='flex';">Viewer</button>
+        <button class="role-selection-button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('judgeLoginForm').style.display='flex';">Judge</button>
     </div>
 
     <!-- Viewer Login Screen -->
