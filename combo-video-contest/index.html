@@ -123,21 +123,26 @@
             cursor: pointer;
             background-color: #444444;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: white;
         }
         .reaction-button:hover {
             background-color: #555555;
         }
         .reaction-red {
-            background-color: red;
+            background-color: #ff4d4d;
         }
         .reaction-blue {
-            background-color: blue;
+            background-color: #4d4dff;
         }
         .reaction-green {
-            background-color: green;
+            background-color: #4dff4d;
         }
         .reaction-yellow {
-            background-color: yellow;
+            background-color: #ffff4d;
         }
         #viewerActions, #judgeActions, #viewerLoginForm, #judgeLoginForm {
             display: none;
@@ -174,10 +179,10 @@
     <div id="viewerActions" class="form-container">
         <h2>Welcome, Viewer!</h2>
         <div>
-            <button class="reaction-button reaction-red" onclick="addReaction('red')"></button>
-            <button class="reaction-button reaction-blue" onclick="addReaction('blue')"></button>
-            <button class="reaction-button reaction-green" onclick="addReaction('green')"></button>
-            <button class="reaction-button reaction-yellow" onclick="addReaction('yellow')"></button>
+            <button class="reaction-button reaction-red" onclick="addReaction('red')">❤️</button>
+            <button class="reaction-button reaction-blue" onclick="addReaction('blue')">👍</button>
+            <button class="reaction-button reaction-green" onclick="addReaction('green')">😂</button>
+            <button class="reaction-button reaction-yellow" onclick="addReaction('yellow')">😮</button>
         </div>
     </div>
 
