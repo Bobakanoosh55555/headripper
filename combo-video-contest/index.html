@@ -117,7 +117,7 @@
         .role-selection-button {
             font-size: 1em;
             padding: 10px 20px;
-            margin: 10px;
+            margin: 0 10px;
             background-color: #444444;
             border: none;
             border-radius: 5px;
@@ -131,7 +131,7 @@
         .reaction-button {
             width: 50px;
             height: 50px;
-            margin: 10px;
+            margin: 0 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -167,8 +167,11 @@
         }
         .role-selection-button-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+        }
+        .reaction-button-container {
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
@@ -203,7 +206,7 @@
     <!-- Viewer Actions -->
     <div id="viewerActions" class="form-container">
         <h2>Welcome, Viewer!</h2>
-        <div>
+        <div class="reaction-button-container">
             <button class="reaction-button reaction-red" onclick="addReaction('red')">❤️</button>
             <button class="reaction-button reaction-blue" onclick="addReaction('blue')">👍</button>
             <button class="reaction-button reaction-green" onclick="addReaction('green')">😂</button>
