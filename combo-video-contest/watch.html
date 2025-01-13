@@ -49,11 +49,18 @@
             onValue(reactionsRef, (snapshot) => {
                 timeline.innerHTML = ''; // Clear existing markers
 
+                if (!player || !player.getDuration) return; // Ensure the player is ready
+                const videoDuration = player.getDuration();
+
                 snapshot.forEach((childSnapshot) => {
                     const reaction = childSnapshot.val();
                     const marker = document.createElement('div');
                     marker.className = 'reaction-emoji';
-                    marker.style.left = `${(reaction.timestamp / player.getDuration()) * 100}%`;
+
+                    // Position based on relative timestamp percentage
+                    const relativePosition = (reaction.timestamp / videoDuration) * 100;
+                    marker.style.left = `${relativePosition}%`;
+
                     marker.textContent = getEmojiForReaction(reaction.color);
                     marker.title = reaction.username;
                     timeline.appendChild(marker);
