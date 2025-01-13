@@ -37,14 +37,14 @@
             width: 1280px;
             height: 10px;
             background-color: #444;
-            margin-top: 50px; /* Move progress bar up by 25px */
+            margin-top: 50px; /* Progress bar stays in position */
             position: relative;
             border-radius: 5px;
         }
         #timeline-reactions {
             width: 1280px;
             position: relative;
-            margin-top: -25px; /* Move reactions down by 10px */
+            margin-top: -10px; /* Reactions moved down by 15px */
         }
         .reaction-emoji {
             position: absolute;
@@ -180,7 +180,7 @@
 
                 // Stagger the reactions vertically between the bar and closer to the video
                 const randomOffset = Math.random() * 95; // Random value between 0 and 95px
-                marker.style.top = `${-25 - randomOffset}px`;
+                marker.style.top = `${-10 - randomOffset}px`;
 
                 marker.textContent = getEmojiForReaction(reaction.color);
                 marker.title = reaction.username;
