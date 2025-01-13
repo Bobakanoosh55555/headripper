@@ -31,20 +31,20 @@
             text-align: center;
         }
         #player {
-            margin-bottom: 100px; /* Increased space between player and progress bar */
+            margin-bottom: 100px;
         }
         #timeline {
             width: 1280px;
             height: 10px;
             background-color: #444;
-            margin-top: 10px;
+            margin-top: 110px; /* Move progress bar down by 100px */
             position: relative;
             border-radius: 5px;
         }
         #timeline-reactions {
             width: 1280px;
             position: relative;
-            margin-top: -50px; /* Reactions start close to the timeline */
+            margin-top: -40px; /* Keep reactions starting close to the timeline */
         }
         .reaction-emoji {
             position: absolute;
@@ -179,8 +179,8 @@
                 marker.style.left = `${currentProgress}%`;
 
                 // Stagger the reactions vertically between the bar and closer to the video
-                const randomOffset = Math.random() * 40; // Random value between 0 and 40px
-                marker.style.top = `${-25 - randomOffset}px`;
+                const randomOffset = Math.random() * 130; // Random value between 0 and 130px
+                marker.style.top = `${-40 - randomOffset}px`;
 
                 marker.textContent = getEmojiForReaction(reaction.color);
                 marker.title = reaction.username;
