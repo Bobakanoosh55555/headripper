@@ -71,19 +71,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: start;
             min-height: 100vh;
-        }
-        h1 {
-            margin-bottom: 20px;
         }
         #player-container {
             margin-top: 20px;
             display: none;
             text-align: center;
         }
+        #player {
+            margin-bottom: 40px;
+        }
         #timeline {
-            width: 1024px;
+            width: 1280px;
             height: 10px;
             background-color: #444;
             margin-top: 20px;
@@ -129,8 +129,6 @@
     </style>
 </head>
 <body>
-    <h1>Watch</h1>
-
     <!-- Search Box -->
     <div id="search-box">
         <label for="playlistUrl">Enter YouTube Playlist URL:</label><br>
@@ -162,8 +160,8 @@
             document.getElementById('player-container').style.display = 'block';
 
             player = new YT.Player('player', {
-                height: '576',
-                width: '1024',
+                height: '720',
+                width: '1280',
                 playerVars: {
                     listType: 'playlist',
                     list: playlistId
