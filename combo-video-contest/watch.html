@@ -28,55 +28,8 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Handle Nuke Reactions
-        window.nukeReactions = function nukeReactions() {
-            remove(ref(database, 'reactions'))
-                .then(() => {
-                    console.log('All reactions deleted.');
-                    const timeline = document.getElementById('timeline-reactions');
-                    timeline.innerHTML = ''; // Clear reaction markers
-                })
-                .catch(error => {
-                    console.error('Error deleting reactions:', error);
-                });
-        };
-
-        // Fetch and display reactions on the timeline
-        function fetchReactions() {
-            const reactionsRef = ref(database, 'reactions');
-            const timeline = document.getElementById('timeline-reactions');
-
-            onValue(reactionsRef, (snapshot) => {
-                timeline.innerHTML = ''; // Clear existing markers
-
-                if (!player || !player.getDuration) return; // Ensure the player is ready
-                const videoDuration = player.getDuration();
-
-                snapshot.forEach((childSnapshot) => {
-                    const reaction = childSnapshot.val();
-                    const marker = document.createElement('div');
-                    marker.className = 'reaction-emoji';
-
-                    // Position based on relative timestamp percentage
-                    const relativePosition = (reaction.timestamp / videoDuration) * 100;
-                    marker.style.left = `${relativePosition}%`;
-
-                    marker.textContent = getEmojiForReaction(reaction.color);
-                    marker.title = reaction.username;
-                    timeline.appendChild(marker);
-                });
-            });
-        }
-
-        function getEmojiForReaction(color) {
-            switch (color) {
-                case 'red': return '❤️';
-                case 'blue': return '👍';
-                case 'green': return '😂';
-                case 'yellow': return '😮';
-                default: return '❓';
-            }
-        }
+        // Initialize Database References
+        window.database = database;
     </script>
 
     <style>
@@ -214,6 +167,56 @@
                 const progress = (player.getCurrentTime() / player.getDuration()) * 100;
                 document.getElementById('timeline').style.background = `linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%)`;
             }
+        }
+
+        // Fetch and display reactions on the timeline
+        function fetchReactions() {
+            const reactionsRef = ref(window.database, 'reactions');
+            const timeline = document.getElementById('timeline-reactions');
+
+            onValue(reactionsRef, (snapshot) => {
+                timeline.innerHTML = ''; // Clear existing markers
+
+                if (!player || !player.getDuration) return; // Ensure the player is ready
+                const videoDuration = player.getDuration();
+
+                snapshot.forEach((childSnapshot) => {
+                    const reaction = childSnapshot.val();
+                    const marker = document.createElement('div');
+                    marker.className = 'reaction-emoji';
+
+                    // Position based on relative timestamp percentage
+                    const relativePosition = (reaction.timestamp / videoDuration) * 100;
+                    marker.style.left = `${relativePosition}%`;
+
+                    marker.textContent = getEmojiForReaction(reaction.color);
+                    marker.title = reaction.username;
+                    timeline.appendChild(marker);
+                });
+            });
+        }
+
+        function getEmojiForReaction(color) {
+            switch (color) {
+                case 'red': return '❤️';
+                case 'blue': return '👍';
+                case 'green': return '😂';
+                case 'yellow': return '😮';
+                default: return '❓';
+            }
+        }
+
+        // Nuke Reactions
+        function nukeReactions() {
+            remove(ref(window.database, 'reactions'))
+                .then(() => {
+                    console.log('All reactions deleted.');
+                    const timeline = document.getElementById('timeline-reactions');
+                    timeline.innerHTML = ''; // Clear reaction markers
+                })
+                .catch(error => {
+                    console.error('Error deleting reactions:', error);
+                });
         }
     </script>
 
