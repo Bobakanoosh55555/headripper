@@ -33,8 +33,8 @@
             remove(ref(database, 'reactions'))
                 .then(() => {
                     console.log('All reactions deleted.');
-                    const timeline = document.getElementById('timeline');
-                    timeline.innerHTML = ''; // Clear timeline markers
+                    const timeline = document.getElementById('timeline-reactions');
+                    timeline.innerHTML = ''; // Clear reaction markers
                 })
                 .catch(error => {
                     console.error('Error deleting reactions:', error);
@@ -44,7 +44,7 @@
         // Fetch and display reactions on the timeline
         function fetchReactions() {
             const reactionsRef = ref(database, 'reactions');
-            const timeline = document.getElementById('timeline');
+            const timeline = document.getElementById('timeline-reactions');
 
             onValue(reactionsRef, (snapshot) => {
                 timeline.innerHTML = ''; // Clear existing markers
@@ -52,13 +52,23 @@
                 snapshot.forEach((childSnapshot) => {
                     const reaction = childSnapshot.val();
                     const marker = document.createElement('div');
-                    marker.className = 'reaction-marker';
-                    marker.style.left = `${(reaction.timestamp % 1000) / 10}%`; // Example positioning logic
-                    marker.style.backgroundColor = reaction.color;
+                    marker.className = 'reaction-emoji';
+                    marker.style.left = `${(reaction.timestamp / player.getDuration()) * 100}%`;
+                    marker.textContent = getEmojiForReaction(reaction.color);
                     marker.title = reaction.username;
                     timeline.appendChild(marker);
                 });
             });
+        }
+
+        function getEmojiForReaction(color) {
+            switch (color) {
+                case 'red': return '❤️';
+                case 'blue': return '👍';
+                case 'green': return '😂';
+                case 'yellow': return '😮';
+                default: return '❓';
+            }
         }
     </script>
 
@@ -80,24 +90,26 @@
             text-align: center;
         }
         #player {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
         #timeline {
             width: 1280px;
             height: 10px;
             background-color: #444;
-            margin-top: 20px;
+            margin-top: 10px;
             position: relative;
             border-radius: 5px;
         }
-        .reaction-marker {
-            width: 10px;
-            height: 10px;
+        #timeline-reactions {
+            width: 1280px;
+            position: relative;
+            margin-top: -25px;
+        }
+        .reaction-emoji {
             position: absolute;
-            top: 0;
-            background-color: red;
-            border-radius: 50%;
-            cursor: pointer;
+            top: -25px;
+            transform: translateX(-50%);
+            font-size: 1.5em;
         }
         button {
             font-size: 1em;
@@ -139,6 +151,7 @@
     <!-- YouTube Player Container -->
     <div id="player-container">
         <div id="player"></div>
+        <div id="timeline-reactions"></div>
         <div id="timeline"></div>
         <button onclick="nukeReactions()">Nuke Reactions</button>
     </div>
