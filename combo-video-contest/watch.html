@@ -31,7 +31,7 @@
             text-align: center;
         }
         #player {
-            margin-bottom: 60px;
+            margin-bottom: 100px; /* Increased space between player and progress bar */
         }
         #timeline {
             width: 1280px;
@@ -48,9 +48,9 @@
         }
         .reaction-emoji {
             position: absolute;
-            top: -25px;
             transform: translateX(-50%);
             font-size: 1.5em;
+            top: calc(-25px + random); /* Random vertical offset */
         }
         button {
             font-size: 1em;
@@ -178,6 +178,10 @@
                 // Place the reaction at the current progress of the video
                 const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100;
                 marker.style.left = `${currentProgress}%`;
+
+                // Stagger the reactions vertically by a random amount within bounds
+                const randomOffset = Math.random() * 20; // Random value between 0 and 20px
+                marker.style.top = `${-25 - randomOffset}px`;
 
                 marker.textContent = getEmojiForReaction(reaction.color);
                 marker.title = reaction.username;
