@@ -44,13 +44,13 @@
         #timeline-reactions {
             width: 1280px;
             position: relative;
-            margin-top: -25px;
+            margin-top: -50px; /* Increased height for reaction space */
         }
         .reaction-emoji {
             position: absolute;
             transform: translateX(-50%);
             font-size: 1.5em;
-            top: calc(-25px + random); /* Random vertical offset */
+            top: calc(-50px + random); /* Random vertical offset within expanded space */
         }
         button {
             font-size: 1em;
@@ -179,9 +179,9 @@
                 const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100;
                 marker.style.left = `${currentProgress}%`;
 
-                // Stagger the reactions vertically by a random amount within bounds
-                const randomOffset = Math.random() * 20; // Random value between 0 and 20px
-                marker.style.top = `${-25 - randomOffset}px`;
+                // Stagger the reactions vertically by a random amount within expanded bounds
+                const randomOffset = Math.random() * 40; // Random value between 0 and 40px
+                marker.style.top = `${-50 - randomOffset}px`;
 
                 marker.textContent = getEmojiForReaction(reaction.color);
                 marker.title = reaction.username;
