@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Watch</title>
+
+    <!-- Import Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Firebase SDK (for Firebase v9 and above) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getDatabase, ref, remove } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
+            authDomain: "combo-video-contest.firebaseapp.com",
+            databaseURL: "https://combo-video-contest-default-rtdb.firebaseio.com",
+            projectId: "combo-video-contest",
+            storageBucket: "combo-video-contest.firebasestorage.app",
+            messagingSenderId: "748133929680",
+            appId: "1:748133929680:web:281b09877fb3fb12da44d5",
+            measurementId: "G-0FCENJ0MYE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Handle Nuke Reactions
+        window.nukeReactions = function nukeReactions() {
+            remove(ref(database, 'reactions'))
+                .then(() => {
+                    console.log('All reactions deleted.');
+                })
+                .catch(error => {
+                    console.error('Error deleting reactions:', error);
+                });
+        };
+    </script>
+
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #1e1e30;
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #player-container {
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+        #timeline {
+            width: 80%;
+            height: 10px;
+            background-color: #444;
+            margin-top: 20px;
+            position: relative;
+            border-radius: 5px;
+        }
+        .reaction-marker {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 0;
+            background-color: red;
+            border-radius: 50%;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #444444;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #555555;
+        }
+        input {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #444444;
+            border-radius: 5px;
+            margin-top: 10px;
+            color: white;
+            background-color: #1e1e30;
+        }
+        input:focus {
+            outline: none;
+            border-color: #555555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Watch</h1>
+
+    <!-- Search Box -->
+    <div id="search-box">
+        <label for="playlistUrl">Enter YouTube Playlist URL:</label><br>
+        <input type="text" id="playlistUrl" placeholder="https://www.youtube.com/playlist?list=...">
+        <button onclick="loadPlayer()">Load</button>
+    </div>
+
+    <!-- YouTube Player Container -->
+    <div id="player-container">
+        <div id="player"></div>
+        <div id="timeline"></div>
+        <button onclick="nukeReactions()">Nuke Reactions</button>
+    </div>
+
+    <!-- YouTube API -->
+    <script>
+        let player;
+
+        function loadPlayer() {
+            const playlistUrl = document.getElementById('playlistUrl').value;
+            const playlistId = extractPlaylistId(playlistUrl);
+
+            if (!playlistId) {
+                alert('Please enter a valid YouTube playlist URL.');
+                return;
+            }
+
+            document.getElementById('search-box').style.display = 'none';
+            document.getElementById('player-container').style.display = 'block';
+
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                playerVars: {
+                    listType: 'playlist',
+                    list: playlistId
+                },
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange
+                }
+            });
+        }
+
+        function extractPlaylistId(url) {
+            const match = url.match(/[?&]list=([^#&?]*)/);
+            return match ? match[1] : null;
+        }
+
+        function onPlayerReady(event) {
+            console.log('Player ready.');
+        }
+
+        function onPlayerStateChange(event) {
+            // Handle player state changes if needed
+        }
+    </script>
+
+    <!-- Load YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
