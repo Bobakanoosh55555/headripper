@@ -7,12 +7,12 @@
     <!-- Import Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Firebase SDK (for Firebase v9 and above) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, remove } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+        import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
@@ -33,16 +33,38 @@
             remove(ref(database, 'reactions'))
                 .then(() => {
                     console.log('All reactions deleted.');
+                    const timeline = document.getElementById('timeline');
+                    timeline.innerHTML = ''; // Clear timeline markers
                 })
                 .catch(error => {
                     console.error('Error deleting reactions:', error);
                 });
         };
+
+        // Fetch and display reactions on the timeline
+        function fetchReactions() {
+            const reactionsRef = ref(database, 'reactions');
+            const timeline = document.getElementById('timeline');
+
+            onValue(reactionsRef, (snapshot) => {
+                timeline.innerHTML = ''; // Clear existing markers
+
+                snapshot.forEach((childSnapshot) => {
+                    const reaction = childSnapshot.val();
+                    const marker = document.createElement('div');
+                    marker.className = 'reaction-marker';
+                    marker.style.left = `${(reaction.timestamp % 1000) / 10}%`; // Example positioning logic
+                    marker.style.backgroundColor = reaction.color;
+                    marker.title = reaction.username;
+                    timeline.appendChild(marker);
+                });
+            });
+        }
     </script>
 
     <style>
         body {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #1e1e30;
             color: white;
             margin: 0;
@@ -61,7 +83,7 @@
             text-align: center;
         }
         #timeline {
-            width: 80%;
+            width: 1024px;
             height: 10px;
             background-color: #444;
             margin-top: 20px;
@@ -75,6 +97,7 @@
             top: 0;
             background-color: red;
             border-radius: 50%;
+            cursor: pointer;
         }
         button {
             font-size: 1em;
@@ -139,8 +162,8 @@
             document.getElementById('player-container').style.display = 'block';
 
             player = new YT.Player('player', {
-                height: '390',
-                width: '640',
+                height: '576',
+                width: '1024',
                 playerVars: {
                     listType: 'playlist',
                     list: playlistId
@@ -150,6 +173,8 @@
                     onStateChange: onPlayerStateChange
                 }
             });
+
+            fetchReactions(); // Start fetching reactions after player loads
         }
 
         function extractPlaylistId(url) {
@@ -159,10 +184,18 @@
 
         function onPlayerReady(event) {
             console.log('Player ready.');
+            setInterval(updateTimelineProgress, 1000); // Update progress bar every second
         }
 
         function onPlayerStateChange(event) {
             // Handle player state changes if needed
+        }
+
+        function updateTimelineProgress() {
+            if (player && player.getCurrentTime) {
+                const progress = (player.getCurrentTime() / player.getDuration()) * 100;
+                document.getElementById('timeline').style.background = `linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%)`;
+            }
         }
     </script>
 
