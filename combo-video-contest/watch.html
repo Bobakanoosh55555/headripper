@@ -170,25 +170,18 @@
             const reactionsRef = database.ref('reactions');
             const timeline = document.getElementById('timeline-reactions');
 
-            reactionsRef.on('value', (snapshot) => {
-                timeline.innerHTML = ''; // Clear existing markers
+            reactionsRef.on('child_added', (snapshot) => {
+                const reaction = snapshot.val();
+                const marker = document.createElement('div');
+                marker.className = 'reaction-emoji';
 
-                if (!player || !player.getDuration) return; // Ensure the player is ready
-                const videoDuration = player.getDuration();
+                // Place the reaction at the current progress of the video
+                const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100;
+                marker.style.left = `${currentProgress}%`;
 
-                snapshot.forEach((childSnapshot) => {
-                    const reaction = childSnapshot.val();
-                    const marker = document.createElement('div');
-                    marker.className = 'reaction-emoji';
-
-                    // Position based on relative timestamp percentage
-                    const relativePosition = (reaction.timestamp / videoDuration) * 100;
-                    marker.style.left = `${relativePosition}%`;
-
-                    marker.textContent = getEmojiForReaction(reaction.color);
-                    marker.title = reaction.username;
-                    timeline.appendChild(marker);
-                });
+                marker.textContent = getEmojiForReaction(reaction.color);
+                marker.title = reaction.username;
+                timeline.appendChild(marker);
             });
         }
 
