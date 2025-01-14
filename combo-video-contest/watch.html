@@ -194,7 +194,7 @@
         let player;
         const lastReactionTimes = {}; // To track cooldown per user
 
-        function loadPlayer() {
+        window.loadPlayer = function loadPlayer() {
             const playlistUrl = document.getElementById('playlistUrl').value;
             const playlistId = extractPlaylistId(playlistUrl);
 
