@@ -206,6 +206,11 @@
             document.getElementById('search-box').style.display = 'none';
             document.getElementById('player-container').style.display = 'block';
 
+            if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+                console.error('YouTube API is not loaded yet.');
+                return;
+            }
+
             player = new YT.Player('player', {
                 height: '720',
                 width: '1280',
@@ -220,7 +225,7 @@
             });
 
             fetchReactions(); // Start fetching reactions after player loads
-        }
+        };
 
         function extractPlaylistId(url) {
             const match = url.match(/[?&]list=([^#&?]*)/);
@@ -302,4 +307,16 @@
             database.ref('reactions').remove()
                 .then(() => {
                     console.log('All reactions deleted.');
-                    const
+                    const timeline = document.getElementById('timeline-reactions');
+                    timeline.innerHTML = ''; // Clear reaction markers
+                })
+                .catch(error => {
+                    console.error('Error deleting reactions:', error);
+                });
+        }
+    </script>
+
+    <!-- Load YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
