@@ -25,6 +25,44 @@
             justify-content: start;
             min-height: 100vh;
         }
+        #search-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            text-align: center;
+        }
+        #search-box label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        #search-box input {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #444444;
+            border-radius: 5px;
+            color: white;
+            background-color: #1e1e30;
+            margin-bottom: 10px;
+            width: 300px;
+        }
+        #search-box input:focus {
+            outline: none;
+            border-color: #555555;
+        }
+        #search-box button {
+            font-size: 1em;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #444444;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        #search-box button:hover {
+            background-color: #555555;
+        }
         #player-container {
             margin-top: 20px;
             display: none;
@@ -65,13 +103,17 @@
         button:hover {
             background-color: #555555;
         }
+        .switch-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
         .switch {
             position: relative;
             display: inline-block;
             width: 34px;
             height: 20px;
-            margin-left: 10px;
-            vertical-align: middle;
         }
         .switch input {
             opacity: 0;
@@ -111,7 +153,7 @@
 <body>
     <!-- Search Box -->
     <div id="search-box">
-        <label for="playlistUrl">Enter YouTube Playlist URL:</label><br>
+        <label for="playlistUrl">Enter YouTube Playlist URL:</label>
         <input type="text" id="playlistUrl" placeholder="https://www.youtube.com/playlist?list=...">
         <button onclick="loadPlayer()">Load</button>
     </div>
@@ -121,11 +163,15 @@
         <div id="player"></div>
         <div id="timeline-reactions"></div>
         <div id="timeline"></div>
-        <button onclick="nukeReactions()">Nuke Reactions</button>
-        <label class="switch">
-            <input type="checkbox" id="pauseReactionsToggle">
-            <span class="slider"></span>
-        </label>
+        <div class="switch-container">
+            <button onclick="nukeReactions()">Nuke Reactions</button>
+            <span>Unpaused</span>
+            <label class="switch">
+                <input type="checkbox" id="pauseReactionsToggle">
+                <span class="slider"></span>
+            </label>
+            <span>Paused</span>
+        </div>
     </div>
 
     <!-- YouTube API -->
@@ -256,16 +302,4 @@
             database.ref('reactions').remove()
                 .then(() => {
                     console.log('All reactions deleted.');
-                    const timeline = document.getElementById('timeline-reactions');
-                    timeline.innerHTML = ''; // Clear reaction markers
-                })
-                .catch(error => {
-                    console.error('Error deleting reactions:', error);
-                });
-        }
-    </script>
-
-    <!-- Load YouTube IFrame API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-</body>
-</html>
+                    const
