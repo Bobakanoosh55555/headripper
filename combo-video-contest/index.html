@@ -7,7 +7,7 @@
     <!-- Import Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Firebase SDK (for Firebase v9 and above) -->
     <script type="module">
@@ -81,7 +81,7 @@
 
     <style>
         body {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #1e1e30;
             color: white;
             margin: 0;
@@ -114,49 +114,28 @@
         .form-container button:hover {
             background-color: #555555;
         }
-        .role-selection-button {
-            font-size: 1em;
-            padding: 10px 20px;
-            margin: 0 10px;
-            background-color: #444444;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-        }
-        .role-selection-button:hover {
-            background-color: #555555;
-        }
         .reaction-button {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             margin: 0 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            background-color: #444444;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5em;
-            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         }
-        .reaction-button:hover {
-            background-color: #555555;
+        .reaction-button img {
+            width: 50px;
+            height: 50px;
         }
-        .reaction-red {
-            background-color: #ff4d4d;
-        }
-        .reaction-blue {
-            background-color: #4d4dff;
-        }
-        .reaction-green {
-            background-color: #4dff4d;
-        }
-        .reaction-yellow {
-            background-color: #ffff4d;
+        .reaction-button-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         #viewerActions, #judgeActions, #viewerLoginForm, #judgeLoginForm {
             display: none;
@@ -169,10 +148,6 @@
             display: flex;
             justify-content: center;
         }
-        .reaction-button-container {
-            display: flex;
-            justify-content: center;
-        }
     </style>
 </head>
 <body>
@@ -180,8 +155,8 @@
     <div id="roleSelection">
         <h2>Are you a Viewer or a Judge?</h2>
         <div class="role-selection-button-container">
-            <button class="role-selection-button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('viewerLoginForm').style.display='flex';">Viewer</button>
-            <button class="role-selection-button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('judgeLoginForm').style.display='flex';">Judge</button>
+            <button class="form-container button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('viewerLoginForm').style.display='flex';">Viewer</button>
+            <button class="form-container button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('judgeLoginForm').style.display='flex';">Judge</button>
         </div>
     </div>
 
@@ -207,10 +182,16 @@
     <div id="viewerActions" class="form-container">
         <h2>Welcome, Viewer!</h2>
         <div class="reaction-button-container">
-            <button class="reaction-button reaction-red" onclick="addReaction('red')">❤️</button>
-            <button class="reaction-button reaction-blue" onclick="addReaction('blue')">👍</button>
-            <button class="reaction-button reaction-green" onclick="addReaction('green')">😂</button>
-            <button class="reaction-button reaction-yellow" onclick="addReaction('yellow')">😮</button>
+            <button class="reaction-button" onclick="addReaction('blue-face')"><img src="blue-face.png" alt="Blue"></button>
+            <button class="reaction-button" onclick="addReaction('drake')"><img src="drake.gif" alt="Drake"></button>
+            <button class="reaction-button" onclick="addReaction('fire')"><img src="fire.png" alt="Fire"></button>
+            <button class="reaction-button" onclick="addReaction('happy')"><img src="happy.png" alt="Happy"></button>
+            <button class="reaction-button" onclick="addReaction('heart')"><img src="heart.png" alt="Heart"></button>
+            <button class="reaction-button" onclick="addReaction('icant')"><img src="icant.png" alt="I Can’t"></button>
+            <button class="reaction-button" onclick="addReaction('matt')"><img src="matt.png" alt="Matt"></button>
+            <button class="reaction-button" onclick="addReaction('pog')"><img src="pog.png" alt="Pog"></button>
+            <button class="reaction-button" onclick="addReaction('proud')"><img src="proud.png" alt="Proud"></button>
+            <button class="reaction-button" onclick="addReaction('skull')"><img src="skull.png" alt="Skull"></button>
         </div>
     </div>
 
