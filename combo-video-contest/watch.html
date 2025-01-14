@@ -89,6 +89,12 @@
             transform: translateX(-50%);
             font-size: 1.5em;
         }
+        .reaction-image {
+            position: absolute;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+        }
         button {
             font-size: 1em;
             padding: 10px 20px;
@@ -275,8 +281,11 @@
                 // Update last reaction time for user
                 lastReactionTimes[reaction.username] = now;
 
-                const marker = document.createElement('div');
-                marker.className = 'reaction-emoji';
+                const marker = document.createElement('img');
+                marker.className = 'reaction-image';
+
+                // Set the image source based on the reaction color
+                marker.src = getImageForReaction(reaction.color);
 
                 // Place the reaction at the current progress of the video
                 const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100;
@@ -286,19 +295,18 @@
                 const randomOffset = Math.random() * 95; // Random value between 0 and 95px
                 marker.style.top = `${-10 - randomOffset}px`;
 
-                marker.textContent = getEmojiForReaction(reaction.color);
                 marker.title = reaction.username;
                 timeline.appendChild(marker);
             });
         }
 
-        function getEmojiForReaction(color) {
+        function getImageForReaction(color) {
             switch (color) {
-                case 'red': return '❤️';
-                case 'blue': return '👍';
-                case 'green': return '😂';
-                case 'yellow': return '😮';
-                default: return '❓';
+                case 'red': return 'red-face.png';
+                case 'blue': return 'blue-face.png';
+                case 'green': return 'green-face.png';
+                case 'yellow': return 'yellow-face.png';
+                default: return 'unknown-face.png';
             }
         }
 
