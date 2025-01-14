@@ -132,9 +132,9 @@
             height: 50px;
         }
         .reaction-button-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
             justify-content: center;
-            flex-wrap: wrap;
             gap: 10px;
         }
         #viewerActions, #judgeActions, #viewerLoginForm, #judgeLoginForm {
@@ -155,8 +155,8 @@
     <div id="roleSelection">
         <h2>Are you a Viewer or a Judge?</h2>
         <div class="role-selection-button-container">
-            <button class="form-container button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('viewerLoginForm').style.display='flex';">Viewer</button>
-            <button class="form-container button" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('judgeLoginForm').style.display='flex';">Judge</button>
+            <button class="form-container button" style="margin: 0 10px; font-size: 1em; padding: 10px 20px; background-color: #444444; border: none; border-radius: 5px; color: white; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); cursor: pointer;" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('viewerLoginForm').style.display='flex';">Viewer</button>
+            <button class="form-container button" style="margin: 0 10px; font-size: 1em; padding: 10px 20px; background-color: #444444; border: none; border-radius: 5px; color: white; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); cursor: pointer;" onclick="document.getElementById('roleSelection').style.display='none'; document.getElementById('judgeLoginForm').style.display='flex';">Judge</button>
         </div>
     </div>
 
@@ -164,18 +164,18 @@
     <div id="viewerLoginForm" class="form-container">
         <h2>Viewer Login</h2>
         <label for="viewerNameInput">Name:</label>
-        <input type="text" id="viewerNameInput">
-        <button onclick="viewerLogin()">Proceed</button>
+        <input type="text" id="viewerNameInput" style="padding: 10px; font-size: 1em; border: 1px solid #444444; border-radius: 5px; color: white; background-color: #1e1e30; width: 200px;">
+        <button onclick="viewerLogin()" style="margin-top: 15px; font-size: 1em; padding: 10px 20px; cursor: pointer; background-color: #444444; border: none; border-radius: 5px; color: white; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);">Proceed</button>
     </div>
 
     <!-- Judge Login Screen -->
     <div id="judgeLoginForm" class="form-container">
         <h2>Judge Login</h2>
         <label for="judgeNameInput">Name:</label>
-        <input type="text" id="judgeNameInput">
+        <input type="text" id="judgeNameInput" style="padding: 10px; font-size: 1em; border: 1px solid #444444; border-radius: 5px; color: white; background-color: #1e1e30; width: 200px;">
         <label for="judgePasswordInput">Password:</label>
-        <input type="password" id="judgePasswordInput">
-        <button onclick="judgeLogin()">Login</button>
+        <input type="password" id="judgePasswordInput" style="padding: 10px; font-size: 1em; border: 1px solid #444444; border-radius: 5px; color: white; background-color: #1e1e30; width: 200px;">
+        <button onclick="judgeLogin()" style="margin-top: 15px; font-size: 1em; padding: 10px 20px; cursor: pointer; background-color: #444444; border: none; border-radius: 5px; color: white; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);">Login</button>
     </div>
 
     <!-- Viewer Actions -->
