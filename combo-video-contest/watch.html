@@ -241,40 +241,47 @@
         function fetchReactions() {
             const reactionsRef = database.ref('reactions');
             const timeline = document.getElementById('timeline-reactions');
-
+        
             reactionsRef.on('child_added', (snapshot) => {
                 const reaction = snapshot.val();
-
+        
+                // Check if the player is initialized
+                if (!player || typeof player.getCurrentTime !== 'function' || typeof player.getDuration !== 'function') {
+                    console.warn('Player is not initialized or methods are unavailable.');
+                    return;
+                }
+        
                 const reactionsPaused = document.getElementById('pauseReactionsToggle').checked;
                 if (reactionsPaused) {
                     console.log('Reactions are currently paused.');
                     return;
                 }
-
+        
                 const now = Date.now();
                 const lastTime = lastReactionTimes[reaction.username] || 0;
-
+        
                 if (now - lastTime < 5000) {
                     console.log(`Reaction from ${reaction.username} ignored due to cooldown.`);
                     return;
                 }
-
+        
                 lastReactionTimes[reaction.username] = now;
-
+        
                 const marker = document.createElement('img');
                 marker.className = 'reaction-image';
                 marker.src = getImageForReaction(reaction.color);
-
-                const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100;
+        
+                const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100 || 0;
                 marker.style.left = `${currentProgress}%`;
-
+        
                 const randomOffset = Math.random() * 95;
                 marker.style.top = `${-10 - randomOffset}px`;
-
+        
                 marker.title = reaction.username;
                 timeline.appendChild(marker);
             });
         }
+
 
         function getImageForReaction(color) {
             switch (color) {
