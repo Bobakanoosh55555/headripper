@@ -7,7 +7,7 @@
     <!-- Firebase SDK (for Firebase v9 and above) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+        import { getDatabase, ref, onChildAdded } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
@@ -23,8 +23,8 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Listen for buzz trigger in Firebase
-        onValue(ref(database, 'buzz'), (snapshot) => {
+        // Listen for new buzz triggers
+        onChildAdded(ref(database, 'buzz'), (snapshot) => {
             const data = snapshot.val();
             if (data && data.triggered) {
                 playVideo();
@@ -34,7 +34,10 @@
         function playVideo() {
             const video = document.getElementById("buzzVideo");
             video.style.display = "block"; // Make the video visible
-            video.play();
+            video.muted = true; // Ensure muted for autoplay
+            video.play()
+                .then(() => console.log("Video started playing"))
+                .catch((error) => console.error("Error playing video:", error));
         }
     </script>
 
