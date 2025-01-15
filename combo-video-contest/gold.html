@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buzz Reaction</title>
+
+    <!-- Firebase SDK (for Firebase v9 and above) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
+            authDomain: "combo-video-contest.firebaseapp.com",
+            databaseURL: "https://combo-video-contest-default-rtdb.firebaseio.com",
+            projectId: "combo-video-contest",
+            storageBucket: "combo-video-contest.appspot.com",
+            messagingSenderId: "748133929680",
+            appId: "1:748133929680:web:281b09877fb3fb12da44d5",
+            measurementId: "G-0FCENJ0MYE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Listen for buzz trigger in Firebase
+        onValue(ref(database, 'buzz'), (snapshot) => {
+            const data = snapshot.val();
+            if (data && data.triggered) {
+                playVideo();
+            }
+        });
+
+        function playVideo() {
+            const video = document.getElementById("buzzVideo");
+            video.play();
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #25AD31; /* Green background for chroma keying */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        video {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <video id="buzzVideo" src="gold-test-3.mp4" type="video/mp4" playsinline muted></video>
+</body>
+</html>
