@@ -33,10 +33,17 @@
 
         function playVideo() {
             const video = document.getElementById("buzzVideo");
+
+            // Ensure video is muted initially for autoplay compatibility
+            video.muted = true;
             video.style.display = "block"; // Make the video visible
-            video.muted = false; // Unmute video
+            
             video.play()
-                .then(() => console.log("Video started playing"))
+                .then(() => {
+                    console.log("Video autoplayed muted");
+                    // Unmute programmatically after autoplay starts
+                    video.muted = false;
+                })
                 .catch((error) => console.error("Error playing video:", error));
 
             // Hide video after it ends
@@ -67,6 +74,6 @@
     </style>
 </head>
 <body>
-    <video id="buzzVideo" src="gold-test-3.mp4" type="video/mp4" playsinline muted></video>
+    <video id="buzzVideo" src="gold-test-3.mp4" type="video/mp4" playsinline autoplay></video>
 </body>
 </html>
