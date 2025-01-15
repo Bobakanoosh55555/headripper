@@ -77,6 +77,21 @@
                 console.error('Error adding reaction:', error);
             });
         };
+
+        window.sendBuzz = function sendBuzz() {
+            const buzzRef = ref(database, 'buzz');
+            const data = {
+                triggered: true,
+                timestamp: new Date().toISOString(),
+            };
+        
+            push(buzzRef, data).then(() => {
+                console.log("Buzz triggered successfully.");
+            }).catch((error) => {
+                console.error("Error triggering buzz:", error);
+            });
+        };
+
     </script>
 
     <style>
