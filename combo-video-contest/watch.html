@@ -250,7 +250,7 @@
         function updateTimelineProgress() {
             if (player && player.getCurrentTime) {
                 const progress = (player.getCurrentTime() / player.getDuration()) * 100;
-                document.getElementById('timeline').style.background = `linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%)`;
+                document.getElementById('timeline').style.background = linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%);
             }
         }
 
@@ -274,7 +274,7 @@
                 const lastTime = lastReactionTimes[reaction.username] || 0;
 
                 if (now - lastTime < 5000) {
-                    console.log(`Reaction from ${reaction.username} ignored due to cooldown.`);
+                    console.log(Reaction from ${reaction.username} ignored due to cooldown.);
                     return; // Ignore reaction
                 }
 
@@ -289,11 +289,11 @@
 
                 // Place the reaction at the current progress of the video
                 const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100;
-                marker.style.left = `${currentProgress}%`;
+                marker.style.left = ${currentProgress}%;
 
                 // Stagger the reactions vertically between the bar and closer to the video
                 const randomOffset = Math.random() * 95; // Random value between 0 and 95px
-                marker.style.top = `${-10 - randomOffset}px`;
+                marker.style.top = ${-10 - randomOffset}px;
 
                 marker.title = reaction.username;
                 timeline.appendChild(marker);
