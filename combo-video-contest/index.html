@@ -82,6 +82,22 @@
             }
         }
 
+        // Handle Viewer Reaction
+        window.addReaction = function addReaction(color) {
+            const name = window.currentUserName || "Anonymous"; // Fallback to "Anonymous" if name is not set
+            const videoTimestamp = new Date().getTime(); // Placeholder for actual video timestamp
+        
+            push(ref(database, 'reactions'), {
+                username: name,
+                timestamp: videoTimestamp,
+                color: color
+            }).then(() => {
+                console.log(`Reaction added: ${color} by ${name}`);
+            }).catch(error => {
+                console.error('Error adding reaction:', error);
+            });
+        };
+        
         // Auto-connect to OBS
         connectToOBS();
     </script>
