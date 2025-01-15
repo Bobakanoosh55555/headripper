@@ -45,8 +45,12 @@
     
         async function connectToOBS() {
             obs.connect({
-                address: 'wss://50.49.14.242:4455',
+                address: 'wss://50.49.14.242:4455', // Correct secure WebSocket URL
                 password: 'hpnxbOXW55TTGDa2',
+            }).then(() => {
+                console.log('Connected to OBS WebSocket');
+            }).catch((error) => {
+                console.error('Failed to connect to OBS WebSocket:', error);
             });
         }
         
