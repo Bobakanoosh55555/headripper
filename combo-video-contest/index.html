@@ -14,7 +14,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js" type="module"></script>
 
     <!-- OBS WebSocket Library -->
-    <script src="https://cdn.jsdelivr.net/npm/obs-websocket-js@5/dist/obs-websocket.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/obs-websocket-js@4.1.0/dist/obs-websocket.min.js"></script>
 
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
@@ -34,34 +34,35 @@
     
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
-    
+
         // OBS WebSocket Setup
         const obs = new OBSWebSocket();
         let obsConnected = false;
     
         async function connectToOBS() {
-            try {
-                await obs.connect('ws://50.49.14.242:4455', 'hpnxbOXW55TTGDa2');
+            obs.connect({
+                address: '50.49.14.242:4455',
+                password: 'hpnxbOXW55TTGDa2',
+            }).then(() => {
                 obsConnected = true;
                 console.log('Connected to OBS WebSocket');
-            } catch (error) {
+            }).catch(error => {
                 console.error('Failed to connect to OBS WebSocket:', error);
-            }
+            });
         }
-    
+        
         async function triggerOBSVideo() {
             if (!obsConnected) await connectToOBS();
     
             if (obsConnected) {
-                try {
-                    await obs.call('SetSourceSettings', {
-                        sourceName: 'BuzzVideo',
-                        sourceSettings: { restart_media_source: true },
-                    });
+                obs.send('SetSourceSettings', {
+                    sourceName: 'BuzzVideo',
+                    sourceSettings: { restart_media_source: true },
+                }).then(() => {
                     console.log('OBS video source triggered successfully.');
-                } catch (error) {
+                }).catch(error => {
                     console.error('Error triggering OBS video source:', error);
-                }
+                });
             }
         }
 
