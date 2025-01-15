@@ -28,7 +28,7 @@
             appId: "1:748133929680:web:281b09877fb3fb12da44d5",
             measurementId: "G-0FCENJ0MYE"
         };
-        const app = firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
         // OBS WebSocket Setup
@@ -62,17 +62,17 @@
         }
 
         // Viewer Login Function
-        window.viewerLogin = function viewerLogin() {
+        function viewerLogin() {
             const name = document.getElementById("viewerNameInput").value.trim();
             if (!name) return alert("Please enter your name.");
 
             window.currentUserName = name;
             document.getElementById("viewerLoginForm").style.display = "none";
             document.getElementById("viewerActions").style.display = "flex";
-        };
+        }
 
         // Buzz Function
-        window.sendBuzz = async function sendBuzz() {
+        async function sendBuzz() {
             try {
                 await database.ref('buzz').push({ triggered: true, timestamp: new Date().toISOString() });
                 console.log("Buzz triggered successfully.");
@@ -80,7 +80,7 @@
             } catch (error) {
                 console.error("Error triggering buzz:", error);
             }
-        };
+        }
 
         // Auto-connect to OBS
         connectToOBS();
