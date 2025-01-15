@@ -34,10 +34,16 @@
         function playVideo() {
             const video = document.getElementById("buzzVideo");
             video.style.display = "block"; // Make the video visible
-            video.muted = true; // Ensure muted for autoplay
+            video.muted = false; // Ensure video starts with volume on
             video.play()
                 .then(() => console.log("Video started playing"))
                 .catch((error) => console.error("Error playing video:", error));
+
+            // Hide video after it ends
+            video.onended = () => {
+                video.style.display = "none";
+                console.log("Video ended and hidden");
+            };
         }
     </script>
 
@@ -61,6 +67,6 @@
     </style>
 </head>
 <body>
-    <video id="buzzVideo" src="gold-test-3.mp4" type="video/mp4" playsinline muted></video>
+    <video id="buzzVideo" src="gold-test-3.mp4" type="video/mp4" playsinline></video>
 </body>
 </html>
