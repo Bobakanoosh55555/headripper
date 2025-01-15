@@ -237,7 +237,7 @@
             const match = url.match(/[?&]list=([^#&?]*)/);
             return match ? match[1] : null;
         }
-
+        
         function fetchReactions() {
             const reactionsRef = database.ref('reactions');
             const timeline = document.getElementById('timeline-reactions');
@@ -272,15 +272,16 @@
                 marker.src = getImageForReaction(reaction.color);
         
                 const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100 || 0;
-                marker.style.left = ${currentProgress}%;
+                marker.style.left = `${currentProgress}%`;
         
                 const randomOffset = Math.random() * 95;
-                marker.style.top = ${-10 - randomOffset}px;
+                marker.style.top = `${-10 - randomOffset}px`;
         
                 marker.title = reaction.username;
                 timeline.appendChild(marker);
             });
         }
+
 
 
         function getImageForReaction(color) {
