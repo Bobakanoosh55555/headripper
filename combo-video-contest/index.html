@@ -35,6 +35,10 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
+        if (typeof OBSWebSocket === 'undefined') {
+            console.error('OBSWebSocket is not defined. Ensure the script is loaded.');
+        }
+        
         // OBS WebSocket Setup
         const obs = new OBSWebSocket();
         let obsConnected = false;
