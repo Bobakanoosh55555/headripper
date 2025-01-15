@@ -27,9 +27,33 @@
         onChildAdded(ref(database, 'buzz'), (snapshot) => {
             const data = snapshot.val();
             if (data && data.triggered) {
-                playVideo();
+                enablePlayback(() => playVideo());
             }
         });
+
+        function enablePlayback(callback) {
+            const video = document.getElementById("buzzVideo");
+
+            // Add a user interaction listener if required
+            if (video.paused) {
+                const playOverlay = document.createElement("div");
+                playOverlay.style.position = "absolute";
+                playOverlay.style.top = "0";
+                playOverlay.style.left = "0";
+                playOverlay.style.width = "100%";
+                playOverlay.style.height = "100%";
+                playOverlay.style.zIndex = "1000";
+                playOverlay.style.cursor = "pointer";
+                playOverlay.addEventListener("click", () => {
+                    playOverlay.remove();
+                    callback();
+                });
+                document.body.appendChild(playOverlay);
+                console.log("Waiting for user interaction to play video.");
+            } else {
+                callback();
+            }
+        }
 
         function playVideo() {
             const video = document.getElementById("buzzVideo");
