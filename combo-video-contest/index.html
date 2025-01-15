@@ -34,11 +34,11 @@
 
         async function connectToOBS() {
             try {
-                await obs.connect('ws://localhost:4455', 'YOUR_WEBSOCKET_PASSWORD');
+                await obs.connect('ws://50.49.14.242:4455', 'hpnxbOXW55TTGDa2'); // Use the IPv4 address and password
                 obsConnected = true;
-                console.log('Connected to OBS WebSocket');
+                console.log('Connected to OBS WebSocket on remote server');
             } catch (error) {
-                console.error('Failed to connect to OBS:', error);
+                console.error('Failed to connect to OBS WebSocket:', error);
             }
         }
 
