@@ -311,9 +311,9 @@
 
         function updateTimelineProgress() {
             if (player && player.getCurrentTime) {
-                const progress = (player.getCurrentTime() / player.getDuration()) * 100;
+                const progress = (player.getCurrentTime() / player.getDuration()) * 100 || 0;
                 document.getElementById('timeline').style.background = 
-                    linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%);
+                    `linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%)`;
             }
         }
 
