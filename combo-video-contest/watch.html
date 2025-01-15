@@ -276,6 +276,24 @@
             });
         }
 
+        function getImageForReaction(color) {
+            switch (color) {
+                case 'blue-face': return 'blue-face.png';
+                case 'orange-face': return 'orange-face.png';
+                case 'drake': return 'drake.gif';
+                case 'fire': return 'fire.png';
+                case 'happy': return 'happy.png';
+                case 'heart': return 'heart.png';
+                case 'icant': return 'icant.png';
+                case 'matt': return 'matt.gif';
+                case 'pog': return 'pog.png';
+                case 'proud': return 'proud.png';
+                case 'skull': return 'skull.png';
+                default: return 'question-mark.png';
+            }
+        }
+
+
         function onPlayerReady() {
             console.log('Player ready.');
             setInterval(updateTimelineProgress, 1000);
