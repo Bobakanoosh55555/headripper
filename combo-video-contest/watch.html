@@ -180,12 +180,6 @@
         </div>
     </div>
 
-    <!-- Overlay Video and Button -->
-    <div id="overlay-container" style="position: absolute; width: 1280px; height: 720px; top: 0; left: 0; display: none; pointer-events: none;">
-        <video id="overlay-video" src="Untitled.webm" style="width: 100%; height: 100%; pointer-events: auto;" muted></video>
-    </div>
-    <button onclick="toggleOverlayVideo()" style="margin-top: 20px; font-size: 1em; padding: 10px 20px; cursor: pointer; background-color: #444444; border: none; border-radius: 5px; color: white; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);">Play Overlay</button>
-
     <!-- YouTube API -->
     <script>
         // Initialize Firebase
@@ -256,7 +250,7 @@
         function updateTimelineProgress() {
             if (player && player.getCurrentTime) {
                 const progress = (player.getCurrentTime() / player.getDuration()) * 100;
-                document.getElementById('timeline').style.background = `linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%)`;
+                document.getElementById('timeline').style.background = linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%);
             }
         }
 
@@ -280,7 +274,7 @@
                 const lastTime = lastReactionTimes[reaction.username] || 0;
 
                 if (now - lastTime < 5000) {
-                    console.log(`Reaction from ${reaction.username} ignored due to cooldown.`);
+                    console.log(Reaction from ${reaction.username} ignored due to cooldown.);
                     return; // Ignore reaction
                 }
 
@@ -295,11 +289,11 @@
 
                 // Place the reaction at the current progress of the video
                 const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100;
-                marker.style.left = `${currentProgress}%`;
+                marker.style.left = ${currentProgress}%;
 
                 // Stagger the reactions vertically between the bar and closer to the video
                 const randomOffset = Math.random() * 95; // Random value between 0 and 95px
-                marker.style.top = `${-10 - randomOffset}px`;
+                marker.style.top = ${-10 - randomOffset}px;
 
                 marker.title = reaction.username;
                 timeline.appendChild(marker);
@@ -335,20 +329,9 @@
                     console.error('Error deleting reactions:', error);
                 });
         }
-
-        function toggleOverlayVideo() {
-            const overlayContainer = document.getElementById('overlay-container');
-            const overlayVideo = document.getElementById('overlay-video');
-
-            if (overlayContainer.style.display === 'none' || overlayContainer.style.display === '') {
-                overlayContainer.style.display = 'block';
-                overlayVideo.play();
-            } else {
-                overlayContainer.style.display = 'none';
-                overlayVideo.pause();
-            }
-        }
     </script>
+
+    <!-- Load YouTube IFrame API -->
     <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
