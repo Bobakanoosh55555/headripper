@@ -17,6 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/obs-websocket-js@5/dist/obs-websocket.min.js"></script>
 
     <script>
+        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
             authDomain: "combo-video-contest.firebaseapp.com",
@@ -30,6 +31,7 @@
         const app = firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
+        // OBS WebSocket Setup
         const obs = new OBSWebSocket();
         let obsConnected = false;
 
@@ -59,7 +61,7 @@
             }
         }
 
-        // Expose functions globally
+        // Viewer Login Function
         window.viewerLogin = function viewerLogin() {
             const name = document.getElementById("viewerNameInput").value.trim();
             if (!name) return alert("Please enter your name.");
@@ -69,9 +71,10 @@
             document.getElementById("viewerActions").style.display = "flex";
         };
 
+        // Buzz Function
         window.sendBuzz = async function sendBuzz() {
             try {
-                await firebase.database().ref('buzz').push({ triggered: true, timestamp: new Date().toISOString() });
+                await database.ref('buzz').push({ triggered: true, timestamp: new Date().toISOString() });
                 console.log("Buzz triggered successfully.");
                 triggerOBSVideo();
             } catch (error) {
