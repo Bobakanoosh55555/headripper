@@ -65,6 +65,40 @@
                 }
             }
         }
+
+        // Handle Viewer Login
+        window.viewerLogin = function viewerLogin() {
+            const name = document.getElementById("viewerNameInput").value;
+
+            if (name.trim() === "") {
+                alert("Please enter your name.");
+                return;
+            }
+
+            window.currentUserName = name;
+
+            document.getElementById("viewerLoginForm").style.display = "none";
+            document.getElementById("viewerActions").style.display = "flex";
+        };
+
+        // Handle Judge Login
+        window.judgeLogin = function judgeLogin() {
+            const name = document.getElementById("judgeNameInput").value;
+            const password = document.getElementById("judgePasswordInput").value;
+
+            if (password === "shmung") {
+                if (name.trim() === "") {
+                    alert("Please enter your name.");
+                    return;
+                }
+                window.currentUserName = name;
+
+                document.getElementById("judgeLoginForm").style.display = "none";
+                document.getElementById("judgeActions").style.display = "flex";
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        };
     
         // Viewer Reaction Function
         window.addReaction = function addReaction(color) {
