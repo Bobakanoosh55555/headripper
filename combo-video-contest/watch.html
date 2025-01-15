@@ -161,7 +161,7 @@
     <div id="search-box">
         <label for="playlistUrl">Enter YouTube Playlist URL:</label>
         <input type="text" id="playlistUrl" placeholder="https://www.youtube.com/playlist?list=...">
-        <button onclick="loadPlayer()">Load</button>
+        <button id="loadButton">Load</button>
     </div>
 
     <!-- YouTube Player Container -->
@@ -198,9 +198,9 @@
         const database = firebase.database();
 
         let player;
-        const lastReactionTimes = {}; // To track cooldown per user
+        const lastReactionTimes = {};
 
-        window.loadPlayer = function loadPlayer() {
+        function loadPlayer() {
             const playlistUrl = document.getElementById('playlistUrl').value;
             const playlistId = extractPlaylistId(playlistUrl);
 
@@ -230,75 +230,58 @@
                 }
             });
 
-            fetchReactions(); // Start fetching reactions after player loads
-        };
+            fetchReactions();
+        }
 
         function extractPlaylistId(url) {
             const match = url.match(/[?&]list=([^#&?]*)/);
             return match ? match[1] : null;
         }
 
-        function onPlayerReady(event) {
-            console.log('Player ready.');
-            setInterval(updateTimelineProgress, 1000); // Update progress bar every second
-        }
-
-        function onPlayerStateChange(event) {
-            // Handle player state changes if needed
-        }
-
-        function updateTimelineProgress() {
-            if (player && player.getCurrentTime) {
-                const progress = (player.getCurrentTime() / player.getDuration()) * 100;
-                document.getElementById('timeline').style.background = linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%);
-            }
-        }
-
-        // Fetch and display reactions on the timeline
         function fetchReactions() {
             const reactionsRef = database.ref('reactions');
             const timeline = document.getElementById('timeline-reactions');
-
+        
             reactionsRef.on('child_added', (snapshot) => {
                 const reaction = snapshot.val();
-
-                // Check if reactions are paused
+        
+                // Check if the player is initialized
+                if (!player || typeof player.getCurrentTime !== 'function' || typeof player.getDuration !== 'function') {
+                    console.warn('Player is not initialized or methods are unavailable.');
+                    return;
+                }
+        
                 const reactionsPaused = document.getElementById('pauseReactionsToggle').checked;
                 if (reactionsPaused) {
                     console.log('Reactions are currently paused.');
                     return;
                 }
-
-                // Cooldown check
+        
                 const now = Date.now();
                 const lastTime = lastReactionTimes[reaction.username] || 0;
-
+        
                 if (now - lastTime < 5000) {
                     console.log(Reaction from ${reaction.username} ignored due to cooldown.);
-                    return; // Ignore reaction
+                    return;
                 }
-
-                // Update last reaction time for user
+        
                 lastReactionTimes[reaction.username] = now;
-
+        
                 const marker = document.createElement('img');
                 marker.className = 'reaction-image';
-
-                // Set the image source based on the reaction color
                 marker.src = getImageForReaction(reaction.color);
-
-                // Place the reaction at the current progress of the video
-                const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100;
+        
+                const currentProgress = (player.getCurrentTime() / player.getDuration()) * 100 || 0;
                 marker.style.left = ${currentProgress}%;
-
-                // Stagger the reactions vertically between the bar and closer to the video
-                const randomOffset = Math.random() * 95; // Random value between 0 and 95px
+        
+                const randomOffset = Math.random() * 95;
                 marker.style.top = ${-10 - randomOffset}px;
-
+        
                 marker.title = reaction.username;
                 timeline.appendChild(marker);
             });
         }
+
 
         function getImageForReaction(color) {
             switch (color) {
@@ -317,21 +300,47 @@
             }
         }
 
-        // Nuke Reactions
+
+        function onPlayerReady() {
+            console.log('Player ready.');
+            setInterval(updateTimelineProgress, 1000);
+        }
+
+        function onPlayerStateChange() {}
+
+        function updateTimelineProgress() {
+            if (player && player.getCurrentTime) {
+                const progress = (player.getCurrentTime() / player.getDuration()) * 100;
+                document.getElementById('timeline').style.background = 
+                    linear-gradient(to right, #ff4d4d ${progress}%, #444 ${progress}%);
+            }
+        }
+
         function nukeReactions() {
-            database.ref('reactions').remove()
+            const reactionsRef = database.ref('reactions');
+            const timeline = document.getElementById('timeline-reactions');
+        
+            // Remove all reactions from Firebase
+            reactionsRef
+                .remove()
                 .then(() => {
-                    console.log('All reactions deleted.');
-                    const timeline = document.getElementById('timeline-reactions');
-                    timeline.innerHTML = ''; // Clear reaction markers
+                    console.log('All reactions deleted from Firebase.');
+        
+                    // Clear all reaction markers from the timeline
+                    timeline.innerHTML = '';
                 })
-                .catch(error => {
+                .catch((error) => {
                     console.error('Error deleting reactions:', error);
+                    alert('Failed to delete reactions. Please try again.');
                 });
         }
+
+        document.getElementById('loadButton').addEventListener('click', loadPlayer);
     </script>
 
     <!-- Load YouTube IFrame API -->
     <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
+
+here's my current code. The nuke reactions button is not working.
