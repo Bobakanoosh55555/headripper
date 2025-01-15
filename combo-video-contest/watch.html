@@ -261,7 +261,7 @@
                 const lastTime = lastReactionTimes[reaction.username] || 0;
         
                 if (now - lastTime < 5000) {
-                    console.log(Reaction from ${reaction.username} ignored due to cooldown.);
+                    console.log(`Reaction from ${reaction.username} ignored due to cooldown.`);
                     return;
                 }
         
