@@ -10,13 +10,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js" type="module"></script>
 
     <!-- OBS WebSocket Library -->
     <script src="https://cdn.jsdelivr.net/npm/obs-websocket-js@5/dist/obs-websocket.min.js"></script>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+        import { getDatabase, ref, push } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+        import OBSWebSocket from 'https://cdn.jsdelivr.net/npm/obs-websocket-js@5/dist/obs-websocket.min.js';
+    
         // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDgbY0YGem3WVpZe35R6EFkXOv7qW7b8dA",
@@ -28,13 +32,14 @@
             appId: "1:748133929680:web:281b09877fb3fb12da44d5",
             measurementId: "G-0FCENJ0MYE"
         };
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-
+    
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+    
         // OBS WebSocket Setup
         const obs = new OBSWebSocket();
         let obsConnected = false;
-
+    
         async function connectToOBS() {
             try {
                 await obs.connect('ws://50.49.14.242:4455', 'hpnxbOXW55TTGDa2');
@@ -44,10 +49,10 @@
                 console.error('Failed to connect to OBS WebSocket:', error);
             }
         }
-
+    
         async function triggerOBSVideo() {
             if (!obsConnected) await connectToOBS();
-
+    
             if (obsConnected) {
                 try {
                     await obs.call('SetSourceSettings', {
@@ -60,33 +65,12 @@
                 }
             }
         }
-
-        // Viewer Login Function
-        function viewerLogin() {
-            const name = document.getElementById("viewerNameInput").value.trim();
-            if (!name) return alert("Please enter your name.");
-
-            window.currentUserName = name;
-            document.getElementById("viewerLoginForm").style.display = "none";
-            document.getElementById("viewerActions").style.display = "flex";
-        }
-
-        // Buzz Function
-        async function sendBuzz() {
-            try {
-                await database.ref('buzz').push({ triggered: true, timestamp: new Date().toISOString() });
-                console.log("Buzz triggered successfully.");
-                triggerOBSVideo();
-            } catch (error) {
-                console.error("Error triggering buzz:", error);
-            }
-        }
-
-        // Handle Viewer Reaction
+    
+        // Viewer Reaction Function
         window.addReaction = function addReaction(color) {
-            const name = window.currentUserName || "Anonymous"; // Fallback to "Anonymous" if name is not set
-            const videoTimestamp = new Date().getTime(); // Placeholder for actual video timestamp
-        
+            const name = window.currentUserName || "Anonymous";
+            const videoTimestamp = new Date().getTime();
+    
             push(ref(database, 'reactions'), {
                 username: name,
                 timestamp: videoTimestamp,
@@ -97,10 +81,10 @@
                 console.error('Error adding reaction:', error);
             });
         };
-        
-        // Auto-connect to OBS
+    
         connectToOBS();
     </script>
+
     <style>
         body {
             font-family: 'Roboto', sans-serif;
