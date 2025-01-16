@@ -78,19 +78,20 @@
         /* Golden buzzer message */
         #buzzer-message {
             position: absolute;
-            top: calc(100% + 10px); /* Just below the player */
+            top: 95%; /* Positioned to overlap the reactions section */
             left: 50%;
             transform: translateX(-50%);
             font-size: 1.5em;
             font-weight: bold;
             color: gold;
+            text-shadow: 0px 0px 3px black, -1px -1px 0px black, 1px 1px 0px black, -1px 1px 0px black, 1px -1px 0px black; /* Black outline */
             display: none; /* Hidden initially */
             z-index: 10;
         }
         
         /* Adjust timeline spacing to prevent overlap */
         #timeline-reactions {
-            margin-top: 70px; /* Ensure proper spacing below the video */
+            margin-top: 95px; /* Additional 25px to move it further down */
             position: relative; /* Prevents overlap issues */
         }
         
@@ -100,7 +101,6 @@
             height: 10px;
             border-radius: 5px;
         }
-
         .reaction-emoji {
             position: absolute;
             transform: translateX(-50%);
