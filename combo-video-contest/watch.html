@@ -70,7 +70,7 @@
         }
         
         #player {
-            margin-bottom: 20px; /* Space between the video and reactions */
+            margin-bottom: 50px; /* Increased spacing between the video and reactions */
             border: none;
             transition: border 0.3s ease;
         }
@@ -78,7 +78,7 @@
         /* Golden buzzer message */
         #buzzer-message {
             position: absolute;
-            top: calc(100% - 20px); /* Positioned to overlap the top part of the reactions */
+            top: calc(100% - 30px); /* Positioned slightly above reactions */
             left: 50%;
             transform: translateX(-50%);
             font-size: 1.5em;
@@ -89,12 +89,20 @@
             z-index: 10; /* Keep it above other elements */
         }
         
-        /* Adjust reactions spacing to move closer to video */
+        /* Adjust reactions spacing */
         #timeline-reactions {
-            margin-top: 10px; /* Space between reactions and video */
+            margin-top: 0px; /* Align directly below the video */
             position: relative;
+            top: 0; /* Ensure it's placed in the normal document flow */
         }
         
+        /* Adjust timeline spacing */
+        #timeline {
+            margin-top: 60px; /* Increased gap between timeline and reactions */
+            background-color: #444;
+            height: 10px;
+            border-radius: 5px;
+        }
         /* Adjust timeline spacing to move further from reactions */
         #timeline {
             margin-top: 40px; /* Increased gap between timeline and reactions */
