@@ -64,9 +64,9 @@
             background-color: #555555;
         }
         #player-container {
-            position: relative; /* Needed for child absolute positioning */
-            margin-top: 20px;
+            position: relative; /* Needed for absolute positioning of child elements */
             text-align: center;
+            margin-top: 20px;
         }
         
         #player {
@@ -75,28 +75,30 @@
             transition: border 0.3s ease;
         }
         
+        /* Golden buzzer message */
         #buzzer-message {
             position: absolute;
-            top: 100%; /* Places it below the #player */
+            top: calc(100% + 10px); /* Just below the player */
             left: 50%;
             transform: translateX(-50%);
             font-size: 1.5em;
             font-weight: bold;
             color: gold;
-            display: none; /* Hidden by default */
+            display: none; /* Hidden initially */
+            z-index: 10;
         }
-        #timeline {
-            width: 1280px;
-            height: 10px;
-            background-color: #444;
-            margin-top: 30px;
-            position: relative;
-            border-radius: 5px;
-        }
+        
+        /* Adjust timeline spacing to maintain layout */
         #timeline-reactions {
-            width: 1280px;
-            position: relative;
-            margin-top: -2px;
+            margin-top: 40px; /* Ensures proper spacing from the player */
+            position: relative; /* Prevents overlap issues */
+        }
+        
+        #timeline {
+            margin-top: 10px; /* Space between timeline and reactions */
+            background-color: #444;
+            height: 10px;
+            border-radius: 5px;
         }
         .reaction-emoji {
             position: absolute;
