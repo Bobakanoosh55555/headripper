@@ -70,7 +70,7 @@
         }
         
         #player {
-            margin-bottom: 50px; /* Increased spacing between the video and reactions */
+            margin-bottom: 0; /* No unnecessary margin below the player */
             border: none;
             transition: border 0.3s ease;
         }
@@ -78,7 +78,7 @@
         /* Golden buzzer message */
         #buzzer-message {
             position: absolute;
-            top: calc(100% - 30px); /* Positioned slightly above reactions */
+            top: calc(100% - 50px); /* Positioned slightly above reactions */
             left: 50%;
             transform: translateX(-50%);
             font-size: 1.5em;
@@ -89,27 +89,23 @@
             z-index: 10; /* Keep it above other elements */
         }
         
-        /* Adjust reactions spacing */
+        /* Reactions section */
         #timeline-reactions {
-            margin-top: 0px; /* Align directly below the video */
+            margin-top: 20px; /* Proper spacing below the video */
+            margin-bottom: -15px; /* Bring closer to the timeline */
             position: relative;
-            top: 0; /* Ensure it's placed in the normal document flow */
+            display: flex;
+            justify-content: center; /* Center reactions horizontally */
         }
         
-        /* Adjust timeline spacing */
+        /* Timeline bar */
         #timeline {
-            margin-top: 60px; /* Increased gap between timeline and reactions */
+            margin-top: 30px; /* Ensure the timeline is correctly spaced below the reactions */
             background-color: #444;
             height: 10px;
             border-radius: 5px;
         }
-        /* Adjust timeline spacing to move further from reactions */
-        #timeline {
-            margin-top: 40px; /* Increased gap between timeline and reactions */
-            background-color: #444;
-            height: 10px;
-            border-radius: 5px;
-        }
+
         .reaction-emoji {
             position: absolute;
             transform: translateX(-50%);
