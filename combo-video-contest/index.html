@@ -65,6 +65,20 @@
                 alert("Incorrect password. Please try again.");
             }
         };
+
+        // Log Golden Buzzer Action
+        window.goldenBuzzer = function goldenBuzzer(judgeName) {
+            const timestamp = new Date().toISOString();
+
+            push(ref(database, 'goldenBuzzers'), {
+                judge: judgeName,
+                timestamp: timestamp
+            }).then(() => {
+                console.log(`${judgeName}'s Golden Buzzer logged.`);
+            }).catch(error => {
+                console.error('Error logging golden buzzer:', error);
+            });
+        };
     
         // Viewer Reaction Function
         window.addReaction = function addReaction(color) {
@@ -203,7 +217,12 @@
     <!-- Judge Actions -->
     <div id="judgeActions" class="form-container">
         <h2>Welcome, Judge!</h2>
-        <button id="buzzButton">Buzz!</button>
+        <div class="golden-buzzer-buttons">
+            <button onclick="goldenBuzzer('Gio')">Gio's Golden Buzzer</button>
+            <button onclick="goldenBuzzer('Matt')">Matt's Golden Buzzer</button>
+            <button onclick="goldenBuzzer('Caleb')">Caleb's Golden Buzzer</button>
+            <button onclick="goldenBuzzer('Boba')">Boba's Golden Buzzer</button>
+        </div>
     </div>
 </body>
 </html>
