@@ -64,13 +64,13 @@
             background-color: #555555;
         }
         #player-container {
-            position: relative; /* Needed for absolute positioning of child elements */
+            position: relative; /* Establish positioning context for absolute elements */
             text-align: center;
             margin-top: 20px;
         }
         
         #player {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Space between the video and reactions */
             border: none;
             transition: border 0.3s ease;
         }
@@ -78,25 +78,26 @@
         /* Golden buzzer message */
         #buzzer-message {
             position: absolute;
-            top: 95%; /* Positioned to overlap the reactions section */
+            top: calc(100% - 20px); /* Positioned to overlap the top part of the reactions */
             left: 50%;
             transform: translateX(-50%);
             font-size: 1.5em;
             font-weight: bold;
             color: gold;
-            text-shadow: 0px 0px 3px black, -1px -1px 0px black, 1px 1px 0px black, -1px 1px 0px black, 1px -1px 0px black; /* Black outline */
+            text-shadow: 0px 0px 3px black, -1px -1px 0px black, 1px 1px 0px black, -1px 1px 0px black, 1px -1px 0px black;
             display: none; /* Hidden initially */
-            z-index: 10;
+            z-index: 10; /* Keep it above other elements */
         }
         
-        /* Adjust reactions and timeline spacing */
+        /* Adjust reactions spacing to move closer to video */
         #timeline-reactions {
-            margin-top: 75px; /* Moved 10px closer to the video */
-            position: relative; /* Prevents overlap issues */
+            margin-top: 10px; /* Space between reactions and video */
+            position: relative;
         }
         
+        /* Adjust timeline spacing to move further from reactions */
         #timeline {
-            margin-top: 30px; /* Moved 10px further from the reactions */
+            margin-top: 40px; /* Increased gap between timeline and reactions */
             background-color: #444;
             height: 10px;
             border-radius: 5px;
