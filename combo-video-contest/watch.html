@@ -88,9 +88,9 @@
             z-index: 10;
         }
         
-        /* Adjust timeline spacing to maintain layout */
+        /* Adjust timeline spacing to prevent overlap */
         #timeline-reactions {
-            margin-top: 40px; /* Ensures proper spacing from the player */
+            margin-top: 70px; /* Ensure proper spacing below the video */
             position: relative; /* Prevents overlap issues */
         }
         
@@ -100,6 +100,7 @@
             height: 10px;
             border-radius: 5px;
         }
+
         .reaction-emoji {
             position: absolute;
             transform: translateX(-50%);
