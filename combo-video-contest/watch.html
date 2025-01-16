@@ -78,8 +78,8 @@
         /* Golden buzzer message */
         #buzzer-message {
             position: absolute;
+            top: 100px; /* Move the text down by 100px from the top of #player-container */
             left: 50%; 
-            margin-top: 250;
             transform: translateX(-50%);
             font-size: 1.5em;
             font-weight: bold;
@@ -88,7 +88,6 @@
             display: none; /* Hidden initially */
             z-index: 10; /* Keep it above other elements */
         }
-        
         /* Reactions section */
         #timeline-reactions {
             margin-top: 0; /* Align directly below the video */
