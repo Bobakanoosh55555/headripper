@@ -387,6 +387,24 @@
                 }, 5000);
             });
         }
+
+        function nukeGoldenBuzzers() {
+            const buzzerRef = database.ref('goldenBuzzers');
+            buzzerRef
+                .remove()
+                .then(() => {
+                    console.log('All golden buzzer presses have been nuked.');
+                })
+                .catch((error) => {
+                    console.error('Error nuking golden buzzer presses:', error);
+                });
+        }
+        
+        // Call the nuke function when the page loads
+        window.addEventListener('load', () => {
+            nukeGoldenBuzzers();
+        });
+
         document.getElementById('loadButton').addEventListener('click', loadPlayer);
     </script>
 
