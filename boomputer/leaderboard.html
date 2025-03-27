@@ -42,6 +42,9 @@
     </div>
 
     <script>
+        let runs = [];  // Declare runs globally
+        let obsoletedRuns = new Set();  // Track obsoleted runs globally
+
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
@@ -61,16 +64,16 @@
             }
         }
 
-        function processAndRenderData(runs) {
+        function processAndRenderData(runsData) {
             const latestBest = {};
-            const obsoletedRuns = new Set();
+            obsoletedRuns.clear(); // Reset the obsoleted runs
             let recordProgress = [];
             let personalBests = {};
 
-            runs.sort((a, b) => new Date(a.date) - new Date(b.date));
+            runsData.sort((a, b) => new Date(a.date) - new Date(b.date));
             let highestScore = 0;
 
-            runs.forEach(run => {
+            runsData.forEach(run => {
                 run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
                 if (!latestBest[run.player] || run.score > latestBest[run.player]) {
                     latestBest[run.player] = run.score;
@@ -88,6 +91,7 @@
                 personalBests[run.player].push({ date: run.date, score: run.score });
             });
 
+            runs = runsData;  // Save the fetched runs data
             renderLeaderboard(runs, obsoletedRuns);
             renderRecordProgressChart(recordProgress);
             renderPersonalBestChart(personalBests);
