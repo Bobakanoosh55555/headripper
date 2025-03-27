@@ -52,6 +52,9 @@
     .gray {
       color: gray;
     }
+    .toggle-container {
+      margin: 10px 0;
+    }
   </style>
 </head>
 <body>
@@ -90,11 +93,23 @@
   
   <!-- PB Progression Tab -->
   <div id="pbProgression" class="tabContent">
+    <div class="toggle-container">
+      <label>
+        <input type="checkbox" id="toggleSinglePB" checked onchange="toggleSinglePointChanged()" />
+        Show players with 1 run
+      </label>
+    </div>
     <canvas id="pbChart" width="800" height="400"></canvas>
   </div>
   
   <!-- All Runs Tab -->
   <div id="allRuns" class="tabContent">
+    <div class="toggle-container">
+      <label>
+        <input type="checkbox" id="toggleSingleAll" checked onchange="toggleSinglePointChanged()" />
+        Show players with 1 run
+      </label>
+    </div>
     <canvas id="allRunsChart" width="800" height="400"></canvas>
   </div>
   
@@ -117,6 +132,7 @@
     let pbChart = null;      // Chart instance for PB Progression
     let allRunsChart = null; // Chart instance for All Runs
     const playerColors = {}; // Map player to a consistent color
+    let showSingle = true;   // Global toggle for showing players with 1 run
 
     // Returns a random hex color
     function getRandomColor() {
@@ -299,18 +315,21 @@
             });
           }
         });
-        if (!playerColors[player]) {
-          playerColors[player] = getRandomColor();
+        // Only add this player's dataset if they have more than 1 point or if toggled to show single-point lines
+        if (!(progression.length === 1 && !showSingle)) {
+          if (!playerColors[player]) {
+            playerColors[player] = getRandomColor();
+          }
+          datasets.push({
+            label: player,
+            data: progression,
+            fill: false,
+            borderColor: playerColors[player],
+            tension: 0,
+            pointRadius: 5,
+            pointHoverRadius: 7
+          });
         }
-        datasets.push({
-          label: player,
-          data: progression,
-          fill: false,
-          borderColor: playerColors[player],
-          tension: 0,
-          pointRadius: 5,
-          pointHoverRadius: 7
-        });
       }
       
       if (pbChart) {
@@ -370,18 +389,21 @@
           y: parseInt(run.score, 10),
           run: run
         }));
-        if (!playerColors[player]) {
-          playerColors[player] = getRandomColor();
+        // Only add this player's dataset if they have more than 1 point or if toggled to show single-point lines
+        if (!(allData.length === 1 && !showSingle)) {
+          if (!playerColors[player]) {
+            playerColors[player] = getRandomColor();
+          }
+          datasets.push({
+            label: player,
+            data: allData,
+            fill: false,
+            borderColor: playerColors[player],
+            tension: 0,
+            pointRadius: 5,
+            pointHoverRadius: 7
+          });
         }
-        datasets.push({
-          label: player,
-          data: allData,
-          fill: false,
-          borderColor: playerColors[player],
-          tension: 0,
-          pointRadius: 5,
-          pointHoverRadius: 7
-        });
       }
       
       if (allRunsChart) {
@@ -420,6 +442,17 @@
           }
         });
       }
+    }
+    
+    // Toggle function for single data point lines
+    function toggleSinglePointChanged() {
+      const checkboxPB = document.getElementById("toggleSinglePB");
+      const checkboxAll = document.getElementById("toggleSingleAll");
+      showSingle = checkboxPB.checked;
+      // Sync both checkboxes
+      checkboxAll.checked = showSingle;
+      updatePBProgressionChart();
+      updateAllRunsChart();
     }
     
     fetchLeaderboardData();
