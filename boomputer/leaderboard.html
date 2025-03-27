@@ -230,12 +230,15 @@
               x: {
                 type: 'time',
                 time: {
-                  tooltipFormat: 'MM/dd/yy',
-                  unit: 'day'
+                  unit: 'year',
+                  displayFormats: {
+                    year: 'yyyy'
+                  },
+                  tooltipFormat: 'MM/dd/yy'
                 },
                 title: {
                   display: true,
-                  text: 'Date'
+                  text: 'Year'
                 }
               },
               y: {
@@ -248,12 +251,10 @@
             plugins: {
               tooltip: {
                 callbacks: {
-                  // Custom tooltip to show player, character, score, and date details
+                  // Custom tooltip: remove the date from the label; the title already shows the date.
                   label: function(context) {
                     const run = context.raw.run;
-                    const dateParts = run.timestamp.split("-");
-                    const formattedDate = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[0].slice(2);
-                    return `${run.player} | ${run.character} | ${run.score} | ${formattedDate}`;
+                    return `${run.player} | ${run.character} | ${run.score}`;
                   }
                 }
               }
