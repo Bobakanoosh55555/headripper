@@ -53,6 +53,7 @@
                 if (!latestBest[run.player] || run.score > latestBest[run.player]) {
                     latestBest[run.player] = run.score;
                 }
+                // Mark any run with a lower score as obsolete for the same player
                 if (run.score < latestBest[run.player]) {
                     obsoletedRuns.add(run);
                 }
