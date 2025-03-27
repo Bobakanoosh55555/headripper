@@ -172,10 +172,13 @@
     let showSinglePB = true;
     let showSingleAll = true;
 
-    // New bright color generator using HSL
-    function getBrightColor() {
-      const hue = Math.floor(Math.random() * 360);
-      return `hsl(${hue}, 100%, 60%)`;
+    // Use the golden ratio conjugate to generate distinct, bright colors.
+    let lastHue = Math.random();
+    function getDistinctColor() {
+      const goldenRatioConjugate = 0.618033988749895;
+      lastHue += goldenRatioConjugate;
+      lastHue %= 1;
+      return `hsl(${Math.floor(lastHue * 360)}, 100%, 60%)`;
     }
 
     function showTab(tabName) {
@@ -325,7 +328,7 @@
             },
             plugins: {
               legend: { 
-                labels: { color: "#ffffff" } 
+                labels: { color: "#ffffff" }
               },
               tooltip: {
                 callbacks: {
@@ -371,7 +374,7 @@
         });
         if (!(progression.length === 1 && !showSinglePB)) {
           if (!playerColors[player]) {
-            playerColors[player] = getBrightColor();
+            playerColors[player] = getDistinctColor();
           }
           datasets.push({
             label: player,
@@ -447,7 +450,7 @@
         }));
         if (!(allData.length === 1 && !showSingleAll)) {
           if (!playerColors[player]) {
-            playerColors[player] = getBrightColor();
+            playerColors[player] = getDistinctColor();
           }
           datasets.push({
             label: player,
