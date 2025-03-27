@@ -4,22 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leaderboard</title>
-  <!-- Chart.js removed since it's not used -->
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
     }
-    .tab {
-      display: inline-block;
-      padding: 10px;
-      cursor: pointer;
-    }
     table {
       margin: auto;
     }
-    th,
-    td {
+    th, td {
       padding: 8px 12px;
     }
     .hidden {
@@ -27,10 +20,6 @@
     }
     .gray {
       color: gray;
-    }
-    canvas {
-      max-width: 800px;
-      margin: auto;
     }
   </style>
 </head>
@@ -45,7 +34,9 @@
       <tr>
         <th>Rank</th>
         <th>Player</th>
+        <th>Character</th>
         <th>Score</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody id="leaderboard-body"></tbody>
@@ -53,7 +44,7 @@
 
   <script>
     let runs = [];      // Store all runs
-    let bestRuns = {};  // Best runs by player (only the best per player)
+    let bestRuns = {};  // Best run per player (redundancy based on player name)
 
     function toggleObsolete() {
       renderLeaderboard(runs);
@@ -75,6 +66,7 @@
       // Process each run: pad the score and determine the best run per player
       runsData.forEach(run => {
         run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
+        // Redundancy only based on player name regardless of character
         if (!bestRuns[run.player] || run.score > bestRuns[run.player].score) {
           bestRuns[run.player] = run;
         }
@@ -99,11 +91,18 @@
         const isObsoleted = !isBestRun;
         const rowClass = isObsoleted ? 'gray' : '';
         const rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
+
+        // Convert timestamp "YYYY-MM-DD" to "MM/DD/YY"
+        const dateParts = run.timestamp.split("-");
+        const formattedDate = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[0].slice(2);
+
         rowsHtml += `<tr class="${rowClass} ${rowHidden}">
-                      <td></td>
-                      <td>${run.player}</td>
-                      <td>${run.score}</td>
-                    </tr>`;
+                        <td></td>
+                        <td>${run.player}</td>
+                        <td>${run.character}</td>
+                        <td>${run.score}</td>
+                        <td>${formattedDate}</td>
+                      </tr>`;
       });
       tbody.innerHTML = rowsHtml;
       updateRanks();
@@ -114,7 +113,7 @@
       let rank = 1;
       rows.forEach(row => {
         if (!row.classList.contains('hidden')) {
-          row.cells[0].innerText = rank++;
+          row.cells[0].innerText = '#' + rank++;
         }
       });
     }
