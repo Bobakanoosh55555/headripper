@@ -95,7 +95,7 @@
   <div id="pbProgression" class="tabContent">
     <div class="toggle-container">
       <label>
-        <input type="checkbox" id="toggleSinglePB" checked onchange="toggleSinglePointChanged()" />
+        <input type="checkbox" id="toggleSinglePB" checked onchange="toggleSinglePointPB()" />
         Show players with 1 run
       </label>
     </div>
@@ -106,7 +106,7 @@
   <div id="allRuns" class="tabContent">
     <div class="toggle-container">
       <label>
-        <input type="checkbox" id="toggleSingleAll" checked onchange="toggleSinglePointChanged()" />
+        <input type="checkbox" id="toggleSingleAll" checked onchange="toggleSinglePointAll()" />
         Show players with 1 run
       </label>
     </div>
@@ -132,7 +132,8 @@
     let pbChart = null;      // Chart instance for PB Progression
     let allRunsChart = null; // Chart instance for All Runs
     const playerColors = {}; // Map player to a consistent color
-    let showSingle = true;   // Global toggle for showing players with 1 run
+    let showSinglePB = true; // Toggle for PB Progression chart
+    let showSingleAll = true; // Toggle for All Runs chart
 
     // Returns a random hex color
     function getRandomColor() {
@@ -316,7 +317,7 @@
           }
         });
         // Only add this player's dataset if they have more than 1 point or if toggled to show single-point lines
-        if (!(progression.length === 1 && !showSingle)) {
+        if (!(progression.length === 1 && !showSinglePB)) {
           if (!playerColors[player]) {
             playerColors[player] = getRandomColor();
           }
@@ -390,7 +391,7 @@
           run: run
         }));
         // Only add this player's dataset if they have more than 1 point or if toggled to show single-point lines
-        if (!(allData.length === 1 && !showSingle)) {
+        if (!(allData.length === 1 && !showSingleAll)) {
           if (!playerColors[player]) {
             playerColors[player] = getRandomColor();
           }
@@ -444,14 +445,15 @@
       }
     }
     
-    // Toggle function for single data point lines
-    function toggleSinglePointChanged() {
-      const checkboxPB = document.getElementById("toggleSinglePB");
-      const checkboxAll = document.getElementById("toggleSingleAll");
-      showSingle = checkboxPB.checked;
-      // Sync both checkboxes
-      checkboxAll.checked = showSingle;
+    // Toggle function for PB Progression chart
+    function toggleSinglePointPB() {
+      showSinglePB = document.getElementById("toggleSinglePB").checked;
       updatePBProgressionChart();
+    }
+    
+    // Toggle function for All Runs chart
+    function toggleSinglePointAll() {
+      showSingleAll = document.getElementById("toggleSingleAll").checked;
       updateAllRunsChart();
     }
     
