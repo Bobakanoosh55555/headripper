@@ -172,13 +172,12 @@
     let showSinglePB = true;
     let showSingleAll = true;
 
-    // New function to generate bright colors using HSL
+    // New bright color generator using HSL
     function getBrightColor() {
       const hue = Math.floor(Math.random() * 360);
       return `hsl(${hue}, 100%, 60%)`;
     }
 
-    // Switch tabs, create chart if needed
     function showTab(tabName) {
       const tabs = document.querySelectorAll(".tabContent");
       tabs.forEach(tab => tab.classList.remove("active"));
@@ -271,7 +270,7 @@
       });
     }
 
-    /* CHART FUNCTIONS */
+    // Chart functions:
 
     function updateRecordProgressionChart() {
       const runsByDate = runs.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
@@ -316,11 +315,18 @@
                   displayFormats: { year: 'yyyy' },
                   tooltipFormat: 'MM/dd/yy'
                 },
-                title: { display: true, text: 'Year' }
+                title: { display: true, text: 'Year', color: "#ffffff" },
+                ticks: { color: "#ffffff" }
               },
-              y: { title: { display: true, text: 'Score' } }
+              y: { 
+                title: { display: true, text: 'Score', color: "#ffffff" },
+                ticks: { color: "#ffffff" }
+              }
             },
             plugins: {
+              legend: { 
+                labels: { color: "#ffffff" } 
+              },
               tooltip: {
                 callbacks: {
                   label: (context) => {
@@ -395,12 +401,16 @@
                   displayFormats: { year: 'yyyy' },
                   tooltipFormat: 'MM/dd/yy'
                 },
-                title: { display: true, text: 'Year' }
+                title: { display: true, text: 'Year', color: "#ffffff" },
+                ticks: { color: "#ffffff" }
               },
-              y: { title: { display: true, text: 'Score' } }
+              y: { 
+                title: { display: true, text: 'Score', color: "#ffffff" },
+                ticks: { color: "#ffffff" }
+              }
             },
             plugins: {
-              legend: { display: true },
+              legend: { labels: { color: "#ffffff" } },
               tooltip: {
                 callbacks: {
                   label: (context) => {
@@ -467,12 +477,16 @@
                   displayFormats: { year: 'yyyy' },
                   tooltipFormat: 'MM/dd/yy'
                 },
-                title: { display: true, text: 'Year' }
+                title: { display: true, text: 'Year', color: "#ffffff" },
+                ticks: { color: "#ffffff" }
               },
-              y: { title: { display: true, text: 'Score' } }
+              y: { 
+                title: { display: true, text: 'Score', color: "#ffffff" },
+                ticks: { color: "#ffffff" }
+              }
             },
             plugins: {
-              legend: { display: true },
+              legend: { labels: { color: "#ffffff" } },
               tooltip: {
                 callbacks: {
                   label: (context) => {
