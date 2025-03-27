@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    /* Base styling similar to the music player page */
+    /* Base styling */
     body {
       font-family: 'Roboto', sans-serif;
       text-align: center;
@@ -18,7 +18,10 @@
       margin: 0;
       padding: 0;
     }
+    /* Force canvases to have a proper size */
     canvas {
+      width: 800px !important;
+      height: 400px !important;
       display: block;
       margin: 20px auto;
       background: #222;
@@ -44,17 +47,23 @@
       font-weight: bold;
       border-bottom: 1px solid #121212;
     }
+    /* Instead of display: none, we use visibility hidden for inactive tabs so they retain layout */
     .tabContent {
+      visibility: hidden;
+      position: absolute;
+      left: -9999px;
+      width: 800px;
+      min-height: 420px; /* Ensures container doesn't collapse */
+      background-color: #121212;
       border: 1px solid #555;
       padding: 10px;
-      display: none;
-      max-width: 800px;
-      margin: auto;
-      background-color: #121212;
       box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+      transition: visibility 0.2s ease;
     }
     .tabContent.active {
-      display: block;
+      visibility: visible;
+      position: static;
+      left: 0;
     }
     /* Table styling */
     table {
@@ -80,7 +89,7 @@
     .hidden {
       display: none;
     }
-    /* Checkbox and toggle container */
+    /* Checkbox toggle container */
     .toggle-container {
       margin: 10px 0;
     }
@@ -121,7 +130,7 @@
   
   <!-- Record Progression Tab -->
   <div id="recordProgression" class="tabContent">
-    <canvas id="recordChart" width="800" height="400"></canvas>
+    <canvas id="recordChart"></canvas>
   </div>
   
   <!-- PB Progression Tab -->
@@ -132,7 +141,7 @@
         Show players with 1 run
       </label>
     </div>
-    <canvas id="pbChart" width="800" height="400"></canvas>
+    <canvas id="pbChart"></canvas>
   </div>
   
   <!-- All Runs Tab -->
@@ -143,7 +152,7 @@
         Show players with 1 run
       </label>
     </div>
-    <canvas id="allRunsChart" width="800" height="400"></canvas>
+    <canvas id="allRunsChart"></canvas>
   </div>
   
   <script>
@@ -158,7 +167,7 @@
       tabButtons.forEach(button => button.classList.remove("active"));
       document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
       
-      // Use a short delay to ensure the canvas has rendered before resizing the chart
+      // Force update of charts after a short delay
       setTimeout(() => {
         if (tabName === 'recordProgression' && recordChart) {
           recordChart.resize();
@@ -182,7 +191,6 @@
     let showSinglePB = true; // Toggle for PB Progression chart
     let showSingleAll = true; // Toggle for All Runs chart
 
-    // Returns a random hex color
     function getRandomColor() {
       const letters = '0123456789ABCDEF';
       let color = '#';
@@ -207,20 +215,16 @@
     }
     
     function processAndRenderData(runsData) {
-      bestRuns = {}; // Reset best runs
-      
-      // Process each run: pad the score and determine the best run per player
+      bestRuns = {};
       runsData.forEach(run => {
-        run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
+        run.score = run.score.toString().padStart(8, '0');
         if (!bestRuns[run.player] || run.score > bestRuns[run.player].score) {
           bestRuns[run.player] = run;
         }
       });
       
-      // Sort runsData by score in descending order for leaderboard display
       runsData.sort((a, b) => parseInt(b.score, 10) - parseInt(a.score, 10));
       
-      // Store all runs and update charts and leaderboard
       runs = runsData;
       renderLeaderboard(runs);
       updateRecordProgressionChart();
@@ -239,7 +243,6 @@
         const rowClass = isObsoleted ? 'gray' : '';
         const rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
         
-        // Format timestamp "YYYY-MM-DD" to "MM/DD/YY"
         const dateParts = run.timestamp.split("-");
         const formattedDate = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[0].slice(2);
         
@@ -265,7 +268,6 @@
       });
     }
     
-    // Update the Record Progression chart (single line for overall progression)
     function updateRecordProgressionChart() {
       const runsByDate = runs.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
       let recordProgression = [];
@@ -331,7 +333,6 @@
       }
     }
     
-    // Update the PB Progression chart (only plotting each player's personal best progression)
     function updatePBProgressionChart() {
       const pbProgressions = {};
       runs.forEach(run => {
@@ -411,7 +412,6 @@
       }
     }
     
-    // Update the All Runs chart (plotting every run for each player)
     function updateAllRunsChart() {
       const allRunsByPlayer = {};
       runs.forEach(run => {
