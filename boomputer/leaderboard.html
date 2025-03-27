@@ -3,11 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leaderboard</title>
+  <title>Boba's Boomputer Leaderboard</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
+    }
+    /* Tab styles */
+    .tabs {
+      margin: 20px auto;
+      display: inline-block;
+    }
+    .tab {
+      display: inline-block;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      background-color: #f1f1f1;
+      margin-right: 2px;
+    }
+    .tab.active {
+      background-color: white;
+      font-weight: bold;
+    }
+    .tabContent {
+      border: 1px solid #ccc;
+      padding: 10px;
+      display: none;
+      max-width: 800px;
+      margin: auto;
+    }
+    .tabContent.active {
+      display: block;
     }
     table {
       margin: auto;
@@ -24,32 +52,63 @@
   </style>
 </head>
 <body>
-  <h1>Leaderboard</h1>
-  <label>
-    <input type="checkbox" id="toggleObsolete" onchange="toggleObsolete()" />
-    Show Obsoleted Runs
-  </label>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Player</th>
-        <th>Character</th>
-        <th>Score</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody id="leaderboard-body"></tbody>
-  </table>
-
+  <h1>Boba's Boomputer Leaderboard</h1>
+  <div class="tabs">
+    <span class="tab active" onclick="showTab('leaderboard')">Leaderboard</span>
+    <span class="tab" onclick="showTab('recordProgression')">Record Progression</span>
+    <span class="tab" onclick="showTab('pbProgression')">PB Progression</span>
+  </div>
+  
+  <!-- Leaderboard Tab -->
+  <div id="leaderboard" class="tabContent active">
+    <label>
+      <input type="checkbox" id="toggleObsolete" onchange="toggleObsolete()" />
+      Show Obsoleted Runs
+    </label>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Character</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-body"></tbody>
+    </table>
+  </div>
+  
+  <!-- Record Progression Tab (Placeholder) -->
+  <div id="recordProgression" class="tabContent">
+    <p>Record Progression content goes here.</p>
+  </div>
+  
+  <!-- PB Progression Tab (Placeholder) -->
+  <div id="pbProgression" class="tabContent">
+    <p>PB Progression content goes here.</p>
+  </div>
+  
   <script>
+    // Function to switch tabs
+    function showTab(tabName) {
+      const tabs = document.querySelectorAll(".tabContent");
+      tabs.forEach(tab => tab.classList.remove("active"));
+      document.getElementById(tabName).classList.add("active");
+      
+      // Update tab button active state
+      const tabButtons = document.querySelectorAll(".tab");
+      tabButtons.forEach(button => button.classList.remove("active"));
+      document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
+    }
+    
     let runs = [];      // Store all runs
     let bestRuns = {};  // Best run per player (redundancy based on player name)
-
+    
     function toggleObsolete() {
       renderLeaderboard(runs);
     }
-
+    
     async function fetchLeaderboardData() {
       try {
         const response = await fetch('leaderboard.json');
@@ -59,55 +118,54 @@
         console.error("Error loading leaderboard data:", error);
       }
     }
-
+    
     function processAndRenderData(runsData) {
       bestRuns = {}; // Reset best runs
-
       // Process each run: pad the score and determine the best run per player
       runsData.forEach(run => {
         run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
-        // Redundancy only based on player name regardless of character
+        // Redundancy based solely on player name
         if (!bestRuns[run.player] || run.score > bestRuns[run.player].score) {
           bestRuns[run.player] = run;
         }
       });
-
+      
       // Sort runsData by score in descending order
       runsData.sort((a, b) => parseInt(b.score, 10) - parseInt(a.score, 10));
-
-      // Store all runs for display purposes and render the leaderboard
+      
+      // Store all runs and render the leaderboard
       runs = runsData;
       renderLeaderboard(runs);
     }
-
+    
     function renderLeaderboard(runs) {
       const tbody = document.getElementById("leaderboard-body");
       let rowsHtml = "";
       const showObsolete = document.getElementById("toggleObsolete").checked;
-
-      // Build rows HTML for each run
+      
+      // Build rows for each run
       runs.forEach(run => {
         const isBestRun = bestRuns[run.player].score === run.score;
         const isObsoleted = !isBestRun;
         const rowClass = isObsoleted ? 'gray' : '';
         const rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
-
-        // Convert timestamp "YYYY-MM-DD" to "MM/DD/YY"
+        
+        // Format timestamp "YYYY-MM-DD" to "MM/DD/YY"
         const dateParts = run.timestamp.split("-");
         const formattedDate = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[0].slice(2);
-
+        
         rowsHtml += `<tr class="${rowClass} ${rowHidden}">
-                        <td></td>
-                        <td>${run.player}</td>
-                        <td>${run.character}</td>
-                        <td>${run.score}</td>
-                        <td>${formattedDate}</td>
-                      </tr>`;
+                       <td></td>
+                       <td>${run.player}</td>
+                       <td>${run.character}</td>
+                       <td>${run.score}</td>
+                       <td>${formattedDate}</td>
+                     </tr>`;
       });
       tbody.innerHTML = rowsHtml;
       updateRanks();
     }
-
+    
     function updateRanks() {
       const rows = document.querySelectorAll("#leaderboard-body tr");
       let rank = 1;
@@ -117,7 +175,7 @@
         }
       });
     }
-
+    
     fetchLeaderboardData();
   </script>
 </body>
