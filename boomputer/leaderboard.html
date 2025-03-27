@@ -158,17 +158,19 @@
       tabButtons.forEach(button => button.classList.remove("active"));
       document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
       
-      // Force update of charts in the active tab
-      if (tabName === 'recordProgression' && recordChart) {
-        recordChart.resize();
-        recordChart.update();
-      } else if (tabName === 'pbProgression' && pbChart) {
-        pbChart.resize();
-        pbChart.update();
-      } else if (tabName === 'allRuns' && allRunsChart) {
-        allRunsChart.resize();
-        allRunsChart.update();
-      }
+      // Use a short delay to ensure the canvas has rendered before resizing the chart
+      setTimeout(() => {
+        if (tabName === 'recordProgression' && recordChart) {
+          recordChart.resize();
+          recordChart.update();
+        } else if (tabName === 'pbProgression' && pbChart) {
+          pbChart.resize();
+          pbChart.update();
+        } else if (tabName === 'allRuns' && allRunsChart) {
+          allRunsChart.resize();
+          allRunsChart.update();
+        }
+      }, 200);
     }
     
     let runs = [];           // All runs loaded from JSON
