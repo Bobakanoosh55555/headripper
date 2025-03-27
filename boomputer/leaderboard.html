@@ -37,7 +37,6 @@
       font-weight: bold;
       border-bottom: 1px solid #121212;
     }
-    /* Tab content hidden by default */
     .tabContent {
       display: none;
       max-width: 800px;
@@ -80,12 +79,21 @@
       font-size: 14px;
       cursor: pointer;
     }
-    /* Basic styling for canvases; remove forced width/height */
+    /* 
+      A fixed-size container that the chart will fill.
+      Chart.js sees the container's size and resizes accordingly.
+    */
+    .chart-container {
+      width: 800px;
+      height: 400px;
+      margin: 20px auto;
+      position: relative;
+    }
     canvas {
       display: block;
-      margin: 20px auto;
-      background: #222;
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+      /* Let Chart.js fill the container */
+      width: 100% !important;
+      height: 100% !important;
     }
   </style>
 </head>
@@ -120,7 +128,9 @@
   
   <!-- Record Progression Tab -->
   <div id="recordProgression" class="tabContent">
-    <canvas id="recordChart"></canvas>
+    <div class="chart-container">
+      <canvas id="recordChart"></canvas>
+    </div>
   </div>
   
   <!-- PB Progression Tab -->
@@ -131,7 +141,9 @@
         Show players with 1 run
       </label>
     </div>
-    <canvas id="pbChart"></canvas>
+    <div class="chart-container">
+      <canvas id="pbChart"></canvas>
+    </div>
   </div>
   
   <!-- All Runs Tab -->
@@ -142,14 +154,16 @@
         Show players with 1 run
       </label>
     </div>
-    <canvas id="allRunsChart"></canvas>
+    <div class="chart-container">
+      <canvas id="allRunsChart"></canvas>
+    </div>
   </div>
   
   <script>
     let runs = [];
     let bestRuns = {};
 
-    // Keep track of whether each chart is initialized
+    // Track whether each chart is initialized
     let recordChartInitialized = false;
     let pbChartInitialized = false;
     let allRunsChartInitialized = false;
@@ -162,7 +176,7 @@
     let showSinglePB = true;
     let showSingleAll = true;
 
-    // Switch tabs, create chart if not yet initialized
+    // Switch tabs, initialize chart if needed
     function showTab(tabName) {
       const tabs = document.querySelectorAll(".tabContent");
       tabs.forEach(tab => tab.classList.remove("active"));
@@ -173,7 +187,7 @@
       tabButtons.forEach(button => button.classList.remove("active"));
       document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
       
-      // Initialize or update the chart if needed
+      // Initialize or update the chart in that tab
       if (tabName === 'recordProgression' && !recordChartInitialized) {
         updateRecordProgressionChart();
         recordChartInitialized = true;
@@ -305,7 +319,7 @@
           },
           options: {
             responsive: true,
-            // maintainAspectRatio: true is default
+            maintainAspectRatio: true, // chart won't stretch
             scales: {
               x: {
                 type: 'time',
@@ -385,6 +399,7 @@
           data: { datasets },
           options: {
             responsive: true,
+            maintainAspectRatio: true,
             scales: {
               x: {
                 type: 'time',
@@ -457,6 +472,7 @@
           data: { datasets },
           options: {
             responsive: true,
+            maintainAspectRatio: true,
             scales: {
               x: {
                 type: 'time',
@@ -504,6 +520,7 @@
       renderLeaderboard(runs);
     }
 
+    // Start
     fetchLeaderboardData();
   </script>
 </body>
