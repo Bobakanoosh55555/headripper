@@ -79,10 +79,6 @@
       font-size: 14px;
       cursor: pointer;
     }
-    /* 
-      A fixed-size container that the chart will fill.
-      Chart.js sees the container's size and resizes accordingly.
-    */
     .chart-container {
       width: 800px;
       height: 400px;
@@ -91,9 +87,10 @@
     }
     canvas {
       display: block;
-      /* Let Chart.js fill the container */
       width: 100% !important;
       height: 100% !important;
+      background: #222;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
     }
   </style>
 </head>
@@ -163,7 +160,6 @@
     let runs = [];
     let bestRuns = {};
 
-    // Track whether each chart is initialized
     let recordChartInitialized = false;
     let pbChartInitialized = false;
     let allRunsChartInitialized = false;
@@ -176,18 +172,22 @@
     let showSinglePB = true;
     let showSingleAll = true;
 
-    // Switch tabs, initialize chart if needed
+    // New function to generate bright colors using HSL
+    function getBrightColor() {
+      const hue = Math.floor(Math.random() * 360);
+      return `hsl(${hue}, 100%, 60%)`;
+    }
+
+    // Switch tabs, create chart if needed
     function showTab(tabName) {
       const tabs = document.querySelectorAll(".tabContent");
       tabs.forEach(tab => tab.classList.remove("active"));
       document.getElementById(tabName).classList.add("active");
       
-      // Update tab button active state
       const tabButtons = document.querySelectorAll(".tab");
       tabButtons.forEach(button => button.classList.remove("active"));
       document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
       
-      // Initialize or update the chart in that tab
       if (tabName === 'recordProgression' && !recordChartInitialized) {
         updateRecordProgressionChart();
         recordChartInitialized = true;
@@ -231,8 +231,6 @@
       
       runsData.sort((a, b) => parseInt(b.score, 10) - parseInt(a.score, 10));
       runs = runsData;
-
-      // Render the main leaderboard
       renderLeaderboard(runs);
     }
     
@@ -273,18 +271,8 @@
       });
     }
 
-    function getRandomColor() {
-      const letters = '0123456789ABCDEF';
-      let color = '#';
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    }
+    /* CHART FUNCTIONS */
 
-    /* CHART CREATION/UPDATE FUNCTIONS */
-
-    // 1) Record Progression
     function updateRecordProgressionChart() {
       const runsByDate = runs.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
       let recordProgression = [];
@@ -319,7 +307,7 @@
           },
           options: {
             responsive: true,
-            maintainAspectRatio: true, // chart won't stretch
+            maintainAspectRatio: true,
             scales: {
               x: {
                 type: 'time',
@@ -350,7 +338,6 @@
       }
     }
 
-    // 2) PB Progression
     function updatePBProgressionChart() {
       const pbProgressions = {};
       runs.forEach(run => {
@@ -378,7 +365,7 @@
         });
         if (!(progression.length === 1 && !showSinglePB)) {
           if (!playerColors[player]) {
-            playerColors[player] = getRandomColor();
+            playerColors[player] = getBrightColor();
           }
           datasets.push({
             label: player,
@@ -431,7 +418,6 @@
       }
     }
 
-    // 3) All Runs
     function updateAllRunsChart() {
       const allRunsByPlayer = {};
       runs.forEach(run => {
@@ -451,7 +437,7 @@
         }));
         if (!(allData.length === 1 && !showSingleAll)) {
           if (!playerColors[player]) {
-            playerColors[player] = getRandomColor();
+            playerColors[player] = getBrightColor();
           }
           datasets.push({
             label: player,
@@ -504,13 +490,11 @@
       }
     }
 
-    // Toggle single-run lines for PB
     function toggleSinglePointPB() {
       showSinglePB = document.getElementById("toggleSinglePB").checked;
       if (pbChartInitialized) updatePBProgressionChart();
     }
 
-    // Toggle single-run lines for All Runs
     function toggleSinglePointAll() {
       showSingleAll = document.getElementById("toggleSingleAll").checked;
       if (allRunsChartInitialized) updateAllRunsChart();
@@ -520,7 +504,6 @@
       renderLeaderboard(runs);
     }
 
-    // Start
     fetchLeaderboardData();
   </script>
 </body>
