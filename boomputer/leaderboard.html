@@ -26,11 +26,11 @@
     </table>
 
     <script>
-        let runs = [];  // Declare runs globally
-        let obsoletedRuns = new Set();  // Track obsoleted runs globally
+        let runs = [];  // Store all runs
+        let bestRuns = {}; // Best runs by player (only the best per player)
 
         function toggleObsolete() {
-            renderLeaderboard(runs, obsoletedRuns);
+            renderLeaderboard(runs);
         }
 
         async function fetchLeaderboardData() {
@@ -44,33 +44,35 @@
         }
 
         function processAndRenderData(runsData) {
-            const latestBest = {}; // Store best runs per player (ignoring character)
-            obsoletedRuns.clear(); // Reset the obsoleted runs
+            bestRuns = {}; // Reset best runs
 
+            // Sort runs by score in descending order
             runsData.forEach(run => {
                 run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
 
-                // Only keep the best run for each player (ignore character)
-                if (!latestBest[run.player] || run.score > latestBest[run.player].score) {
-                    latestBest[run.player] = run; // Store the best run for that player
+                // Determine the best run per player
+                if (!bestRuns[run.player] || run.score > bestRuns[run.player].score) {
+                    bestRuns[run.player] = run; // Store the best run for that player
                 }
             });
 
-            runs = Object.values(latestBest);  // Only keep the best runs for all players
-            runs.sort((a, b) => b.score.localeCompare(a.score));  // Sort by score
-            renderLeaderboard(runs, obsoletedRuns);
+            // Store all runs for display purposes
+            runs = runsData;
+            renderLeaderboard(runs);
         }
 
-        function renderLeaderboard(runs, obsoletedRuns) {
+        function renderLeaderboard(runs) {
             let tbody = document.getElementById("leaderboard-body");
             tbody.innerHTML = "";
 
             const showObsolete = document.getElementById("toggleObsolete").checked;  // Get checkbox state
 
+            // Iterate through all runs to display them
             runs.forEach(run => {
-                let isObsoleted = obsoletedRuns.has(run);
-                let rowClass = isObsoleted ? 'gray' : '';
-                let rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
+                const isBestRun = bestRuns[run.player].score === run.score;
+                const isObsoleted = !isBestRun; // If it's not the best, it's considered obsolete
+                const rowClass = isObsoleted ? 'gray' : '';
+                const rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
 
                 let row = `<tr class="${rowClass} ${rowHidden}">
                             <td></td><td>${run.player}</td><td>${run.score}</td></tr>`;
