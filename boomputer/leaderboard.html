@@ -60,20 +60,32 @@
         function processAndRenderData(runs) {
             const latestBest = {};
             const obsoletedRuns = new Set();
+            let recordProgress = [];
+            let personalBests = {};
+
+            runs.sort((a, b) => new Date(a.date) - new Date(b.date));
+            let highestScore = 0;
 
             runs.forEach(run => {
                 if (!latestBest[run.player] || run.score > latestBest[run.player]) {
                     latestBest[run.player] = run.score;
                 }
-            });
-
-            runs.forEach(run => {
                 if (run.score < latestBest[run.player]) {
                     obsoletedRuns.add(run);
                 }
+                if (run.score > highestScore) {
+                    highestScore = run.score;
+                    recordProgress.push({ date: run.date, score: run.score });
+                }
+                if (!personalBests[run.player]) {
+                    personalBests[run.player] = [];
+                }
+                personalBests[run.player].push({ date: run.date, score: run.score });
             });
 
             renderLeaderboard(runs, obsoletedRuns);
+            renderRecordProgressChart(recordProgress);
+            renderPersonalBestChart(personalBests);
         }
 
         function renderLeaderboard(runs, obsoletedRuns) {
@@ -94,6 +106,45 @@
                     row.cells[0].innerText = rank++;
                 }
             });
+        }
+
+        function renderRecordProgressChart(recordProgress) {
+            new Chart(document.getElementById("recordChart"), {
+                type: 'line',
+                data: {
+                    labels: recordProgress.map(r => r.date),
+                    datasets: [{
+                        label: "Record Progression",
+                        data: recordProgress.map(r => r.score),
+                        borderColor: "blue",
+                        fill: false
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
+
+        function renderPersonalBestChart(personalBests) {
+            let datasets = Object.keys(personalBests).map(player => ({
+                label: player,
+                data: personalBests[player].map(r => ({ x: r.date, y: r.score })),
+                borderColor: getRandomColor(),
+                fill: false
+            }));
+            
+            new Chart(document.getElementById("personalBestChart"), {
+                type: 'line',
+                data: { datasets },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: true } },
+                    scales: { x: { type: 'time', time: { unit: 'month' } } }
+                }
+            });
+        }
+
+        function getRandomColor() {
+            return `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`;
         }
 
         document.getElementById("toggleObsolete").addEventListener("change", function() {
