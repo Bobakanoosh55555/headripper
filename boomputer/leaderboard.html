@@ -87,9 +87,9 @@
     <canvas id="recordChart" width="800" height="400"></canvas>
   </div>
   
-  <!-- PB Progression Tab (Placeholder) -->
+  <!-- PB Progression Tab -->
   <div id="pbProgression" class="tabContent">
-    <p>PB Progression content goes here.</p>
+    <canvas id="pbChart" width="800" height="400"></canvas>
   </div>
   
   <script>
@@ -105,9 +105,21 @@
       document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
     }
     
-    let runs = [];      // Store all runs from JSON
-    let bestRuns = {};  // Best run per player (redundancy based on player name)
+    let runs = [];           // All runs loaded from JSON
+    let bestRuns = {};       // Best run per player (for leaderboard redundancy)
     let recordChart = null;  // Chart instance for Record Progression
+    let pbChart = null;      // Chart instance for PB Progression
+    const playerColors = {}; // Map player to a consistent color
+
+    // Returns a random hex color
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
     
     function toggleObsolete() {
       renderLeaderboard(runs);
@@ -129,7 +141,7 @@
       // Process each run: pad the score and determine the best run per player
       runsData.forEach(run => {
         run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
-        // Redundancy based solely on player name
+        // Use only the player name to check redundancy
         if (!bestRuns[run.player] || run.score > bestRuns[run.player].score) {
           bestRuns[run.player] = run;
         }
@@ -138,10 +150,11 @@
       // Sort runsData by score in descending order for leaderboard display
       runsData.sort((a, b) => parseInt(b.score, 10) - parseInt(a.score, 10));
       
-      // Store all runs and render the leaderboard
+      // Store all runs and update both charts and leaderboard
       runs = runsData;
       renderLeaderboard(runs);
       updateRecordProgressionChart();
+      updatePBProgressionChart();
     }
     
     function renderLeaderboard(runs) {
@@ -149,7 +162,6 @@
       let rowsHtml = "";
       const showObsolete = document.getElementById("toggleObsolete").checked;
       
-      // Build rows for each run
       runs.forEach(run => {
         const isBestRun = bestRuns[run.player].score === run.score;
         const isObsoleted = !isBestRun;
@@ -182,12 +194,12 @@
       });
     }
     
-    // Create or update the Record Progression chart
+    // Update the Record Progression chart (single line for overall progression)
     function updateRecordProgressionChart() {
-      // For record progression, sort runs by date (ascending)
+      // Sort runs by date (ascending)
       const runsByDate = runs.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
       
-      // Compute record progression (only add a point when a new record is set)
+      // Compute overall record progression (new point when a new record is set)
       let recordProgression = [];
       let currentRecord = 0;
       runsByDate.forEach(run => {
@@ -198,14 +210,12 @@
         }
       });
       
-      // Map data for Chart.js: x is date, y is score. Attach full run info for tooltips.
       const chartData = recordProgression.map(run => ({
         x: new Date(run.timestamp),
         y: parseInt(run.score, 10),
         run: run
       }));
       
-      // If the chart already exists, update its data; otherwise, create a new chart
       if (recordChart) {
         recordChart.data.datasets[0].data = chartData;
         recordChart.update();
@@ -231,27 +241,100 @@
                 type: 'time',
                 time: {
                   unit: 'year',
-                  displayFormats: {
-                    year: 'yyyy'
-                  },
+                  displayFormats: { year: 'yyyy' },
                   tooltipFormat: 'MM/dd/yy'
                 },
-                title: {
-                  display: true,
-                  text: 'Year'
-                }
+                title: { display: true, text: 'Year' }
               },
-              y: {
-                title: {
-                  display: true,
-                  text: 'Score'
-                }
-              }
+              y: { title: { display: true, text: 'Score' } }
             },
             plugins: {
               tooltip: {
                 callbacks: {
-                  // Custom tooltip: remove the date from the label; the title already shows the date.
+                  label: function(context) {
+                    const run = context.raw.run;
+                    return `${run.player} | ${run.character} | ${run.score}`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+    
+    // Update the PB Progression chart (multiple lines: one per player)
+    function updatePBProgressionChart() {
+      // Group runs by player
+      const pbProgressions = {};
+      runs.forEach(run => {
+        if (!pbProgressions[run.player]) {
+          pbProgressions[run.player] = [];
+        }
+        pbProgressions[run.player].push(run);
+      });
+      
+      // For each player, sort their runs by date and compute progression (only add a point when PB improves)
+      const datasets = [];
+      for (let player in pbProgressions) {
+        const playerRuns = pbProgressions[player].slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+        const progression = [];
+        let currentPB = 0;
+        playerRuns.forEach(run => {
+          let score = parseInt(run.score, 10);
+          if (score > currentPB) {
+            currentPB = score;
+            progression.push({
+              x: new Date(run.timestamp),
+              y: score,
+              run: run
+            });
+          }
+        });
+        // Ensure a consistent color for each player
+        if (!playerColors[player]) {
+          playerColors[player] = getRandomColor();
+        }
+        datasets.push({
+          label: player,
+          data: progression,
+          fill: false,
+          borderColor: playerColors[player],
+          tension: 0,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        });
+      }
+      
+      if (pbChart) {
+        pbChart.data.datasets = datasets;
+        pbChart.update();
+      } else {
+        const ctx = document.getElementById('pbChart').getContext('2d');
+        pbChart = new Chart(ctx, {
+          type: 'line',
+          data: { datasets: datasets },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                type: 'time',
+                time: {
+                  unit: 'year',
+                  displayFormats: { year: 'yyyy' },
+                  tooltipFormat: 'MM/dd/yy'
+                },
+                title: { display: true, text: 'Year' }
+              },
+              y: { title: { display: true, text: 'Score' } }
+            },
+            plugins: {
+              legend: {
+                display: true,
+                // Clicking a legend item toggles the dataset visibility.
+              },
+              tooltip: {
+                callbacks: {
                   label: function(context) {
                     const run = context.raw.run;
                     return `${run.player} | ${run.character} | ${run.score}`;
