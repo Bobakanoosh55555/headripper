@@ -147,7 +147,7 @@
   </div>
   
   <script>
-    // Function to switch tabs
+    // Function to switch tabs and force chart updates on visible canvases
     function showTab(tabName) {
       const tabs = document.querySelectorAll(".tabContent");
       tabs.forEach(tab => tab.classList.remove("active"));
@@ -157,6 +157,18 @@
       const tabButtons = document.querySelectorAll(".tab");
       tabButtons.forEach(button => button.classList.remove("active"));
       document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
+      
+      // Force update of charts in the active tab
+      if (tabName === 'recordProgression' && recordChart) {
+        recordChart.resize();
+        recordChart.update();
+      } else if (tabName === 'pbProgression' && pbChart) {
+        pbChart.resize();
+        pbChart.update();
+      } else if (tabName === 'allRuns' && allRunsChart) {
+        allRunsChart.resize();
+        allRunsChart.update();
+      }
     }
     
     let runs = [];           // All runs loaded from JSON
