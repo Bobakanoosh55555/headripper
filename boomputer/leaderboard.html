@@ -1,97 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        .tab { display: inline-block; padding: 10px; cursor: pointer; }
-        table { margin:auto; }
-        th, td { padding: 8px 12px; }
-        .hidden { display: none; }
-        .gray { color: gray; }
-        canvas { max-width: 800px; margin: auto; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard</title>
+  <!-- Chart.js removed since it's not used -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .tab {
+      display: inline-block;
+      padding: 10px;
+      cursor: pointer;
+    }
+    table {
+      margin: auto;
+    }
+    th,
+    td {
+      padding: 8px 12px;
+    }
+    .hidden {
+      display: none;
+    }
+    .gray {
+      color: gray;
+    }
+    canvas {
+      max-width: 800px;
+      margin: auto;
+    }
+  </style>
 </head>
 <body>
-    <h1>Leaderboard</h1>
-    <label><input type="checkbox" id="toggleObsolete" checked onchange="toggleObsolete()"> Show Obsoleted Runs</label>
-    <table border="1">
-        <thead>
-            <tr><th>Rank</th><th>Player</th><th>Score</th></tr>
-        </thead>
-        <tbody id="leaderboard-body"></tbody>
-    </table>
+  <h1>Leaderboard</h1>
+  <label>
+    <input type="checkbox" id="toggleObsolete" checked onchange="toggleObsolete()" />
+    Show Obsoleted Runs
+  </label>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Player</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody id="leaderboard-body"></tbody>
+  </table>
 
-    <script>
-        let runs = [];  // Store all runs
-        let bestRuns = {}; // Best runs by player (only the best per player)
+  <script>
+    let runs = [];      // Store all runs
+    let bestRuns = {};  // Best runs by player (only the best per player)
 
-        function toggleObsolete() {
-            renderLeaderboard(runs);
+    function toggleObsolete() {
+      renderLeaderboard(runs);
+    }
+
+    async function fetchLeaderboardData() {
+      try {
+        const response = await fetch('leaderboard.json');
+        const data = await response.json();
+        processAndRenderData(data.runs);
+      } catch (error) {
+        console.error("Error loading leaderboard data:", error);
+      }
+    }
+
+    function processAndRenderData(runsData) {
+      bestRuns = {}; // Reset best runs
+
+      // Process each run: pad the score and determine the best run per player
+      runsData.forEach(run => {
+        run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
+        if (!bestRuns[run.player] || run.score > bestRuns[run.player].score) {
+          bestRuns[run.player] = run;
         }
+      });
 
-        async function fetchLeaderboardData() {
-            try {
-                const response = await fetch('leaderboard.json');
-                const data = await response.json();
-                processAndRenderData(data.runs);
-            } catch (error) {
-                console.error("Error loading leaderboard data:", error);
-            }
+      // Sort runsData by score in descending order
+      runsData.sort((a, b) => parseInt(b.score, 10) - parseInt(a.score, 10));
+
+      // Store all runs for display purposes and render the leaderboard
+      runs = runsData;
+      renderLeaderboard(runs);
+    }
+
+    function renderLeaderboard(runs) {
+      const tbody = document.getElementById("leaderboard-body");
+      let rowsHtml = "";
+      const showObsolete = document.getElementById("toggleObsolete").checked;
+
+      // Build rows HTML for each run
+      runs.forEach(run => {
+        const isBestRun = bestRuns[run.player].score === run.score;
+        const isObsoleted = !isBestRun;
+        const rowClass = isObsoleted ? 'gray' : '';
+        const rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
+        rowsHtml += `<tr class="${rowClass} ${rowHidden}">
+                      <td></td>
+                      <td>${run.player}</td>
+                      <td>${run.score}</td>
+                    </tr>`;
+      });
+      tbody.innerHTML = rowsHtml;
+      updateRanks();
+    }
+
+    function updateRanks() {
+      const rows = document.querySelectorAll("#leaderboard-body tr");
+      let rank = 1;
+      rows.forEach(row => {
+        if (!row.classList.contains('hidden')) {
+          row.cells[0].innerText = rank++;
         }
+      });
+    }
 
-        function processAndRenderData(runsData) {
-            bestRuns = {}; // Reset best runs
-
-            // Sort runs by score in descending order
-            runsData.forEach(run => {
-                run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
-
-                // Determine the best run per player
-                if (!bestRuns[run.player] || run.score > bestRuns[run.player].score) {
-                    bestRuns[run.player] = run; // Store the best run for that player
-                }
-            });
-
-            // Store all runs for display purposes
-            runs = runsData;
-            renderLeaderboard(runs);
-        }
-
-        function renderLeaderboard(runs) {
-            let tbody = document.getElementById("leaderboard-body");
-            tbody.innerHTML = "";
-
-            const showObsolete = document.getElementById("toggleObsolete").checked;  // Get checkbox state
-
-            // Iterate through all runs to display them
-            runs.forEach(run => {
-                const isBestRun = bestRuns[run.player].score === run.score;
-                const isObsoleted = !isBestRun; // If it's not the best, it's considered obsolete
-                const rowClass = isObsoleted ? 'gray' : '';
-                const rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
-
-                let row = `<tr class="${rowClass} ${rowHidden}">
-                            <td></td><td>${run.player}</td><td>${run.score}</td></tr>`;
-                tbody.innerHTML += row;
-            });
-            updateRanks();
-        }
-
-        function updateRanks() {
-            let rows = document.querySelectorAll("#leaderboard-body tr");
-            let rank = 1;
-            rows.forEach(row => {
-                if (!row.classList.contains('hidden')) {
-                    row.cells[0].innerText = rank++;
-                }
-            });
-        }
-
-        fetchLeaderboardData();
-    </script>
+    fetchLeaderboardData();
+  </script>
 </body>
 </html>
