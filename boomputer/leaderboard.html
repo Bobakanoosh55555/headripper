@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .tab { display: inline-block; padding: 10px; cursor: pointer; }
+        .tab-content { display: none; }
+        .active { display: block; }
+        .hidden { display: none; }
+        canvas { max-width: 800px; margin: auto; }
+    </style>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <div>
+        <span class="tab" onclick="showTab('leaderboard')">Leaderboard</span>
+        <span class="tab" onclick="showTab('record-progress')">Record Progress</span>
+        <span class="tab" onclick="showTab('personal-best')">Personal Bests</span>
+    </div>
+    
+    <div id="leaderboard" class="tab-content active">
+        <table border="1" style="margin:auto;">
+            <thead>
+                <tr><th>Rank</th><th>Player</th><th>Score</th></tr>
+            </thead>
+            <tbody id="leaderboard-body"></tbody>
+        </table>
+    </div>
+    
+    <div id="record-progress" class="tab-content">
+        <canvas id="recordChart"></canvas>
+    </div>
+    
+    <div id="personal-best" class="tab-content">
+        <canvas id="personalBestChart"></canvas>
+    </div>
 
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        async function fetchLeaderboardData() {
+            try {
+                const response = await fetch('leaderboard.json');
+                const data = await response.json();
+                processAndRenderData(data.runs);
+            } catch (error) {
+                console.error("Error loading leaderboard data:", error);
+            }
+        }
+
+        function processAndRenderData(runs) {
+            const playerBest = {};
+            const recordProgress = [];
+            const personalBestProgress = {};
+            let highestScore = 0;
+            
+            runs.forEach(run => {
+                const { player, score, timestamp } = run;
+                
+                // Update personal best
+                if (!playerBest[player] || score > playerBest[player]) {
+                    playerBest[player] = score;
+                }
+                
+                // Track record progression
+                if (score > highestScore) {
+                    highestScore = score;
+                    recordProgress.push({ timestamp, score });
+                }
+                
+                // Track personal best progression
+                if (!personalBestProgress[player]) {
+                    personalBestProgress[player] = [];
+                }
+                personalBestProgress[player].push({ timestamp, score: playerBest[player] });
+            });
+            
+            // Sort and rank players
+            const leaderboard = Object.entries(playerBest)
+                .map(([player, score]) => ({ player, score }))
+                .sort((a, b) => b.score - a.score)
+                .map((entry, index) => ({ rank: index + 1, ...entry }));
+
+            renderLeaderboard(leaderboard);
+            renderCharts(recordProgress, personalBestProgress);
+        }
+
+        function renderLeaderboard(leaderboardData) {
+            let tbody = document.getElementById("leaderboard-body");
+            tbody.innerHTML = "";
+            leaderboardData.forEach(entry => {
+                let row = `<tr><td>${entry.rank}</td><td>${entry.player}</td><td>${entry.score}</td></tr>`;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function renderCharts(recordProgress, personalBestProgress) {
+            const recordData = {
+                labels: recordProgress.map(d => d.timestamp),
+                datasets: [{ label: "Record Progress", data: recordProgress.map(d => d.score), borderColor: "red", fill: false }]
+            };
+            
+            const personalBestData = {
+                labels: Object.values(personalBestProgress)[0]?.map(d => d.timestamp) || [],
+                datasets: Object.entries(personalBestProgress).map(([player, data]) => ({
+                    label: player,
+                    data: data.map(d => d.score),
+                    borderColor: getRandomColor(),
+                    fill: false
+                }))
+            };
+            
+            new Chart(document.getElementById("recordChart"), { type: 'line', data: recordData });
+            new Chart(document.getElementById("personalBestChart"), { type: 'line', data: personalBestData });
+        }
+        
+        function getRandomColor() {
+            return `hsl(${Math.random() * 360}, 100%, 50%)`;
+        }
+        
+        fetchLeaderboardData();
+    </script>
+</body>
+</html>
