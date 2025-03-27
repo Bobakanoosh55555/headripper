@@ -20,7 +20,7 @@
     <label><input type="checkbox" id="toggleObsolete" checked onchange="toggleObsolete()"> Show Obsoleted Runs</label>
     <table border="1">
         <thead>
-            <tr><th>Rank</th><th>Player</th><th>Character</th><th>Score</th></tr>
+            <tr><th>Rank</th><th>Player</th><th>Score</th></tr>
         </thead>
         <tbody id="leaderboard-body"></tbody>
     </table>
@@ -44,22 +44,20 @@
         }
 
         function processAndRenderData(runsData) {
-            const latestBest = {};
+            const latestBest = {}; // Store best runs per player (ignoring character)
             obsoletedRuns.clear(); // Reset the obsoleted runs
-            runsData.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));  // Sort by timestamp
 
             runsData.forEach(run => {
                 run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
-                if (!latestBest[run.player] || run.score > latestBest[run.player]) {
-                    latestBest[run.player] = run.score;
-                }
-                // Mark any run with a lower score as obsolete for the same player
-                if (run.score < latestBest[run.player]) {
-                    obsoletedRuns.add(run);
+
+                // Only keep the best run for each player (ignore character)
+                if (!latestBest[run.player] || run.score > latestBest[run.player].score) {
+                    latestBest[run.player] = run; // Store the best run for that player
                 }
             });
 
-            runs = runsData;  // Save the fetched runs data
+            runs = Object.values(latestBest);  // Only keep the best runs for all players
+            runs.sort((a, b) => b.score.localeCompare(a.score));  // Sort by score
             renderLeaderboard(runs, obsoletedRuns);
         }
 
@@ -69,13 +67,13 @@
 
             const showObsolete = document.getElementById("toggleObsolete").checked;  // Get checkbox state
 
-            runs.sort((a, b) => b.score.localeCompare(a.score)).forEach(run => {
+            runs.forEach(run => {
                 let isObsoleted = obsoletedRuns.has(run);
                 let rowClass = isObsoleted ? 'gray' : '';
                 let rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
 
                 let row = `<tr class="${rowClass} ${rowHidden}">
-                            <td></td><td>${run.player}</td><td>${run.character}</td><td>${run.score}</td></tr>`;
+                            <td></td><td>${run.player}</td><td>${run.score}</td></tr>`;
                 tbody.innerHTML += row;
             });
             updateRanks();
