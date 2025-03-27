@@ -11,6 +11,7 @@
         .tab-content { display: none; }
         .active { display: block; }
         .hidden { display: none; }
+        .gray { color: gray; }
         canvas { max-width: 800px; margin: auto; }
     </style>
 </head>
@@ -23,6 +24,7 @@
     </div>
     
     <div id="leaderboard" class="tab-content active">
+        <label><input type="checkbox" id="toggleObsolete" checked> Show Obsoleted Runs</label>
         <table border="1" style="margin:auto;">
             <thead>
                 <tr><th>Rank</th><th>Player</th><th>Score</th></tr>
@@ -56,75 +58,51 @@
         }
 
         function processAndRenderData(runs) {
-            const playerBest = {};
-            const recordProgress = [];
-            const personalBestProgress = {};
-            let highestScore = 0;
-            
-            runs.forEach(run => {
-                const { player, score, timestamp } = run;
-                
-                // Update personal best
-                if (!playerBest[player] || score > playerBest[player]) {
-                    playerBest[player] = score;
-                }
-                
-                // Track record progression
-                if (score > highestScore) {
-                    highestScore = score;
-                    recordProgress.push({ timestamp, score });
-                }
-                
-                // Track personal best progression
-                if (!personalBestProgress[player]) {
-                    personalBestProgress[player] = [];
-                }
-                personalBestProgress[player].push({ timestamp, score: playerBest[player] });
-            });
-            
-            // Sort and rank players
-            const leaderboard = Object.entries(playerBest)
-                .map(([player, score]) => ({ player, score }))
-                .sort((a, b) => b.score - a.score)
-                .map((entry, index) => ({ rank: index + 1, ...entry }));
+            const latestBest = {};
+            const obsoletedRuns = new Set();
 
-            renderLeaderboard(leaderboard);
-            renderCharts(recordProgress, personalBestProgress);
+            runs.forEach(run => {
+                if (!latestBest[run.player] || run.score > latestBest[run.player]) {
+                    latestBest[run.player] = run.score;
+                }
+            });
+
+            runs.forEach(run => {
+                if (run.score < latestBest[run.player]) {
+                    obsoletedRuns.add(run);
+                }
+            });
+
+            renderLeaderboard(runs, obsoletedRuns);
         }
 
-        function renderLeaderboard(leaderboardData) {
+        function renderLeaderboard(runs, obsoletedRuns) {
             let tbody = document.getElementById("leaderboard-body");
             tbody.innerHTML = "";
-            leaderboardData.forEach(entry => {
-                let row = `<tr><td>${entry.rank}</td><td>${entry.player}</td><td>${entry.score}</td></tr>`;
+            runs.sort((a, b) => b.score - a.score).forEach(run => {
+                let row = `<tr class="${obsoletedRuns.has(run) ? 'gray obsolete' : ''}"><td></td><td>${run.player}</td><td>${run.score}</td></tr>`;
                 tbody.innerHTML += row;
+            });
+            updateRanks();
+        }
+
+        function updateRanks() {
+            let rows = document.querySelectorAll("#leaderboard-body tr");
+            let rank = 1;
+            rows.forEach(row => {
+                if (!row.classList.contains('hidden')) {
+                    row.cells[0].innerText = rank++;
+                }
             });
         }
 
-        function renderCharts(recordProgress, personalBestProgress) {
-            const recordData = {
-                labels: recordProgress.map(d => d.timestamp),
-                datasets: [{ label: "Record Progress", data: recordProgress.map(d => d.score), borderColor: "red", fill: false }]
-            };
-            
-            const personalBestData = {
-                labels: Object.values(personalBestProgress)[0]?.map(d => d.timestamp) || [],
-                datasets: Object.entries(personalBestProgress).map(([player, data]) => ({
-                    label: player,
-                    data: data.map(d => d.score),
-                    borderColor: getRandomColor(),
-                    fill: false
-                }))
-            };
-            
-            new Chart(document.getElementById("recordChart"), { type: 'line', data: recordData });
-            new Chart(document.getElementById("personalBestChart"), { type: 'line', data: personalBestData });
-        }
-        
-        function getRandomColor() {
-            return `hsl(${Math.random() * 360}, 100%, 50%)`;
-        }
-        
+        document.getElementById("toggleObsolete").addEventListener("change", function() {
+            document.querySelectorAll(".obsolete").forEach(row => {
+                row.classList.toggle("hidden", !this.checked);
+            });
+            updateRanks();
+        });
+
         fetchLeaderboardData();
     </script>
 </body>
