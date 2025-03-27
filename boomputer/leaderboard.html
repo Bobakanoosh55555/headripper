@@ -67,6 +67,7 @@
             let highestScore = 0;
 
             runs.forEach(run => {
+                run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
                 if (!latestBest[run.player] || run.score > latestBest[run.player]) {
                     latestBest[run.player] = run.score;
                 }
@@ -91,7 +92,7 @@
         function renderLeaderboard(runs, obsoletedRuns) {
             let tbody = document.getElementById("leaderboard-body");
             tbody.innerHTML = "";
-            runs.sort((a, b) => b.score - a.score).forEach(run => {
+            runs.sort((a, b) => b.score.localeCompare(a.score)).forEach(run => {
                 let row = `<tr class="${obsoletedRuns.has(run) ? 'gray obsolete' : ''}"><td></td><td>${run.player}</td><td>${run.score}</td></tr>`;
                 tbody.innerHTML += row;
             });
@@ -114,45 +115,36 @@
                 data: {
                     labels: recordProgress.map(r => r.date),
                     datasets: [{
-                        label: "Record Progression",
+                        label: 'Record Progress',
                         data: recordProgress.map(r => r.score),
-                        borderColor: "blue",
-                        fill: false
+                        borderColor: 'blue',
+                        fill: false,
                     }]
                 },
-                options: { responsive: true }
-            });
-        }
-
-        function renderPersonalBestChart(personalBests) {
-            let datasets = Object.keys(personalBests).map(player => ({
-                label: player,
-                data: personalBests[player].map(r => ({ x: r.date, y: r.score })),
-                borderColor: getRandomColor(),
-                fill: false
-            }));
-            
-            new Chart(document.getElementById("personalBestChart"), {
-                type: 'line',
-                data: { datasets },
                 options: {
                     responsive: true,
-                    plugins: { legend: { display: true } },
-                    scales: { x: { type: 'time', time: { unit: 'month' } } }
+                    maintainAspectRatio: false,
                 }
             });
         }
 
-        function getRandomColor() {
-            return `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`;
-        }
-
-        document.getElementById("toggleObsolete").addEventListener("change", function() {
-            document.querySelectorAll(".obsolete").forEach(row => {
-                row.classList.toggle("hidden", !this.checked);
+        function renderPersonalBestChart(personalBests) {
+            new Chart(document.getElementById("personalBestChart"), {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(personalBests),
+                    datasets: [{
+                        label: 'Personal Bests',
+                        data: Object.values(personalBests).map(bests => Math.max(...bests.map(r => r.score))),
+                        backgroundColor: 'green',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                }
             });
-            updateRanks();
-        });
+        }
 
         fetchLeaderboardData();
     </script>
