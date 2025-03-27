@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Boba's Boomputer Leaderboard</title>
+  <!-- Include Chart.js for interactive graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -79,9 +81,9 @@
     </table>
   </div>
   
-  <!-- Record Progression Tab (Placeholder) -->
+  <!-- Record Progression Tab -->
   <div id="recordProgression" class="tabContent">
-    <p>Record Progression content goes here.</p>
+    <canvas id="recordChart" width="800" height="400"></canvas>
   </div>
   
   <!-- PB Progression Tab (Placeholder) -->
@@ -102,8 +104,9 @@
       document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
     }
     
-    let runs = [];      // Store all runs
+    let runs = [];      // Store all runs from JSON
     let bestRuns = {};  // Best run per player (redundancy based on player name)
+    let recordChart = null;  // Chart instance for Record Progression
     
     function toggleObsolete() {
       renderLeaderboard(runs);
@@ -121,6 +124,7 @@
     
     function processAndRenderData(runsData) {
       bestRuns = {}; // Reset best runs
+      
       // Process each run: pad the score and determine the best run per player
       runsData.forEach(run => {
         run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
@@ -130,12 +134,13 @@
         }
       });
       
-      // Sort runsData by score in descending order
+      // Sort runsData by score in descending order for leaderboard display
       runsData.sort((a, b) => parseInt(b.score, 10) - parseInt(a.score, 10));
       
       // Store all runs and render the leaderboard
       runs = runsData;
       renderLeaderboard(runs);
+      updateRecordProgressionChart();
     }
     
     function renderLeaderboard(runs) {
@@ -174,6 +179,87 @@
           row.cells[0].innerText = '#' + rank++;
         }
       });
+    }
+    
+    // Create or update the Record Progression chart
+    function updateRecordProgressionChart() {
+      // For record progression, sort runs by date (ascending)
+      const runsByDate = runs.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+      
+      // Compute record progression (only add a point when a new record is set)
+      let recordProgression = [];
+      let currentRecord = 0;
+      runsByDate.forEach(run => {
+        let score = parseInt(run.score, 10);
+        if (score > currentRecord) {
+          currentRecord = score;
+          recordProgression.push(run);
+        }
+      });
+      
+      // Map data for Chart.js: x is date, y is score. Attach full run info for tooltips.
+      const chartData = recordProgression.map(run => ({
+        x: new Date(run.timestamp),
+        y: parseInt(run.score, 10),
+        run: run
+      }));
+      
+      // If the chart already exists, update its data; otherwise, create a new chart
+      if (recordChart) {
+        recordChart.data.datasets[0].data = chartData;
+        recordChart.update();
+      } else {
+        const ctx = document.getElementById('recordChart').getContext('2d');
+        recordChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            datasets: [{
+              label: 'Record Progression',
+              data: chartData,
+              fill: false,
+              borderColor: 'blue',
+              tension: 0,
+              pointRadius: 5,
+              pointHoverRadius: 7
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                type: 'time',
+                time: {
+                  tooltipFormat: 'MM/DD/YY',
+                  unit: 'day'
+                },
+                title: {
+                  display: true,
+                  text: 'Date'
+                }
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Score'
+                }
+              }
+            },
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  // Custom tooltip to show player, character, score, and date details
+                  label: function(context) {
+                    const run = context.raw.run;
+                    const dateParts = run.timestamp.split("-");
+                    const formattedDate = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[0].slice(2);
+                    return `${run.player} | ${run.character} | ${run.score} | ${formattedDate}`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
     }
     
     fetchLeaderboardData();
