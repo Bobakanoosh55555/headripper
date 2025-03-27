@@ -8,8 +8,8 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
         .tab { display: inline-block; padding: 10px; cursor: pointer; }
-        .tab-content { display: none; }
-        .active { display: block; }
+        table { margin:auto; }
+        th, td { padding: 8px 12px; }
         .hidden { display: none; }
         .gray { color: gray; }
         canvas { max-width: 800px; margin: auto; }
@@ -17,38 +17,17 @@
 </head>
 <body>
     <h1>Leaderboard</h1>
-    <div>
-        <span class="tab" onclick="showTab('leaderboard')">Leaderboard</span>
-        <span class="tab" onclick="showTab('record-progress')">Record Progress</span>
-        <span class="tab" onclick="showTab('personal-best')">Personal Bests</span>
-    </div>
-    
-    <div id="leaderboard" class="tab-content active">
-        <label><input type="checkbox" id="toggleObsolete" checked onchange="toggleObsolete()"> Show Obsoleted Runs</label>
-        <table border="1" style="margin:auto;">
-            <thead>
-                <tr><th>Rank</th><th>Player</th><th>Score</th></tr>
-            </thead>
-            <tbody id="leaderboard-body"></tbody>
-        </table>
-    </div>
-    
-    <div id="record-progress" class="tab-content">
-        <canvas id="recordChart" width="400" height="200"></canvas>
-    </div>
-    
-    <div id="personal-best" class="tab-content">
-        <canvas id="personalBestChart" width="400" height="200"></canvas>
-    </div>
+    <label><input type="checkbox" id="toggleObsolete" checked onchange="toggleObsolete()"> Show Obsoleted Runs</label>
+    <table border="1">
+        <thead>
+            <tr><th>Rank</th><th>Player</th><th>Score</th></tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+    </table>
 
     <script>
         let runs = [];  // Declare runs globally
         let obsoletedRuns = new Set();  // Track obsoleted runs globally
-
-        function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-        }
 
         function toggleObsolete() {
             renderLeaderboard(runs, obsoletedRuns);
@@ -67,11 +46,7 @@
         function processAndRenderData(runsData) {
             const latestBest = {};
             obsoletedRuns.clear(); // Reset the obsoleted runs
-            let recordProgress = [];
-            let personalBests = {};
-
             runsData.sort((a, b) => new Date(a.date) - new Date(b.date));
-            let highestScore = 0;
 
             runsData.forEach(run => {
                 run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
@@ -81,20 +56,10 @@
                 if (run.score < latestBest[run.player]) {
                     obsoletedRuns.add(run);
                 }
-                if (run.score > highestScore) {
-                    highestScore = run.score;
-                    recordProgress.push({ date: run.date, score: run.score });
-                }
-                if (!personalBests[run.player]) {
-                    personalBests[run.player] = [];
-                }
-                personalBests[run.player].push({ date: run.date, score: run.score });
             });
 
             runs = runsData;  // Save the fetched runs data
             renderLeaderboard(runs, obsoletedRuns);
-            renderRecordProgressChart(recordProgress);
-            renderPersonalBestChart(personalBests);
         }
 
         function renderLeaderboard(runs, obsoletedRuns) {
@@ -105,7 +70,7 @@
 
             runs.sort((a, b) => b.score.localeCompare(a.score)).forEach(run => {
                 let isObsoleted = obsoletedRuns.has(run);
-                let rowClass = isObsoleted ? 'gray obsolete' : '';
+                let rowClass = isObsoleted ? 'gray' : '';
                 let rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
 
                 let row = `<tr class="${rowClass} ${rowHidden}">
@@ -121,43 +86,6 @@
             rows.forEach(row => {
                 if (!row.classList.contains('hidden')) {
                     row.cells[0].innerText = rank++;
-                }
-            });
-        }
-
-        function renderRecordProgressChart(recordProgress) {
-            new Chart(document.getElementById("recordChart"), {
-                type: 'line',
-                data: {
-                    labels: recordProgress.map(r => r.date),
-                    datasets: [{
-                        label: 'Record Progress',
-                        data: recordProgress.map(r => r.score),
-                        borderColor: 'blue',
-                        fill: false,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                }
-            });
-        }
-
-        function renderPersonalBestChart(personalBests) {
-            new Chart(document.getElementById("personalBestChart"), {
-                type: 'bar',
-                data: {
-                    labels: Object.keys(personalBests),
-                    datasets: [{
-                        label: 'Personal Bests',
-                        data: Object.values(personalBests).map(bests => Math.max(...bests.map(r => r.score))),
-                        backgroundColor: 'green',
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
                 }
             });
         }
