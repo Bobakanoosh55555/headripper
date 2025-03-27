@@ -100,8 +100,15 @@
         function renderLeaderboard(runs, obsoletedRuns) {
             let tbody = document.getElementById("leaderboard-body");
             tbody.innerHTML = "";
+
+            const showObsolete = document.getElementById("toggleObsolete").checked;  // Get checkbox state
+
             runs.sort((a, b) => b.score.localeCompare(a.score)).forEach(run => {
-                let row = `<tr class="${obsoletedRuns.has(run) ? 'gray obsolete' : ''}" data-obsolete="${obsoletedRuns.has(run)}">
+                let isObsoleted = obsoletedRuns.has(run);
+                let rowClass = isObsoleted ? 'gray obsolete' : '';
+                let rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
+
+                let row = `<tr class="${rowClass} ${rowHidden}">
                             <td></td><td>${run.player}</td><td>${run.score}</td></tr>`;
                 tbody.innerHTML += row;
             });
