@@ -4,15 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Boba's Boomputer Leaderboard</title>
-  <!-- Include Chart.js and its date adapter -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    /* Base styling similar to the music player page */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       text-align: center;
+      background-color: #121212;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
     }
-    /* Tab styles */
+    canvas {
+      display: block;
+      margin: 20px auto;
+      background: #222;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+    }
+    /* Tab styling */
     .tabs {
       margin: 20px auto;
       display: inline-block;
@@ -21,39 +30,60 @@
       display: inline-block;
       padding: 10px 20px;
       cursor: pointer;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       border-bottom: none;
-      background-color: #f1f1f1;
+      background-color: #555;
       margin-right: 2px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
     }
     .tab.active {
-      background-color: white;
+      background-color: #121212;
       font-weight: bold;
+      border-bottom: 1px solid #121212;
     }
     .tabContent {
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       padding: 10px;
       display: none;
       max-width: 800px;
       margin: auto;
+      background-color: #121212;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
     }
     .tabContent.active {
       display: block;
     }
+    /* Table styling */
     table {
-      margin: auto;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      border-collapse: collapse;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
     }
     th, td {
-      padding: 8px 12px;
+      padding: 10px 15px;
+      border: 1px solid #555;
+    }
+    th {
+      background-color: #222;
+    }
+    td {
+      background-color: #121212;
+    }
+    .gray {
+      color: #999;
     }
     .hidden {
       display: none;
     }
-    .gray {
-      color: gray;
-    }
+    /* Checkbox and toggle container */
     .toggle-container {
       margin: 10px 0;
+    }
+    .toggle-container label {
+      font-size: 14px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -72,7 +102,7 @@
       <input type="checkbox" id="toggleObsolete" onchange="toggleObsolete()" />
       Show Obsoleted Runs
     </label>
-    <table border="1">
+    <table>
       <thead>
         <tr>
           <th>Rank</th>
@@ -165,7 +195,6 @@
       // Process each run: pad the score and determine the best run per player
       runsData.forEach(run => {
         run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
-        // Use only the player name to check redundancy
         if (!bestRuns[run.player] || run.score > bestRuns[run.player].score) {
           bestRuns[run.player] = run;
         }
@@ -221,10 +250,7 @@
     
     // Update the Record Progression chart (single line for overall progression)
     function updateRecordProgressionChart() {
-      // Sort runs by date (ascending)
       const runsByDate = runs.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-      
-      // Compute overall record progression (new point when a new record is set)
       let recordProgression = [];
       let currentRecord = 0;
       runsByDate.forEach(run => {
@@ -290,7 +316,6 @@
     
     // Update the PB Progression chart (only plotting each player's personal best progression)
     function updatePBProgressionChart() {
-      // Group runs by player
       const pbProgressions = {};
       runs.forEach(run => {
         if (!pbProgressions[run.player]) {
@@ -299,7 +324,6 @@
         pbProgressions[run.player].push(run);
       });
       
-      // For each player, sort their runs by date and only include points when the PB improves
       const datasets = [];
       for (let player in pbProgressions) {
         const playerRuns = pbProgressions[player].slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
@@ -316,7 +340,6 @@
             });
           }
         });
-        // Only add this player's dataset if they have more than 1 point or if toggled to show single-point lines
         if (!(progression.length === 1 && !showSinglePB)) {
           if (!playerColors[player]) {
             playerColors[player] = getRandomColor();
@@ -373,7 +396,6 @@
     
     // Update the All Runs chart (plotting every run for each player)
     function updateAllRunsChart() {
-      // Group runs by player
       const allRunsByPlayer = {};
       runs.forEach(run => {
         if (!allRunsByPlayer[run.player]) {
@@ -390,7 +412,6 @@
           y: parseInt(run.score, 10),
           run: run
         }));
-        // Only add this player's dataset if they have more than 1 point or if toggled to show single-point lines
         if (!(allData.length === 1 && !showSingleAll)) {
           if (!playerColors[player]) {
             playerColors[player] = getRandomColor();
@@ -445,13 +466,11 @@
       }
     }
     
-    // Toggle function for PB Progression chart
     function toggleSinglePointPB() {
       showSinglePB = document.getElementById("toggleSinglePB").checked;
       updatePBProgressionChart();
     }
     
-    // Toggle function for All Runs chart
     function toggleSinglePointAll() {
       showSingleAll = document.getElementById("toggleSingleAll").checked;
       updateAllRunsChart();
