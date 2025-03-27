@@ -20,7 +20,7 @@
     <label><input type="checkbox" id="toggleObsolete" checked onchange="toggleObsolete()"> Show Obsoleted Runs</label>
     <table border="1">
         <thead>
-            <tr><th>Rank</th><th>Player</th><th>Score</th></tr>
+            <tr><th>Rank</th><th>Player</th><th>Character</th><th>Score</th></tr>
         </thead>
         <tbody id="leaderboard-body"></tbody>
     </table>
@@ -46,7 +46,7 @@
         function processAndRenderData(runsData) {
             const latestBest = {};
             obsoletedRuns.clear(); // Reset the obsoleted runs
-            runsData.sort((a, b) => new Date(a.date) - new Date(b.date));
+            runsData.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));  // Sort by timestamp
 
             runsData.forEach(run => {
                 run.score = run.score.toString().padStart(8, '0'); // Preserve leading zeros
@@ -74,7 +74,7 @@
                 let rowHidden = isObsoleted && !showObsolete ? 'hidden' : '';
 
                 let row = `<tr class="${rowClass} ${rowHidden}">
-                            <td></td><td>${run.player}</td><td>${run.score}</td></tr>`;
+                            <td></td><td>${run.player}</td><td>${run.character}</td><td>${run.score}</td></tr>`;
                 tbody.innerHTML += row;
             });
             updateRanks();
