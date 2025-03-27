@@ -24,7 +24,7 @@
     </div>
     
     <div id="leaderboard" class="tab-content active">
-        <label><input type="checkbox" id="toggleObsolete" checked> Show Obsoleted Runs</label>
+        <label><input type="checkbox" id="toggleObsolete" checked onchange="toggleObsolete()"> Show Obsoleted Runs</label>
         <table border="1" style="margin:auto;">
             <thead>
                 <tr><th>Rank</th><th>Player</th><th>Score</th></tr>
@@ -34,17 +34,21 @@
     </div>
     
     <div id="record-progress" class="tab-content">
-        <canvas id="recordChart"></canvas>
+        <canvas id="recordChart" width="400" height="200"></canvas>
     </div>
     
     <div id="personal-best" class="tab-content">
-        <canvas id="personalBestChart"></canvas>
+        <canvas id="personalBestChart" width="400" height="200"></canvas>
     </div>
 
     <script>
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
+        }
+
+        function toggleObsolete() {
+            renderLeaderboard(runs, obsoletedRuns);
         }
 
         async function fetchLeaderboardData() {
@@ -93,7 +97,8 @@
             let tbody = document.getElementById("leaderboard-body");
             tbody.innerHTML = "";
             runs.sort((a, b) => b.score.localeCompare(a.score)).forEach(run => {
-                let row = `<tr class="${obsoletedRuns.has(run) ? 'gray obsolete' : ''}"><td></td><td>${run.player}</td><td>${run.score}</td></tr>`;
+                let row = `<tr class="${obsoletedRuns.has(run) ? 'gray obsolete' : ''}" data-obsolete="${obsoletedRuns.has(run)}">
+                            <td></td><td>${run.player}</td><td>${run.score}</td></tr>`;
                 tbody.innerHTML += row;
             });
             updateRanks();
