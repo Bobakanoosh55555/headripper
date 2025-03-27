@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Boba's Boomputer Leaderboard</title>
   <!-- Include Chart.js and its date adapter -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    /* Base styling */
+
     body {
       font-family: 'Roboto', sans-serif;
       text-align: center;
@@ -18,16 +18,7 @@
       margin: 0;
       padding: 0;
     }
-    /* Force canvases to have a proper size */
-    canvas {
-      width: 800px !important;
-      height: 400px !important;
-      display: block;
-      margin: 20px auto;
-      background: #222;
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
-    }
-    /* Tab styling */
+    /* Tabs at the top, content below */
     .tabs {
       margin: 20px auto;
       display: inline-block;
@@ -47,25 +38,19 @@
       font-weight: bold;
       border-bottom: 1px solid #121212;
     }
-    /* Instead of display: none, we use visibility hidden for inactive tabs so they retain layout */
+    /* Tab content uses display: none for hidden tabs */
     .tabContent {
-      visibility: hidden;
-      position: absolute;
-      left: -9999px;
-      width: 800px;
-      min-height: 420px; /* Ensures container doesn't collapse */
-      background-color: #121212;
+      display: none;
+      max-width: 800px;
+      margin: 20px auto;
       border: 1px solid #555;
+      background-color: #121212;
       padding: 10px;
       box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
-      transition: visibility 0.2s ease;
     }
     .tabContent.active {
-      visibility: visible;
-      position: static;
-      left: 0;
+      display: block;
     }
-    /* Table styling */
     table {
       margin: 20px auto;
       width: 90%;
@@ -89,13 +74,22 @@
     .hidden {
       display: none;
     }
-    /* Checkbox toggle container */
     .toggle-container {
       margin: 10px 0;
     }
     .toggle-container label {
       font-size: 14px;
       cursor: pointer;
+    }
+    /* Give canvases some width/height so they're not squashed */
+    canvas {
+      display: block;
+      margin: 20px auto;
+      background: #222;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+      /* Optional: remove if you want them to auto-size with Chart.js */
+      width: 800px;
+      height: 400px;
     }
   </style>
 </head>
@@ -156,7 +150,22 @@
   </div>
   
   <script>
-    // Function to switch tabs and force chart updates on visible canvases
+    let runs = [];
+    let bestRuns = {};
+    // Keep track of whether each chart is initialized
+    let recordChartInitialized = false;
+    let pbChartInitialized = false;
+    let allRunsChartInitialized = false;
+
+    let recordChart = null;
+    let pbChart = null;
+    let allRunsChart = null;
+
+    const playerColors = {};
+    let showSinglePB = true;
+    let showSingleAll = true;
+
+    // Switch tabs, and create the chart if it's not already created
     function showTab(tabName) {
       const tabs = document.querySelectorAll(".tabContent");
       tabs.forEach(tab => tab.classList.remove("active"));
@@ -167,43 +176,27 @@
       tabButtons.forEach(button => button.classList.remove("active"));
       document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
       
-      // Force update of charts after a short delay
-      setTimeout(() => {
-        if (tabName === 'recordProgression' && recordChart) {
-          recordChart.resize();
-          recordChart.update();
-        } else if (tabName === 'pbProgression' && pbChart) {
-          pbChart.resize();
-          pbChart.update();
-        } else if (tabName === 'allRuns' && allRunsChart) {
-          allRunsChart.resize();
-          allRunsChart.update();
-        }
-      }, 200);
-    }
-    
-    let runs = [];           // All runs loaded from JSON
-    let bestRuns = {};       // Best run per player (for leaderboard redundancy)
-    let recordChart = null;  // Chart instance for Record Progression
-    let pbChart = null;      // Chart instance for PB Progression
-    let allRunsChart = null; // Chart instance for All Runs
-    const playerColors = {}; // Map player to a consistent color
-    let showSinglePB = true; // Toggle for PB Progression chart
-    let showSingleAll = true; // Toggle for All Runs chart
-
-    function getRandomColor() {
-      const letters = '0123456789ABCDEF';
-      let color = '#';
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
+      // If the user opens one of the chart tabs for the first time, initialize that chart
+      if (tabName === 'recordProgression' && !recordChartInitialized) {
+        updateRecordProgressionChart();
+        recordChartInitialized = true;
+      } else if (tabName === 'pbProgression' && !pbChartInitialized) {
+        updatePBProgressionChart();
+        pbChartInitialized = true;
+      } else if (tabName === 'allRuns' && !allRunsChartInitialized) {
+        updateAllRunsChart();
+        allRunsChartInitialized = true;
       }
-      return color;
+      // If the chart is already created, just update it in case data changed
+      else if (tabName === 'recordProgression' && recordChart) {
+        updateRecordProgressionChart();
+      } else if (tabName === 'pbProgression' && pbChart) {
+        updatePBProgressionChart();
+      } else if (tabName === 'allRuns' && allRunsChart) {
+        updateAllRunsChart();
+      }
     }
-    
-    function toggleObsolete() {
-      renderLeaderboard(runs);
-    }
-    
+
     async function fetchLeaderboardData() {
       try {
         const response = await fetch('leaderboard.json');
@@ -223,13 +216,11 @@
         }
       });
       
+      // Sort for leaderboard
       runsData.sort((a, b) => parseInt(b.score, 10) - parseInt(a.score, 10));
-      
       runs = runsData;
+
       renderLeaderboard(runs);
-      updateRecordProgressionChart();
-      updatePBProgressionChart();
-      updateAllRunsChart();
     }
     
     function renderLeaderboard(runs) {
@@ -246,13 +237,14 @@
         const dateParts = run.timestamp.split("-");
         const formattedDate = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[0].slice(2);
         
-        rowsHtml += `<tr class="${rowClass} ${rowHidden}">
-                       <td></td>
-                       <td>${run.player}</td>
-                       <td>${run.character}</td>
-                       <td>${run.score}</td>
-                       <td>${formattedDate}</td>
-                     </tr>`;
+        rowsHtml += `
+          <tr class="${rowClass} ${rowHidden}">
+            <td></td>
+            <td>${run.player}</td>
+            <td>${run.character}</td>
+            <td>${run.score}</td>
+            <td>${formattedDate}</td>
+          </tr>`;
       });
       tbody.innerHTML = rowsHtml;
       updateRanks();
@@ -267,29 +259,37 @@
         }
       });
     }
-    
+
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    /* CHART CREATION FUNCTIONS */
+
+    // 1) Record Progression Chart
     function updateRecordProgressionChart() {
       const runsByDate = runs.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
       let recordProgression = [];
       let currentRecord = 0;
       runsByDate.forEach(run => {
-        let score = parseInt(run.score, 10);
+        const score = parseInt(run.score, 10);
         if (score > currentRecord) {
           currentRecord = score;
           recordProgression.push(run);
         }
       });
-      
       const chartData = recordProgression.map(run => ({
         x: new Date(run.timestamp),
         y: parseInt(run.score, 10),
         run: run
       }));
-      
-      if (recordChart) {
-        recordChart.data.datasets[0].data = chartData;
-        recordChart.update();
-      } else {
+
+      if (!recordChart) {
         const ctx = document.getElementById('recordChart').getContext('2d');
         recordChart = new Chart(ctx, {
           type: 'line',
@@ -306,6 +306,7 @@
           },
           options: {
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
               x: {
                 type: 'time',
@@ -321,7 +322,7 @@
             plugins: {
               tooltip: {
                 callbacks: {
-                  label: function(context) {
+                  label: (context) => {
                     const run = context.raw.run;
                     return `${run.player} | ${run.character} | ${run.score}`;
                   }
@@ -330,9 +331,13 @@
             }
           }
         });
+      } else {
+        recordChart.data.datasets[0].data = chartData;
+        recordChart.update();
       }
     }
-    
+
+    // 2) PB Progression Chart
     function updatePBProgressionChart() {
       const pbProgressions = {};
       runs.forEach(run => {
@@ -341,14 +346,14 @@
         }
         pbProgressions[run.player].push(run);
       });
-      
+
       const datasets = [];
-      for (let player in pbProgressions) {
+      for (const player in pbProgressions) {
         const playerRuns = pbProgressions[player].slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
         const progression = [];
         let currentPB = 0;
         playerRuns.forEach(run => {
-          let score = parseInt(run.score, 10);
+          const score = parseInt(run.score, 10);
           if (score > currentPB) {
             currentPB = score;
             progression.push({
@@ -358,6 +363,7 @@
             });
           }
         });
+        // If they only have 1 data point and user unchecks "Show players with 1 run", skip
         if (!(progression.length === 1 && !showSinglePB)) {
           if (!playerColors[player]) {
             playerColors[player] = getRandomColor();
@@ -373,17 +379,15 @@
           });
         }
       }
-      
-      if (pbChart) {
-        pbChart.data.datasets = datasets;
-        pbChart.update();
-      } else {
+
+      if (!pbChart) {
         const ctx = document.getElementById('pbChart').getContext('2d');
         pbChart = new Chart(ctx, {
           type: 'line',
-          data: { datasets: datasets },
+          data: { datasets },
           options: {
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
               x: {
                 type: 'time',
@@ -400,7 +404,7 @@
               legend: { display: true },
               tooltip: {
                 callbacks: {
-                  label: function(context) {
+                  label: (context) => {
                     const run = context.raw.run;
                     return `${run.player} | ${run.character} | ${run.score}`;
                   }
@@ -409,9 +413,13 @@
             }
           }
         });
+      } else {
+        pbChart.data.datasets = datasets;
+        pbChart.update();
       }
     }
-    
+
+    // 3) All Runs Chart
     function updateAllRunsChart() {
       const allRunsByPlayer = {};
       runs.forEach(run => {
@@ -420,15 +428,16 @@
         }
         allRunsByPlayer[run.player].push(run);
       });
-      
+
       const datasets = [];
-      for (let player in allRunsByPlayer) {
+      for (const player in allRunsByPlayer) {
         const playerRuns = allRunsByPlayer[player].slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
         const allData = playerRuns.map(run => ({
           x: new Date(run.timestamp),
           y: parseInt(run.score, 10),
           run: run
         }));
+        // If only 1 data point and "Show players with 1 run" is unchecked, skip
         if (!(allData.length === 1 && !showSingleAll)) {
           if (!playerColors[player]) {
             playerColors[player] = getRandomColor();
@@ -444,17 +453,15 @@
           });
         }
       }
-      
-      if (allRunsChart) {
-        allRunsChart.data.datasets = datasets;
-        allRunsChart.update();
-      } else {
+
+      if (!allRunsChart) {
         const ctx = document.getElementById('allRunsChart').getContext('2d');
         allRunsChart = new Chart(ctx, {
           type: 'line',
-          data: { datasets: datasets },
+          data: { datasets },
           options: {
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
               x: {
                 type: 'time',
@@ -471,7 +478,7 @@
               legend: { display: true },
               tooltip: {
                 callbacks: {
-                  label: function(context) {
+                  label: (context) => {
                     const run = context.raw.run;
                     return `${run.player} | ${run.character} | ${run.score}`;
                   }
@@ -480,19 +487,26 @@
             }
           }
         });
+      } else {
+        allRunsChart.data.datasets = datasets;
+        allRunsChart.update();
       }
     }
-    
+
+    // Checkboxes to show/hide single-run lines
     function toggleSinglePointPB() {
       showSinglePB = document.getElementById("toggleSinglePB").checked;
-      updatePBProgressionChart();
+      if (pbChartInitialized) updatePBProgressionChart();
     }
-    
     function toggleSinglePointAll() {
       showSingleAll = document.getElementById("toggleSingleAll").checked;
-      updateAllRunsChart();
+      if (allRunsChartInitialized) updateAllRunsChart();
     }
-    
+
+    function toggleObsolete() {
+      renderLeaderboard(runs);
+    }
+
     fetchLeaderboardData();
   </script>
 </body>
