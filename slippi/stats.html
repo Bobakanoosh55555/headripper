@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Slippi Profile Display</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -31,28 +32,13 @@
       background-color: #121212;
       box-shadow: 0px 8px 20px rgba(0,0,0,0.7);
     }
-    h1, h2 {
+    h1, h2, h3, h4 {
       margin-top: 0;
     }
-    .characters {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    canvas {
+      max-width: 100%;
+      height: 300px;
       margin-top: 10px;
-    }
-    .character {
-      display: flex;
-      align-items: center;
-      background-color: #222;
-      padding: 5px 10px;
-      margin: 5px;
-      border-radius: 3px;
-      font-size: 0.9em;
-    }
-    .character img {
-      width: 20px;
-      height: 20px;
-      margin-right: 5px;
     }
     p {
       margin: 5px 0;
@@ -66,7 +52,40 @@
   </div>
 
   <script>
+    // -------------------------------
+    // Custom Chart.js plugin to draw icons next to bars.
+    // It uses the plugin option "barIconPlugin.icons" which should be an array of icon paths,
+    // corresponding in order to the data points.
+    // -------------------------------
+    Chart.register({
+      id: 'barIconPlugin',
+      afterDatasetsDraw(chart, args, options) {
+        const { ctx, chartArea: { left } } = chart;
+        const datasetMeta = chart.getDatasetMeta(0);
+        const icons = options.icons || [];
+        datasetMeta.data.forEach((bar, index) => {
+          const img = new Image();
+          img.src = icons[index];
+          // Once the image is loaded, draw it.
+          // We draw it at a fixed size (20x20) to the left of the bar.
+          const imageSize = 20;
+          const xPos = left - imageSize - 5;
+          const yPos = bar.y - imageSize / 2;
+          // Draw the image when it has loaded.
+          if (img.complete) {
+            ctx.drawImage(img, xPos, yPos, imageSize, imageSize);
+          } else {
+            img.onload = () => {
+              ctx.drawImage(img, xPos, yPos, imageSize, imageSize);
+            };
+          }
+        });
+      }
+    });
+
+    // -------------------------------
     // GraphQL endpoint and payload (for user DMAR#554)
+    // -------------------------------
     const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
     const payload = {
       operationName: "AccountManagementPageQuery",
@@ -135,26 +154,38 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
       variables: { cc: "DMAR#554", uid: "DMAR#554" }
     };
 
-    // New helper: Format any all-caps, underscore-separated string into a user-friendly format.
+    // -------------------------------
+    // Helper: Format any all-caps, underscore-separated string into a display-friendly format.
+    // For example, "NORTH_AMERICA" becomes "North America", "TIER1" becomes "Tier 1", etc.
+    // -------------------------------
     function formatResponseData(text) {
       if (typeof text !== 'string') return text;
       return text
         .toLowerCase()
         .split('_')
         .map(word => {
-          // If the word contains digits, leave them attached to the word.
+          // Separate digits from letters if needed.
+          // For example, "tier1" becomes "Tier 1".
+          const match = word.match(/([a-z]+)(\d*)/);
+          if (match) {
+            return match[1].charAt(0).toUpperCase() + match[1].slice(1) + (match[2] ? ' ' + match[2] : '');
+          }
           return word.charAt(0).toUpperCase() + word.slice(1);
         })
         .join(' ');
     }
 
+    // -------------------------------
     // Helper: Get the icon filename based on the API character name.
     // Converts name to lowercase and replaces underscores with hyphens.
+    // -------------------------------
     function getCharacterIcon(apiName) {
       return `icons/${apiName.toLowerCase().replace(/_/g, "-")}.png`;
     }
 
-    // Helper function to create a card element with a title and content
+    // -------------------------------
+    // Helper function to create a card element with a title and content.
+    // -------------------------------
     function createCard(title, contentHTML) {
       const card = document.createElement('div');
       card.className = 'card';
@@ -167,7 +198,74 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
       return card;
     }
 
-    // Function to render the user profile data
+    // -------------------------------
+    // Function to create a horizontal bar chart for character usage.
+    // Parameters:
+    //   canvasId: the ID of the canvas element where the chart is drawn.
+    //   characters: an array of objects { character, gameCount }.
+    // -------------------------------
+    function createCharacterBarChart(canvasId, characters) {
+      // Prepare arrays for labels, data, and icon paths.
+      const labels = [];
+      const data = [];
+      const icons = [];
+      characters.forEach(char => {
+        labels.push(formatResponseData(char.character));
+        data.push(char.gameCount);
+        icons.push(getCharacterIcon(char.character));
+      });
+
+      const ctx = document.getElementById(canvasId).getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Games Played',
+            data: data,
+            backgroundColor: 'rgba(0, 123, 255, 0.7)',
+            borderColor: 'rgba(0, 123, 255, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          indexAxis: 'y', // Horizontal bar chart.
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              ticks: { color: "#ffffff" },
+              title: { display: true, text: 'Games', color: "#ffffff" }
+            },
+            y: {
+              ticks: { color: "#ffffff" }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: { color: "#ffffff" }
+            },
+            // Pass the icons array to our custom plugin.
+            barIconPlugin: {
+              icons: icons
+            },
+            tooltip: {
+              callbacks: {
+                label: (context) => {
+                  return `${context.label}: ${context.parsed.x} games`;
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // -------------------------------
+    // Function to render the user profile data.
+    // For each season (in rankedNetplayProfileHistory), if character data exists,
+    // replace the character list with a bar chart.
+    // -------------------------------
     function renderUserProfile(user) {
       const profileContainer = document.getElementById('profile');
       if (!user) {
@@ -194,14 +292,14 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
           <p><strong>Losses:</strong> ${profile.losses}</p>
           <p><strong>Continent:</strong> ${formatResponseData(profile.continent)}</p>
         `;
-        // List characters used
+        // List characters used (for the main profile, we still show the icons & counts as a list).
         if (profile.characters && profile.characters.length > 0) {
-          profileHTML += `<h3>Characters</h3><div class="characters">`;
+          profileHTML += `<h3>Characters</h3><div>`;
           profile.characters.forEach(char => {
             const displayName = formatResponseData(char.character);
             const iconPath = getCharacterIcon(char.character);
-            profileHTML += `<div class="character">
-              <img src="${iconPath}" alt="${displayName} icon" onerror="this.style.display='none'">
+            profileHTML += `<div style="display:inline-block; margin:5px; padding:5px; background:#222; border-radius:3px;">
+              <img src="${iconPath}" alt="${displayName} icon" style="width:20px;height:20px;vertical-align:middle; margin-right:3px;" onerror="this.style.display='none'">
               ${displayName}: ${char.gameCount} games
             </div>`;
           });
@@ -214,6 +312,7 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
       if (user.rankedNetplayProfileHistory && user.rankedNetplayProfileHistory.length > 0) {
         user.rankedNetplayProfileHistory.forEach(history => {
           let season = history.season;
+          // Build the season details.
           let historyHTML = `
             <p><strong>Season:</strong> ${season.name} (${formatResponseData(season.status)})</p>
             <p><strong>Period:</strong> ${new Date(season.startedAt).toLocaleDateString()} - ${new Date(season.endedAt).toLocaleDateString()}</p>
@@ -223,25 +322,28 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
             <p><strong>Losses:</strong> ${history.losses}</p>
             <p><strong>Continent:</strong> ${formatResponseData(history.continent)}</p>
           `;
-          // List characters used in this season
+          // If there is character data for this season, insert a canvas for the bar chart.
           if (history.characters && history.characters.length > 0) {
-            historyHTML += `<h4>Characters</h4><div class="characters">`;
-            history.characters.forEach(char => {
-              const displayName = formatResponseData(char.character);
-              const iconPath = getCharacterIcon(char.character);
-              historyHTML += `<div class="character">
-                <img src="${iconPath}" alt="${displayName} icon" onerror="this.style.display='none'">
-                ${displayName}: ${char.gameCount} games
-              </div>`;
-            });
-            historyHTML += `</div>`;
+            // Use season.id (or index) to create a unique canvas id.
+            const canvasId = "chart-" + season.id;
+            historyHTML += `<h4>Character Usage</h4><canvas id="${canvasId}"></canvas>`;
           }
-          profileContainer.appendChild(createCard(`Ranked Netplay History - ${season.name}`, historyHTML));
+          // Create the card for this season and append it.
+          const card = createCard(`Ranked Netplay History - ${season.name}`, historyHTML);
+          profileContainer.appendChild(card);
+          // If a canvas was inserted, create the bar chart.
+          if (history.characters && history.characters.length > 0) {
+            const canvasId = "chart-" + season.id;
+            // Create the bar chart for this season's character usage.
+            createCharacterBarChart(canvasId, history.characters);
+          }
         });
       }
     }
 
-    // Fetch data and render it on the page
+    // -------------------------------
+    // Fetch data and render it on the page.
+    // -------------------------------
     fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -251,7 +353,6 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
     })
       .then(response => response.json())
       .then(data => {
-        // Use getUser if available, otherwise fallback to getConnectCode.user
         const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
         renderUserProfile(user);
       })
