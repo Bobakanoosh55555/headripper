@@ -144,7 +144,8 @@ function renderUserProfile(user) {
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
     <h3>${user.connectCode.code}</h3>
-    <p><strong>Subscription Status:</strong> ${titleCase(user.status)} - ${titleCase(user.activeSubscription.level)} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
+    <p><strong>Subscription Status:</strong> ${titleCase(user.status)} - ${titleCase(user.activeSubscription.level).replace(/(Tier)(\d+)/, '$1 $2')}
+ ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
   `;
   profileContainer.appendChild(userHeader);
   
