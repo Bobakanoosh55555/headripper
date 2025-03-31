@@ -78,8 +78,8 @@ function createCard(title, contentHTML) {
 }
 
 // Creates a vertical bar chart for character usage using Chart.js.
+// Characters are sorted from largest to smallest.
 function createCharacterBarChart(canvasId, characters) {
-  // Sort characters from largest to smallest by gameCount.
   const sortedCharacters = characters.slice().sort((a, b) => b.gameCount - a.gameCount);
   const labels = [], data = [], backgroundColors = [];
   
@@ -124,7 +124,8 @@ function createCharacterBarChart(canvasId, characters) {
   });
 }
 
-// Renders the user profile, including basic info, current profile chart, and history charts.
+// Renders the user profile, including the header (name, connect code, subscription status),
+// the current profile chart, and the history charts.
 function renderUserProfile(user) {
   const profileContainer = document.getElementById('profile');
   profileContainer.innerHTML = ''; // Clear previous content
@@ -132,16 +133,17 @@ function renderUserProfile(user) {
     profileContainer.textContent = 'No user data found.'; 
     return; 
   }
-
-  // Basic Information
-  let basicHTML = `
-    <p><strong>Name:</strong> ${user.displayName}</p>
-    <p><strong>Connect Code:</strong> ${user.connectCode.code}</p>
-    <p><strong>Status:</strong> ${formatResponseData(user.status)}</p>
-    <p><strong>Subscription:</strong> ${formatResponseData(user.activeSubscription.level)} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
+  
+  // User Header: Name (as header), connect code (as subheader),
+  // and subscription status combined in one line.
+  const userHeader = document.createElement('div');
+  userHeader.innerHTML = `
+    <h1>${user.displayName}</h1>
+    <h3>${user.connectCode.code}</h3>
+    <p><strong>Subscription Status:</strong> ${formatResponseData(user.status)} - ${formatResponseData(user.activeSubscription.level)} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
   `;
-  profileContainer.appendChild(createCard("Basic Information", basicHTML));
-
+  profileContainer.appendChild(userHeader);
+  
   // Ranked Netplay Profile with current character usage chart.
   if (user.rankedNetplayProfile) {
     let profile = user.rankedNetplayProfile;
