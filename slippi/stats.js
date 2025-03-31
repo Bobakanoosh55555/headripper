@@ -28,48 +28,43 @@ const characterColors = {
   "zelda": "thistle"
 };
 
-// GraphQL endpoint
+// GraphQL endpoint and base payload
 const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
-
-// Base payload used for the GraphQL query.
 const payload = {
   operationName: "AccountManagementPageQuery",
-  query: `fragment profileFieldsV2 on NetplayProfileV2 {
-  id ratingOrdinal ratingUpdateCount wins losses dailyGlobalPlacement dailyRegionalPlacement continent characters { character gameCount __typename } __typename }
-fragment userProfilePage on User {
-  fbUid displayName connectCode { code __typename } status activeSubscription { level hasGiftSub __typename } rankedNetplayProfile { ...profileFieldsV2 __typename } rankedNetplayProfileHistory { ...profileFieldsV2 season { id startedAt endedAt name status __typename } __typename } __typename }
-query AccountManagementPageQuery($cc: String!, $uid: String!) {
-  getUser(fbUid: $uid) { ...userProfilePage __typename }
-  getConnectCode(code: $cc) { user { ...userProfilePage __typename } __typename }
-}`,
+  query: `
+    fragment profileFieldsV2 on NetplayProfileV2 {
+      id ratingOrdinal ratingUpdateCount wins losses dailyGlobalPlacement dailyRegionalPlacement continent 
+      characters { character gameCount __typename } __typename 
+    }
+    fragment userProfilePage on User {
+      fbUid displayName connectCode { code __typename } status activeSubscription { level hasGiftSub __typename }
+      rankedNetplayProfile { ...profileFieldsV2 __typename }
+      rankedNetplayProfileHistory { ...profileFieldsV2 season { id startedAt endedAt name status __typename } __typename }
+      __typename 
+    }
+    query AccountManagementPageQuery($cc: String!, $uid: String!) {
+      getUser(fbUid: $uid) { ...userProfilePage __typename }
+      getConnectCode(code: $cc) { user { ...userProfilePage __typename } __typename }
+    }`,
   variables: { cc: "DMAR#554", uid: "DMAR#554" }
 };
 
-// Formats an all-caps, underscore-separated string into a display-friendly format.
+// Formats a string like "MARTY_17" to "Marty 17"
 function formatResponseData(text) {
-  if (typeof text !== 'string') return text;
-  return text
-    .toLowerCase()
-    .split('_')
-    .map(word => {
-      const match = word.match(/([a-z]+)(\d*)/);
-      return match ? match[1].charAt(0).toUpperCase() + match[1].slice(1) + (match[2] ? ' ' + match[2] : '') : word;
-    })
-    .join(' ');
+  return typeof text === 'string'
+    ? text.toLowerCase().split('_').map(word => {
+        const m = word.match(/([a-z]+)(\d*)/);
+        return m ? m[1].charAt(0).toUpperCase() + m[1].slice(1) + (m[2] ? ' ' + m[2] : '') : word;
+      }).join(' ')
+    : text;
 }
 
-// Returns icon path based on character API name.
-function getCharacterIcon(apiName) {
-  return `icons/${apiName.toLowerCase().replace(/_/g, "-")}.png`;
-}
-
-// Returns color for a character based on mapping.
 function getCharacterColor(apiName) {
   const key = apiName.toLowerCase().replace(/_/g, "-");
   return characterColors[key] || 'gray';
 }
 
-// Creates a card element with a title and content.
 function createCard(title, contentHTML) {
   const card = document.createElement('div');
   card.className = 'card';
@@ -77,8 +72,6 @@ function createCard(title, contentHTML) {
   return card;
 }
 
-// Creates a vertical bar chart for character usage using Chart.js.
-// Characters are sorted from largest to smallest.
 function createCharacterBarChart(canvasId, characters) {
   const sortedCharacters = characters.slice().sort((a, b) => b.gameCount - a.gameCount);
   const labels = [], data = [], backgroundColors = [];
@@ -125,16 +118,14 @@ function createCharacterBarChart(canvasId, characters) {
   });
 }
 
-// Renders the user profile, including header, current season, and season history tabs.
 function renderUserProfile(user) {
   const profileContainer = document.getElementById('profile');
-  profileContainer.innerHTML = ''; // Clear previous content
-  if (!user) { 
-    profileContainer.textContent = 'No user data found.'; 
-    return; 
+  profileContainer.innerHTML = '';
+  if (!user) {
+    profileContainer.textContent = 'No user data found.';
+    return;
   }
   
-  // User Header: Name as h1, connect code as h3, and subscription status line.
   const userHeader = document.createElement('div');
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
@@ -143,7 +134,6 @@ function renderUserProfile(user) {
   `;
   profileContainer.appendChild(userHeader);
   
-  // Current Season (formerly Ranked Netplay Profile)
   if (user.rankedNetplayProfile) {
     let profile = user.rankedNetplayProfile;
     let profileHTML = `
@@ -161,7 +151,6 @@ function renderUserProfile(user) {
     }
   }
   
-  // Season History Tabs
   if (user.rankedNetplayProfileHistory && user.rankedNetplayProfileHistory.length > 0) {
     const tabsHTML = `
       <div class="tabs">
@@ -173,9 +162,8 @@ function renderUserProfile(user) {
       </div>
       <div id="previousSeason" class="tab-content"></div>
     `;
-    profileContainer.appendChild(createCard("", tabsHTML)); // No header text in the card.
+    profileContainer.appendChild(createCard("", tabsHTML));
     
-    // Render Previous Season data.
     const prevContainer = document.getElementById('previousSeason');
     user.rankedNetplayProfileHistory.forEach(history => {
       let season = history.season;
@@ -204,7 +192,6 @@ function renderUserProfile(user) {
     const aggregateUsage = {};
     if (user.rankedNetplayProfile && user.rankedNetplayProfile.characters) {
       user.rankedNetplayProfile.characters.forEach(char => {
-        // Normalize key using formatted character name.
         const normKey = formatResponseData(char.character).trim();
         const count = Number(char.gameCount);
         aggregateUsage[normKey] = (aggregateUsage[normKey] || 0) + (isNaN(count) ? 0 : count);
@@ -219,15 +206,13 @@ function renderUserProfile(user) {
         });
       }
     });
-    console.log("Aggregate Usage:", aggregateUsage);
     const aggregateArray = Object.keys(aggregateUsage).map(key => ({ character: key, gameCount: aggregateUsage[key] }));
     if (aggregateArray.length > 0) {
       createCharacterBarChart("aggregate-chart", aggregateArray);
     }
     
     // Tab switching logic.
-    const tabButtons = document.querySelectorAll('.tab-button');
-    tabButtons.forEach(button => {
+    document.querySelectorAll('.tab-button').forEach(button => {
       button.addEventListener('click', function() {
         document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
@@ -239,7 +224,6 @@ function renderUserProfile(user) {
   }
 }
 
-// Fetches the profile data for the given user code.
 function fetchProfile(userCode) {
   const dynamicPayload = {
     ...payload,
@@ -261,7 +245,6 @@ function fetchProfile(userCode) {
     });
 }
 
-// Set up form submission handler.
 document.getElementById('userForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const userCode = document.getElementById('userCode').value.trim();
