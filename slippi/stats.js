@@ -31,6 +31,21 @@ const characterColors = {
 // GraphQL endpoint
 const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
 
+// Base payload used for the GraphQL query.
+// (This object will be spread into the dynamic payload in fetchProfile.)
+const payload = {
+  operationName: "AccountManagementPageQuery",
+  query: `fragment profileFieldsV2 on NetplayProfileV2 {
+  id ratingOrdinal ratingUpdateCount wins losses dailyGlobalPlacement dailyRegionalPlacement continent characters { character gameCount __typename } __typename }
+fragment userProfilePage on User {
+  fbUid displayName connectCode { code __typename } status activeSubscription { level hasGiftSub __typename } rankedNetplayProfile { ...profileFieldsV2 __typename } rankedNetplayProfileHistory { ...profileFieldsV2 season { id startedAt endedAt name status __typename } __typename } __typename }
+query AccountManagementPageQuery($cc: String!, $uid: String!) {
+  getUser(fbUid: $uid) { ...userProfilePage __typename }
+  getConnectCode(code: $cc) { user { ...userProfilePage __typename } __typename }
+}`,
+  variables: { cc: "DMAR#554", uid: "DMAR#554" }
+};
+
 // Formats an all-caps, underscore-separated string into a display-friendly format.
 function formatResponseData(text) {
   if (typeof text !== 'string') return text;
