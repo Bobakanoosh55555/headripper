@@ -50,14 +50,17 @@ const payload = {
   variables: { cc: "DMAR#554", uid: "DMAR#554" }
 };
 
-// Converts a character name to a normalized key that matches our color mapping.
-// E.g., "CAPTAIN_FALCON" becomes "captain-falcon"
+// Converts generic text to lower-case.
+function formatResponseData(text) {
+  return typeof text === 'string' ? text.toLowerCase() : text;
+}
+
+// Normalizes a character name to a key (lowercase, underscores replaced with hyphens)
 function normalizeKey(name) {
   return typeof name === 'string' ? name.toLowerCase().replace(/_/g, "-").trim() : name;
 }
 
 // Converts a normalized key into title case with spaces.
-// E.g., "captain-falcon" becomes "Captain Falcon"
 function titleCaseFromKey(key) {
   return key.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 }
@@ -80,7 +83,6 @@ function createCharacterBarChart(canvasId, characters) {
   const labels = [], data = [], backgroundColors = [];
   
   sortedCharacters.forEach(char => {
-    // Use normalizeKey and then titleCaseFromKey for consistent labeling.
     const norm = normalizeKey(char.character);
     labels.push(titleCaseFromKey(norm));
     data.push(Number(char.gameCount));
@@ -131,7 +133,6 @@ function renderUserProfile(user) {
     return;
   }
   
-  // User Header: Name, connect code, and subscription status.
   const userHeader = document.createElement('div');
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
@@ -140,7 +141,6 @@ function renderUserProfile(user) {
   `;
   profileContainer.appendChild(userHeader);
   
-  // Current Season Section
   if (user.rankedNetplayProfile) {
     let profile = user.rankedNetplayProfile;
     let profileHTML = `
@@ -158,7 +158,6 @@ function renderUserProfile(user) {
     }
   }
   
-  // Season History Tabs
   if (user.rankedNetplayProfileHistory && user.rankedNetplayProfileHistory.length > 0) {
     const tabsHTML = `
       <div class="tabs">
@@ -172,18 +171,17 @@ function renderUserProfile(user) {
     `;
     profileContainer.appendChild(createCard("", tabsHTML));
     
-    // Previous Season Tab
     const prevContainer = document.getElementById('previousSeason');
     user.rankedNetplayProfileHistory.forEach(history => {
       let season = history.season;
       let historyHTML = `
-        <p><strong>Season:</strong> ${season.name} (${season.status.toLowerCase()})</p>
+        <p><strong>Season:</strong> ${season.name} (${history.status ? history.status.toLowerCase() : ""})</p>
         <p><strong>Period:</strong> ${new Date(season.startedAt).toLocaleDateString()} - ${new Date(season.endedAt).toLocaleDateString()}</p>
         <p><strong>Rating:</strong> ${history.ratingOrdinal.toFixed(2)}</p>
         <p><strong>Sets Played:</strong> ${history.ratingUpdateCount}</p>
         <p><strong>Wins:</strong> ${history.wins}</p>
         <p><strong>Losses:</strong> ${history.losses}</p>
-        <p><strong>Continent:</strong> ${season.continent.toLowerCase()}</p>
+        <p><strong>Continent:</strong> ${formatResponseData(history.continent)}</p>
       `;
       if (history.characters && history.characters.length > 0) {
         const canvasId = "chart-" + season.id;
@@ -197,7 +195,7 @@ function renderUserProfile(user) {
       }
     });
     
-    // Aggregate Data: Sum character usage across all seasons (current + history)
+    // Aggregate Data: Sum character usage across all seasons including current.
     const aggregateUsage = {};
     if (user.rankedNetplayProfile && user.rankedNetplayProfile.characters) {
       user.rankedNetplayProfile.characters.forEach(char => {
@@ -221,7 +219,6 @@ function renderUserProfile(user) {
       createCharacterBarChart("aggregate-chart", aggregateArray);
     }
     
-    // Tab switching logic.
     document.querySelectorAll('.tab-button').forEach(button => {
       button.addEventListener('click', function() {
         document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
