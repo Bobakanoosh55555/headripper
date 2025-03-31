@@ -124,8 +124,7 @@ function createCharacterBarChart(canvasId, characters) {
   });
 }
 
-// Renders the user profile, including the header (name, connect code, subscription status),
-// the current profile chart, and the history charts.
+// Renders the user profile, including header, current season, and season history tabs.
 function renderUserProfile(user) {
   const profileContainer = document.getElementById('profile');
   profileContainer.innerHTML = ''; // Clear previous content
@@ -134,8 +133,7 @@ function renderUserProfile(user) {
     return; 
   }
   
-  // User Header: Name (as header), connect code (as subheader),
-  // and subscription status combined in one line.
+  // User Header: Name as h1, connect code as h3, and subscription status line.
   const userHeader = document.createElement('div');
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
@@ -144,33 +142,45 @@ function renderUserProfile(user) {
   `;
   profileContainer.appendChild(userHeader);
   
-  // Ranked Netplay Profile with current character usage chart.
+  // Current Season (formerly Ranked Netplay Profile)
   if (user.rankedNetplayProfile) {
     let profile = user.rankedNetplayProfile;
     let profileHTML = `
       <p><strong>Rating:</strong> ${profile.ratingOrdinal.toFixed(2)}</p>
-      <p><strong>Rating Updates:</strong> ${profile.ratingUpdateCount}</p>
+      <p><strong>Sets Played:</strong> ${profile.ratingUpdateCount}</p>
       <p><strong>Wins:</strong> ${profile.wins}</p>
       <p><strong>Losses:</strong> ${profile.losses}</p>
       <p><strong>Continent:</strong> ${formatResponseData(profile.continent)}</p>
       <h3>Current Character Usage</h3>
       <div class="chart-container"><canvas id="current-profile-chart"></canvas></div>
     `;
-    profileContainer.appendChild(createCard("Ranked Netplay Profile", profileHTML));
+    profileContainer.appendChild(createCard("Current Season", profileHTML));
     if (profile.characters && profile.characters.length > 0) {
       createCharacterBarChart("current-profile-chart", profile.characters);
     }
   }
-
-  // History charts per season.
+  
+  // If there is season history, add tabs.
   if (user.rankedNetplayProfileHistory && user.rankedNetplayProfileHistory.length > 0) {
+    const tabsHTML = `
+      <div class="tabs">
+        <button class="tab-button active" data-target="aggregateData">Aggregate Data</button>
+        <button class="tab-button" data-target="previousSeason">Previous Season</button>
+      </div>
+      <div id="aggregateData" class="tab-content active"></div>
+      <div id="previousSeason" class="tab-content"></div>
+    `;
+    profileContainer.appendChild(createCard("Season History", tabsHTML));
+    
+    // Render Previous Season data.
+    const prevContainer = document.getElementById('previousSeason');
     user.rankedNetplayProfileHistory.forEach(history => {
       let season = history.season;
       let historyHTML = `
         <p><strong>Season:</strong> ${season.name} (${formatResponseData(season.status)})</p>
         <p><strong>Period:</strong> ${new Date(season.startedAt).toLocaleDateString()} - ${new Date(season.endedAt).toLocaleDateString()}</p>
         <p><strong>Rating:</strong> ${history.ratingOrdinal.toFixed(2)}</p>
-        <p><strong>Rating Updates:</strong> ${history.ratingUpdateCount}</p>
+        <p><strong>Sets Played:</strong> ${history.ratingUpdateCount}</p>
         <p><strong>Wins:</strong> ${history.wins}</p>
         <p><strong>Losses:</strong> ${history.losses}</p>
         <p><strong>Continent:</strong> ${formatResponseData(history.continent)}</p>
@@ -180,11 +190,41 @@ function renderUserProfile(user) {
         historyHTML += `<h4>Character Usage</h4>
           <div class="chart-container"><canvas id="${canvasId}"></canvas></div>`;
       }
-      const card = createCard(`Ranked Netplay History - ${season.name}`, historyHTML);
-      profileContainer.appendChild(card);
+      const card = createCard(`Season: ${season.name}`, historyHTML);
+      prevContainer.appendChild(card);
       if (history.characters && history.characters.length > 0) {
         createCharacterBarChart("chart-" + season.id, history.characters);
       }
+    });
+    
+    // Aggregate Data: Sum character usage across all seasons.
+    const aggregateUsage = {};
+    user.rankedNetplayProfileHistory.forEach(history => {
+      if (history.characters && history.characters.length > 0) {
+        history.characters.forEach(char => {
+          const key = char.character;
+          aggregateUsage[key] = (aggregateUsage[key] || 0) + char.gameCount;
+        });
+      }
+    });
+    const aggregateArray = Object.keys(aggregateUsage).map(key => ({ character: key, gameCount: aggregateUsage[key] }));
+    const aggContainer = document.getElementById('aggregateData');
+    aggContainer.innerHTML = `<h3>Aggregate Character Usage</h3>
+      <div class="chart-container"><canvas id="aggregate-chart"></canvas></div>`;
+    if (aggregateArray.length > 0) {
+      createCharacterBarChart("aggregate-chart", aggregateArray);
+    }
+    
+    // Tab switching logic.
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        this.classList.add('active');
+        const target = this.getAttribute('data-target');
+        document.getElementById(target).classList.add('active');
+      });
     });
   }
 }
