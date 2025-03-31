@@ -14,7 +14,7 @@ const characterColors = {
   "link": "limegreen",
   "luigi": "green",
   "mario": "red",
-  "marth": "mediumblue",
+  "marth": "mediumblue",  // Try temporarily changing this (e.g., "yellow") for debugging
   "mewtwo": "mediumorchid",
   "ness": "crimson",
   "peach": "pink",
@@ -215,6 +215,8 @@ function renderUserProfile(user) {
         });
       }
     });
+    // Debug: log the aggregate usage to inspect Marth's count
+    console.log("Aggregate Usage:", aggregateUsage);
     const aggregateArray = Object.keys(aggregateUsage).map(key => ({ character: key, gameCount: aggregateUsage[key] }));
     if (aggregateArray.length > 0) {
       createCharacterBarChart("aggregate-chart", aggregateArray);
