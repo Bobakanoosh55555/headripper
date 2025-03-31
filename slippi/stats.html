@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>GraphQL Response Display</title>
+  <style>
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ccc;
+      overflow: auto;
+      max-height: 80vh;
+    }
+  </style>
+</head>
+<body>
+  <h1>GraphQL Response for STAR#69</h1>
+  <pre id="output">Loading...</pre>
+  
+  <script>
+    // GraphQL endpoint
+    const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
+    
+    // GraphQL query and variables (for user STAR#69)
+    const payload = {
+      operationName: "AccountManagementPageQuery",
+      query: `fragment profileFieldsV2 on NetplayProfileV2 {
+  id
+  ratingOrdinal
+  ratingUpdateCount
+  wins
+  losses
+  dailyGlobalPlacement
+  dailyRegionalPlacement
+  continent
+  characters {
+    character
+    gameCount
+    __typename
+  }
+  __typename
+}
 
+fragment userProfilePage on User {
+  fbUid
+  displayName
+  connectCode {
+    code
+    __typename
+  }
+  status
+  activeSubscription {
+    level
+    hasGiftSub
+    __typename
+  }
+  rankedNetplayProfile {
+    ...profileFieldsV2
+    __typename
+  }
+  rankedNetplayProfileHistory {
+    ...profileFieldsV2
+    season {
+      id
+      startedAt
+      endedAt
+      name
+      status
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+query AccountManagementPageQuery($cc: String!, $uid: String!) {
+  getUser(fbUid: $uid) {
+    ...userProfilePage
+    __typename
+  }
+  getConnectCode(code: $cc) {
+    user {
+      ...userProfilePage
+      __typename
+    }
+    __typename
+  }
+}`,
+      variables: { cc: "STAR#69", uid: "STAR#69" }
+    };
+
+    // Make the POST request
+    fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Beautify the JSON output using JSON.stringify with indentation
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      document.getElementById('output').textContent = 'Error: ' + error;
+    });
+  </script>
+</body>
+</html>
