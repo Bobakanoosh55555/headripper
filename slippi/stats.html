@@ -35,10 +35,16 @@
     h1, h2, h3, h4 {
       margin-top: 0;
     }
-    canvas {
-      max-width: 100%;
+    .chart-container {
+      position: relative;
       height: 300px;
+      width: 100%;
       margin-top: 10px;
+    }
+    canvas {
+      background: #222;
+      border: 1px solid #555;
+      border-radius: 5px;
     }
     p {
       margin: 5px 0;
@@ -53,35 +59,37 @@
 
   <script>
     // -------------------------------
-    // Custom Chart.js plugin to draw icons next to bars.
-    // It uses the plugin option "barIconPlugin.icons" which should be an array of icon paths,
-    // corresponding in order to the data points.
+    // Character-to-color mapping.
+    // Use lowercase with hyphens as keys (matching getCharacterIcon()).
     // -------------------------------
-    Chart.register({
-      id: 'barIconPlugin',
-      afterDatasetsDraw(chart, args, options) {
-        const { ctx, chartArea: { left } } = chart;
-        const datasetMeta = chart.getDatasetMeta(0);
-        const icons = options.icons || [];
-        datasetMeta.data.forEach((bar, index) => {
-          const img = new Image();
-          img.src = icons[index];
-          // Once the image is loaded, draw it.
-          // We draw it at a fixed size (20x20) to the left of the bar.
-          const imageSize = 20;
-          const xPos = left - imageSize - 5;
-          const yPos = bar.y - imageSize / 2;
-          // Draw the image when it has loaded.
-          if (img.complete) {
-            ctx.drawImage(img, xPos, yPos, imageSize, imageSize);
-          } else {
-            img.onload = () => {
-              ctx.drawImage(img, xPos, yPos, imageSize, imageSize);
-            };
-          }
-        });
-      }
-    });
+    const characterColors = {
+      "bowser": "green",
+      "captain-falcon": "red",
+      "donkey-kong": "saddlebrown",
+      "dr-mario": "white",
+      "falco": "blue",
+      "fox": "sandybrown",
+      "game-and-watch": "black",
+      "ganondorf": "darkviolet",
+      "ice-climbers": "plum",
+      "jigglypuff": "lightpink",
+      "kirby": "deeppink",
+      "link": "limegreen",
+      "luigi": "green",
+      "mario": "red",
+      "marth": "royalblue",
+      "mewtwo": "mediumorchid",
+      "ness": "lightcoral",
+      "peach": "pink",
+      "pichu": "yellow",
+      "pikachu": "gold",
+      "roy": "red",
+      "samus": "red",
+      "sheik": "lightskyblue",
+      "yoshi": "forestgreen",
+      "young-link": "seagreen",
+      "zelda": "thistle"
+    };
 
     // -------------------------------
     // GraphQL endpoint and payload (for user DMAR#554)
@@ -156,7 +164,6 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
 
     // -------------------------------
     // Helper: Format any all-caps, underscore-separated string into a display-friendly format.
-    // For example, "NORTH_AMERICA" becomes "North America", "TIER1" becomes "Tier 1", etc.
     // -------------------------------
     function formatResponseData(text) {
       if (typeof text !== 'string') return text;
@@ -164,8 +171,6 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
         .toLowerCase()
         .split('_')
         .map(word => {
-          // Separate digits from letters if needed.
-          // For example, "tier1" becomes "Tier 1".
           const match = word.match(/([a-z]+)(\d*)/);
           if (match) {
             return match[1].charAt(0).toUpperCase() + match[1].slice(1) + (match[2] ? ' ' + match[2] : '');
@@ -177,10 +182,17 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
 
     // -------------------------------
     // Helper: Get the icon filename based on the API character name.
-    // Converts name to lowercase and replaces underscores with hyphens.
     // -------------------------------
     function getCharacterIcon(apiName) {
       return `icons/${apiName.toLowerCase().replace(/_/g, "-")}.png`;
+    }
+
+    // -------------------------------
+    // Helper: Get the color for a character based on the mapping.
+    // -------------------------------
+    function getCharacterColor(apiName) {
+      const key = apiName.toLowerCase().replace(/_/g, "-");
+      return characterColors[key] || 'gray';
     }
 
     // -------------------------------
@@ -199,19 +211,21 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
     }
 
     // -------------------------------
-    // Function to create a horizontal bar chart for character usage.
+    // Function to create a vertical bar chart for character usage.
     // Parameters:
-    //   canvasId: the ID of the canvas element where the chart is drawn.
+    //   canvasId: the ID of the canvas element.
     //   characters: an array of objects { character, gameCount }.
     // -------------------------------
     function createCharacterBarChart(canvasId, characters) {
-      // Prepare arrays for labels, data, and icon paths.
       const labels = [];
       const data = [];
+      const backgroundColors = [];
       const icons = [];
       characters.forEach(char => {
-        labels.push(formatResponseData(char.character));
+        const formatted = formatResponseData(char.character);
+        labels.push(formatted);
         data.push(char.gameCount);
+        backgroundColors.push(getCharacterColor(char.character));
         icons.push(getCharacterIcon(char.character));
       });
 
@@ -223,36 +237,33 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
           datasets: [{
             label: 'Games Played',
             data: data,
-            backgroundColor: 'rgba(0, 123, 255, 0.7)',
-            borderColor: 'rgba(0, 123, 255, 1)',
+            backgroundColor: backgroundColors,
+            borderColor: backgroundColors,
             borderWidth: 1
           }]
         },
         options: {
-          indexAxis: 'y', // Horizontal bar chart.
           responsive: true,
           maintainAspectRatio: false,
           scales: {
             x: {
               ticks: { color: "#ffffff" },
-              title: { display: true, text: 'Games', color: "#ffffff" }
+              title: { display: true, text: 'Characters', color: "#ffffff" }
             },
             y: {
-              ticks: { color: "#ffffff" }
+              ticks: { color: "#ffffff" },
+              title: { display: true, text: 'Games Played', color: "#ffffff" },
+              beginAtZero: true
             }
           },
           plugins: {
             legend: {
               labels: { color: "#ffffff" }
             },
-            // Pass the icons array to our custom plugin.
-            barIconPlugin: {
-              icons: icons
-            },
             tooltip: {
               callbacks: {
                 label: (context) => {
-                  return `${context.label}: ${context.parsed.x} games`;
+                  return `${context.label}: ${context.parsed.y} games`;
                 }
               }
             }
@@ -263,8 +274,8 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
 
     // -------------------------------
     // Function to render the user profile data.
-    // For each season (in rankedNetplayProfileHistory), if character data exists,
-    // replace the character list with a bar chart.
+    // The current profile characters are shown as a bar chart,
+    // and each season's character usage is displayed as a separate chart.
     // -------------------------------
     function renderUserProfile(user) {
       const profileContainer = document.getElementById('profile');
@@ -291,28 +302,22 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
           <p><strong>Wins:</strong> ${profile.wins}</p>
           <p><strong>Losses:</strong> ${profile.losses}</p>
           <p><strong>Continent:</strong> ${formatResponseData(profile.continent)}</p>
+          <h3>Current Character Usage</h3>
+          <div class="chart-container">
+            <canvas id="current-profile-chart"></canvas>
+          </div>
         `;
-        // List characters used (for the main profile, we still show the icons & counts as a list).
-        if (profile.characters && profile.characters.length > 0) {
-          profileHTML += `<h3>Characters</h3><div>`;
-          profile.characters.forEach(char => {
-            const displayName = formatResponseData(char.character);
-            const iconPath = getCharacterIcon(char.character);
-            profileHTML += `<div style="display:inline-block; margin:5px; padding:5px; background:#222; border-radius:3px;">
-              <img src="${iconPath}" alt="${displayName} icon" style="width:20px;height:20px;vertical-align:middle; margin-right:3px;" onerror="this.style.display='none'">
-              ${displayName}: ${char.gameCount} games
-            </div>`;
-          });
-          profileHTML += `</div>`;
-        }
+        profileHTML += ''; // No inline list now
         profileContainer.appendChild(createCard("Ranked Netplay Profile", profileHTML));
+        if (profile.characters && profile.characters.length > 0) {
+          createCharacterBarChart("current-profile-chart", profile.characters);
+        }
       }
 
       // Ranked Netplay Profile History
       if (user.rankedNetplayProfileHistory && user.rankedNetplayProfileHistory.length > 0) {
         user.rankedNetplayProfileHistory.forEach(history => {
           let season = history.season;
-          // Build the season details.
           let historyHTML = `
             <p><strong>Season:</strong> ${season.name} (${formatResponseData(season.status)})</p>
             <p><strong>Period:</strong> ${new Date(season.startedAt).toLocaleDateString()} - ${new Date(season.endedAt).toLocaleDateString()}</p>
@@ -322,19 +327,17 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
             <p><strong>Losses:</strong> ${history.losses}</p>
             <p><strong>Continent:</strong> ${formatResponseData(history.continent)}</p>
           `;
-          // If there is character data for this season, insert a canvas for the bar chart.
           if (history.characters && history.characters.length > 0) {
-            // Use season.id (or index) to create a unique canvas id.
             const canvasId = "chart-" + season.id;
-            historyHTML += `<h4>Character Usage</h4><canvas id="${canvasId}"></canvas>`;
+            historyHTML += `<h4>Character Usage</h4>
+            <div class="chart-container">
+              <canvas id="${canvasId}"></canvas>
+            </div>`;
           }
-          // Create the card for this season and append it.
           const card = createCard(`Ranked Netplay History - ${season.name}`, historyHTML);
           profileContainer.appendChild(card);
-          // If a canvas was inserted, create the bar chart.
           if (history.characters && history.characters.length > 0) {
             const canvasId = "chart-" + season.id;
-            // Create the bar chart for this season's character usage.
             createCharacterBarChart(canvasId, history.characters);
           }
         });
