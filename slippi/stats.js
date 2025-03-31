@@ -28,20 +28,8 @@ const characterColors = {
   "zelda": "thistle"
 };
 
-// GraphQL endpoint and payload (for DMAR#554)
+// GraphQL endpoint
 const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
-const payload = {
-  operationName: "AccountManagementPageQuery",
-  query: `fragment profileFieldsV2 on NetplayProfileV2 {
-  id ratingOrdinal ratingUpdateCount wins losses dailyGlobalPlacement dailyRegionalPlacement continent characters { character gameCount __typename } __typename }
-fragment userProfilePage on User {
-  fbUid displayName connectCode { code __typename } status activeSubscription { level hasGiftSub __typename } rankedNetplayProfile { ...profileFieldsV2 __typename } rankedNetplayProfileHistory { ...profileFieldsV2 season { id startedAt endedAt name status __typename } __typename } __typename }
-query AccountManagementPageQuery($cc: String!, $uid: String!) {
-  getUser(fbUid: $uid) { ...userProfilePage __typename }
-  getConnectCode(code: $cc) { user { ...userProfilePage __typename } __typename }
-}`,
-  variables: { cc: "DMAR#554", uid: "DMAR#554" }
-};
 
 // Formats an all-caps, underscore-separated string into a display-friendly format.
 function formatResponseData(text) {
@@ -111,7 +99,7 @@ function createCharacterBarChart(canvasId, characters) {
         }
       },
       plugins: {
-        legend: { display: false }, // Removed the legend
+        legend: { display: false },
         tooltip: { callbacks: { label: (context) => `${context.label}: ${context.parsed.y} games` } }
       }
     }
@@ -121,6 +109,7 @@ function createCharacterBarChart(canvasId, characters) {
 // Renders the user profile, including basic info, current profile chart, and history charts.
 function renderUserProfile(user) {
   const profileContainer = document.getElementById('profile');
+  profileContainer.innerHTML = ''; // Clear previous content
   if (!user) { 
     profileContainer.textContent = 'No user data found.'; 
     return; 
@@ -180,17 +169,34 @@ function renderUserProfile(user) {
   }
 }
 
-// Fetch data and render profile.
-fetch(endpoint, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(payload)
-})
-  .then(response => response.json())
-  .then(data => {
-    const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
-    renderUserProfile(user);
+// Fetches the profile data for the given user code.
+function fetchProfile(userCode) {
+  // Build payload with the user code.
+  const dynamicPayload = {
+    ...payload,
+    variables: { cc: userCode, uid: userCode }
+  };
+  
+  fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dynamicPayload)
   })
-  .catch(error => {
-    document.getElementById('profile').textContent = 'Error: ' + error;
-  });
+    .then(response => response.json())
+    .then(data => {
+      const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
+      renderUserProfile(user);
+    })
+    .catch(error => {
+      document.getElementById('profile').textContent = 'Error: ' + error;
+    });
+}
+
+// Set up form submission handler.
+document.getElementById('userForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const userCode = document.getElementById('userCode').value.trim();
+  if (userCode) {
+    fetchProfile(userCode);
+  }
+});
