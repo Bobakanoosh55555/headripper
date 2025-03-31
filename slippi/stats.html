@@ -1,42 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>User Profile Display</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Slippi Profile Display</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #eef;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      background-color: #121212;
+      color: #ffffff;
       margin: 0;
       padding: 20px;
     }
     .container {
       max-width: 800px;
       margin: auto;
-      background: #fff;
+      background-color: #121212;
       padding: 20px;
+      border: 1px solid #555;
       border-radius: 5px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
     }
     .card {
-      border: 1px solid #ddd;
+      border: 1px solid #555;
       border-radius: 5px;
       padding: 15px;
       margin: 15px 0;
-      background: #f9f9f9;
+      background-color: #121212;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.7);
     }
-    h2 {
+    h1, h2 {
       margin-top: 0;
     }
     .characters {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       margin-top: 10px;
     }
     .character {
       display: flex;
       align-items: center;
-      background: #dde;
+      background-color: #222;
       padding: 5px 10px;
       margin: 5px;
       border-radius: 3px;
@@ -47,11 +54,14 @@
       height: 20px;
       margin-right: 5px;
     }
+    p {
+      margin: 5px 0;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>User Profile: STAR#69</h1>
+    <h1>Slippi Profile: STAR#69</h1>
     <div id="profile"></div>
   </div>
 
@@ -128,7 +138,6 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
     // Helper: Format API character names into readable names.
     // Converts underscores to spaces and capitalizes each word.
     function formatCharacterName(apiName) {
-      // Special case handling can be added if necessary.
       return apiName
         .toLowerCase()
         .split('_')
