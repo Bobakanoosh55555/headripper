@@ -160,17 +160,19 @@ function renderUserProfile(user) {
     }
   }
   
-  // If there is season history, add tabs.
+  // Season History Tabs
   if (user.rankedNetplayProfileHistory && user.rankedNetplayProfileHistory.length > 0) {
     const tabsHTML = `
       <div class="tabs">
         <button class="tab-button active" data-target="aggregateData">Aggregate Data</button>
         <button class="tab-button" data-target="previousSeason">Previous Season</button>
       </div>
-      <div id="aggregateData" class="tab-content active"></div>
+      <div id="aggregateData" class="tab-content active">
+        <div class="chart-container"><canvas id="aggregate-chart"></canvas></div>
+      </div>
       <div id="previousSeason" class="tab-content"></div>
     `;
-    profileContainer.appendChild(createCard("Season History", tabsHTML));
+    profileContainer.appendChild(createCard("", tabsHTML)); // No header text in the card.
     
     // Render Previous Season data.
     const prevContainer = document.getElementById('previousSeason');
@@ -197,20 +199,21 @@ function renderUserProfile(user) {
       }
     });
     
-    // Aggregate Data: Sum character usage across all seasons.
+    // Aggregate Data: Sum character usage across all seasons including current season.
     const aggregateUsage = {};
+    if (user.rankedNetplayProfile && user.rankedNetplayProfile.characters) {
+      user.rankedNetplayProfile.characters.forEach(char => {
+        aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + char.gameCount;
+      });
+    }
     user.rankedNetplayProfileHistory.forEach(history => {
-      if (history.characters && history.characters.length > 0) {
+      if (history.characters) {
         history.characters.forEach(char => {
-          const key = char.character;
-          aggregateUsage[key] = (aggregateUsage[key] || 0) + char.gameCount;
+          aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + char.gameCount;
         });
       }
     });
     const aggregateArray = Object.keys(aggregateUsage).map(key => ({ character: key, gameCount: aggregateUsage[key] }));
-    const aggContainer = document.getElementById('aggregateData');
-    aggContainer.innerHTML = `<h3>Aggregate Character Usage</h3>
-      <div class="chart-container"><canvas id="aggregate-chart"></canvas></div>`;
     if (aggregateArray.length > 0) {
       createCharacterBarChart("aggregate-chart", aggregateArray);
     }
