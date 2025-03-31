@@ -32,7 +32,6 @@ const characterColors = {
 const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
 
 // Base payload used for the GraphQL query.
-// (This object will be spread into the dynamic payload in fetchProfile.)
 const payload = {
   operationName: "AccountManagementPageQuery",
   query: `fragment profileFieldsV2 on NetplayProfileV2 {
@@ -80,12 +79,16 @@ function createCard(title, contentHTML) {
 
 // Creates a vertical bar chart for character usage using Chart.js.
 function createCharacterBarChart(canvasId, characters) {
+  // Sort characters from largest to smallest by gameCount.
+  const sortedCharacters = characters.slice().sort((a, b) => b.gameCount - a.gameCount);
   const labels = [], data = [], backgroundColors = [];
-  characters.forEach(char => {
+  
+  sortedCharacters.forEach(char => {
     labels.push(formatResponseData(char.character));
     data.push(char.gameCount);
     backgroundColors.push(getCharacterColor(char.character));
   });
+  
   const ctx = document.getElementById(canvasId).getContext('2d');
   new Chart(ctx, {
     type: 'bar',
@@ -186,7 +189,6 @@ function renderUserProfile(user) {
 
 // Fetches the profile data for the given user code.
 function fetchProfile(userCode) {
-  // Build payload with the user code.
   const dynamicPayload = {
     ...payload,
     variables: { cc: userCode, uid: userCode }
