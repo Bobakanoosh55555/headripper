@@ -50,14 +50,16 @@ const payload = {
   variables: { cc: "DMAR#554", uid: "DMAR#554" }
 };
 
-// Formats a string like "MARTY_17" to "Marty 17"
+// Formats generic text (e.g., status) to proper case.
 function formatResponseData(text) {
-  return typeof text === 'string'
-    ? text.toLowerCase().split('_').map(word => {
-        const m = word.match(/([a-z]+)(\d*)/);
-        return m ? m[1].charAt(0).toUpperCase() + m[1].slice(1) + (m[2] ? ' ' + m[2] : '') : word;
-      }).join(' ')
-    : text;
+  if (typeof text !== 'string') return text;
+  return text.toLowerCase();
+}
+
+// Normalizes a character name from "CAPTAIN_FALCON" to "Captain Falcon"
+function normalizeCharacterName(name) {
+  if (typeof name !== 'string') return name;
+  return name.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 }
 
 function getCharacterColor(apiName) {
@@ -77,7 +79,7 @@ function createCharacterBarChart(canvasId, characters) {
   const labels = [], data = [], backgroundColors = [];
   
   sortedCharacters.forEach(char => {
-    labels.push(formatResponseData(char.character));
+    labels.push(normalizeCharacterName(char.character));
     data.push(Number(char.gameCount));
     backgroundColors.push(getCharacterColor(char.character));
   });
@@ -126,6 +128,7 @@ function renderUserProfile(user) {
     return;
   }
   
+  // Header: User name, connect code, and subscription status.
   const userHeader = document.createElement('div');
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
@@ -134,6 +137,7 @@ function renderUserProfile(user) {
   `;
   profileContainer.appendChild(userHeader);
   
+  // Current Season Section
   if (user.rankedNetplayProfile) {
     let profile = user.rankedNetplayProfile;
     let profileHTML = `
@@ -151,6 +155,7 @@ function renderUserProfile(user) {
     }
   }
   
+  // Season History Tabs
   if (user.rankedNetplayProfileHistory && user.rankedNetplayProfileHistory.length > 0) {
     const tabsHTML = `
       <div class="tabs">
@@ -164,6 +169,7 @@ function renderUserProfile(user) {
     `;
     profileContainer.appendChild(createCard("", tabsHTML));
     
+    // Previous Season Tab
     const prevContainer = document.getElementById('previousSeason');
     user.rankedNetplayProfileHistory.forEach(history => {
       let season = history.season;
@@ -192,7 +198,7 @@ function renderUserProfile(user) {
     const aggregateUsage = {};
     if (user.rankedNetplayProfile && user.rankedNetplayProfile.characters) {
       user.rankedNetplayProfile.characters.forEach(char => {
-        const normKey = formatResponseData(char.character).trim();
+        const normKey = normalizeCharacterName(char.character).trim();
         const count = Number(char.gameCount);
         aggregateUsage[normKey] = (aggregateUsage[normKey] || 0) + (isNaN(count) ? 0 : count);
       });
@@ -200,12 +206,13 @@ function renderUserProfile(user) {
     user.rankedNetplayProfileHistory.forEach(history => {
       if (history.characters) {
         history.characters.forEach(char => {
-          const normKey = formatResponseData(char.character).trim();
+          const normKey = normalizeCharacterName(char.character).trim();
           const count = Number(char.gameCount);
           aggregateUsage[normKey] = (aggregateUsage[normKey] || 0) + (isNaN(count) ? 0 : count);
         });
       }
     });
+    console.log("Aggregate Usage:", aggregateUsage);
     const aggregateArray = Object.keys(aggregateUsage).map(key => ({ character: key, gameCount: aggregateUsage[key] }));
     if (aggregateArray.length > 0) {
       createCharacterBarChart("aggregate-chart", aggregateArray);
