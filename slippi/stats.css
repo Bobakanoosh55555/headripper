@@ -52,7 +52,9 @@ button:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.7);
 }
 
-h1, h2, h3, h4 { margin-top: 0; }
+h1, h2, h3, h4 {
+  margin-top: 0;
+}
 
 .chart-container {
   position: relative;
@@ -67,4 +69,6 @@ canvas {
   border-radius: 5px;
 }
 
-p { margin: 5px 0; }
+p {
+  margin: 5px 0;
+}
