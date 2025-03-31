@@ -50,22 +50,19 @@ const payload = {
   variables: { cc: "DMAR#554", uid: "DMAR#554" }
 };
 
-// Formats generic text (e.g. status) to lower-case.
-function formatResponseData(text) {
-  return typeof text === 'string' ? text.toLowerCase() : text;
-}
-
-// Normalizes a character name to a key (lowercase, underscores replaced with hyphens)
+// Converts a character name to a normalized key that matches our color mapping.
+// E.g., "CAPTAIN_FALCON" becomes "captain-falcon"
 function normalizeKey(name) {
   return typeof name === 'string' ? name.toLowerCase().replace(/_/g, "-").trim() : name;
 }
 
-// Converts a normalized key (e.g. "captain-falcon") to title case (e.g. "Captain Falcon")
+// Converts a normalized key into title case with spaces.
+// E.g., "captain-falcon" becomes "Captain Falcon"
 function titleCaseFromKey(key) {
   return key.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 }
 
-// Returns color for a character based on mapping.
+// Returns the color for a character using the normalized key.
 function getCharacterColor(apiName) {
   const key = normalizeKey(apiName);
   return characterColors[key] || 'gray';
@@ -83,8 +80,9 @@ function createCharacterBarChart(canvasId, characters) {
   const labels = [], data = [], backgroundColors = [];
   
   sortedCharacters.forEach(char => {
-    // For individual charts we use our original normalization function:
-    labels.push(normalizeKey(char.character).split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" "));
+    // Use normalizeKey and then titleCaseFromKey for consistent labeling.
+    const norm = normalizeKey(char.character);
+    labels.push(titleCaseFromKey(norm));
     data.push(Number(char.gameCount));
     backgroundColors.push(getCharacterColor(char.character));
   });
@@ -133,12 +131,12 @@ function renderUserProfile(user) {
     return;
   }
   
-  // Header: Name, connect code, and subscription status.
+  // User Header: Name, connect code, and subscription status.
   const userHeader = document.createElement('div');
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
     <h3>${user.connectCode.code}</h3>
-    <p><strong>Subscription Status:</strong> ${formatResponseData(user.status)} - ${formatResponseData(user.activeSubscription.level)} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
+    <p><strong>Subscription Status:</strong> ${user.status.toLowerCase()} - ${user.activeSubscription.level.toLowerCase()} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
   `;
   profileContainer.appendChild(userHeader);
   
@@ -150,7 +148,7 @@ function renderUserProfile(user) {
       <p><strong>Sets Played:</strong> ${profile.ratingUpdateCount}</p>
       <p><strong>Wins:</strong> ${profile.wins}</p>
       <p><strong>Losses:</strong> ${profile.losses}</p>
-      <p><strong>Continent:</strong> ${formatResponseData(profile.continent)}</p>
+      <p><strong>Continent:</strong> ${profile.continent.toLowerCase()}</p>
       <h3>Current Character Usage</h3>
       <div class="chart-container"><canvas id="current-profile-chart"></canvas></div>
     `;
@@ -179,13 +177,13 @@ function renderUserProfile(user) {
     user.rankedNetplayProfileHistory.forEach(history => {
       let season = history.season;
       let historyHTML = `
-        <p><strong>Season:</strong> ${season.name} (${formatResponseData(season.status)})</p>
+        <p><strong>Season:</strong> ${season.name} (${season.status.toLowerCase()})</p>
         <p><strong>Period:</strong> ${new Date(season.startedAt).toLocaleDateString()} - ${new Date(season.endedAt).toLocaleDateString()}</p>
         <p><strong>Rating:</strong> ${history.ratingOrdinal.toFixed(2)}</p>
         <p><strong>Sets Played:</strong> ${history.ratingUpdateCount}</p>
         <p><strong>Wins:</strong> ${history.wins}</p>
         <p><strong>Losses:</strong> ${history.losses}</p>
-        <p><strong>Continent:</strong> ${formatResponseData(history.continent)}</p>
+        <p><strong>Continent:</strong> ${season.continent.toLowerCase()}</p>
       `;
       if (history.characters && history.characters.length > 0) {
         const canvasId = "chart-" + season.id;
