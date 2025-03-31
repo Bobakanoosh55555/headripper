@@ -85,7 +85,7 @@ function createCharacterBarChart(canvasId, characters) {
   
   sortedCharacters.forEach(char => {
     labels.push(formatResponseData(char.character));
-    data.push(char.gameCount);
+    data.push(Number(char.gameCount));
     backgroundColors.push(getCharacterColor(char.character));
   });
   
@@ -199,17 +199,17 @@ function renderUserProfile(user) {
       }
     });
     
-    // Aggregate Data: Sum character usage across all seasons including current season.
+    // Aggregate Data: Sum character usage across all seasons including the current season.
     const aggregateUsage = {};
     if (user.rankedNetplayProfile && user.rankedNetplayProfile.characters) {
       user.rankedNetplayProfile.characters.forEach(char => {
-        aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + char.gameCount;
+        aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + Number(char.gameCount);
       });
     }
     user.rankedNetplayProfileHistory.forEach(history => {
       if (history.characters) {
         history.characters.forEach(char => {
-          aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + char.gameCount;
+          aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + Number(char.gameCount);
         });
       }
     });
