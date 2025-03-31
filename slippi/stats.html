@@ -59,8 +59,8 @@
 
   <script>
     // -------------------------------
-    // Character-to-color mapping.
-    // Use lowercase with hyphens as keys (matching getCharacterIcon()).
+    // Character-to-color mapping with updated tweaks.
+    // Keys are in lowercase with hyphens.
     // -------------------------------
     const characterColors = {
       "bowser": "green",
@@ -71,21 +71,21 @@
       "fox": "sandybrown",
       "game-and-watch": "black",
       "ganondorf": "darkviolet",
-      "ice-climbers": "plum",
+      "ice-climbers": "blueviolet",  // updated to a slightly bluer purple
       "jigglypuff": "lightpink",
       "kirby": "deeppink",
       "link": "limegreen",
       "luigi": "green",
       "mario": "red",
-      "marth": "royalblue",
+      "marth": "mediumblue",       // updated to a slightly darker blue
       "mewtwo": "mediumorchid",
-      "ness": "lightcoral",
+      "ness": "crimson",            // updated to be much closer to red
       "peach": "pink",
       "pichu": "yellow",
       "pikachu": "gold",
       "roy": "red",
       "samus": "red",
-      "sheik": "lightskyblue",
+      "sheik": "lightsteelblue",    // updated to a slightly greyer blue
       "yoshi": "forestgreen",
       "young-link": "seagreen",
       "zelda": "thistle"
@@ -220,13 +220,11 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
       const labels = [];
       const data = [];
       const backgroundColors = [];
-      const icons = [];
       characters.forEach(char => {
         const formatted = formatResponseData(char.character);
         labels.push(formatted);
         data.push(char.gameCount);
         backgroundColors.push(getCharacterColor(char.character));
-        icons.push(getCharacterIcon(char.character));
       });
 
       const ctx = document.getElementById(canvasId).getContext('2d');
@@ -307,7 +305,6 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
             <canvas id="current-profile-chart"></canvas>
           </div>
         `;
-        profileHTML += ''; // No inline list now
         profileContainer.appendChild(createCard("Ranked Netplay Profile", profileHTML));
         if (profile.characters && profile.characters.length > 0) {
           createCharacterBarChart("current-profile-chart", profile.characters);
