@@ -203,13 +203,15 @@ function renderUserProfile(user) {
     const aggregateUsage = {};
     if (user.rankedNetplayProfile && user.rankedNetplayProfile.characters) {
       user.rankedNetplayProfile.characters.forEach(char => {
-        aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + Number(char.gameCount);
+        const count = Number(char.gameCount);
+        aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + (isNaN(count) ? 0 : count);
       });
     }
     user.rankedNetplayProfileHistory.forEach(history => {
       if (history.characters) {
         history.characters.forEach(char => {
-          aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + Number(char.gameCount);
+          const count = Number(char.gameCount);
+          aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + (isNaN(count) ? 0 : count);
         });
       }
     });
