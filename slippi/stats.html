@@ -2,26 +2,55 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>GraphQL Response Display</title>
+  <title>User Profile Display</title>
   <style>
-    pre {
-      background-color: #f4f4f4;
-      padding: 10px;
-      border: 1px solid #ccc;
-      overflow: auto;
-      max-height: 80vh;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 15px 0;
+      background: #f9f9f9;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    .characters {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .character {
+      background: #dde;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 3px;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <h1>GraphQL Response for STAR#69</h1>
-  <pre id="output">Loading...</pre>
-  
+  <div class="container">
+    <h1>User Profile: STAR#69</h1>
+    <div id="profile"></div>
+  </div>
+
   <script>
-    // GraphQL endpoint
+    // GraphQL endpoint and payload (for user STAR#69)
     const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
-    
-    // GraphQL query and variables (for user STAR#69)
     const payload = {
       operationName: "AccountManagementPageQuery",
       query: `fragment profileFieldsV2 on NetplayProfileV2 {
@@ -89,7 +118,84 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
       variables: { cc: "STAR#69", uid: "STAR#69" }
     };
 
-    // Make the POST request
+    // Helper function to create a card element with a title and content
+    function createCard(title, contentHTML) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      const header = document.createElement('h2');
+      header.textContent = title;
+      card.appendChild(header);
+      const contentDiv = document.createElement('div');
+      contentDiv.innerHTML = contentHTML;
+      card.appendChild(contentDiv);
+      return card;
+    }
+
+    // Function to render the user profile data
+    function renderUserProfile(user) {
+      const profileContainer = document.getElementById('profile');
+      if (!user) {
+        profileContainer.textContent = 'No user data found.';
+        return;
+      }
+
+      // Basic Information
+      let basicHTML = `
+        <p><strong>Name:</strong> ${user.displayName}</p>
+        <p><strong>Connect Code:</strong> ${user.connectCode.code}</p>
+        <p><strong>Status:</strong> ${user.status}</p>
+        <p><strong>Subscription:</strong> ${user.activeSubscription.level} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
+      `;
+      profileContainer.appendChild(createCard("Basic Information", basicHTML));
+
+      // Ranked Netplay Profile
+      if (user.rankedNetplayProfile) {
+        let profile = user.rankedNetplayProfile;
+        let profileHTML = `
+          <p><strong>Rating:</strong> ${profile.ratingOrdinal.toFixed(2)}</p>
+          <p><strong>Rating Updates:</strong> ${profile.ratingUpdateCount}</p>
+          <p><strong>Wins:</strong> ${profile.wins}</p>
+          <p><strong>Losses:</strong> ${profile.losses}</p>
+          <p><strong>Continent:</strong> ${profile.continent}</p>
+        `;
+        // List characters used
+        if (profile.characters && profile.characters.length > 0) {
+          profileHTML += `<h3>Characters</h3><div class="characters">`;
+          profile.characters.forEach(char => {
+            profileHTML += `<div class="character">${char.character}: ${char.gameCount} games</div>`;
+          });
+          profileHTML += `</div>`;
+        }
+        profileContainer.appendChild(createCard("Ranked Netplay Profile", profileHTML));
+      }
+
+      // Ranked Netplay Profile History
+      if (user.rankedNetplayProfileHistory && user.rankedNetplayProfileHistory.length > 0) {
+        user.rankedNetplayProfileHistory.forEach(history => {
+          let season = history.season;
+          let historyHTML = `
+            <p><strong>Season:</strong> ${season.name} (${season.status})</p>
+            <p><strong>Period:</strong> ${new Date(season.startedAt).toLocaleDateString()} - ${new Date(season.endedAt).toLocaleDateString()}</p>
+            <p><strong>Rating:</strong> ${history.ratingOrdinal.toFixed(2)}</p>
+            <p><strong>Rating Updates:</strong> ${history.ratingUpdateCount}</p>
+            <p><strong>Wins:</strong> ${history.wins}</p>
+            <p><strong>Losses:</strong> ${history.losses}</p>
+            <p><strong>Continent:</strong> ${history.continent}</p>
+          `;
+          // List characters used in this season
+          if (history.characters && history.characters.length > 0) {
+            historyHTML += `<h4>Characters</h4><div class="characters">`;
+            history.characters.forEach(char => {
+              historyHTML += `<div class="character">${char.character}: ${char.gameCount} games</div>`;
+            });
+            historyHTML += `</div>`;
+          }
+          profileContainer.appendChild(createCard(`Ranked Netplay History - ${season.name}`, historyHTML));
+        });
+      }
+    }
+
+    // Fetch data and render it on the page
     fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -97,14 +203,15 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
       },
       body: JSON.stringify(payload)
     })
-    .then(response => response.json())
-    .then(data => {
-      // Beautify the JSON output using JSON.stringify with indentation
-      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
-    })
-    .catch(error => {
-      document.getElementById('output').textContent = 'Error: ' + error;
-    });
+      .then(response => response.json())
+      .then(data => {
+        // Use getUser if available, otherwise fallback to getConnectCode.user
+        const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
+        renderUserProfile(user);
+      })
+      .catch(error => {
+        document.getElementById('profile').textContent = 'Error: ' + error;
+      });
   </script>
 </body>
 </html>
