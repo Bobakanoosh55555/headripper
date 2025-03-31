@@ -111,7 +111,7 @@ function createCharacterBarChart(canvasId, characters) {
         }
       },
       plugins: {
-        legend: { labels: { color: "#ffffff" } },
+        legend: { display: false }, // Removed the legend
         tooltip: { callbacks: { label: (context) => `${context.label}: ${context.parsed.y} games` } }
       }
     }
