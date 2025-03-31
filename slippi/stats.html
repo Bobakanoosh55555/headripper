@@ -13,7 +13,14 @@
 </head>
 <body>
   <div class="container">
-    <h1>Slippi Profile: DMAR#554</h1>
+    <h1>Slippi Profile Display</h1>
+    <!-- User Input Form -->
+    <form id="userForm">
+      <label for="userCode">Enter User Code:</label>
+      <input type="text" id="userCode" name="userCode" placeholder="e.g. DMAR#554" required>
+      <button type="submit">Load Profile</button>
+    </form>
+    <!-- Container where the profile will be rendered -->
     <div id="profile"></div>
   </div>
   <!-- External JavaScript -->
