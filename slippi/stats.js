@@ -14,7 +14,7 @@ const characterColors = {
   "link": "limegreen",
   "luigi": "green",
   "mario": "red",
-  "marth": "mediumblue",  // Try temporarily changing this (e.g., "yellow") for debugging
+  "marth": "mediumblue",
   "mewtwo": "mediumorchid",
   "ness": "crimson",
   "peach": "pink",
@@ -99,7 +99,8 @@ function createCharacterBarChart(canvasId, characters) {
         data,
         backgroundColor: backgroundColors,
         borderColor: backgroundColors,
-        borderWidth: 1 
+        borderWidth: 1,
+        minBarLength: 2
       }] 
     },
     options: {
@@ -203,19 +204,21 @@ function renderUserProfile(user) {
     const aggregateUsage = {};
     if (user.rankedNetplayProfile && user.rankedNetplayProfile.characters) {
       user.rankedNetplayProfile.characters.forEach(char => {
+        // Normalize key using formatted character name.
+        const normKey = formatResponseData(char.character).trim();
         const count = Number(char.gameCount);
-        aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + (isNaN(count) ? 0 : count);
+        aggregateUsage[normKey] = (aggregateUsage[normKey] || 0) + (isNaN(count) ? 0 : count);
       });
     }
     user.rankedNetplayProfileHistory.forEach(history => {
       if (history.characters) {
         history.characters.forEach(char => {
+          const normKey = formatResponseData(char.character).trim();
           const count = Number(char.gameCount);
-          aggregateUsage[char.character] = (aggregateUsage[char.character] || 0) + (isNaN(count) ? 0 : count);
+          aggregateUsage[normKey] = (aggregateUsage[normKey] || 0) + (isNaN(count) ? 0 : count);
         });
       }
     });
-    // Debug: log the aggregate usage to inspect Marth's count
     console.log("Aggregate Usage:", aggregateUsage);
     const aggregateArray = Object.keys(aggregateUsage).map(key => ({ character: key, gameCount: aggregateUsage[key] }));
     if (aggregateArray.length > 0) {
