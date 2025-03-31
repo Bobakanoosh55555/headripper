@@ -17,6 +17,32 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  background-color: #222;
+  color: #fff;
+}
+
+button {
+  padding: 8px 12px;
+  margin-left: 10px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #666;
+}
+
 .card {
   border: 1px solid #555;
   border-radius: 5px;
@@ -26,9 +52,7 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.7);
 }
 
-h1, h2, h3, h4 {
-  margin-top: 0;
-}
+h1, h2, h3, h4 { margin-top: 0; }
 
 .chart-container {
   position: relative;
@@ -43,6 +67,4 @@ canvas {
   border-radius: 5px;
 }
 
-p {
-  margin: 5px 0;
-}
+p { margin: 5px 0; }
