@@ -34,22 +34,29 @@
       margin-top: 10px;
     }
     .character {
+      display: flex;
+      align-items: center;
       background: #dde;
       padding: 5px 10px;
       margin: 5px;
       border-radius: 3px;
       font-size: 0.9em;
     }
+    .character img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>User Profile: DMAR#554</h1>
+    <h1>User Profile: STAR#69</h1>
     <div id="profile"></div>
   </div>
 
   <script>
-    // GraphQL endpoint and payload (for user DMAR#554)
+    // GraphQL endpoint and payload (for user STAR#69)
     const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
     const payload = {
       operationName: "AccountManagementPageQuery",
@@ -115,8 +122,25 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
     __typename
   }
 }`,
-      variables: { cc: "DMAR#554", uid: "DMAR#554" }
+      variables: { cc: "STAR#69", uid: "STAR#69" }
     };
+
+    // Helper: Format API character names into readable names.
+    // Converts underscores to spaces and capitalizes each word.
+    function formatCharacterName(apiName) {
+      // Special case handling can be added if necessary.
+      return apiName
+        .toLowerCase()
+        .split('_')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    }
+
+    // Helper: Get the icon filename based on the API character name.
+    // Converts name to lowercase and replaces underscores with hyphens.
+    function getCharacterIcon(apiName) {
+      return `icons/${apiName.toLowerCase().replace(/_/g, "-")}.png`;
+    }
 
     // Helper function to create a card element with a title and content
     function createCard(title, contentHTML) {
@@ -162,7 +186,12 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
         if (profile.characters && profile.characters.length > 0) {
           profileHTML += `<h3>Characters</h3><div class="characters">`;
           profile.characters.forEach(char => {
-            profileHTML += `<div class="character">${char.character}: ${char.gameCount} games</div>`;
+            const displayName = formatCharacterName(char.character);
+            const iconPath = getCharacterIcon(char.character);
+            profileHTML += `<div class="character">
+              <img src="${iconPath}" alt="${displayName} icon" onerror="this.style.display='none'">
+              ${displayName}: ${char.gameCount} games
+            </div>`;
           });
           profileHTML += `</div>`;
         }
@@ -186,7 +215,12 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
           if (history.characters && history.characters.length > 0) {
             historyHTML += `<h4>Characters</h4><div class="characters">`;
             history.characters.forEach(char => {
-              historyHTML += `<div class="character">${char.character}: ${char.gameCount} games</div>`;
+              const displayName = formatCharacterName(char.character);
+              const iconPath = getCharacterIcon(char.character);
+              historyHTML += `<div class="character">
+                <img src="${iconPath}" alt="${displayName} icon" onerror="this.style.display='none'">
+                ${displayName}: ${char.gameCount} games
+              </div>`;
             });
             historyHTML += `</div>`;
           }
