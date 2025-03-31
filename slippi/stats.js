@@ -50,20 +50,24 @@ const payload = {
   variables: { cc: "DMAR#554", uid: "DMAR#554" }
 };
 
-// Formats generic text (e.g., status) to proper case.
+// Formats generic text (e.g. status) to lower-case.
 function formatResponseData(text) {
-  if (typeof text !== 'string') return text;
-  return text.toLowerCase();
+  return typeof text === 'string' ? text.toLowerCase() : text;
 }
 
-// Normalizes a character name from "CAPTAIN_FALCON" to "Captain Falcon"
-function normalizeCharacterName(name) {
-  if (typeof name !== 'string') return name;
-  return name.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+// Normalizes a character name to a key (lowercase, underscores replaced with hyphens)
+function normalizeKey(name) {
+  return typeof name === 'string' ? name.toLowerCase().replace(/_/g, "-").trim() : name;
 }
 
+// Converts a normalized key (e.g. "captain-falcon") to title case (e.g. "Captain Falcon")
+function titleCaseFromKey(key) {
+  return key.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+}
+
+// Returns color for a character based on mapping.
 function getCharacterColor(apiName) {
-  const key = apiName.toLowerCase().replace(/_/g, "-");
+  const key = normalizeKey(apiName);
   return characterColors[key] || 'gray';
 }
 
@@ -79,7 +83,8 @@ function createCharacterBarChart(canvasId, characters) {
   const labels = [], data = [], backgroundColors = [];
   
   sortedCharacters.forEach(char => {
-    labels.push(normalizeCharacterName(char.character));
+    // For individual charts we use our original normalization function:
+    labels.push(normalizeKey(char.character).split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" "));
     data.push(Number(char.gameCount));
     backgroundColors.push(getCharacterColor(char.character));
   });
@@ -128,7 +133,7 @@ function renderUserProfile(user) {
     return;
   }
   
-  // Header: User name, connect code, and subscription status.
+  // Header: Name, connect code, and subscription status.
   const userHeader = document.createElement('div');
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
@@ -194,11 +199,11 @@ function renderUserProfile(user) {
       }
     });
     
-    // Aggregate Data: Sum character usage across all seasons including the current season.
+    // Aggregate Data: Sum character usage across all seasons (current + history)
     const aggregateUsage = {};
     if (user.rankedNetplayProfile && user.rankedNetplayProfile.characters) {
       user.rankedNetplayProfile.characters.forEach(char => {
-        const normKey = normalizeCharacterName(char.character).trim();
+        const normKey = normalizeKey(char.character);
         const count = Number(char.gameCount);
         aggregateUsage[normKey] = (aggregateUsage[normKey] || 0) + (isNaN(count) ? 0 : count);
       });
@@ -206,14 +211,14 @@ function renderUserProfile(user) {
     user.rankedNetplayProfileHistory.forEach(history => {
       if (history.characters) {
         history.characters.forEach(char => {
-          const normKey = normalizeCharacterName(char.character).trim();
+          const normKey = normalizeKey(char.character);
           const count = Number(char.gameCount);
           aggregateUsage[normKey] = (aggregateUsage[normKey] || 0) + (isNaN(count) ? 0 : count);
         });
       }
     });
     console.log("Aggregate Usage:", aggregateUsage);
-    const aggregateArray = Object.keys(aggregateUsage).map(key => ({ character: key, gameCount: aggregateUsage[key] }));
+    const aggregateArray = Object.keys(aggregateUsage).map(key => ({ character: titleCaseFromKey(key), gameCount: aggregateUsage[key] }));
     if (aggregateArray.length > 0) {
       createCharacterBarChart("aggregate-chart", aggregateArray);
     }
