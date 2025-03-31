@@ -61,12 +61,12 @@
 </head>
 <body>
   <div class="container">
-    <h1>Slippi Profile: STAR#69</h1>
+    <h1>Slippi Profile: DMAR#554</h1>
     <div id="profile"></div>
   </div>
 
   <script>
-    // GraphQL endpoint and payload (for user STAR#69)
+    // GraphQL endpoint and payload (for user DMAR#554)
     const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
     const payload = {
       operationName: "AccountManagementPageQuery",
@@ -132,16 +132,19 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
     __typename
   }
 }`,
-      variables: { cc: "STAR#69", uid: "STAR#69" }
+      variables: { cc: "DMAR#554", uid: "DMAR#554" }
     };
 
-    // Helper: Format API character names into readable names.
-    // Converts underscores to spaces and capitalizes each word.
-    function formatCharacterName(apiName) {
-      return apiName
+    // New helper: Format any all-caps, underscore-separated string into a user-friendly format.
+    function formatResponseData(text) {
+      if (typeof text !== 'string') return text;
+      return text
         .toLowerCase()
         .split('_')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .map(word => {
+          // If the word contains digits, leave them attached to the word.
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        })
         .join(' ');
     }
 
@@ -176,8 +179,8 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
       let basicHTML = `
         <p><strong>Name:</strong> ${user.displayName}</p>
         <p><strong>Connect Code:</strong> ${user.connectCode.code}</p>
-        <p><strong>Status:</strong> ${user.status}</p>
-        <p><strong>Subscription:</strong> ${user.activeSubscription.level} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
+        <p><strong>Status:</strong> ${formatResponseData(user.status)}</p>
+        <p><strong>Subscription:</strong> ${formatResponseData(user.activeSubscription.level)} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
       `;
       profileContainer.appendChild(createCard("Basic Information", basicHTML));
 
@@ -189,13 +192,13 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
           <p><strong>Rating Updates:</strong> ${profile.ratingUpdateCount}</p>
           <p><strong>Wins:</strong> ${profile.wins}</p>
           <p><strong>Losses:</strong> ${profile.losses}</p>
-          <p><strong>Continent:</strong> ${profile.continent}</p>
+          <p><strong>Continent:</strong> ${formatResponseData(profile.continent)}</p>
         `;
         // List characters used
         if (profile.characters && profile.characters.length > 0) {
           profileHTML += `<h3>Characters</h3><div class="characters">`;
           profile.characters.forEach(char => {
-            const displayName = formatCharacterName(char.character);
+            const displayName = formatResponseData(char.character);
             const iconPath = getCharacterIcon(char.character);
             profileHTML += `<div class="character">
               <img src="${iconPath}" alt="${displayName} icon" onerror="this.style.display='none'">
@@ -212,19 +215,19 @@ query AccountManagementPageQuery($cc: String!, $uid: String!) {
         user.rankedNetplayProfileHistory.forEach(history => {
           let season = history.season;
           let historyHTML = `
-            <p><strong>Season:</strong> ${season.name} (${season.status})</p>
+            <p><strong>Season:</strong> ${season.name} (${formatResponseData(season.status)})</p>
             <p><strong>Period:</strong> ${new Date(season.startedAt).toLocaleDateString()} - ${new Date(season.endedAt).toLocaleDateString()}</p>
             <p><strong>Rating:</strong> ${history.ratingOrdinal.toFixed(2)}</p>
             <p><strong>Rating Updates:</strong> ${history.ratingUpdateCount}</p>
             <p><strong>Wins:</strong> ${history.wins}</p>
             <p><strong>Losses:</strong> ${history.losses}</p>
-            <p><strong>Continent:</strong> ${history.continent}</p>
+            <p><strong>Continent:</strong> ${formatResponseData(history.continent)}</p>
           `;
           // List characters used in this season
           if (history.characters && history.characters.length > 0) {
             historyHTML += `<h4>Characters</h4><div class="characters">`;
             history.characters.forEach(char => {
-              const displayName = formatCharacterName(char.character);
+              const displayName = formatResponseData(char.character);
               const iconPath = getCharacterIcon(char.character);
               historyHTML += `<div class="character">
                 <img src="${iconPath}" alt="${displayName} icon" onerror="this.style.display='none'">
