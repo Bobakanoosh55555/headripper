@@ -50,14 +50,21 @@ const payload = {
   variables: { cc: "DMAR#554", uid: "DMAR#554" }
 };
 
-// Converts generic text to lower-case.
+// New helper to convert any string to title case, handling spaces and underscores.
+function titleCase(str) {
+  return typeof str === 'string'
+    ? str.split(/[_\s]+/).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ")
+    : str;
+}
+
+// (Optional) Retain the old function if needed elsewhere.
 function formatResponseData(text) {
   return typeof text === 'string' ? text.toLowerCase() : text;
 }
 
-// Normalizes a character name to a key (lowercase, underscores replaced with hyphens)
+// Updated normalizeKey: converts the name to lowercase and replaces underscores and spaces with hyphens.
 function normalizeKey(name) {
-  return typeof name === 'string' ? name.toLowerCase().replace(/_/g, "-").trim() : name;
+  return typeof name === 'string' ? name.toLowerCase().replace(/[_\s]+/g, "-").trim() : name;
 }
 
 // Converts a normalized key into title case with spaces.
@@ -137,7 +144,7 @@ function renderUserProfile(user) {
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
     <h3>${user.connectCode.code}</h3>
-    <p><strong>Subscription Status:</strong> ${user.status.toLowerCase()} - ${user.activeSubscription.level.toLowerCase()} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
+    <p><strong>Subscription Status:</strong> ${titleCase(user.status)} - ${titleCase(user.activeSubscription.level)} ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
   `;
   profileContainer.appendChild(userHeader);
   
@@ -148,7 +155,7 @@ function renderUserProfile(user) {
       <p><strong>Sets Played:</strong> ${profile.ratingUpdateCount}</p>
       <p><strong>Wins:</strong> ${profile.wins}</p>
       <p><strong>Losses:</strong> ${profile.losses}</p>
-      <p><strong>Continent:</strong> ${profile.continent.toLowerCase()}</p>
+      <p><strong>Continent:</strong> ${titleCase(profile.continent)}</p>
       <h3>Current Character Usage</h3>
       <div class="chart-container"><canvas id="current-profile-chart"></canvas></div>
     `;
@@ -181,7 +188,7 @@ function renderUserProfile(user) {
         <p><strong>Sets Played:</strong> ${history.ratingUpdateCount}</p>
         <p><strong>Wins:</strong> ${history.wins}</p>
         <p><strong>Losses:</strong> ${history.losses}</p>
-        <p><strong>Continent:</strong> ${formatResponseData(history.continent)}</p>
+        <p><strong>Continent:</strong> ${titleCase(history.continent)}</p>
       `;
       if (history.characters && history.characters.length > 0) {
         const canvasId = "chart-" + season.id;
@@ -214,7 +221,10 @@ function renderUserProfile(user) {
       }
     });
     console.log("Aggregate Usage:", aggregateUsage);
-    const aggregateArray = Object.keys(aggregateUsage).map(key => ({ character: titleCaseFromKey(key), gameCount: aggregateUsage[key] }));
+    const aggregateArray = Object.keys(aggregateUsage).map(key => ({
+      character: titleCaseFromKey(key),
+      gameCount: aggregateUsage[key]
+    }));
     if (aggregateArray.length > 0) {
       createCharacterBarChart("aggregate-chart", aggregateArray);
     }
