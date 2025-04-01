@@ -132,17 +132,17 @@ p {
   height: 100%;
   transform: translateX(-50%);
   background: linear-gradient(to bottom, 
-    #800080 0%, 
-    #800080 35.1%, 
-    #1E90FF 35.1%, 
-    #1E90FF 43.3%, 
-    #89CFF0 43.3%, 
-    #89CFF0 54.3%, 
-    #FFD700 54.3%, 
-    #FFD700 68.0%, 
-    #C0C0C0 68.0%, 
-    #C0C0C0 84.6%, 
-    #cd7f32 84.6%, 
+    #800080 0%,          /* Master */
+    #800080 35.2%,       
+    #1E90FF 35.2%,        /* Diamond */
+    #1E90FF 43.4%,       
+    #89CFF0 43.4%,        /* Platinum */
+    #89CFF0 54.4%,       
+    #FFD700 54.4%,        /* Gold */
+    #FFD700 68.2%,       
+    #C0C0C0 68.2%,        /* Silver */
+    #C0C0C0 84.8%,       
+    #cd7f32 84.8%,        /* Bronze */
     #cd7f32 100%
   );
 }
