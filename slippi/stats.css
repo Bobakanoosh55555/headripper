@@ -132,26 +132,74 @@ p {
   height: 100%;
   transform: translateX(-50%);
   background: linear-gradient(to bottom, 
-    /* Master */
-    #800080 0%, 
-    #800080 35.15%, 
-    /* Diamond */
-    #1E90FF 35.15%, 
-    #1E90FF 43.30%, 
-    /* Platinum */
-    #89CFF0 43.30%, 
-    #89CFF0 54.27%, 
-    /* Gold */
-    #FFD700 54.27%, 
-    #FFD700 67.98%, 
-    /* Silver */
-    #C0C0C0 67.98%, 
-    #C0C0C0 84.57%, 
-    /* Bronze */
-    #cd7f32 84.57%, 
-    #cd7f32 100%
+    /* Master 3 */
+    #800080 0%,
+    #800080 28.26%,
+    /* Master 2 */
+    #800080 28.26%,
+    #800080 31.52%,
+    /* Master 1 */
+    /* (Assume a lighter version, e.g., #A828A8; adjust as computed by your adjustColor function) */
+    #A828A8 31.52%,
+    #A828A8 35.16%,
+    /* Diamond 3 */
+    /* (Assume a darker version of dodgerblue, e.g., #0068D7) */
+    #0068D7 35.16%,
+    #0068D7 37.56%,
+    /* Diamond 2 */
+    #1E90FF 37.56%,
+    #1E90FF 40.27%,
+    /* Diamond 1 */
+    /* (A lighter version, e.g., #46B8FF) */
+    #46B8FF 40.27%,
+    #46B8FF 43.30%,
+    /* Platinum 3 */
+    /* (Darker version of #89CFF0, e.g., #61A7C8) */
+    #61A7C8 43.30%,
+    #61A7C8 46.65%,
+    /* Platinum 2 */
+    #89CFF0 46.65%,
+    #89CFF0 50.30%,
+    /* Platinum 1 */
+    /* (Lighter version, e.g., #B1F7FF) */
+    #B1F7FF 50.30%,
+    #B1F7FF 54.27%,
+    /* Gold 3 */
+    /* (Darker version of #FFD700, e.g., #D7AF00) */
+    #D7AF00 54.27%,
+    #D7AF00 58.56%,
+    /* Gold 2 */
+    #FFD700 58.56%,
+    #FFD700 63.13%,
+    /* Gold 1 */
+    /* (Lighter version, e.g., #FFFF28) */
+    #FFFF28 63.13%,
+    #FFFF28 67.98%,
+    /* Silver 3 */
+    /* (Darker version of #C0C0C0, e.g., #989898) */
+    #989898 67.98%,
+    #989898 73.22%,
+    /* Silver 2 */
+    #C0C0C0 73.22%,
+    #C0C0C0 78.74%,
+    /* Silver 1 */
+    /* (Lighter version, e.g., #E8E8E8) */
+    #E8E8E8 78.74%,
+    #E8E8E8 84.57%,
+    /* Bronze 3 */
+    /* (Darker version of #CD7F32, e.g., #A5570A) */
+    #A5570A 84.57%,
+    #A5570A 90.70%,
+    /* Bronze 2 */
+    #CD7F32 90.70%,
+    #CD7F32 97.16%,
+    /* Bronze 1 */
+    /* (Lighter version, e.g., #F5A75A) */
+    #F5A75A 97.16%,
+    #F5A75A 100%
   );
 }
+
 
 
 /* Player Cards in the alternate view */
