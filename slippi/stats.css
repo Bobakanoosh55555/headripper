@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
   font-family: 'Roboto', sans-serif;
   text-align: center;
@@ -7,16 +8,47 @@ body {
   padding: 20px;
 }
 
+/* Updated container styles: removed border, box-shadow, and rounded corners */
 .container {
   max-width: 800px;
   margin: auto;
-  background-color: #121212;
   padding: 20px;
-  border: 1px solid #555;
-  border-radius: 5px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  /* Removed background-color, border, and shadow for a clean look */
 }
 
+/* Outer Tabs Styles */
+.outer-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.outer-tab-button {
+  padding: 8px 16px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 0 2px;
+  border-radius: 3px 3px 0 0;
+}
+
+.outer-tab-button.active {
+  background-color: #121212;
+  font-weight: bold;
+}
+
+.outer-tab-content {
+  display: none;
+  max-width: 800px;
+  margin: auto;
+}
+
+.outer-tab-content.active {
+  display: block;
+}
+
+/* Form Styles */
 form {
   margin-bottom: 20px;
 }
@@ -43,6 +75,7 @@ button:hover {
   background-color: #666;
 }
 
+/* Card Styles */
 .card {
   border: 1px solid #555;
   border-radius: 5px;
@@ -56,6 +89,7 @@ h1, h2, h3, h4 {
   margin-top: 0;
 }
 
+/* Chart Styles */
 .chart-container {
   position: relative;
   height: 300px;
@@ -73,7 +107,7 @@ p {
   margin: 5px 0;
 }
 
-/* Tab styles */
+/* Inner Tab Styles (for tabs within the Individual tab, if used) */
 .tabs {
   display: flex;
   justify-content: center;
