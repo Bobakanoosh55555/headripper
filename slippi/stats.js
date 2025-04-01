@@ -50,7 +50,7 @@ const payload = {
   variables: { cc: "DMAR#554", uid: "DMAR#554" }
 };
 
-// New helper to convert any string to title case, handling spaces and underscores.
+// Helper to convert any string to title case, handling spaces and underscores.
 function titleCase(str) {
   return typeof str === 'string'
     ? str.split(/[_\s]+/).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ")
@@ -140,7 +140,9 @@ function renderUserProfile(user) {
     return;
   }
   
-  // Subscription Status formatting change
+  // Subscription Status formatting change:
+  // - If activeSubscription.level is "NONE", display "INACTIVE".
+  // - Otherwise, display "ACTIVE - TIER 1/2/3" and append "(Gifted)" if applicable.
   let subscriptionStatus = '';
   if (user.activeSubscription.level === 'NONE') {
     subscriptionStatus = 'INACTIVE';
@@ -192,8 +194,8 @@ function renderUserProfile(user) {
     const prevContainer = document.getElementById('previousSeason');
     user.rankedNetplayProfileHistory.forEach(history => {
       let season = history.season;
+      // Removed the inner <p> line for season name since it's already in the card header.
       let historyHTML = `
-        <p><strong>Season:</strong> ${season.name}${history.status ? ` (${history.status.toLowerCase()})` : ''}</p>
         <p><strong>Period:</strong> ${new Date(season.startedAt).toLocaleDateString()} - ${new Date(season.endedAt).toLocaleDateString()}</p>
         <p><strong>Rating:</strong> ${history.ratingOrdinal.toFixed(2)}</p>
         <p><strong>Sets Played:</strong> ${history.ratingUpdateCount}</p>
