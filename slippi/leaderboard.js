@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const leaderboardForm = document.getElementById('leaderboardForm');
   const leaderboardResults = document.getElementById('leaderboardResults');
+  const presetButton = document.getElementById('presetButton');
   const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
   
   const query = `
@@ -20,20 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   `;
   
-  leaderboardForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    leaderboardResults.innerHTML = 'Loading leaderboard...';
-    
-    let codesInput = document.getElementById('codesInput').value;
-    // Split on commas, trim each code, and filter out any empty values
-    let codes = codesInput.split(',').map(code => code.trim()).filter(code => code !== '');
-    
+  // Function to process an array of codes and generate the leaderboard
+  function processLeaderboardCodes(codes) {
     if (codes.length === 0) {
       leaderboardResults.innerHTML = 'Please enter at least one code.';
       return;
     }
     
-    // Create an array of promises for fetching each user's data
+    leaderboardResults.innerHTML = 'Loading leaderboard...';
+    
     let fetchPromises = codes.map(code => {
       const payload = {
         operationName: "AccountManagementPageQuery",
@@ -49,12 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => response.json())
       .then(data => {
         const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
-        // Only include user if they have ranked data and their activeSubscription level isn't "NONE"
-        if (user && user.rankedNetplayProfile && user.activeSubscription && user.activeSubscription.level !== 'NONE') {
+        // Only include user if they have played at least one ranked set
+        if (user && user.rankedNetplayProfile && user.rankedNetplayProfile.ratingUpdateCount > 0) {
           return {
             code: code,
             displayName: user.displayName || code,
-            rating: user.rankedNetplayProfile.ratingOrdinal || 0
+            rating: user.rankedNetplayProfile.ratingOrdinal || 0,
+            wins: user.rankedNetplayProfile.wins || 0,
+            losses: user.rankedNetplayProfile.losses || 0
           };
         } else {
           return null;
@@ -69,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     Promise.all(fetchPromises).then(results => {
       // Filter out any null results (discarded users)
       results = results.filter(result => result !== null);
-      if(results.length === 0) {
+      if (results.length === 0) {
         leaderboardResults.innerHTML = 'No valid ranked users found.';
         return;
       }
@@ -77,13 +75,14 @@ document.addEventListener('DOMContentLoaded', function() {
       // Sort results by rating descending (highest first)
       results.sort((a, b) => b.rating - a.rating);
       
-      // Build an HTML table to display the leaderboard
+      // Build an HTML table to display the leaderboard with the new W/L column
       let tableHTML = '<table style="width:100%; border-collapse: collapse;">';
       tableHTML += '<tr style="border-bottom: 1px solid #555;">'
         + '<th style="padding: 8px;">Rank</th>'
         + '<th style="padding: 8px;">Code</th>'
         + '<th style="padding: 8px;">Display Name</th>'
         + '<th style="padding: 8px;">Rating</th>'
+        + '<th style="padding: 8px;">W/L</th>'
         + '</tr>';
       
       results.forEach((result, index) => {
@@ -92,11 +91,39 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td style="padding: 8px;">${result.code}</td>
                         <td style="padding: 8px;">${result.displayName}</td>
                         <td style="padding: 8px;">${result.rating.toFixed(2)}</td>
+                        <td style="padding: 8px;">${result.wins}W/${result.losses}L</td>
                       </tr>`;
       });
       tableHTML += '</table>';
       
       leaderboardResults.innerHTML = tableHTML;
     });
+  }
+  
+  // Event listener for manual leaderboard form submission
+  leaderboardForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let codesInput = document.getElementById('codesInput').value;
+    let codes = codesInput.split(',').map(code => code.trim()).filter(code => code !== '');
+    processLeaderboardCodes(codes);
   });
+  
+  // Event listener for the "Upstate NY" preset button
+  if (presetButton) {
+    presetButton.addEventListener('click', function() {
+      leaderboardResults.innerHTML = 'Loading preset leaderboard...';
+      // Fetch the CSV file from the presets folder
+      fetch('presets/upstate.csv')
+        .then(response => response.text())
+        .then(text => {
+          // Parse the CSV: split by newline or comma, trim, and filter out empty strings
+          let codes = text.split(/[\r\n,]+/).map(code => code.trim()).filter(code => code !== '');
+          processLeaderboardCodes(codes);
+        })
+        .catch(error => {
+          leaderboardResults.innerHTML = 'Error loading preset data.';
+          console.error('Error fetching preset CSV:', error);
+        });
+    });
+  }
 });
