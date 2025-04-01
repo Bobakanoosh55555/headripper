@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Sort results by rating descending (highest first)
       results.sort((a, b) => b.rating - a.rating);
       
-      // Build an HTML table to display the leaderboard with the new W/L column
+      // Build an HTML table to display the leaderboard with the new W/L column formatting
       let tableHTML = '<table style="width:100%; border-collapse: collapse;">';
       tableHTML += '<tr style="border-bottom: 1px solid #555;">'
         + '<th style="padding: 8px;">Rank</th>'
@@ -91,7 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td style="padding: 8px;">${result.code}</td>
                         <td style="padding: 8px;">${result.displayName}</td>
                         <td style="padding: 8px;">${result.rating.toFixed(2)}</td>
-                        <td style="padding: 8px;">${result.wins}W/${result.losses}L</td>
+                        <td style="padding: 8px;">
+                          <span style="color: #39FF14;">${result.wins}W</span>
+                          <span style="color: #fff;">/</span>
+                          <span style="color: #FF073A;">${result.losses}L</span>
+                        </td>
                       </tr>`;
       });
       tableHTML += '</table>';
