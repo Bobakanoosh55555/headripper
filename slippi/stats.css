@@ -108,22 +108,21 @@ p {
 
 /* --- Alternate Graphical Leaderboard View Styles --- */
 
-/* Alternate View Container: increased to 8000px tall */
+/* --- Existing CSS above remains unchanged --- */
+
+/* --- Alternate Graphical Leaderboard View Styles --- */
+
+/* Alternate View Container: set to exactly 8000px tall with border-box */
 #altView {
   display: none;  /* Initially hidden; toggled by JS */
   position: relative;
-  height: 8000px;  /* Increased height */
+  height: 8000px;  /* Exact height */
   margin-top: 20px;
+  box-sizing: border-box;
 }
 
 /* Vertical Bar centered in the alternate view */
-/* Gradient stops calculated for rating range 700–3000: */
-/* Master: 3000 to 2191.75 -> 0% to ~35.1% */
-/* Diamond: 2191.75 to 2003.92 -> ~35.1% to ~43.3% */
-/* Platinum: 2003.92 to 1751.83 -> ~43.3% to ~54.3% */
-/* Gold: 1751.83 to 1435.48 -> ~54.3% to ~68.0% */
-/* Silver: 1435.48 to 1054.87 -> ~68.0% to ~84.6% */
-/* Bronze: 1054.87 to 700 -> ~84.6% to 100% */
+/* Exact gradient stops based on thresholds (700–3000) */
 #verticalBar {
   position: absolute;
   left: 50%;
@@ -132,60 +131,60 @@ p {
   height: 100%;
   transform: translateX(-50%);
   background: linear-gradient(to bottom, 
-    /* Master 3: 0%–28.26% */
+    /* Master 3: 3000 to 2350 */
     #660066 0%,
     #660066 28.26%,
-    /* Master 2: 28.26%–31.52% */
+    /* Master 2: 2350 to 2275 */
     #800080 28.26%,
     #800080 31.52%,
-    /* Master 1: 31.52%–35.15% */
+    /* Master 1: 2275 to 2191.75 */
     #993399 31.52%,
-    #993399 35.15%,
-    /* Diamond 3: 35.15%–37.56% */
-    #0053A0 35.15%,
-    #0053A0 37.56%,
-    /* Diamond 2: 37.56%–40.27% */
-    #1E90FF 37.56%,
-    #1E90FF 40.27%,
-    /* Diamond 1: 40.27%–43.31% */
-    #46B8FF 40.27%,
+    #993399 35.10%,
+    /* Diamond 3: 2191.75 to 2136.28 */
+    #0053A0 35.10%,
+    #0053A0 37.51%,
+    /* Diamond 2: 2136.28 to 2073.67 */
+    #1E90FF 37.51%,
+    #1E90FF 40.28%,
+    /* Diamond 1: 2073.67 to 2003.92 */
+    #46B8FF 40.28%,
     #46B8FF 43.31%,
-    /* Platinum 3: 43.31%–46.65% */
-    #6170B0 43.31%,  /* Example darker platinum */
-    #6170B0 46.65%,
-    /* Platinum 2: 46.65%–50.30% */
-    #89CFF0 46.65%,
-    #89CFF0 50.30%,
-    /* Platinum 1: 50.30%–54.27% */
-    #B1F7FF 50.30%,  /* Example lighter platinum */
+    /* Platinum 3: 2003.92 to 1927.03 */
+    #6170B0 43.31%,
+    #6170B0 46.61%,
+    /* Platinum 2: 1927.03 to 1843 */
+    #89CFF0 46.61%,
+    #89CFF0 50.39%,
+    /* Platinum 1: 1843 to 1751.83 */
+    #B1F7FF 50.39%,
     #B1F7FF 54.27%,
-    /* Gold 3: 54.27%–58.56% */
+    /* Gold 3: 1751.83 to 1653.52 */
     #D7AF00 54.27%,
-    #D7AF00 58.56%,
-    /* Gold 2: 58.56%–63.17% */
-    #FFD700 58.56%,
+    #D7AF00 58.50%,
+    /* Gold 2: 1653.52 to 1548.07 */
+    #FFD700 58.50%,
     #FFD700 63.17%,
-    /* Gold 1: 63.17%–68.02% */
+    /* Gold 1: 1548.07 to 1435.48 */
     #FFEC33 63.17%,
     #FFEC33 68.02%,
-    /* Silver 3: 68.02%–73.27% */
+    /* Silver 3: 1435.48 to 1315.75 */
     #989898 68.02%,
-    #989898 73.27%,
-    /* Silver 2: 73.27%–78.70% */
-    #C0C0C0 73.27%,
+    #989898 73.23%,
+    /* Silver 2: 1315.75 to 1188.88 */
+    #C0C0C0 73.23%,
     #C0C0C0 78.70%,
-    /* Silver 1: 78.70%–84.66% */
+    /* Silver 1: 1188.88 to 1054.87 */
     #E8E8E8 78.70%,
-    #E8E8E8 84.66%,
-    /* Bronze 3: 84.66%–90.70% */
-    #8B4513 84.66%,
-    #8B4513 90.70%,
-    /* Bronze 2: 90.70%–97.16% */
-    #CD7F32 90.70%,
-    #CD7F32 97.16%,
-    /* Bronze 1: 97.16%–100% */
-    #FFAE42 97.16%,
-    #FFAE42 100%
+    #E8E8E8 84.53%,
+    /* Bronze 3: 1054.87 to 913.72 */
+    #8B4513 84.53%,
+    #8B4513 90.62%,
+    /* Bronze 2: 913.72 to 765.43 */
+    #CD7F32 90.62%,
+    #CD7F32 97.20%,
+    /* Bronze 1: 765.43 to 700 */
+    #F5A75A 97.20%,
+    #F5A75A 100%
   );
 }
 
@@ -199,6 +198,7 @@ p {
   border-radius: 4px;
   font-size: 0.9em;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 /* Connector Lines for the alternate view */
