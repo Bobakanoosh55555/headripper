@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const leaderboardForm = document.getElementById('leaderboardForm');
   const leaderboardResults = document.getElementById('leaderboardResults');
   const presetButton = document.getElementById('presetButton');
+  const toggleAlternate = document.getElementById('toggleAlternateView');
+  const tableView = document.getElementById('tableView');
+  const altView = document.getElementById('altView');
+  const verticalBar = document.getElementById('verticalBar');
+  const playerCardsContainer = document.getElementById('playerCards');
   const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
   
   const query = `
@@ -21,16 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   `;
   
-  // Base colors for rank groups.
-  const masterBase = "#800080";    // Purple
-  const diamondBase = "#1E90FF";   // Dodgerblue
-  const platinumBase = "#89CFF0";  // Baby blue
-  const goldBase = "#FFD700";      // Gold
-  const silverBase = "#C0C0C0";    // Silver
-  const bronzeBase = "#CD7F32";    // Bronze
+  // Global variable to store fetched players data.
+  let playersData = [];
   
-  // Helper: Adjust a hex color's brightness by adding the given amount to each channel.
-  // Using ±40 now for a more apparent shift.
+  // Base colors and helper functions (same as before, with your color adjustment changes).
+  const masterBase = "#800080";    // Purple
+  const diamondBase = "#1E90FF";     // Dodgerblue
+  const platinumBase = "#89CFF0";    // Baby blue
+  const goldBase = "#FFD700";        // Gold
+  const silverBase = "#C0C0C0";      // Silver
+  const bronzeBase = "#CD7F32";      // Bronze
+  
   function adjustColor(hex, amount) {
     let usePound = false;
     if (hex[0] === "#") {
@@ -53,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
       b.toString(16).padStart(2, "0");
   }
   
-  // Determine rank based on rating thresholds with more apparent color variations.
   function getRank(rating) {
     if (rating >= 2350) return { rankName: "Master 3", color: adjustColor(masterBase, -40) };
     else if (rating >= 2275) return { rankName: "Master 2", color: masterBase };
@@ -75,12 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
     else return { rankName: "Bronze 1", color: adjustColor(bronzeBase, 40) };
   }
   
-  // Normalize a character name (replacing underscores and whitespace with hyphens) for image file paths.
   function normalizeKey(name) {
     return name.toLowerCase().replace(/[_\s]+/g, "-");
   }
   
-  // Render character icons. The tooltip now shows the number of games played with that character.
   function renderCharacterIcons(chars) {
     let html = "";
     chars.forEach(ch => {
@@ -90,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return html;
   }
   
-  // Process an array of codes and generate the leaderboard.
+  // Generates the standard table view and also stores playersData.
   function processLeaderboardCodes(codes) {
     if (codes.length === 0) {
       leaderboardResults.innerHTML = 'Please enter at least one code.';
@@ -145,7 +148,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       results.sort((a, b) => b.rating - a.rating);
+      playersData = results; // Store for alternate view
       
+      // Build standard table view.
       let tableHTML = '<table style="width:100%; border-collapse: collapse;">';
       tableHTML += '<tr style="border-bottom: 1px solid #555;">'
         + '<th style="padding: 8px;">Rank</th>'
@@ -172,8 +177,83 @@ document.addEventListener('DOMContentLoaded', function() {
       tableHTML += '</table>';
       
       leaderboardResults.innerHTML = tableHTML;
+      
+      // If alternate view is toggled on, update that view too.
+      if (toggleAlternate.checked) {
+        showAlternateView(playersData);
+      }
     });
   }
+  
+  // Build the alternate view.
+  function showAlternateView(players) {
+    playerCardsContainer.innerHTML = "";
+    // Define rating range for positioning.
+    const minRating = 700, maxRating = 2400;
+    const viewHeight = altView.clientHeight;
+    
+    players.forEach((player, index) => {
+      // Compute vertical position (in pixels) along the bar.
+      let ratio = (player.rating - minRating) / (maxRating - minRating);
+      let posY = Math.min(Math.max(ratio * viewHeight, 0), viewHeight);
+      
+      // Create a card for the player.
+      const card = document.createElement('div');
+      card.className = 'player-card';
+      // Alternate left/right placement.
+      const isLeft = index % 2 === 0;
+      if (isLeft) {
+        card.style.right = "calc(50% + 30px)"; // 30px gap from the bar.
+      } else {
+        card.style.left = "calc(50% + 30px)";
+      }
+      card.style.top = posY + "px";
+      // Bold display name and condensed info.
+      card.innerHTML = `<strong>${player.displayName}</strong><br>
+                        Rating: ${player.rating.toFixed(2)}<br>
+                        W/L: ${player.wins}/${player.losses}`;
+      
+      // Append card.
+      playerCardsContainer.appendChild(card);
+      
+      // Create a connector line.
+      const connector = document.createElement('div');
+      connector.className = 'connector';
+      // Determine horizontal starting point at the vertical bar.
+      const barX = verticalBar.offsetLeft + verticalBar.offsetWidth / 2;
+      // Determine card edge (left or right).
+      let cardX;
+      if (isLeft) {
+        cardX = card.offsetLeft + card.offsetWidth;
+      } else {
+        cardX = card.offsetLeft;
+      }
+      // Set connector's position and dimensions.
+      // We draw a horizontal line from the vertical bar to the card.
+      const leftX = Math.min(barX, cardX);
+      const width = Math.abs(barX - cardX);
+      connector.style.left = leftX + "px";
+      connector.style.top = (posY + 12) + "px";  // approx vertical center of card text.
+      connector.style.width = width + "px";
+      connector.style.height = "2px";
+      
+      altView.appendChild(connector);
+    });
+  }
+  
+  // Toggle between table view and alternate view.
+  toggleAlternate.addEventListener('change', function() {
+    if (this.checked) {
+      tableView.style.display = "none";
+      altView.style.display = "block";
+      if (playersData.length > 0) {
+        showAlternateView(playersData);
+      }
+    } else {
+      altView.style.display = "none";
+      tableView.style.display = "block";
+    }
+  });
   
   leaderboardForm.addEventListener('submit', function(e) {
     e.preventDefault();
