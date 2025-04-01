@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (rating >= 2136.28) return { rankName: "Diamond 3", color: "dodgerblue" };
     else if (rating >= 2073.67) return { rankName: "Diamond 2", color: "dodgerblue" };
     else if (rating >= 2003.92) return { rankName: "Diamond 1", color: "dodgerblue" };
-    else if (rating >= 1927.03) return { rankName: "Platinum 3", color: "#e5e4e2" };
-    else if (rating >= 1843) return { rankName: "Platinum 2", color: "#e5e4e2" };
-    else if (rating >= 1751.83) return { rankName: "Platinum 1", color: "#e5e4e2" };
+    else if (rating >= 1927.03) return { rankName: "Platinum 3", color: "#89CFF0" };
+    else if (rating >= 1843) return { rankName: "Platinum 2", color: "#89CFF0" };
+    else if (rating >= 1751.83) return { rankName: "Platinum 1", color: "#89CFF0" };
     else if (rating >= 1653.52) return { rankName: "Gold 3", color: "gold" };
     else if (rating >= 1548.07) return { rankName: "Gold 2", color: "gold" };
     else if (rating >= 1435.48) return { rankName: "Gold 1", color: "gold" };
