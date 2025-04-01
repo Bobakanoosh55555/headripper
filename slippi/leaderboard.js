@@ -45,8 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Helper function to normalize a character name for use in image file paths.
   function normalizeKey(name) {
-    return name.toLowerCase().replace(/\s+/g, "-");
+    return name.toLowerCase().replace(/[_\s]+/g, "-");
   }
+
   
   // Helper function to render character icons.
   // Expects an array of objects with a 'character' property.
