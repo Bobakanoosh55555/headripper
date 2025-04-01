@@ -14,13 +14,13 @@
 <body>
   <!-- Outer Tab Navigation -->
   <div class="outer-tabs">
-    <button class="outer-tab-button active" data-target="individualTab">Individual</button>
-    <button class="outer-tab-button" data-target="manyTab">Many</button>
-    <button class="outer-tab-button" data-target="leaderboardsTab">Leaderboards</button>
+    <button class="outer-tab-button" data-target="individual" id="btn-individual">Individual</button>
+    <button class="outer-tab-button" data-target="many" id="btn-many">Many</button>
+    <button class="outer-tab-button" data-target="leaderboard" id="btn-leaderboard">Leaderboards</button>
   </div>
   
   <!-- Outer Tab Contents -->
-  <div id="individualTab" class="outer-tab-content active">
+  <div id="individual" class="outer-tab-content">
     <div class="container">
       <h1>Slippi Ranked Stats</h1>
       <!-- User Input Form -->
@@ -34,17 +34,17 @@
     </div>
   </div>
   
-  <div id="manyTab" class="outer-tab-content">
+  <div id="many" class="outer-tab-content">
     <div class="container">
       <h1>Many Stats</h1>
       <p>Many tab content goes here.</p>
     </div>
   </div>
   
-  <div id="leaderboardsTab" class="outer-tab-content">
+  <div id="leaderboard" class="outer-tab-content">
     <div class="container">
       <h1>Leaderboards</h1>
-      <!-- New container for preset buttons -->
+      <!-- Container for preset buttons -->
       <div class="preset-buttons">
         <button id="presetButton">Upstate NY</button>
       </div>
@@ -63,15 +63,47 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const outerTabButtons = document.querySelectorAll('.outer-tab-button');
+      const outerTabContents = document.querySelectorAll('.outer-tab-content');
+      
+      function clearActive() {
+        outerTabButtons.forEach(btn => btn.classList.remove('active'));
+        outerTabContents.forEach(content => content.classList.remove('active'));
+      }
+      
+      // Check URL hash (e.g. "#leaderboard")
+      let hash = window.location.hash;
+      if (hash) {
+        let targetId = hash.substring(1); // remove the #
+        let targetContent = document.getElementById(targetId);
+        if (targetContent && targetContent.classList.contains('outer-tab-content')) {
+          clearActive();
+          targetContent.classList.add('active');
+          let btn = document.querySelector(`.outer-tab-button[data-target="${targetId}"]`);
+          if (btn) {
+            btn.classList.add('active');
+          }
+        } else {
+          // If no matching tab, default to first tab.
+          clearActive();
+          outerTabButtons[0].classList.add('active');
+          outerTabContents[0].classList.add('active');
+        }
+      } else {
+        // Default to first tab if no hash.
+        clearActive();
+        outerTabButtons[0].classList.add('active');
+        outerTabContents[0].classList.add('active');
+      }
+      
+      // Attach click events.
       outerTabButtons.forEach(button => {
         button.addEventListener('click', function() {
-          // Remove active classes from buttons and tab contents
-          outerTabButtons.forEach(btn => btn.classList.remove('active'));
-          document.querySelectorAll('.outer-tab-content').forEach(content => content.classList.remove('active'));
-          // Activate clicked tab and corresponding content
+          clearActive();
           this.classList.add('active');
           const targetId = this.getAttribute('data-target');
           document.getElementById(targetId).classList.add('active');
+          // Update URL hash without reloading.
+          history.replaceState(null, null, '#' + targetId);
         });
       });
     });
