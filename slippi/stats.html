@@ -44,18 +44,29 @@
   <div id="leaderboard" class="outer-tab-content">
     <div class="container">
       <h1>Leaderboards</h1>
-      <!-- Container for preset buttons -->
-      <div class="preset-buttons">
-        <button id="presetButton">Upstate NY</button>
+      <!-- Toggle for Alternate Graphical View -->
+      <label style="display: block; margin-bottom: 10px;">
+        <input type="checkbox" id="toggleAlternateView">
+        Alternate Graphical View
+      </label>
+      <!-- Table View Container -->
+      <div id="tableView">
+        <div class="preset-buttons">
+          <button id="presetButton">Upstate NY</button>
+        </div>
+        <form id="leaderboardForm">
+          <label for="codesInput">Enter Codes (comma separated):</label>
+          <input type="text" id="codesInput" name="codesInput" placeholder="e.g. DMAR#554,BOBA#5" required>
+          <button type="submit">Generate Leaderboard</button>
+        </form>
+        <div id="leaderboardResults"></div>
       </div>
-      <!-- Leaderboard form -->
-      <form id="leaderboardForm">
-        <label for="codesInput">Enter Codes (comma separated):</label>
-        <input type="text" id="codesInput" name="codesInput" placeholder="e.g. DMAR#554,BOBA#5" required>
-        <button type="submit">Generate Leaderboard</button>
-      </form>
-      <!-- Leaderboard results will be rendered here -->
-      <div id="leaderboardResults"></div>
+      <!-- Alternate Graphical View Container (initially hidden) -->
+      <div id="altView">
+        <!-- The vertical bar and player cards will be generated dynamically -->
+        <div id="verticalBar"></div>
+        <div id="playerCards"></div>
+      </div>
     </div>
   </div>
   
@@ -73,7 +84,7 @@
       // Check URL hash (e.g. "#leaderboard")
       let hash = window.location.hash;
       if (hash) {
-        let targetId = hash.substring(1); // remove the #
+        let targetId = hash.substring(1);
         let targetContent = document.getElementById(targetId);
         if (targetContent && targetContent.classList.contains('outer-tab-content')) {
           clearActive();
@@ -83,26 +94,22 @@
             btn.classList.add('active');
           }
         } else {
-          // If no matching tab, default to first tab.
           clearActive();
           outerTabButtons[0].classList.add('active');
           outerTabContents[0].classList.add('active');
         }
       } else {
-        // Default to first tab if no hash.
         clearActive();
         outerTabButtons[0].classList.add('active');
         outerTabContents[0].classList.add('active');
       }
       
-      // Attach click events.
       outerTabButtons.forEach(button => {
         button.addEventListener('click', function() {
           clearActive();
           this.classList.add('active');
           const targetId = this.getAttribute('data-target');
           document.getElementById(targetId).classList.add('active');
-          // Update URL hash without reloading.
           history.replaceState(null, null, '#' + targetId);
         });
       });
