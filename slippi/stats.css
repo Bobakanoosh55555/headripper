@@ -108,11 +108,11 @@ p {
 
 /* --- Alternate Graphical Leaderboard View Styles --- */
 
-/* Alternate View Container: now 1500px tall */
+/* Alternate View Container: increased to 8000px tall */
 #altView {
   display: none;  /* Initially hidden; toggled by JS */
   position: relative;
-  height: 1500px;  /* Increased height */
+  height: 8000px;  /* Increased height */
   margin-top: 20px;
 }
 
