@@ -16,11 +16,11 @@
   <div class="outer-tabs">
     <button class="outer-tab-button active" data-target="individualTab">Individual</button>
     <button class="outer-tab-button" data-target="manyTab">Many</button>
+    <button class="outer-tab-button" data-target="leaderboardsTab">Leaderboards</button>
   </div>
   
   <!-- Outer Tab Contents -->
   <div id="individualTab" class="outer-tab-content active">
-    <!-- You can wrap your original content in a container if needed -->
     <div class="container">
       <h1>Slippi Ranked Stats</h1>
       <!-- User Input Form -->
@@ -35,10 +35,16 @@
   </div>
   
   <div id="manyTab" class="outer-tab-content">
-    <!-- Many Tab Content: Add your content and attach its own JS file as needed -->
     <div class="container">
       <h1>Many Stats</h1>
       <p>Many tab content goes here.</p>
+    </div>
+  </div>
+  
+  <div id="leaderboardsTab" class="outer-tab-content">
+    <div class="container">
+      <h1>Leaderboards</h1>
+      <p>Leaderboards content goes here.</p>
     </div>
   </div>
   
@@ -62,7 +68,8 @@
   
   <!-- External JavaScript for the Individual tab -->
   <script src="stats.js"></script>
-  <!-- Optionally include a separate JS file for the Many tab -->
+  <!-- Optionally include a separate JS file for the Many tab or Leaderboards -->
   <!-- <script src="many.js"></script> -->
+  <!-- <script src="leaderboards.js"></script> -->
 </body>
 </html>
