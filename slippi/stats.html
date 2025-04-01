@@ -44,7 +44,14 @@
   <div id="leaderboardsTab" class="outer-tab-content">
     <div class="container">
       <h1>Leaderboards</h1>
-      <p>Leaderboards content goes here.</p>
+      <!-- Leaderboard form -->
+      <form id="leaderboardForm">
+        <label for="codesInput">Enter Codes (comma separated):</label>
+        <input type="text" id="codesInput" name="codesInput" placeholder="e.g. DMAR#554, CODE#123" required>
+        <button type="submit">Generate Leaderboard</button>
+      </form>
+      <!-- Leaderboard results will be rendered here -->
+      <div id="leaderboardResults"></div>
     </div>
   </div>
   
@@ -68,8 +75,9 @@
   
   <!-- External JavaScript for the Individual tab -->
   <script src="stats.js"></script>
-  <!-- Optionally include a separate JS file for the Many tab or Leaderboards -->
+  <!-- External JavaScript for the Leaderboards tab -->
+  <script src="leaderboard.js"></script>
+  <!-- Optionally include a separate JS file for the Many tab -->
   <!-- <script src="many.js"></script> -->
-  <!-- <script src="leaderboards.js"></script> -->
 </body>
 </html>
