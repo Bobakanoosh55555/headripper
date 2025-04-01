@@ -29,14 +29,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // Global variable to store fetched players data.
   let playersData = [];
   
-  // Base colors and helper functions (same as before, with your color adjustment changes).
+  // Base colors for rank groups.
   const masterBase = "#800080";    // Purple
-  const diamondBase = "#1E90FF";     // Dodgerblue
-  const platinumBase = "#89CFF0";    // Baby blue
-  const goldBase = "#FFD700";        // Gold
-  const silverBase = "#C0C0C0";      // Silver
-  const bronzeBase = "#CD7F32";      // Bronze
+  const diamondBase = "#1E90FF";   // Dodgerblue
+  const platinumBase = "#89CFF0";  // Baby blue
+  const goldBase = "#FFD700";      // Gold
+  const silverBase = "#C0C0C0";    // Silver
+  const bronzeBase = "#CD7F32";    // Bronze
   
+  // Helper: Adjust a hex color's brightness by adding the given amount to each channel.
   function adjustColor(hex, amount) {
     let usePound = false;
     if (hex[0] === "#") {
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
       b.toString(16).padStart(2, "0");
   }
   
+  // Determine rank based on rating thresholds with color variations.
   function getRank(rating) {
     if (rating >= 2350) return { rankName: "Master 3", color: adjustColor(masterBase, -40) };
     else if (rating >= 2275) return { rankName: "Master 2", color: masterBase };
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return html;
   }
   
-  // Generates the standard table view and also stores playersData.
+  // Standard table view + store players data.
   function processLeaderboardCodes(codes) {
     if (codes.length === 0) {
       leaderboardResults.innerHTML = 'Please enter at least one code.';
@@ -148,9 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       results.sort((a, b) => b.rating - a.rating);
-      playersData = results; // Store for alternate view
+      playersData = results;
       
-      // Build standard table view.
+      // Build standard table.
       let tableHTML = '<table style="width:100%; border-collapse: collapse;">';
       tableHTML += '<tr style="border-bottom: 1px solid #555;">'
         + '<th style="padding: 8px;">Rank</th>'
@@ -185,60 +187,66 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Build the alternate view.
+  // Build the alternate view (vertical bar + cards).
   function showAlternateView(players) {
     playerCardsContainer.innerHTML = "";
-    // Define rating range for positioning.
+    
+    // We'll invert the position so higher rating is at the top.
+    // e.g. if rating == maxRating => posY = 0
     const minRating = 700, maxRating = 2400;
     const viewHeight = altView.clientHeight;
     
+    // We use bounding rects to line up connectors exactly.
+    const altRect = altView.getBoundingClientRect();
+    const barRect = verticalBar.getBoundingClientRect();
+    
     players.forEach((player, index) => {
-      // Calculate vertical position based on rating.
-      let ratio = (player.rating - minRating) / (maxRating - minRating);
+      // ratio 0 => top, ratio 1 => bottom
+      let ratio = (maxRating - player.rating) / (maxRating - minRating);
       let posY = Math.min(Math.max(ratio * viewHeight, 0), viewHeight);
       
       // Create the player card.
       const card = document.createElement('div');
       card.className = 'player-card';
-      // Alternate left/right placement.
+      // Alternate left/right.
       const isLeft = index % 2 === 0;
+      card.style.top = posY + "px";
+      
       if (isLeft) {
-        card.style.right = "calc(50% + 30px)"; // 30px gap from the bar.
+        card.style.right = "calc(50% + 30px)";
       } else {
         card.style.left = "calc(50% + 30px)";
       }
-      card.style.top = posY + "px";
-      // Bold display name and condensed info.
+      
       card.innerHTML = `<strong>${player.displayName}</strong><br>
                         Rating: ${player.rating.toFixed(2)}<br>
                         W/L: ${player.wins}/${player.losses}`;
       playerCardsContainer.appendChild(card);
       
-      // Create a connector line.
+      // Create connector line.
       const connector = document.createElement('div');
       connector.className = 'connector';
       
-      // For left cards, start from the left edge of the vertical bar; for right cards, from the right edge.
-      let startX;
-      if (isLeft) {
-        startX = verticalBar.offsetLeft; // Left edge of bar.
-      } else {
-        startX = verticalBar.offsetLeft + verticalBar.offsetWidth; // Right edge of bar.
-      }
+      // For left cards, we connect to barRect.left; for right cards, barRect.right.
+      // Then we translate these absolute positions into altView-relative coords.
+      let barX = isLeft ? barRect.left : (barRect.left + barRect.width);
+      // The card's bounding rect.
+      let cardRect = card.getBoundingClientRect();
+      let cardX = isLeft ? (cardRect.right) : (cardRect.left);
       
-      // Determine the card's edge (left or right) that is closest to the bar.
-      let cardEdge;
-      if (isLeft) {
-        cardEdge = card.offsetLeft + card.offsetWidth;
-      } else {
-        cardEdge = card.offsetLeft;
-      }
+      // Convert to altView-based coordinates.
+      const barXLocal = barX - altRect.left;
+      const cardXLocal = cardX - altRect.left;
       
-      const connectorLeft = Math.min(startX, cardEdge);
-      const connectorWidth = Math.abs(startX - cardEdge);
+      // We'll place the connector horizontally between barXLocal and cardXLocal.
+      let connectorLeft = Math.min(barXLocal, cardXLocal);
+      let connectorWidth = Math.abs(barXLocal - cardXLocal);
+      
+      // We want the line to appear near the vertical center of the card.
+      let connectorTop = (posY + 12); // 12px offset from top for approximate center
+      
       connector.style.left = connectorLeft + "px";
-      // Position vertically roughly centered with the card's text.
-      connector.style.top = (posY + 12) + "px";
+      connector.style.top = connectorTop + "px";
       connector.style.width = connectorWidth + "px";
       connector.style.height = "2px";
       
@@ -260,6 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
+  // Manual leaderboard form submission.
   leaderboardForm.addEventListener('submit', function(e) {
     e.preventDefault();
     let codesInput = document.getElementById('codesInput').value;
@@ -267,6 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
     processLeaderboardCodes(codes);
   });
   
+  // Preset button for Upstate NY.
   if (presetButton) {
     presetButton.addEventListener('click', function() {
       leaderboardResults.innerHTML = 'Loading preset leaderboard...';
