@@ -13,17 +13,54 @@
 </head>
 <body>
   <div class="container">
-    <h1>Slippi Ranked Stats</h1>
-    <!-- User Input Form -->
-    <form id="userForm">
-      <label for="userCode">Enter User Code:</label>
-      <input type="text" id="userCode" name="userCode" placeholder="e.g. DMAR#554" required>
-      <button type="submit">Load Profile</button>
-    </form>
-    <!-- Container where the profile will be rendered -->
-    <div id="profile"></div>
+    <!-- Outer Tab Navigation -->
+    <div class="outer-tabs">
+      <button class="outer-tab-button active" data-target="individualTab">Individual</button>
+      <button class="outer-tab-button" data-target="manyTab">Many</button>
+    </div>
+    
+    <!-- Outer Tab Contents -->
+    <div id="individualTab" class="outer-tab-content active">
+      <!-- Existing content for the Individual tab -->
+      <h1>Slippi Ranked Stats</h1>
+      <!-- User Input Form -->
+      <form id="userForm">
+        <label for="userCode">Enter User Code:</label>
+        <input type="text" id="userCode" name="userCode" placeholder="e.g. DMAR#554" required>
+        <button type="submit">Load Profile</button>
+      </form>
+      <!-- Container where the profile will be rendered -->
+      <div id="profile"></div>
+    </div>
+    <div id="manyTab" class="outer-tab-content">
+      <!-- Many Tab: You can fill this section with its own content and later attach its own JS -->
+      <p>Many tab content goes here.</p>
+    </div>
   </div>
-  <!-- External JavaScript -->
+  
+  <!-- Outer Tab Functionality Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const outerTabButtons = document.querySelectorAll('.outer-tab-button');
+      outerTabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active classes
+          outerTabButtons.forEach(btn => btn.classList.remove('active'));
+          document.querySelectorAll('.outer-tab-content').forEach(content => content.classList.remove('active'));
+          
+          // Add active classes to the clicked button and corresponding content
+          this.classList.add('active');
+          const targetId = this.getAttribute('data-target');
+          document.getElementById(targetId).classList.add('active');
+        });
+      });
+    });
+  </script>
+  
+  <!-- Existing JavaScript file for the Individual tab -->
   <script src="stats.js"></script>
+  
+  <!-- You can include another JS file for the Many tab if needed -->
+  <!-- <script src="many.js"></script> -->
 </body>
 </html>
