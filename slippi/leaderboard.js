@@ -189,19 +189,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function showAlternateView(players) {
     playerCardsContainer.innerHTML = "";
-    // Define rating range for positioning.
-    // Changed maxRating from 2400 to 3000.
-    const minRating = 700, maxRating = 3000;
-    const viewHeight = altView.clientHeight;
     
-    // Get bounding rectangle of altView and verticalBar.
+    // Use the exact height of altView.
+    const minRating = 700, maxRating = 3000;
+    const viewHeight = altView.offsetHeight;  // should be 8000px
+    console.log("altView height:", viewHeight);
+    
+    // Get bounding rectangles for altView and verticalBar.
     const altRect = altView.getBoundingClientRect();
     const barRect = verticalBar.getBoundingClientRect();
+    console.log("Vertical bar rect:", barRect);
     
     players.forEach((player, index) => {
-      // Invert ratio so higher rating is at the top.
+      // Compute ratio: higher rating → smaller ratio (closer to top)
       let ratio = (maxRating - player.rating) / (maxRating - minRating);
       let posY = ratio * viewHeight;
+      console.log(`Player ${player.code} rating ${player.rating} → ratio ${ratio}, posY ${posY}`);
       
       // Create the player card.
       const card = document.createElement('div');
@@ -209,22 +212,22 @@ document.addEventListener('DOMContentLoaded', function() {
       card.style.top = posY + "px";
       
       const isLeft = (index % 2 === 0);
-      // Temporarily set horizontal position.
+      // Temporarily position the card so we can measure it.
       if (isLeft) {
         card.style.left = "0px";
       } else {
         card.style.left = (altRect.width - 220) + "px";
       }
       
-      // Set condensed two-line content.
+      // Condensed two-line content.
       card.innerHTML = `<strong>${player.displayName}</strong> | ${player.code}<br>
                         ${player.rating.toFixed(2)} | ${player.wins}/${player.losses}`;
       playerCardsContainer.appendChild(card);
       
-      // After appending, measure card.
+      // Measure card position.
       const cardRect = card.getBoundingClientRect();
       
-      // Position card with a 30px gap from the bar.
+      // Reposition card to be 30px from the vertical bar.
       if (isLeft) {
         const barLeftLocal = barRect.left - altRect.left;
         let cardLeft = barLeftLocal - (cardRect.width + 30);
@@ -235,19 +238,19 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.left = cardLeft + "px";
       }
       
-      // Re-measure final card position.
+      // Final card measurement.
       const finalCardRect = card.getBoundingClientRect();
       
-      // Create a connector line.
+      // Create connector line.
       const connector = document.createElement('div');
       connector.className = 'connector';
       
-      // Determine the connector start point on the bar:
+      // Connector start point on the bar.
       let startX = isLeft 
         ? (barRect.left - altRect.left) 
         : ((barRect.left + barRect.width) - altRect.left);
       
-      // Determine the card's edge (closest to the bar).
+      // Connector should connect to the card edge closest to the bar.
       let cardEdge = isLeft 
         ? (finalCardRect.right - altRect.left) 
         : (finalCardRect.left - altRect.left);
@@ -266,6 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
       altView.appendChild(connector);
     });
   }
+
 
   
   // Toggle view.
