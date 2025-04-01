@@ -43,6 +43,23 @@ document.addEventListener('DOMContentLoaded', function() {
     else return { rankName: "Bronze 1", color: "#cd7f32" };
   }
   
+  // Helper function to normalize a character name for use in image file paths.
+  function normalizeKey(name) {
+    return name.toLowerCase().replace(/\s+/g, "-");
+  }
+  
+  // Helper function to render character icons.
+  // Expects an array of objects with a 'character' property.
+  function renderCharacterIcons(chars) {
+    let html = "";
+    chars.forEach(ch => {
+      const norm = normalizeKey(ch.character);
+      // Assumes the icon images are in the "icons" folder and are PNGs.
+      html += `<img src="icons/${norm}.png" alt="${ch.character}" title="${ch.character}" style="width:24px; height:24px; margin-left:4px;">`;
+    });
+    return html;
+  }
+  
   // Function to process an array of codes and generate the leaderboard.
   function processLeaderboardCodes(codes) {
     if (codes.length === 0) {
@@ -69,12 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
         // Only include user if they have played at least one ranked set.
         if (user && user.rankedNetplayProfile && user.rankedNetplayProfile.ratingUpdateCount > 0) {
+          // Get the top 3 most-used characters (if any) from the current season.
+          const topChars = (user.rankedNetplayProfile.characters || [])
+            .slice()
+            .sort((a, b) => Number(b.gameCount) - Number(a.gameCount))
+            .slice(0, 3);
           return {
             code: code,
             displayName: user.displayName || code,
             rating: user.rankedNetplayProfile.ratingOrdinal || 0,
             wins: user.rankedNetplayProfile.wins || 0,
-            losses: user.rankedNetplayProfile.losses || 0
+            losses: user.rankedNetplayProfile.losses || 0,
+            topChars: topChars
           };
         } else {
           return null;
@@ -112,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tableHTML += `<tr style="border-bottom: 1px solid #555; color: ${rank.color};">
                         <td style="padding: 8px;">${index + 1}</td>
                         <td style="padding: 8px;">${result.code}</td>
-                        <td style="padding: 8px;">${result.displayName}</td>
+                        <td style="padding: 8px;">${result.displayName} ${renderCharacterIcons(result.topChars)}</td>
                         <td style="padding: 8px;" title="Rank: ${rank.rankName}">${result.rating.toFixed(2)}</td>
                         <td style="padding: 8px;">
                           <span style="color: #39FF14;">${result.wins}</span>
