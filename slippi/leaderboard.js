@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     chars.forEach(ch => {
       const norm = normalizeKey(ch.character);
       // The title now shows the number of games played with that character.
-      html += `<img src="icons/${norm}.png" alt="${ch.character}" title="${ch.gameCount} games played" style="width:24px; height:24px; margin-left:4px;">`;
+      html += `<img src="icons/${norm}.png" alt="${ch.character}" title="${ch.gameCount} game(s) played" style="width:24px; height:24px; margin-left:4px;">`;
     });
     return html;
   }
