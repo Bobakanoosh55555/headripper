@@ -1,147 +1,52 @@
-/* Global Styles */
-body {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  background-color: #121212;
-  color: #ffffff;
-  margin: 0;
-  padding: 20px;
-}
-
-/* Updated container styles: removed border, box-shadow, and rounded corners */
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  /* No border, background, or shadow */
-}
-
-/* Outer Tabs Styles */
-.outer-tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.outer-tab-button {
-  padding: 8px 16px;
-  background-color: #555;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  margin: 0 2px;
-  border-radius: 3px 3px 0 0;
-  /* Darker drop shadow */
-  box-shadow: 0 2px 4px rgba(150,150,150,0.7);
-}
-
-.outer-tab-button.active {
-  background-color: #121212;
-  font-weight: bold;
-}
-
-.outer-tab-content {
-  display: none;
-  max-width: 800px;
-  margin: auto;
-}
-
-.outer-tab-content.active {
-  display: block;
-}
-
-/* Form Styles */
-form {
-  margin-bottom: 20px;
-}
-
-input[type="text"] {
-  padding: 8px;
-  border: 1px solid #555;
-  border-radius: 3px;
-  background-color: #222;
-  color: #fff;
-}
-
-button {
-  padding: 8px 12px;
-  margin-left: 10px;
-  border: 1px solid #555;
-  border-radius: 3px;
-  background-color: #555;
-  color: #fff;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #666;
-}
-
-/* Card Styles */
-.card {
-  border: 1px solid #555;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 15px 0;
-  background-color: #121212;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-}
-
-h1, h2, h3, h4 {
-  margin-top: 0;
-}
-
-/* Chart Styles */
-.chart-container {
-  position: relative;
-  height: 300px;
-  width: 100%;
-  margin-top: 10px;
-}
-
-canvas {
-  background: #222;
-  border: 1px solid #555;
-  border-radius: 5px;
-}
-
-p {
-  margin: 5px 0;
-}
-
-/* Inner Tab Styles (for tabs within the Individual tab, if used) */
-.tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.tab-button {
-  padding: 8px 16px;
-  background-color: #555;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  margin: 0 2px;
-  border-radius: 3px 3px 0 0;
-}
-
-.tab-button.active {
-  background-color: #121212;
-  font-weight: bold;
-  border-bottom: 1px solid #121212;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
+/* --- Existing CSS remains here --- */
 
 /* Preset Buttons Container */
 .preset-buttons {
   margin-bottom: 20px;
+}
+
+/* Alternate Graphical View Container */
+#altView {
+  display: none;  /* Hidden by default; toggled by JS */
+  position: relative;
+  height: 600px;  /* Adjust as needed */
+  margin-top: 20px;
+}
+
+/* Vertical Bar centered in the alternate view */
+#verticalBar {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, 
+    #cd7f32 0%,   /* Bronze */
+    #C0C0C0 30%,  /* Silver */
+    #FFD700 50%,  /* Gold */
+    #89CFF0 70%,  /* Platinum */
+    #1E90FF 85%,  /* Diamond */
+    #800080 100%  /* Master */
+  );
+}
+
+/* Player Cards for the alternate view */
+.player-card {
+  position: absolute;
+  width: 220px;
+  padding: 8px;
+  background: #222;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-size: 0.9em;
+  z-index: 1;
+}
+
+/* Connector line for player cards */
+.connector {
+  position: absolute;
+  width: 2px;
+  background: #fff;
+  z-index: 0;
 }
