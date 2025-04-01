@@ -117,7 +117,13 @@ p {
 }
 
 /* Vertical Bar centered in the alternate view */
-/* Flipped gradient: top is Master, bottom is Bronze */
+/* Gradient stops calculated for rating range 700–3000: */
+/* Master: 3000 to 2191.75 -> 0% to ~35.1% */
+/* Diamond: 2191.75 to 2003.92 -> ~35.1% to ~43.3% */
+/* Platinum: 2003.92 to 1751.83 -> ~43.3% to ~54.3% */
+/* Gold: 1751.83 to 1435.48 -> ~54.3% to ~68.0% */
+/* Silver: 1435.48 to 1054.87 -> ~68.0% to ~84.6% */
+/* Bronze: 1054.87 to 700 -> ~84.6% to 100% */
 #verticalBar {
   position: absolute;
   left: 50%;
@@ -126,12 +132,18 @@ p {
   height: 100%;
   transform: translateX(-50%);
   background: linear-gradient(to bottom, 
-    #800080 0%,   /* Master */
-    #1E90FF 20%,  /* Diamond */
-    #89CFF0 40%,  /* Platinum */
-    #FFD700 60%,  /* Gold */
-    #C0C0C0 80%,  /* Silver */
-    #cd7f32 100%  /* Bronze */
+    #800080 0%, 
+    #800080 35.1%, 
+    #1E90FF 35.1%, 
+    #1E90FF 43.3%, 
+    #89CFF0 43.3%, 
+    #89CFF0 54.3%, 
+    #FFD700 54.3%, 
+    #FFD700 68.0%, 
+    #C0C0C0 68.0%, 
+    #C0C0C0 84.6%, 
+    #cd7f32 84.6%, 
+    #cd7f32 100%
   );
 }
 
