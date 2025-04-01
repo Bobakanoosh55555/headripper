@@ -140,3 +140,8 @@ p {
 .tab-content.active {
   display: block;
 }
+
+/* Preset Buttons Container */
+.preset-buttons {
+  margin-bottom: 20px;
+}
