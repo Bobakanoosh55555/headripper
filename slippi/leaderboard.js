@@ -21,45 +21,75 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   `;
   
-  // Function to determine rank based on rating thresholds.
-  function getRank(rating) {
-    if (rating >= 2350) return { rankName: "Master 3", color: "purple" };
-    else if (rating >= 2275) return { rankName: "Master 2", color: "purple" };
-    else if (rating >= 2191.75) return { rankName: "Master 1", color: "purple" };
-    else if (rating >= 2136.28) return { rankName: "Diamond 3", color: "dodgerblue" };
-    else if (rating >= 2073.67) return { rankName: "Diamond 2", color: "dodgerblue" };
-    else if (rating >= 2003.92) return { rankName: "Diamond 1", color: "dodgerblue" };
-    else if (rating >= 1927.03) return { rankName: "Platinum 3", color: "#89CFF0" };
-    else if (rating >= 1843) return { rankName: "Platinum 2", color: "#89CFF0" };
-    else if (rating >= 1751.83) return { rankName: "Platinum 1", color: "#89CFF0" };
-    else if (rating >= 1653.52) return { rankName: "Gold 3", color: "gold" };
-    else if (rating >= 1548.07) return { rankName: "Gold 2", color: "gold" };
-    else if (rating >= 1435.48) return { rankName: "Gold 1", color: "gold" };
-    else if (rating >= 1315.75) return { rankName: "Silver 3", color: "silver" };
-    else if (rating >= 1188.88) return { rankName: "Silver 2", color: "silver" };
-    else if (rating >= 1054.87) return { rankName: "Silver 1", color: "silver" };
-    else if (rating >= 913.72) return { rankName: "Bronze 3", color: "#cd7f32" };
-    else if (rating >= 765.43) return { rankName: "Bronze 2", color: "#cd7f32" };
-    else return { rankName: "Bronze 1", color: "#cd7f32" };
+  // Base colors for rank groups.
+  const masterBase = "#800080";    // Purple
+  const diamondBase = "#1E90FF";   // Dodgerblue
+  const platinumBase = "#89CFF0";  // Baby blue
+  const goldBase = "#FFD700";      // Gold
+  const silverBase = "#C0C0C0";    // Silver
+  const bronzeBase = "#CD7F32";    // Bronze
+  
+  // Helper: Adjust a hex color's brightness by adding the given amount to each channel.
+  function adjustColor(hex, amount) {
+    let usePound = false;
+    if (hex[0] === "#") {
+      hex = hex.slice(1);
+      usePound = true;
+    }
+    let num = parseInt(hex, 16);
+    let r = (num >> 16) + amount;
+    if (r > 255) r = 255;
+    else if (r < 0) r = 0;
+    let g = ((num >> 8) & 0x00FF) + amount;
+    if (g > 255) g = 255;
+    else if (g < 0) g = 0;
+    let b = (num & 0x0000FF) + amount;
+    if (b > 255) b = 255;
+    else if (b < 0) b = 0;
+    return (usePound ? "#" : "") +
+      r.toString(16).padStart(2, "0") +
+      g.toString(16).padStart(2, "0") +
+      b.toString(16).padStart(2, "0");
   }
   
-  // Helper function to normalize a character name for use in image file paths.
+  // Determine rank based on rating thresholds with slight color variations.
+  function getRank(rating) {
+    if (rating >= 2350) return { rankName: "Master 3", color: adjustColor(masterBase, -20) };
+    else if (rating >= 2275) return { rankName: "Master 2", color: masterBase };
+    else if (rating >= 2191.75) return { rankName: "Master 1", color: adjustColor(masterBase, 20) };
+    else if (rating >= 2136.28) return { rankName: "Diamond 3", color: adjustColor(diamondBase, -20) };
+    else if (rating >= 2073.67) return { rankName: "Diamond 2", color: diamondBase };
+    else if (rating >= 2003.92) return { rankName: "Diamond 1", color: adjustColor(diamondBase, 20) };
+    else if (rating >= 1927.03) return { rankName: "Platinum 3", color: adjustColor(platinumBase, -20) };
+    else if (rating >= 1843) return { rankName: "Platinum 2", color: platinumBase };
+    else if (rating >= 1751.83) return { rankName: "Platinum 1", color: adjustColor(platinumBase, 20) };
+    else if (rating >= 1653.52) return { rankName: "Gold 3", color: adjustColor(goldBase, -20) };
+    else if (rating >= 1548.07) return { rankName: "Gold 2", color: goldBase };
+    else if (rating >= 1435.48) return { rankName: "Gold 1", color: adjustColor(goldBase, 20) };
+    else if (rating >= 1315.75) return { rankName: "Silver 3", color: adjustColor(silverBase, -20) };
+    else if (rating >= 1188.88) return { rankName: "Silver 2", color: silverBase };
+    else if (rating >= 1054.87) return { rankName: "Silver 1", color: adjustColor(silverBase, 20) };
+    else if (rating >= 913.72) return { rankName: "Bronze 3", color: adjustColor(bronzeBase, -20) };
+    else if (rating >= 765.43) return { rankName: "Bronze 2", color: bronzeBase };
+    else return { rankName: "Bronze 1", color: adjustColor(bronzeBase, 20) };
+  }
+  
+  // Normalize character name to match icon file names (replaces underscores and whitespace with hyphens).
   function normalizeKey(name) {
     return name.toLowerCase().replace(/[_\s]+/g, "-");
   }
   
-  // Helper function to render character icons.
+  // Render character icons. For each character, the image tooltip now shows the number of games played.
   function renderCharacterIcons(chars) {
     let html = "";
     chars.forEach(ch => {
       const norm = normalizeKey(ch.character);
-      // The title now shows the number of games played with that character.
       html += `<img src="icons/${norm}.png" alt="${ch.character}" title="${ch.gameCount} game(s) played" style="width:24px; height:24px; margin-left:4px;">`;
     });
     return html;
   }
-
-  // Function to process an array of codes and generate the leaderboard.
+  
+  // Process an array of codes and generate the leaderboard.
   function processLeaderboardCodes(codes) {
     if (codes.length === 0) {
       leaderboardResults.innerHTML = 'Please enter at least one code.';
@@ -83,9 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => response.json())
       .then(data => {
         const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
-        // Only include user if they have played at least one ranked set.
         if (user && user.rankedNetplayProfile && user.rankedNetplayProfile.ratingUpdateCount > 0) {
-          // Get the top 3 most-used characters (if any) from the current season.
           const topChars = (user.rankedNetplayProfile.characters || [])
             .slice()
             .sort((a, b) => Number(b.gameCount) - Number(a.gameCount))
@@ -109,17 +137,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     Promise.all(fetchPromises).then(results => {
-      // Filter out any null results.
       results = results.filter(result => result !== null);
       if (results.length === 0) {
         leaderboardResults.innerHTML = 'No valid ranked users found.';
         return;
       }
       
-      // Sort results by rating descending.
       results.sort((a, b) => b.rating - a.rating);
       
-      // Build the HTML table.
       let tableHTML = '<table style="width:100%; border-collapse: collapse;">';
       tableHTML += '<tr style="border-bottom: 1px solid #555;">'
         + '<th style="padding: 8px;">Rank</th>'
@@ -149,7 +174,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Event listener for manual leaderboard form submission.
   leaderboardForm.addEventListener('submit', function(e) {
     e.preventDefault();
     let codesInput = document.getElementById('codesInput').value;
@@ -157,15 +181,12 @@ document.addEventListener('DOMContentLoaded', function() {
     processLeaderboardCodes(codes);
   });
   
-  // Event listener for the "Upstate NY" preset button.
   if (presetButton) {
     presetButton.addEventListener('click', function() {
       leaderboardResults.innerHTML = 'Loading preset leaderboard...';
-      // Fetch the CSV file from the presets folder.
       fetch('presets/upstate.csv')
         .then(response => response.text())
         .then(text => {
-          // Parse the CSV: split by newline or comma, trim, and filter out empty strings.
           let codes = text.split(/[\r\n,]+/).map(code => code.trim()).filter(code => code !== '');
           processLeaderboardCodes(codes);
         })
