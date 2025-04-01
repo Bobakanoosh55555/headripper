@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
     players.forEach((player, index) => {
       // Invert ratio so higher rating is at the top.
       let ratio = (maxRating - player.rating) / (maxRating - minRating);
-      let posY = Math.min(Math.max(ratio * viewHeight, 0), viewHeight);
+      let posY = ratio * viewHeight;
       
       // Create the player card.
       const card = document.createElement('div');
