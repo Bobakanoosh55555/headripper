@@ -47,20 +47,18 @@ document.addEventListener('DOMContentLoaded', function() {
   function normalizeKey(name) {
     return name.toLowerCase().replace(/[_\s]+/g, "-");
   }
-
   
   // Helper function to render character icons.
-  // Expects an array of objects with a 'character' property.
   function renderCharacterIcons(chars) {
     let html = "";
     chars.forEach(ch => {
       const norm = normalizeKey(ch.character);
-      // Assumes the icon images are in the "icons" folder and are PNGs.
-      html += `<img src="icons/${norm}.png" alt="${ch.character}" title="${ch.character}" style="width:24px; height:24px; margin-left:4px;">`;
+      // The title now shows the number of games played with that character.
+      html += `<img src="icons/${norm}.png" alt="${ch.character}" title="${ch.gameCount} games played" style="width:24px; height:24px; margin-left:4px;">`;
     });
     return html;
   }
-  
+
   // Function to process an array of codes and generate the leaderboard.
   function processLeaderboardCodes(codes) {
     if (codes.length === 0) {
