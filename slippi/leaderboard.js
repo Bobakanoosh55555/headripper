@@ -193,11 +193,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const viewHeight = altView.clientHeight;
     
     players.forEach((player, index) => {
-      // Compute vertical position (in pixels) along the bar.
+      // Calculate vertical position based on rating.
       let ratio = (player.rating - minRating) / (maxRating - minRating);
       let posY = Math.min(Math.max(ratio * viewHeight, 0), viewHeight);
       
-      // Create a card for the player.
+      // Create the player card.
       const card = document.createElement('div');
       card.className = 'player-card';
       // Alternate left/right placement.
@@ -212,29 +212,34 @@ document.addEventListener('DOMContentLoaded', function() {
       card.innerHTML = `<strong>${player.displayName}</strong><br>
                         Rating: ${player.rating.toFixed(2)}<br>
                         W/L: ${player.wins}/${player.losses}`;
-      
-      // Append card.
       playerCardsContainer.appendChild(card);
       
       // Create a connector line.
       const connector = document.createElement('div');
       connector.className = 'connector';
-      // Determine horizontal starting point at the vertical bar.
-      const barX = verticalBar.offsetLeft + verticalBar.offsetWidth / 2;
-      // Determine card edge (left or right).
-      let cardX;
+      
+      // For left cards, start from the left edge of the vertical bar; for right cards, from the right edge.
+      let startX;
       if (isLeft) {
-        cardX = card.offsetLeft + card.offsetWidth;
+        startX = verticalBar.offsetLeft; // Left edge of bar.
       } else {
-        cardX = card.offsetLeft;
+        startX = verticalBar.offsetLeft + verticalBar.offsetWidth; // Right edge of bar.
       }
-      // Set connector's position and dimensions.
-      // We draw a horizontal line from the vertical bar to the card.
-      const leftX = Math.min(barX, cardX);
-      const width = Math.abs(barX - cardX);
-      connector.style.left = leftX + "px";
-      connector.style.top = (posY + 12) + "px";  // approx vertical center of card text.
-      connector.style.width = width + "px";
+      
+      // Determine the card's edge (left or right) that is closest to the bar.
+      let cardEdge;
+      if (isLeft) {
+        cardEdge = card.offsetLeft + card.offsetWidth;
+      } else {
+        cardEdge = card.offsetLeft;
+      }
+      
+      const connectorLeft = Math.min(startX, cardEdge);
+      const connectorWidth = Math.abs(startX - cardEdge);
+      connector.style.left = connectorLeft + "px";
+      // Position vertically roughly centered with the card's text.
+      connector.style.top = (posY + 12) + "px";
+      connector.style.width = connectorWidth + "px";
       connector.style.height = "2px";
       
       altView.appendChild(connector);
