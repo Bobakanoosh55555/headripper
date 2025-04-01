@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
     players.forEach((player, index) => {
       // Compute ratio: higher rating → smaller ratio (closer to top)
       let ratio = (maxRating - player.rating) / (maxRating - minRating);
-      let posY = ratio * viewHeight;
+      let posY = ratio * altView.offsetHeight;  // altView.offsetHeight should be 8000
       console.log(`Player ${player.code} rating ${player.rating} → ratio ${ratio}, posY ${posY}`);
       
       // Create the player card.
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
       let connectorWidth = Math.abs(startX - cardEdge);
       
       // Vertical center of the card.
-      let connectorTop = (finalCardRect.top + finalCardRect.height/2) - altRect.top;
+      let connectorTop = (finalCardRect.top + finalCardRect.height / 2) - altRect.top;
       
       connector.style.left = connectorLeft + "px";
       connector.style.top = connectorTop + "px";
