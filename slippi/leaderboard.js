@@ -259,7 +259,8 @@ document.addEventListener('DOMContentLoaded', function() {
       let connectorWidth = Math.abs(startX - cardEdge);
       
       // Vertical center of the card.
-      let connectorTop = (finalCardRect.top + finalCardRect.height / 2) - altRect.top;
+      // HERE 
+      let connectorTop = (finalCardRect.top + finalCardRect.height/2) - altRect.top - 20; // subtract 10px
       
       connector.style.left = connectorLeft + "px";
       connector.style.top = connectorTop + "px";
