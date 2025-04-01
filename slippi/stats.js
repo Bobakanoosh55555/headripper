@@ -140,12 +140,22 @@ function renderUserProfile(user) {
     return;
   }
   
+  // Subscription Status formatting change
+  let subscriptionStatus = '';
+  if (user.activeSubscription.level === 'NONE') {
+    subscriptionStatus = 'INACTIVE';
+  } else {
+    subscriptionStatus = `${titleCase(user.status)} - ${titleCase(user.activeSubscription.level).replace(/(Tier)(\d+)/i, '$1 $2')}`;
+  }
+  if (user.activeSubscription.hasGiftSub) {
+    subscriptionStatus += ' (Gifted)';
+  }
+  
   const userHeader = document.createElement('div');
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
     <h3>${user.connectCode.code}</h3>
-    <p><strong>Subscription Status:</strong> ${titleCase(user.status)} - ${titleCase(user.activeSubscription.level).replace(/(Tier)(\d+)/, '$1 $2')}
- ${user.activeSubscription.hasGiftSub ? '(Gifted)' : ''}</p>
+    <p><strong>Subscription Status:</strong> ${subscriptionStatus}</p>
   `;
   profileContainer.appendChild(userHeader);
   
@@ -183,7 +193,7 @@ function renderUserProfile(user) {
     user.rankedNetplayProfileHistory.forEach(history => {
       let season = history.season;
       let historyHTML = `
-        <p><strong>Season:</strong> ${season.name} (${history.status ? history.status.toLowerCase() : ""})</p>
+        <p><strong>Season:</strong> ${season.name}${history.status ? ` (${history.status.toLowerCase()})` : ''}</p>
         <p><strong>Period:</strong> ${new Date(season.startedAt).toLocaleDateString()} - ${new Date(season.endedAt).toLocaleDateString()}</p>
         <p><strong>Rating:</strong> ${history.ratingOrdinal.toFixed(2)}</p>
         <p><strong>Sets Played:</strong> ${history.ratingUpdateCount}</p>
