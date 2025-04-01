@@ -1,147 +1,119 @@
-/* Global Styles */
-body {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  background-color: #121212;
-  color: #ffffff;
-  margin: 0;
-  padding: 20px;
-}
-
-/* Updated container styles: removed border, box-shadow, and rounded corners */
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  /* No border, background, or shadow */
-}
-
-/* Outer Tabs Styles */
-.outer-tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.outer-tab-button {
-  padding: 8px 16px;
-  background-color: #555;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  margin: 0 2px;
-  border-radius: 3px 3px 0 0;
-  /* Darker drop shadow */
-  box-shadow: 0 2px 4px rgba(150,150,150,0.7);
-}
-
-.outer-tab-button.active {
-  background-color: #121212;
-  font-weight: bold;
-}
-
-.outer-tab-content {
-  display: none;
-  max-width: 800px;
-  margin: auto;
-}
-
-.outer-tab-content.active {
-  display: block;
-}
-
-/* Form Styles */
-form {
-  margin-bottom: 20px;
-}
-
-input[type="text"] {
-  padding: 8px;
-  border: 1px solid #555;
-  border-radius: 3px;
-  background-color: #222;
-  color: #fff;
-}
-
-button {
-  padding: 8px 12px;
-  margin-left: 10px;
-  border: 1px solid #555;
-  border-radius: 3px;
-  background-color: #555;
-  color: #fff;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #666;
-}
-
-/* Card Styles */
-.card {
-  border: 1px solid #555;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 15px 0;
-  background-color: #121212;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-}
-
-h1, h2, h3, h4 {
-  margin-top: 0;
-}
-
-/* Chart Styles */
-.chart-container {
-  position: relative;
-  height: 300px;
-  width: 100%;
-  margin-top: 10px;
-}
-
-canvas {
-  background: #222;
-  border: 1px solid #555;
-  border-radius: 5px;
-}
-
-p {
-  margin: 5px 0;
-}
-
-/* Inner Tab Styles (for tabs within the Individual tab, if used) */
-.tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.tab-button {
-  padding: 8px 16px;
-  background-color: #555;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  margin: 0 2px;
-  border-radius: 3px 3px 0 0;
-}
-
-.tab-button.active {
-  background-color: #121212;
-  font-weight: bold;
-  border-bottom: 1px solid #121212;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-/* Preset Buttons Container */
-.preset-buttons {
-  margin-bottom: 20px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Slippi Ranked Stats</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="stats.css">
+  <!-- Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Outer Tab Navigation -->
+  <div class="outer-tabs">
+    <button class="outer-tab-button" data-target="individual" id="btn-individual">Individual</button>
+    <button class="outer-tab-button" data-target="many" id="btn-many">Many</button>
+    <button class="outer-tab-button" data-target="leaderboard" id="btn-leaderboard">Leaderboards</button>
+  </div>
+  
+  <!-- Outer Tab Contents -->
+  <div id="individual" class="outer-tab-content">
+    <div class="container">
+      <h1>Slippi Ranked Stats</h1>
+      <!-- User Input Form -->
+      <form id="userForm">
+        <label for="userCode">Enter User Code:</label>
+        <input type="text" id="userCode" name="userCode" placeholder="e.g. DMAR#554" required>
+        <button type="submit">Load Profile</button>
+      </form>
+      <!-- Container where the profile will be rendered -->
+      <div id="profile"></div>
+    </div>
+  </div>
+  
+  <div id="many" class="outer-tab-content">
+    <div class="container">
+      <h1>Many Stats</h1>
+      <p>Many tab content goes here.</p>
+    </div>
+  </div>
+  
+  <div id="leaderboard" class="outer-tab-content">
+    <div class="container">
+      <h1>Leaderboards</h1>
+      <!-- Container for preset buttons -->
+      <div class="preset-buttons">
+        <button id="presetButton">Upstate NY</button>
+      </div>
+      <!-- Leaderboard form -->
+      <form id="leaderboardForm">
+        <label for="codesInput">Enter Codes (comma separated):</label>
+        <input type="text" id="codesInput" name="codesInput" placeholder="e.g. DMAR#554,BOBA#5" required>
+        <button type="submit">Generate Leaderboard</button>
+      </form>
+      <!-- Leaderboard results will be rendered here -->
+      <div id="leaderboardResults"></div>
+    </div>
+  </div>
+  
+  <!-- Outer Tab Switching Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const outerTabButtons = document.querySelectorAll('.outer-tab-button');
+      const outerTabContents = document.querySelectorAll('.outer-tab-content');
+      
+      function clearActive() {
+        outerTabButtons.forEach(btn => btn.classList.remove('active'));
+        outerTabContents.forEach(content => content.classList.remove('active'));
+      }
+      
+      // Check URL hash (e.g. "#leaderboard")
+      let hash = window.location.hash;
+      if (hash) {
+        let targetId = hash.substring(1); // remove the #
+        let targetContent = document.getElementById(targetId);
+        if (targetContent && targetContent.classList.contains('outer-tab-content')) {
+          clearActive();
+          targetContent.classList.add('active');
+          let btn = document.querySelector(`.outer-tab-button[data-target="${targetId}"]`);
+          if (btn) {
+            btn.classList.add('active');
+          }
+        } else {
+          // If no matching tab, default to first tab.
+          clearActive();
+          outerTabButtons[0].classList.add('active');
+          outerTabContents[0].classList.add('active');
+        }
+      } else {
+        // Default to first tab if no hash.
+        clearActive();
+        outerTabButtons[0].classList.add('active');
+        outerTabContents[0].classList.add('active');
+      }
+      
+      // Attach click events.
+      outerTabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          clearActive();
+          this.classList.add('active');
+          const targetId = this.getAttribute('data-target');
+          document.getElementById(targetId).classList.add('active');
+          // Update URL hash without reloading.
+          history.replaceState(null, null, '#' + targetId);
+        });
+      });
+    });
+  </script>
+  
+  <!-- External JavaScript for the Individual tab -->
+  <script src="stats.js"></script>
+  <!-- External JavaScript for the Leaderboards tab -->
+  <script src="leaderboard.js"></script>
+  <!-- Optionally include a separate JS file for the Many tab -->
+  <!-- <script src="many.js"></script> -->
+</body>
+</html>
