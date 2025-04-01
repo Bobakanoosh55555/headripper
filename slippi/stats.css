@@ -112,11 +112,12 @@ p {
 #altView {
   display: none;  /* Initially hidden; toggled by JS */
   position: relative;
-  height: 1500px;  /* 2.5x original 600px height */
+  height: 1500px;  /* Increased height */
   margin-top: 20px;
 }
 
 /* Vertical Bar centered in the alternate view */
+/* Flipped gradient: top is Master, bottom is Bronze */
 #verticalBar {
   position: absolute;
   left: 50%;
@@ -125,12 +126,12 @@ p {
   height: 100%;
   transform: translateX(-50%);
   background: linear-gradient(to bottom, 
-    #cd7f32 0%,   /* Bronze */
-    #C0C0C0 30%,  /* Silver */
-    #FFD700 50%,  /* Gold */
-    #89CFF0 70%,  /* Platinum */
-    #1E90FF 85%,  /* Diamond */
-    #800080 100%  /* Master */
+    #800080 0%,   /* Master */
+    #1E90FF 20%,  /* Diamond */
+    #89CFF0 40%,  /* Platinum */
+    #FFD700 60%,  /* Gold */
+    #C0C0C0 80%,  /* Silver */
+    #cd7f32 100%  /* Bronze */
   );
 }
 
@@ -149,7 +150,7 @@ p {
 /* Connector Lines for the alternate view */
 .connector {
   position: absolute;
-  width: 2px;
+  height: 2px;
   background: #fff;
   z-index: 0;
 }
