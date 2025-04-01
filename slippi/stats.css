@@ -132,20 +132,27 @@ p {
   height: 100%;
   transform: translateX(-50%);
   background: linear-gradient(to bottom, 
-    #800080 0%,          /* Master */
-    #800080 35.2%,       
-    #1E90FF 35.2%,        /* Diamond */
-    #1E90FF 43.4%,       
-    #89CFF0 43.4%,        /* Platinum */
-    #89CFF0 54.4%,       
-    #FFD700 54.4%,        /* Gold */
-    #FFD700 68.2%,       
-    #C0C0C0 68.2%,        /* Silver */
-    #C0C0C0 84.8%,       
-    #cd7f32 84.8%,        /* Bronze */
+    /* Master */
+    #800080 0%, 
+    #800080 35.15%, 
+    /* Diamond */
+    #1E90FF 35.15%, 
+    #1E90FF 43.30%, 
+    /* Platinum */
+    #89CFF0 43.30%, 
+    #89CFF0 54.27%, 
+    /* Gold */
+    #FFD700 54.27%, 
+    #FFD700 67.98%, 
+    /* Silver */
+    #C0C0C0 67.98%, 
+    #C0C0C0 84.57%, 
+    /* Bronze */
+    #cd7f32 84.57%, 
     #cd7f32 100%
   );
 }
+
 
 /* Player Cards in the alternate view */
 .player-card {
