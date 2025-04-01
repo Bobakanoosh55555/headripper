@@ -189,22 +189,18 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function showAlternateView(players) {
     playerCardsContainer.innerHTML = "";
-    
-    // Use the exact height of altView.
     const minRating = 700, maxRating = 3000;
-    const viewHeight = altView.offsetHeight;  // should be 8000px
-    console.log("altView height:", viewHeight);
+    const viewHeight = altView.offsetHeight;  // expected 8000px
+    const verticalOffset = 200;  // new constant to shift all cards/lines down by 200px
     
-    // Get bounding rectangles for altView and verticalBar.
     const altRect = altView.getBoundingClientRect();
     const barRect = verticalBar.getBoundingClientRect();
-    console.log("Vertical bar rect:", barRect);
     
     players.forEach((player, index) => {
-      // Compute ratio: higher rating → smaller ratio (closer to top)
+      // Compute ratio (higher rating = smaller ratio → nearer top)
       let ratio = (maxRating - player.rating) / (maxRating - minRating);
-      let posY = ratio * altView.offsetHeight;  // altView.offsetHeight should be 8000
-      console.log(`Player ${player.code} rating ${player.rating} → ratio ${ratio}, posY ${posY}`);
+      let posY = ratio * viewHeight;
+      posY += verticalOffset;  // shift down by 200px
       
       // Create the player card.
       const card = document.createElement('div');
@@ -212,22 +208,22 @@ document.addEventListener('DOMContentLoaded', function() {
       card.style.top = posY + "px";
       
       const isLeft = (index % 2 === 0);
-      // Temporarily position the card so we can measure it.
+      // Temporarily set horizontal position.
       if (isLeft) {
         card.style.left = "0px";
       } else {
         card.style.left = (altRect.width - 220) + "px";
       }
       
-      // Condensed two-line content.
+      // Set condensed two-line content.
       card.innerHTML = `<strong>${player.displayName}</strong> | ${player.code}<br>
                         ${player.rating.toFixed(2)} | ${player.wins}/${player.losses}`;
       playerCardsContainer.appendChild(card);
       
-      // Measure card position.
+      // After appending, measure card.
       const cardRect = card.getBoundingClientRect();
       
-      // Reposition card to be 30px from the vertical bar.
+      // Reposition card with a 30px gap from the vertical bar.
       if (isLeft) {
         const barLeftLocal = barRect.left - altRect.left;
         let cardLeft = barLeftLocal - (cardRect.width + 30);
@@ -238,19 +234,19 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.left = cardLeft + "px";
       }
       
-      // Final card measurement.
+      // Re-measure final card position.
       const finalCardRect = card.getBoundingClientRect();
       
-      // Create connector line.
+      // Create a connector line.
       const connector = document.createElement('div');
       connector.className = 'connector';
       
-      // Connector start point on the bar.
+      // Determine the connector start point on the bar.
       let startX = isLeft 
         ? (barRect.left - altRect.left) 
         : ((barRect.left + barRect.width) - altRect.left);
       
-      // Connector should connect to the card edge closest to the bar.
+      // Determine the card's edge closest to the bar.
       let cardEdge = isLeft 
         ? (finalCardRect.right - altRect.left) 
         : (finalCardRect.left - altRect.left);
@@ -258,9 +254,8 @@ document.addEventListener('DOMContentLoaded', function() {
       let connectorLeft = Math.min(startX, cardEdge);
       let connectorWidth = Math.abs(startX - cardEdge);
       
-      // Vertical center of the card.
-      // HERE 
-      let connectorTop = (finalCardRect.top + finalCardRect.height/2) - altRect.top - 200; // subtract 10px
+      // Vertical center of the card (this is already shifted by verticalOffset because the card's top is shifted).
+      let connectorTop = (finalCardRect.top + finalCardRect.height / 2) - altRect.top;
       
       connector.style.left = connectorLeft + "px";
       connector.style.top = connectorTop + "px";
@@ -270,8 +265,6 @@ document.addEventListener('DOMContentLoaded', function() {
       altView.appendChild(connector);
     });
   }
-
-
   
   // Toggle view.
   toggleAlternate.addEventListener('change', function() {
