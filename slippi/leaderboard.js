@@ -48,33 +48,32 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(response => response.json())
       .then(data => {
-        // Try to extract user data from either getUser or getConnectCode
         const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
-        if (user && user.rankedNetplayProfile) {
+        // Only include user if they have ranked data and their activeSubscription level isn't "NONE"
+        if (user && user.rankedNetplayProfile && user.activeSubscription && user.activeSubscription.level !== 'NONE') {
           return {
             code: code,
             displayName: user.displayName || code,
             rating: user.rankedNetplayProfile.ratingOrdinal || 0
           };
         } else {
-          return {
-            code: code,
-            displayName: "Not Found",
-            rating: 0
-          };
+          return null;
         }
       })
       .catch(err => {
         console.error("Error fetching data for", code, err);
-        return {
-          code: code,
-          displayName: "Error",
-          rating: 0
-        };
+        return null;
       });
     });
     
     Promise.all(fetchPromises).then(results => {
+      // Filter out any null results (discarded users)
+      results = results.filter(result => result !== null);
+      if(results.length === 0) {
+        leaderboardResults.innerHTML = 'No valid ranked users found.';
+        return;
+      }
+      
       // Sort results by rating descending (highest first)
       results.sort((a, b) => b.rating - a.rating);
       
