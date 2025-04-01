@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Base colors for rank groups.
   const masterBase = "#800080";    // Purple
-  const diamondBase = "#1E90FF";   // Dodgerblue
-  const platinumBase = "#89CFF0";  // Baby blue
-  const goldBase = "#FFD700";      // Gold
-  const silverBase = "#C0C0C0";    // Silver
-  const bronzeBase = "#CD7F32";    // Bronze
+  const diamondBase = "#1E90FF";     // Dodgerblue
+  const platinumBase = "#89CFF0";    // Baby blue
+  const goldBase = "#FFD700";        // Gold
+  const silverBase = "#C0C0C0";      // Silver
+  const bronzeBase = "#CD7F32";      // Bronze
   
-  // Helper: Adjust a hex color's brightness by adding the given amount to each channel.
+  // Helper: Adjust a hex color's brightness.
   function adjustColor(hex, amount) {
     let usePound = false;
     if (hex[0] === "#") {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
       b.toString(16).padStart(2, "0");
   }
   
-  // Determine rank based on rating thresholds with color variations.
+  // Determine rank with color variations.
   function getRank(rating) {
     if (rating >= 2350) return { rankName: "Master 3", color: adjustColor(masterBase, -40) };
     else if (rating >= 2275) return { rankName: "Master 2", color: masterBase };
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return html;
   }
   
-  // Standard table view + store players data.
+  // Process leaderboard codes (standard table view).
   function processLeaderboardCodes(codes) {
     if (codes.length === 0) {
       leaderboardResults.innerHTML = 'Please enter at least one code.';
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
       results.sort((a, b) => b.rating - a.rating);
       playersData = results;
       
-      // Build standard table.
+      // Build standard table view.
       let tableHTML = '<table style="width:100%; border-collapse: collapse;">';
       tableHTML += '<tr style="border-bottom: 1px solid #555;">'
         + '<th style="padding: 8px;">Rank</th>'
@@ -180,70 +180,84 @@ document.addEventListener('DOMContentLoaded', function() {
       
       leaderboardResults.innerHTML = tableHTML;
       
-      // If alternate view is toggled on, update that view too.
+      // If alternate view is toggled on, update it.
       if (toggleAlternate.checked) {
         showAlternateView(playersData);
       }
     });
   }
   
-  // Build the alternate view (vertical bar + cards).
+  // Build the alternate view.
   function showAlternateView(players) {
     playerCardsContainer.innerHTML = "";
-    
-    // We'll invert the position so higher rating is at the top.
-    // e.g. if rating == maxRating => posY = 0
+    // Define rating range.
     const minRating = 700, maxRating = 2400;
     const viewHeight = altView.clientHeight;
     
-    // We use bounding rects to line up connectors exactly.
+    // Get bounding rectangle of altView and verticalBar.
     const altRect = altView.getBoundingClientRect();
     const barRect = verticalBar.getBoundingClientRect();
     
     players.forEach((player, index) => {
-      // ratio 0 => top, ratio 1 => bottom
+      // Invert ratio so higher rating is at the top.
       let ratio = (maxRating - player.rating) / (maxRating - minRating);
       let posY = Math.min(Math.max(ratio * viewHeight, 0), viewHeight);
       
       // Create the player card.
       const card = document.createElement('div');
       card.className = 'player-card';
-      // Alternate left/right.
-      const isLeft = index % 2 === 0;
       card.style.top = posY + "px";
       
+      const isLeft = (index % 2 === 0);
+      // Temporarily set horizontal position.
       if (isLeft) {
-        card.style.right = "calc(50% + 30px)";
+        card.style.left = "0px";
       } else {
-        card.style.left = "calc(50% + 30px)";
+        card.style.left = (altRect.width - 220) + "px";
       }
       
-      card.innerHTML = `<strong>${player.displayName}</strong><br>
-                        Rating: ${player.rating.toFixed(2)}<br>
-                        W/L: ${player.wins}/${player.losses}`;
+      // Set condensed two-line content.
+      card.innerHTML = `<strong>${player.displayName}</strong> | ${player.code}<br>
+                        ${player.rating.toFixed(2)} | ${player.wins}/${player.losses}`;
+      
       playerCardsContainer.appendChild(card);
       
-      // Create connector line.
+      // After appending, measure card.
+      const cardRect = card.getBoundingClientRect();
+      
+      // Position card with a 30px gap from the bar.
+      if (isLeft) {
+        const barLeftLocal = barRect.left - altRect.left;
+        let cardLeft = barLeftLocal - (cardRect.width + 30);
+        card.style.left = cardLeft + "px";
+      } else {
+        const barRightLocal = (barRect.left + barRect.width) - altRect.left;
+        let cardLeft = barRightLocal + 30;
+        card.style.left = cardLeft + "px";
+      }
+      
+      // Re-measure final card position.
+      const finalCardRect = card.getBoundingClientRect();
+      
+      // Create a connector line.
       const connector = document.createElement('div');
       connector.className = 'connector';
       
-      // For left cards, we connect to barRect.left; for right cards, barRect.right.
-      // Then we translate these absolute positions into altView-relative coords.
-      let barX = isLeft ? barRect.left : (barRect.left + barRect.width);
-      // The card's bounding rect.
-      let cardRect = card.getBoundingClientRect();
-      let cardX = isLeft ? (cardRect.right) : (cardRect.left);
+      // Determine the connector start point on the bar:
+      let startX = isLeft 
+        ? (barRect.left - altRect.left) 
+        : ((barRect.left + barRect.width) - altRect.left);
       
-      // Convert to altView-based coordinates.
-      const barXLocal = barX - altRect.left;
-      const cardXLocal = cardX - altRect.left;
+      // Determine the card's edge (closest to the bar).
+      let cardEdge = isLeft 
+        ? (finalCardRect.right - altRect.left) 
+        : (finalCardRect.left - altRect.left);
       
-      // We'll place the connector horizontally between barXLocal and cardXLocal.
-      let connectorLeft = Math.min(barXLocal, cardXLocal);
-      let connectorWidth = Math.abs(barXLocal - cardXLocal);
+      let connectorLeft = Math.min(startX, cardEdge);
+      let connectorWidth = Math.abs(startX - cardEdge);
       
-      // We want the line to appear near the vertical center of the card.
-      let connectorTop = (posY + 12); // 12px offset from top for approximate center
+      // Vertical center of the card.
+      let connectorTop = (finalCardRect.top + finalCardRect.height/2) - altRect.top;
       
       connector.style.left = connectorLeft + "px";
       connector.style.top = connectorTop + "px";
@@ -254,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Toggle between table view and alternate view.
+  // Toggle view.
   toggleAlternate.addEventListener('change', function() {
     if (this.checked) {
       tableView.style.display = "none";
@@ -268,7 +282,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Manual leaderboard form submission.
   leaderboardForm.addEventListener('submit', function(e) {
     e.preventDefault();
     let codesInput = document.getElementById('codesInput').value;
@@ -276,7 +289,6 @@ document.addEventListener('DOMContentLoaded', function() {
     processLeaderboardCodes(codes);
   });
   
-  // Preset button for Upstate NY.
   if (presetButton) {
     presetButton.addEventListener('click', function() {
       leaderboardResults.innerHTML = 'Loading preset leaderboard...';
