@@ -187,11 +187,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Build the alternate view.
   function showAlternateView(players) {
     playerCardsContainer.innerHTML = "";
-    // Define rating range.
-    const minRating = 700, maxRating = 2400;
+    // Define rating range for positioning.
+    // Changed maxRating from 2400 to 3000.
+    const minRating = 700, maxRating = 3000;
     const viewHeight = altView.clientHeight;
     
     // Get bounding rectangle of altView and verticalBar.
@@ -219,7 +219,6 @@ document.addEventListener('DOMContentLoaded', function() {
       // Set condensed two-line content.
       card.innerHTML = `<strong>${player.displayName}</strong> | ${player.code}<br>
                         ${player.rating.toFixed(2)} | ${player.wins}/${player.losses}`;
-      
       playerCardsContainer.appendChild(card);
       
       // After appending, measure card.
@@ -267,6 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
       altView.appendChild(connector);
     });
   }
+
   
   // Toggle view.
   toggleAlternate.addEventListener('change', function() {
