@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
     playerCardsContainer.innerHTML = "";
     const minRating = 700, maxRating = 3000;
     const viewHeight = altView.offsetHeight;  // expected 8000px
-    const verticalOffset = 110;  // new constant to shift all cards/lines down by 200px
+    const verticalOffset = 130;  // new constant to shift all cards/lines down by 200px
     
     const altRect = altView.getBoundingClientRect();
     const barRect = verticalBar.getBoundingClientRect();
