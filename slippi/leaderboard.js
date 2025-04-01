@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const bronzeBase = "#CD7F32";    // Bronze
   
   // Helper: Adjust a hex color's brightness by adding the given amount to each channel.
+  // Using ±40 now for a more apparent shift.
   function adjustColor(hex, amount) {
     let usePound = false;
     if (hex[0] === "#") {
@@ -52,34 +53,34 @@ document.addEventListener('DOMContentLoaded', function() {
       b.toString(16).padStart(2, "0");
   }
   
-  // Determine rank based on rating thresholds with slight color variations.
+  // Determine rank based on rating thresholds with more apparent color variations.
   function getRank(rating) {
-    if (rating >= 2350) return { rankName: "Master 3", color: adjustColor(masterBase, -20) };
+    if (rating >= 2350) return { rankName: "Master 3", color: adjustColor(masterBase, -40) };
     else if (rating >= 2275) return { rankName: "Master 2", color: masterBase };
-    else if (rating >= 2191.75) return { rankName: "Master 1", color: adjustColor(masterBase, 20) };
-    else if (rating >= 2136.28) return { rankName: "Diamond 3", color: adjustColor(diamondBase, -20) };
+    else if (rating >= 2191.75) return { rankName: "Master 1", color: adjustColor(masterBase, 40) };
+    else if (rating >= 2136.28) return { rankName: "Diamond 3", color: adjustColor(diamondBase, -40) };
     else if (rating >= 2073.67) return { rankName: "Diamond 2", color: diamondBase };
-    else if (rating >= 2003.92) return { rankName: "Diamond 1", color: adjustColor(diamondBase, 20) };
-    else if (rating >= 1927.03) return { rankName: "Platinum 3", color: adjustColor(platinumBase, -20) };
+    else if (rating >= 2003.92) return { rankName: "Diamond 1", color: adjustColor(diamondBase, 40) };
+    else if (rating >= 1927.03) return { rankName: "Platinum 3", color: adjustColor(platinumBase, -40) };
     else if (rating >= 1843) return { rankName: "Platinum 2", color: platinumBase };
-    else if (rating >= 1751.83) return { rankName: "Platinum 1", color: adjustColor(platinumBase, 20) };
-    else if (rating >= 1653.52) return { rankName: "Gold 3", color: adjustColor(goldBase, -20) };
+    else if (rating >= 1751.83) return { rankName: "Platinum 1", color: adjustColor(platinumBase, 40) };
+    else if (rating >= 1653.52) return { rankName: "Gold 3", color: adjustColor(goldBase, -40) };
     else if (rating >= 1548.07) return { rankName: "Gold 2", color: goldBase };
-    else if (rating >= 1435.48) return { rankName: "Gold 1", color: adjustColor(goldBase, 20) };
-    else if (rating >= 1315.75) return { rankName: "Silver 3", color: adjustColor(silverBase, -20) };
+    else if (rating >= 1435.48) return { rankName: "Gold 1", color: adjustColor(goldBase, 40) };
+    else if (rating >= 1315.75) return { rankName: "Silver 3", color: adjustColor(silverBase, -40) };
     else if (rating >= 1188.88) return { rankName: "Silver 2", color: silverBase };
-    else if (rating >= 1054.87) return { rankName: "Silver 1", color: adjustColor(silverBase, 20) };
-    else if (rating >= 913.72) return { rankName: "Bronze 3", color: adjustColor(bronzeBase, -20) };
+    else if (rating >= 1054.87) return { rankName: "Silver 1", color: adjustColor(silverBase, 40) };
+    else if (rating >= 913.72) return { rankName: "Bronze 3", color: adjustColor(bronzeBase, -40) };
     else if (rating >= 765.43) return { rankName: "Bronze 2", color: bronzeBase };
-    else return { rankName: "Bronze 1", color: adjustColor(bronzeBase, 20) };
+    else return { rankName: "Bronze 1", color: adjustColor(bronzeBase, 40) };
   }
   
-  // Normalize character name to match icon file names (replaces underscores and whitespace with hyphens).
+  // Normalize a character name (replacing underscores and whitespace with hyphens) for image file paths.
   function normalizeKey(name) {
     return name.toLowerCase().replace(/[_\s]+/g, "-");
   }
   
-  // Render character icons. For each character, the image tooltip now shows the number of games played.
+  // Render character icons. The tooltip now shows the number of games played with that character.
   function renderCharacterIcons(chars) {
     let html = "";
     chars.forEach(ch => {
@@ -159,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tableHTML += `<tr style="border-bottom: 1px solid #555; color: ${rank.color};">
                         <td style="padding: 8px;">${index + 1}</td>
                         <td style="padding: 8px;">${result.code}</td>
-                        <td style="padding: 8px;">${result.displayName} ${renderCharacterIcons(result.topChars)}</td>
+                        <td style="padding: 8px;"><strong>${result.displayName}</strong> ${renderCharacterIcons(result.topChars)}</td>
                         <td style="padding: 8px;" title="Rank: ${rank.rankName}">${result.rating.toFixed(2)}</td>
                         <td style="padding: 8px;">
                           <span style="color: #39FF14;">${result.wins}</span>
