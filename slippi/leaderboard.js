@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const leaderboardForm = document.getElementById('leaderboardForm');
   const leaderboardResults = document.getElementById('leaderboardResults');
   const presetButton = document.getElementById('presetButton');
+  const presetButtonCensus = document.getElementById('presetButtonCensus');
   const toggleAlternate = document.getElementById('toggleAlternateView');
   const tableView = document.getElementById('tableView');
   const altView = document.getElementById('altView');
@@ -287,18 +288,40 @@ document.addEventListener('DOMContentLoaded', function() {
     processLeaderboardCodes(codes);
   });
   
+  // Existing preset button for Upstate NY
   if (presetButton) {
     presetButton.addEventListener('click', function() {
       leaderboardResults.innerHTML = 'Loading preset leaderboard...';
       fetch('presets/upstate.csv')
         .then(response => response.text())
         .then(text => {
-          let codes = text.split(/[\r\n,]+/).map(code => code.trim()).filter(code => code !== '');
+          let codes = text.split(/[\r\n,]+/)
+            .map(code => code.trim())
+            .filter(code => code !== '');
           processLeaderboardCodes(codes);
         })
         .catch(error => {
           leaderboardResults.innerHTML = 'Error loading preset data.';
           console.error('Error fetching preset CSV:', error);
+        });
+    });
+  }
+  
+  // New preset button for Census
+  if (presetButtonCensus) {
+    presetButtonCensus.addEventListener('click', function() {
+      leaderboardResults.innerHTML = 'Loading Census preset leaderboard...';
+      fetch('presets/census.csv')
+        .then(response => response.text())
+        .then(text => {
+          let codes = text.split(/[\r\n,]+/)
+            .map(code => code.trim())
+            .filter(code => code !== '');
+          processLeaderboardCodes(codes);
+        })
+        .catch(error => {
+          leaderboardResults.innerHTML = 'Error loading preset data.';
+          console.error('Error fetching preset CSV (Census):', error);
         });
     });
   }
