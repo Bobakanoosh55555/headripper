@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const leaderboardForm = document.getElementById('leaderboardForm');
   const leaderboardResults = document.getElementById('leaderboardResults');
   const presetButton = document.getElementById('presetButton');
-  const presetButtonCensus = document.getElementById('presetButtonCensus');
+  const resetButton = document.getElementById('resetButton'); // New Reset button
   const toggleAlternate = document.getElementById('toggleAlternateView');
   const tableView = document.getElementById('tableView');
   const altView = document.getElementById('altView');
@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Process leaderboard codes (standard table view).
+  // Modified to append new results to existing leaderboard instead of wiping it.
   function processLeaderboardCodes(codes) {
     if (codes.length === 0) {
       leaderboardResults.innerHTML = 'Please enter at least one code.';
@@ -104,6 +105,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     leaderboardResults.innerHTML = 'Loading leaderboard...';
+    
+    // Filter out any codes that are already present.
+    codes = codes.filter(code => !playersData.some(p => p.code === code));
+    
+    // If none are new, just rebuild the display.
+    if (codes.length === 0) {
+      updateDisplay();
+      return;
+    }
     
     let fetchPromises = codes.map(code => {
       const payload = {
@@ -145,86 +155,87 @@ document.addEventListener('DOMContentLoaded', function() {
     
     Promise.all(fetchPromises).then(results => {
       results = results.filter(result => result !== null);
-      if (results.length === 0) {
+      // If there are no new valid entries and nothing in our current leaderboard, show a message.
+      if (results.length === 0 && playersData.length === 0) {
         leaderboardResults.innerHTML = 'No valid ranked users found.';
         return;
       }
       
-      results.sort((a, b) => b.rating - a.rating);
-      playersData = results;
+      // Append new results to the existing playersData.
+      playersData = playersData.concat(results);
+      // Sort the leaderboard by rating in descending order.
+      playersData.sort((a, b) => b.rating - a.rating);
       
-      // Build standard table view.
-      let tableHTML = '<table style="width:100%; border-collapse: collapse;">';
-      tableHTML += '<tr style="border-bottom: 1px solid #555;">'
-        + '<th style="padding: 8px;">Rank</th>'
-        + '<th style="padding: 8px;">Code</th>'
-        + '<th style="padding: 8px;">Display Name</th>'
-        + '<th style="padding: 8px;">Rating</th>'
-        + '<th style="padding: 8px;">W/L</th>'
-        + '</tr>';
-      
-      results.forEach((result, index) => {
-        const rank = getRank(result.rating);
-        tableHTML += `<tr style="border-bottom: 1px solid #555; color: ${rank.color};">
-                        <td style="padding: 8px;">${index + 1}</td>
-                        <td style="padding: 8px;">${result.code}</td>
-                        <td style="padding: 8px;"><strong>${result.displayName}</strong> ${renderCharacterIcons(result.topChars)}</td>
-                        <td style="padding: 8px;" title="Rank: ${rank.rankName}">${result.rating.toFixed(2)}</td>
-                        <td style="padding: 8px;">
-                          <span style="color: #39FF14;">${result.wins}</span>
-                          <span style="color: #fff;">/</span>
-                          <span style="color: #FF073A;">${result.losses}</span>
-                        </td>
-                      </tr>`;
-      });
-      tableHTML += '</table>';
-      
-      leaderboardResults.innerHTML = tableHTML;
-      
-      // If alternate view is toggled on, update it.
-      if (toggleAlternate.checked) {
-        showAlternateView(playersData);
-      }
+      updateDisplay();
     });
+  }
+  
+  // Helper function to update the leaderboard display.
+  function updateDisplay() {
+    let tableHTML = '<table style="width:100%; border-collapse: collapse;">';
+    tableHTML += '<tr style="border-bottom: 1px solid #555;">'
+      + '<th style="padding: 8px;">Rank</th>'
+      + '<th style="padding: 8px;">Code</th>'
+      + '<th style="padding: 8px;">Display Name</th>'
+      + '<th style="padding: 8px;">Rating</th>'
+      + '<th style="padding: 8px;">W/L</th>'
+      + '</tr>';
+    
+    playersData.forEach((result, index) => {
+      const rank = getRank(result.rating);
+      tableHTML += `<tr style="border-bottom: 1px solid #555; color: ${rank.color};">
+                      <td style="padding: 8px;">${index + 1}</td>
+                      <td style="padding: 8px;">${result.code}</td>
+                      <td style="padding: 8px;"><strong>${result.displayName}</strong> ${renderCharacterIcons(result.topChars)}</td>
+                      <td style="padding: 8px;" title="Rank: ${rank.rankName}">${result.rating.toFixed(2)}</td>
+                      <td style="padding: 8px;">
+                        <span style="color: #39FF14;">${result.wins}</span>
+                        <span style="color: #fff;">/</span>
+                        <span style="color: #FF073A;">${result.losses}</span>
+                      </td>
+                    </tr>`;
+    });
+    tableHTML += '</table>';
+    
+    leaderboardResults.innerHTML = tableHTML;
+    
+    // Update alternate view if needed.
+    if (toggleAlternate.checked) {
+      showAlternateView(playersData);
+    }
   }
   
   function showAlternateView(players) {
     playerCardsContainer.innerHTML = "";
     const minRating = 700, maxRating = 3000;
     const viewHeight = altView.offsetHeight;  // expected 8000px
-    const verticalOffset = 130;  // new constant to shift all cards/lines down by 200px
+    const verticalOffset = 130;  // shift all cards/lines down by this offset
     
     const altRect = altView.getBoundingClientRect();
     const barRect = verticalBar.getBoundingClientRect();
     
     players.forEach((player, index) => {
-      // Compute ratio (higher rating = smaller ratio → nearer top)
       let ratio = (maxRating - player.rating) / (maxRating - minRating);
       let posY = ratio * viewHeight;
-      posY += verticalOffset;  // shift down by 200px
+      posY += verticalOffset;
       
-      // Create the player card.
       const card = document.createElement('div');
       card.className = 'player-card';
       card.style.top = posY + "px";
       
       const isLeft = (index % 2 === 0);
-      // Temporarily set horizontal position.
       if (isLeft) {
         card.style.left = "0px";
       } else {
         card.style.left = (altRect.width - 220) + "px";
       }
       
-      // Set condensed two-line content.
       card.innerHTML = `<strong>${player.displayName}</strong> | ${player.code}<br>
                         ${player.rating.toFixed(2)} | ${player.wins}/${player.losses}`;
       playerCardsContainer.appendChild(card);
       
-      // After appending, measure card.
       const cardRect = card.getBoundingClientRect();
       
-      // Reposition card with a 30px gap from the vertical bar.
       if (isLeft) {
         const barLeftLocal = barRect.left - altRect.left;
         let cardLeft = barLeftLocal - (cardRect.width + 30);
@@ -235,19 +246,15 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.left = cardLeft + "px";
       }
       
-      // Re-measure final card position.
       const finalCardRect = card.getBoundingClientRect();
       
-      // Create a connector line.
       const connector = document.createElement('div');
       connector.className = 'connector';
       
-      // Determine the connector start point on the bar.
       let startX = isLeft 
         ? (barRect.left - altRect.left) 
         : ((barRect.left + barRect.width) - altRect.left);
       
-      // Determine the card's edge closest to the bar.
       let cardEdge = isLeft 
         ? (finalCardRect.right - altRect.left) 
         : (finalCardRect.left - altRect.left);
@@ -255,7 +262,6 @@ document.addEventListener('DOMContentLoaded', function() {
       let connectorLeft = Math.min(startX, cardEdge);
       let connectorWidth = Math.abs(startX - cardEdge);
       
-      // Vertical center of the card (this is already shifted by verticalOffset because the card's top is shifted).
       let connectorTop = (finalCardRect.top + finalCardRect.height / 2) - altRect.top;
       
       connector.style.left = connectorLeft + "px";
@@ -284,11 +290,36 @@ document.addEventListener('DOMContentLoaded', function() {
   leaderboardForm.addEventListener('submit', function(e) {
     e.preventDefault();
     let codesInput = document.getElementById('codesInput').value;
-    let codes = codesInput.split(',').map(code => code.trim()).filter(code => code !== '');
-    processLeaderboardCodes(codes);
+    let codes = codesInput.split(',')
+      .map(code => code.trim())
+      .filter(code => code !== '');
+    
+    // Check for the hidden easter egg: if 'census' is entered, load the Census preset.
+    const censusIndex = codes.findIndex(code => code.toLowerCase() === 'census');
+    if (censusIndex !== -1) {
+      // Remove the 'census' indicator.
+      codes.splice(censusIndex, 1);
+      leaderboardResults.innerHTML = 'Loading leaderboard...';
+      fetch('presets/census.csv')
+        .then(response => response.text())
+        .then(text => {
+          let censusCodes = text.split(/[\r\n,]+/)
+            .map(code => code.trim())
+            .filter(code => code !== '');
+          // Combine any other codes entered with the census codes.
+          let combinedCodes = codes.concat(censusCodes);
+          processLeaderboardCodes(combinedCodes);
+        })
+        .catch(error => {
+          leaderboardResults.innerHTML = 'Error loading preset data.';
+          console.error('Error fetching preset CSV (Census):', error);
+        });
+    } else {
+      processLeaderboardCodes(codes);
+    }
   });
   
-  // Existing preset button for Upstate NY
+  // Existing preset button for Upstate NY.
   if (presetButton) {
     presetButton.addEventListener('click', function() {
       leaderboardResults.innerHTML = 'Loading preset leaderboard...';
@@ -307,22 +338,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // New preset button for Census
-  if (presetButtonCensus) {
-    presetButtonCensus.addEventListener('click', function() {
-      leaderboardResults.innerHTML = 'Loading Census preset leaderboard...';
-      fetch('presets/census.csv')
-        .then(response => response.text())
-        .then(text => {
-          let codes = text.split(/[\r\n,]+/)
-            .map(code => code.trim())
-            .filter(code => code !== '');
-          processLeaderboardCodes(codes);
-        })
-        .catch(error => {
-          leaderboardResults.innerHTML = 'Error loading preset data.';
-          console.error('Error fetching preset CSV (Census):', error);
-        });
+  // New Reset button functionality.
+  if (resetButton) {
+    resetButton.addEventListener('click', function() {
+      // Clear stored data and UI elements.
+      playersData = [];
+      leaderboardResults.innerHTML = '';
+      altView.innerHTML = '';
+      playerCardsContainer.innerHTML = '';
     });
   }
 });
