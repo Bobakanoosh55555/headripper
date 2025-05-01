@@ -293,30 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let codes = codesInput.split(',')
       .map(code => code.trim())
       .filter(code => code !== '');
-    
-    // Check for the hidden easter egg: if 'census' is entered, load the Census preset.
-    const censusIndex = codes.findIndex(code => code.toLowerCase() === 'census');
-    if (censusIndex !== -1) {
-      // Remove the 'census' indicator.
-      codes.splice(censusIndex, 1);
-      leaderboardResults.innerHTML = 'Loading leaderboard...';
-      fetch('presets/census.csv')
-        .then(response => response.text())
-        .then(text => {
-          let censusCodes = text.split(/[\r\n,]+/)
-            .map(code => code.trim())
-            .filter(code => code !== '');
-          // Combine any other codes entered with the census codes.
-          let combinedCodes = codes.concat(censusCodes);
-          processLeaderboardCodes(combinedCodes);
-        })
-        .catch(error => {
-          leaderboardResults.innerHTML = 'Error loading preset data.';
-          console.error('Error fetching preset CSV (Census):', error);
-        });
-    } else {
-      processLeaderboardCodes(codes);
-    }
+    processLeaderboardCodes(codes);
   });
   
   // Existing preset button for Upstate NY.
