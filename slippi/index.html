@@ -74,43 +74,35 @@
   
   <!-- Outer Tab Switching Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const outerTabButtons = document.querySelectorAll('.outer-tab-button');
       const outerTabContents = document.querySelectorAll('.outer-tab-content');
-      
+  
       function clearActive() {
         outerTabButtons.forEach(btn => btn.classList.remove('active'));
         outerTabContents.forEach(content => content.classList.remove('active'));
       }
-      
-      // Check URL hash (e.g. "#leaderboard")
-      let hash = window.location.hash;
-      if (hash) {
-        let targetId = hash.substring(1);
-        let targetContent = document.getElementById(targetId);
-        if (targetContent && targetContent.classList.contains('outer-tab-content')) {
-          clearActive();
-          targetContent.classList.add('active');
-          let btn = document.querySelector(`.outer-tab-button[data-target="${targetId}"]`);
-          if (btn) {
-            btn.classList.add('active');
-          }
-        } else {
-          clearActive();
-          document.getElementById('leaderboard').classList.add('active');
-          document.querySelector('.outer-tab-button[data-target="leaderboard"]').classList.add('active');
-        }
-      } else {
+  
+      function activateTab(targetId) {
         clearActive();
-        document.getElementById('leaderboard').classList.add('active');
-        document.querySelector('.outer-tab-button[data-target="leaderboard"]').classList.add('active');
-      } 
+        document.getElementById(targetId).classList.add('active');
+        const btn = document.querySelector(`.outer-tab-button[data-target="${targetId}"]`);
+        if (btn) {
+          btn.classList.add('active');
+        }
+      }
+  
+      // Initial tab setup
+      const hash = window.location.hash;
+      const validTabs = ['leaderboard', 'individual'];
+      const initialTab = validTabs.includes(hash.substring(1)) ? hash.substring(1) : 'leaderboard';
+      activateTab(initialTab);
+  
+      // Tab click behavior
       outerTabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          clearActive();
-          this.classList.add('active');
+        button.addEventListener('click', function () {
           const targetId = this.getAttribute('data-target');
-          document.getElementById(targetId).classList.add('active');
+          activateTab(targetId);
           history.replaceState(null, null, '#' + targetId);
         });
       });
