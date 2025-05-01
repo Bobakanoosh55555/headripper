@@ -14,9 +14,8 @@
 <body>
   <!-- Outer Tab Navigation -->
   <div class="outer-tabs">
-    <button class="outer-tab-button" data-target="individual" id="btn-individual">Individual</button>
-    <button class="outer-tab-button" data-target="many" id="btn-many">Many</button>
     <button class="outer-tab-button" data-target="leaderboard" id="btn-leaderboard">Leaderboards</button>
+    <button class="outer-tab-button" data-target="individual" id="btn-individual">Individual Stats</button>
   </div>
   
   <!-- Outer Tab Contents -->
@@ -31,13 +30,6 @@
       </form>
       <!-- Container where the profile will be rendered -->
       <div id="profile"></div>
-    </div>
-  </div>
-  
-  <div id="many" class="outer-tab-content">
-    <div class="container">
-      <h1>Many Stats</h1>
-      <p>Many tab content goes here.</p>
     </div>
   </div>
   
@@ -98,8 +90,8 @@
           }
         } else {
           clearActive();
-          outerTabButtons[0].classList.add('active');
-          outerTabContents[0].classList.add('active');
+          document.getElementById('leaderboard').classList.add('active');
+          document.querySelector('.outer-tab-button[data-target="leaderboard"]').classList.add('active');
         }
       } else {
         clearActive();
