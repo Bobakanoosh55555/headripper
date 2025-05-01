@@ -102,10 +102,9 @@
         }
       } else {
         clearActive();
-        outerTabButtons[0].classList.add('active');
-        outerTabContents[0].classList.add('active');
-      }
-      
+        document.getElementById('leaderboard').classList.add('active');
+        document.querySelector('.outer-tab-button[data-target="leaderboard"]').classList.add('active');
+      } 
       outerTabButtons.forEach(button => {
         button.addEventListener('click', function() {
           clearActive();
