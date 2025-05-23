@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>RC Car Control</title>
+  <style>
+    body{font-family:sans-serif;text-align:center;padding:20px}
+    #panel{display:none}
+  </style>
+</head>
+<body>
+  <h1>RC Car Login</h1>
+  <input type="password" id="pw" placeholder="Enter password">
+  <button onclick="check()">Enter</button>
+
+  <div id="panel">
+    <h2>Video Feed</h2>
+    <iframe id="video" width="640" height="480" frameborder="0"></iframe>
+
+    <h2>Controls</h2>
+    <button onclick="send('forward')">Forward</button>
+    <button onclick="send('left')">Left</button>
+    <button onclick="send('right')">Right</button>
+    <button onclick="send('backward')">Backward</button>
+    <button onclick="send('stop')">Stop</button>
+  </div>
+
+  <script>
+    const hash = "2c0d1f95b6a2ae87b2ef99c6a0a9ff6c89f50d8727b68563cd6ef20e6cf4ecaa";
+    const vidURL = atob("aHR0cHM6Ly90b2xlcmFudC13YXJ0aG9nLWJsaW5kbHkubmdyb2stZnJlZS5hcHAvP2FjdGlvbj1zdHJlYW0=");
+    const ctrlURL = atob("aHR0cHM6Ly9jaGFtb2lzLXN0cm9uZy1ob29rd29ybS5uZ3Jvay1mcmVlLmFwcC9jb250cm9sLw==");
+
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    async function check() {
+      const input = document.getElementById("pw").value;
+      const inputHash = await sha256(input);
+      if (inputHash === hash) {
+        document.getElementById("panel").style.display = "block";
+        document.getElementById("pw").style.display = "none";
+        document.querySelector("button").style.display = "none";
+        document.getElementById("video").src = vidURL;
+      } else {
+        alert("Wrong password.");
+      }
+    }
+
+    function send(cmd) {
+      fetch(ctrlURL + cmd).then(() => console.log("Sent", cmd));
+    }
+  </script>
+</body>
+</html>
