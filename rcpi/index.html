@@ -9,58 +9,98 @@
 <body>
   <h1>RC Car Control</h1>
 
+  <h2>Live Camera Feed</h2>
+  <iframe id="video" src="https://tolerant-warthog-blindly.ngrok-free.app/?action=stream" width="640" height="480" frameborder="0"></iframe>
+
   <div id="controls">
     <button class="key up" data-cmd="forward">↑</button>
     <button class="key left" data-cmd="left">←</button>
-    <button class="key stop" data-cmd="stop">■</button>
     <button class="key right" data-cmd="right">→</button>
     <button class="key down" data-cmd="backward">↓</button>
   </div>
 
-  <h2>Live Camera Feed</h2>
-  <iframe id="video" src="https://tolerant-warthog-blindly.ngrok-free.app/?action=stream" width="640" height="480" frameborder="0"></iframe>
+<script>
+  const ctrlURL = "https://chamois-strong-hookworm.ngrok-free.app/control/";
 
-  <script>
-    const ctrlURL = "https://chamois-strong-hookworm.ngrok-free.app/control/";
-    const keyMap = {
-      w: "forward",
-      a: "left",
-      s: "backward",
-      d: "right",
-      " ": "stop"
-    };
+  const keyMap = {
+    w: "forward",
+    a: "left",
+    s: "backward",
+    d: "right"
+  };
 
-    const buttonMap = {
-      forward: document.querySelector(".key.up"),
-      left: document.querySelector(".key.left"),
-      right: document.querySelector(".key.right"),
-      backward: document.querySelector(".key.down"),
-      stop: document.querySelector(".key.stop")
-    };
+  const buttonMap = {
+    forward: document.querySelector(".key.up"),
+    left: document.querySelector(".key.left"),
+    right: document.querySelector(".key.right"),
+    backward: document.querySelector(".key.down")
+  };
 
-    function highlight(command) {
-      Object.values(buttonMap).forEach(btn => btn.classList.remove("active"));
-      if (buttonMap[command]) {
-        buttonMap[command].classList.add("active");
-      }
-    }
+  let activeKeys = new Set();
+  let lastSentCommand = "";
 
-    function send(cmd) {
-      fetch(ctrlURL + cmd).then(() => console.log("Sent", cmd));
+  function computeCommand() {
+    const keys = Array.from(activeKeys).sort();
+    if (keys.length === 0) return "stop";
+
+    const mapped = keys.map(k => keyMap[k]).filter(Boolean);
+    return mapped.join("_");
+  }
+
+  function sendCommand() {
+    const cmd = computeCommand();
+    if (cmd !== lastSentCommand) {
+      fetch(ctrlURL + cmd).then(() => console.log("Sent:", cmd));
       highlight(cmd);
+      lastSentCommand = cmd;
     }
+  }
 
-    document.addEventListener("keydown", (e) => {
-      const cmd = keyMap[e.key.toLowerCase()];
-      if (cmd) send(cmd);
+  function highlight(cmd) {
+    Object.entries(buttonMap).forEach(([dir, btn]) => {
+      if (cmd.includes(dir)) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
     });
+  }
 
-    document.querySelectorAll(".key").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const cmd = btn.dataset.cmd;
-        send(cmd);
-      });
+  document.addEventListener("keydown", (e) => {
+    const k = e.key.toLowerCase();
+    if (keyMap[k]) {
+      activeKeys.add(k);
+      sendCommand();
+    }
+  });
+
+  document.addEventListener("keyup", (e) => {
+    const k = e.key.toLowerCase();
+    if (keyMap[k]) {
+      activeKeys.delete(k);
+      sendCommand();
+    }
+  });
+
+  document.querySelectorAll(".key").forEach(btn => {
+    btn.addEventListener("mousedown", () => {
+      const dir = btn.dataset.cmd;
+      const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
+      if (key) {
+        activeKeys.add(key);
+        sendCommand();
+      }
     });
-  </script>
+    btn.addEventListener("mouseup", () => {
+      const dir = btn.dataset.cmd;
+      const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
+      if (key) {
+        activeKeys.delete(key);
+        sendCommand();
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
