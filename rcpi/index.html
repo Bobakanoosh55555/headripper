@@ -7,14 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>RC Car Control</h1>
-
   <div id="login">
     <input type="password" id="pw" placeholder="Enter password">
     <button onclick="check()">Enter</button>
   </div>
 
-  <div id="main-wrapper">
+  <div id="main-wrapper" style="display: none; flex-direction: column;">
     <h2>Live Camera Feed</h2>
     <iframe id="video" src="https://tolerant-warthog-blindly.ngrok-free.app/?action=stream" frameborder="0"></iframe>
 
@@ -63,28 +61,36 @@
     let activeKeys = new Set();
     let lastSentCommand = "";
 
+    function addKeySafe(k) {
+      // only add if not already pressed and fewer than 2 keys are down
+      if (!activeKeys.has(k) && activeKeys.size < 2) {
+        activeKeys.add(k);
+        sendCommand();
+      }
+    }
+
+    function removeKeySafe(k) {
+      if (activeKeys.delete(k)) {
+        sendCommand();
+      }
+    }
+
     function setupButtons() {
-      buttonMap.forward = document.querySelector(".key.up");
-      buttonMap.left = document.querySelector(".key.left");
-      buttonMap.right = document.querySelector(".key.right");
+      buttonMap.forward  = document.querySelector(".key.up");
+      buttonMap.left     = document.querySelector(".key.left");
+      buttonMap.right    = document.querySelector(".key.right");
       buttonMap.backward = document.querySelector(".key.down");
 
       document.querySelectorAll(".key").forEach(btn => {
         btn.addEventListener("mousedown", () => {
           const dir = btn.dataset.cmd;
-          const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
-          if (key) {
-            activeKeys.add(key);
-            sendCommand();
-          }
+          const key = Object.entries(keyMap).find(([k,v]) => v === dir)?.[0];
+          if (key) addKeySafe(key);
         });
         btn.addEventListener("mouseup", () => {
           const dir = btn.dataset.cmd;
-          const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
-          if (key) {
-            activeKeys.delete(key);
-            sendCommand();
-          }
+          const key = Object.entries(keyMap).find(([k,v]) => v === dir)?.[0];
+          if (key) removeKeySafe(key);
         });
       });
     }
@@ -92,8 +98,7 @@
     function computeCommand() {
       const keys = Array.from(activeKeys).sort();
       if (keys.length === 0) return "stop";
-      const mapped = keys.map(k => keyMap[k]).filter(Boolean);
-      return mapped.join("_");
+      return keys.map(k => keyMap[k]).join("_");
     }
 
     function sendCommand() {
@@ -107,28 +112,20 @@
 
     function highlight(cmd) {
       Object.entries(buttonMap).forEach(([dir, btn]) => {
-        if (cmd.includes(dir)) {
-          btn.classList.add("active");
-        } else {
-          btn.classList.remove("active");
-        }
+        if (!btn) return;
+        if (cmd.includes(dir)) btn.classList.add("active");
+        else btn.classList.remove("active");
       });
     }
 
     document.addEventListener("keydown", (e) => {
       const k = e.key.toLowerCase();
-      if (keyMap[k]) {
-        activeKeys.add(k);
-        sendCommand();
-      }
+      if (keyMap[k]) addKeySafe(k);
     });
 
     document.addEventListener("keyup", (e) => {
       const k = e.key.toLowerCase();
-      if (keyMap[k]) {
-        activeKeys.delete(k);
-        sendCommand();
-      }
+      if (keyMap[k]) removeKeySafe(k);
     });
 
     window.addEventListener("DOMContentLoaded", setupButtons);
