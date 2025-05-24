@@ -1,137 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>RC Car Control</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-</head>
-<body>
-  <h1>RC Car Control</h1>
+<script>
+  const ctrlURL = "https://chamois-strong-hookworm.ngrok-free.app/control/";
+  const hashed = "20fc20bdb087a2e94930a6a2164e6c4f35ce6d7c2af05299f7ea834138b3223e";
 
-  <div id="login">
-    <input type="password" id="pw" placeholder="Enter password">
-    <button onclick="check()">Enter</button>
-  </div>
+  function sha256(input) {
+    return crypto.subtle.digest("SHA-256", new TextEncoder().encode(input))
+      .then(buf => Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join(''));
+  }
 
-  <div id="main-wrapper">
-    <h2>Live Camera Feed</h2>
-    <iframe id="video" src="https://tolerant-warthog-blindly.ngrok-free.app/?action=stream" frameborder="0"></iframe>
-
-    <div id="controls">
-      <button class="key up" data-cmd="forward">↑</button>
-      <button class="key left" data-cmd="left">←</button>
-      <button class="key right" data-cmd="right">→</button>
-      <button class="key down" data-cmd="backward">↓</button>
-    </div>
-  </div>
-
-  <script>
-    const ctrlURL = "https://chamois-strong-hookworm.ngrok-free.app/control/";
-    const hash = "20fc20bdb087a2e94930a6a2164e6c4f35ce6d7c2af05299f7ea834138b3223e";
-
-    function hash(input) {
-      return crypto.subtle.digest("SHA-256", new TextEncoder().encode(input))
-        .then(buf => Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join(''));
+  async function check() {
+    const input = document.getElementById("pw").value.trim();
+    const inputHash = await sha256(input);
+    if (inputHash === hashed) {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("main-wrapper").style.display = "flex";
+    } else {
+      alert("Wrong password");
     }
+  }
 
-    async function check() {
-      const input = document.getElementById("pw").value.trim();
-      const inputHash = await hash(input);
-      if (inputHash === hash) {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("main-wrapper").style.display = "flex";
-      } else {
-        alert("Wrong password");
-      }
-    }
+  const keyMap = {
+    w: "forward",
+    a: "left",
+    s: "backward",
+    d: "right"
+  };
 
-    const keyMap = {
-      w: "forward",
-      a: "left",
-      s: "backward",
-      d: "right"
-    };
+  const buttonMap = {
+    forward: null,
+    left: null,
+    right: null,
+    backward: null
+  };
 
-    const buttonMap = {
-      forward: null,
-      left: null,
-      right: null,
-      backward: null
-    };
+  let activeKeys = new Set();
+  let lastSentCommand = "";
 
-    let activeKeys = new Set();
-    let lastSentCommand = "";
+  function setupButtons() {
+    buttonMap.forward = document.querySelector(".key.up");
+    buttonMap.left = document.querySelector(".key.left");
+    buttonMap.right = document.querySelector(".key.right");
+    buttonMap.backward = document.querySelector(".key.down");
 
-    function setupButtons() {
-      buttonMap.forward = document.querySelector(".key.up");
-      buttonMap.left = document.querySelector(".key.left");
-      buttonMap.right = document.querySelector(".key.right");
-      buttonMap.backward = document.querySelector(".key.down");
-
-      document.querySelectorAll(".key").forEach(btn => {
-        btn.addEventListener("mousedown", () => {
-          const dir = btn.dataset.cmd;
-          const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
-          if (key) {
-            activeKeys.add(key);
-            sendCommand();
-          }
-        });
-        btn.addEventListener("mouseup", () => {
-          const dir = btn.dataset.cmd;
-          const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
-          if (key) {
-            activeKeys.delete(key);
-            sendCommand();
-          }
-        });
-      });
-    }
-
-    function computeCommand() {
-      const keys = Array.from(activeKeys).sort();
-      if (keys.length === 0) return "stop";
-      const mapped = keys.map(k => keyMap[k]).filter(Boolean);
-      return mapped.join("_");
-    }
-
-    function sendCommand() {
-      const cmd = computeCommand();
-      if (cmd !== lastSentCommand) {
-        fetch(ctrlURL + cmd).then(() => console.log("Sent:", cmd));
-        highlight(cmd);
-        lastSentCommand = cmd;
-      }
-    }
-
-    function highlight(cmd) {
-      Object.entries(buttonMap).forEach(([dir, btn]) => {
-        if (cmd.includes(dir)) {
-          btn.classList.add("active");
-        } else {
-          btn.classList.remove("active");
+    document.querySelectorAll(".key").forEach(btn => {
+      btn.addEventListener("mousedown", () => {
+        const dir = btn.dataset.cmd;
+        const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
+        if (key) {
+          activeKeys.add(key);
+          sendCommand();
         }
       });
+      btn.addEventListener("mouseup", () => {
+        const dir = btn.dataset.cmd;
+        const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
+        if (key) {
+          activeKeys.delete(key);
+          sendCommand();
+        }
+      });
+    });
+  }
+
+  function computeCommand() {
+    const keys = Array.from(activeKeys).sort();
+    if (keys.length === 0) return "stop";
+    const mapped = keys.map(k => keyMap[k]).filter(Boolean);
+    return mapped.join("_");
+  }
+
+  function sendCommand() {
+    const cmd = computeCommand();
+    if (cmd !== lastSentCommand) {
+      fetch(ctrlURL + cmd).then(() => console.log("Sent:", cmd));
+      highlight(cmd);
+      lastSentCommand = cmd;
     }
+  }
 
-    document.addEventListener("keydown", (e) => {
-      const k = e.key.toLowerCase();
-      if (keyMap[k]) {
-        activeKeys.add(k);
-        sendCommand();
+  function highlight(cmd) {
+    Object.entries(buttonMap).forEach(([dir, btn]) => {
+      if (cmd.includes(dir)) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
       }
     });
+  }
 
-    document.addEventListener("keyup", (e) => {
-      const k = e.key.toLowerCase();
-      if (keyMap[k]) {
-        activeKeys.delete(k);
-        sendCommand();
-      }
-    });
+  document.addEventListener("keydown", (e) => {
+    const k = e.key.toLowerCase();
+    if (keyMap[k]) {
+      activeKeys.add(k);
+      sendCommand();
+    }
+  });
 
-    window.addEventListener("DOMContentLoaded", setupButtons);
-  </script>
-</body>
-</html>
+  document.addEventListener("keyup", (e) => {
+    const k = e.key.toLowerCase();
+    if (keyMap[k]) {
+      activeKeys.delete(k);
+      sendCommand();
+    }
+  });
+
+  window.addEventListener("DOMContentLoaded", setupButtons);
+</script>
