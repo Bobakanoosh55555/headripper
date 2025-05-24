@@ -5,12 +5,106 @@
   <title>RC Car Control</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1, h2 {
+      font-weight: normal;
+      margin-top: 0;
+    }
+
+    #main-wrapper {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    iframe {
+      border: 2px solid #555;
+      border-radius: 6px;
+      width: 640px;
+      height: 480px;
+    }
+
+    #controls {
+      display: grid;
+      grid-template-areas:
+        ". up ."
+        "left . right"
+        ". down .";
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .key {
+      width: 80px;
+      height: 80px;
+      font-size: 20px;
+      background-color: #222;
+      color: #eee;
+      border: 1px solid #555;
+      border-radius: 10px;
+      transition: background-color 0.15s, transform 0.1s;
+      cursor: pointer;
+    }
+
+    .key:hover {
+      background-color: #333;
+    }
+
+    .key.active {
+      background-color: #33ff66;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    .up    { grid-area: up; }
+    .down  { grid-area: down; }
+    .left  { grid-area: left; }
+    .right { grid-area: right; }
+
+    #login {
+      margin-top: 80px;
+    }
+
+    #login input {
+      padding: 10px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      background-color: #222;
+      color: white;
+      font-size: 16px;
+    }
+
+    #login button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      background-color: #555;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div id="main-wrapper">
-    <h1>RC Car Control</h1>
-    <h2>Live Camera Feed</h2>
+  <h1>RC Car Control</h1>
 
+  <div id="login">
+    <input type="password" id="pw" placeholder="Enter password">
+    <button onclick="check()">Enter</button>
+  </div>
+
+  <div id="main-wrapper">
+    <h2>Live Camera Feed</h2>
     <iframe id="video" src="https://tolerant-warthog-blindly.ngrok-free.app/?action=stream" frameborder="0"></iframe>
 
     <div id="controls">
@@ -23,6 +117,23 @@
 
   <script>
     const ctrlURL = "https://chamois-strong-hookworm.ngrok-free.app/control/";
+    const hash = "20fc20bdb087a2e94930a6a2164e6c4f35ce6d7c2af05299f7ea834138b3223e";
+
+    function hash(input) {
+      return crypto.subtle.digest("SHA-256", new TextEncoder().encode(input))
+        .then(buf => Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join(''));
+    }
+
+    async function check() {
+      const input = document.getElementById("pw").value.trim();
+      const inputHash = await hash(input);
+      if (inputHash === hash) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main-wrapper").style.display = "flex";
+      } else {
+        alert("Wrong password");
+      }
+    }
 
     const keyMap = {
       w: "forward",
@@ -32,14 +143,40 @@
     };
 
     const buttonMap = {
-      forward: document.querySelector(".key.up"),
-      left: document.querySelector(".key.left"),
-      right: document.querySelector(".key.right"),
-      backward: document.querySelector(".key.down")
+      forward: null,
+      left: null,
+      right: null,
+      backward: null
     };
 
     let activeKeys = new Set();
     let lastSentCommand = "";
+
+    function setupButtons() {
+      buttonMap.forward = document.querySelector(".key.up");
+      buttonMap.left = document.querySelector(".key.left");
+      buttonMap.right = document.querySelector(".key.right");
+      buttonMap.backward = document.querySelector(".key.down");
+
+      document.querySelectorAll(".key").forEach(btn => {
+        btn.addEventListener("mousedown", () => {
+          const dir = btn.dataset.cmd;
+          const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
+          if (key) {
+            activeKeys.add(key);
+            sendCommand();
+          }
+        });
+        btn.addEventListener("mouseup", () => {
+          const dir = btn.dataset.cmd;
+          const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
+          if (key) {
+            activeKeys.delete(key);
+            sendCommand();
+          }
+        });
+      });
+    }
 
     function computeCommand() {
       const keys = Array.from(activeKeys).sort();
@@ -83,24 +220,8 @@
       }
     });
 
-    document.querySelectorAll(".key").forEach(btn => {
-      btn.addEventListener("mousedown", () => {
-        const dir = btn.dataset.cmd;
-        const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
-        if (key) {
-          activeKeys.add(key);
-          sendCommand();
-        }
-      });
-      btn.addEventListener("mouseup", () => {
-        const dir = btn.dataset.cmd;
-        const key = Object.entries(keyMap).find(([k, v]) => v === dir)?.[0];
-        if (key) {
-          activeKeys.delete(key);
-          sendCommand();
-        }
-      });
-    });
+    // Wait for DOM and assign buttonMap
+    window.addEventListener("DOMContentLoaded", setupButtons);
   </script>
 </body>
 </html>
