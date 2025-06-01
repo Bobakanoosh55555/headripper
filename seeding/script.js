@@ -15,21 +15,41 @@ async function loadPlayersCSV() {
 }
 
 function populateDatalists() {
-  const datalist1 = document.getElementById("p1-list");
-  const datalist2 = document.getElementById("p2-list");
-  datalist1.innerHTML = "";
-  datalist2.innerHTML = "";
+  const p1 = document.getElementById("p1-id");
+  const p2 = document.getElementById("p2-id");
 
-  players.forEach(p => {
-    const option1 = document.createElement("option");
-    option1.value = p.name;
-    datalist1.appendChild(option1);
+  [p1, p2].forEach(select => {
+    select.innerHTML = ""; // Clear
+    players.forEach(p => {
+      const option = document.createElement("option");
+      option.value = p.id;
+      option.textContent = p.name;
+      select.appendChild(option);
+    });
 
-    const option2 = document.createElement("option");
-    option2.value = p.name;
-    datalist2.appendChild(option2);
+    const manual = document.createElement("option");
+    manual.value = "custom";
+    manual.textContent = "Other (type ID)";
+    select.appendChild(manual);
+  });
+
+  // Add fallback text input if "custom" selected
+  ["p1-id", "p2-id"].forEach(id => {
+    const select = document.getElementById(id);
+    select.addEventListener("change", () => {
+      if (select.value === "custom") {
+        const input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "Enter ID manually";
+        input.id = `${id}-manual`;
+
+        select.insertAdjacentElement("afterend", input);
+        select.classList.add("hidden");
+      }
+    });
   });
 }
+
 
 function resolveToId(inputValue) {
   const found = players.find(p => p.name.toLowerCase() === inputValue.toLowerCase());
