@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>H2H Last 5 Sets</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H2H Match Viewer</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Last 5 Sets</h1>
-    <div id="results">Loading...</div>
+    <h1>H2H Match Viewer</h1>
+    <form id="h2h-form">
+      <input type="text" id="p1-id" placeholder="Player 1 ID" required />
+      <input type="text" id="p2-id" placeholder="Player 2 ID" required />
+      <button type="submit">Get H2H</button>
+    </form>
+    <div id="results"></div>
   </div>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
