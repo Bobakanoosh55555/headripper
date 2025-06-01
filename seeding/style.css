@@ -51,7 +51,7 @@ form input[list] {
 
 .clear-btn {
   position: absolute;
-  right: 5.25rem;
+  right: 2rem;
   top: 50%;
   transform: translateY(-50%);
   border: none;
