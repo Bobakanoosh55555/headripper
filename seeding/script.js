@@ -1,18 +1,15 @@
 // script.js
 
-// 1) Import Supabase client via CDN in your HTML before this script.
-//    (Make sure you have this line in index.html, just above <script src="script.js">:)
-//    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.umd.min.js"></script>
-
 const SUPABASE_URL = "https://slpurukxtnleofuopadw.supabase.co";
 
-// Revert to using the real public anon key here. (If yours is different, replace it.)
-// This must match the “anon key” that Smashers.app was using. If that key ever rolls,
-// grab the latest value from Smashers.app’s page source or network calls.
-const PUBLIC_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5sZW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
+// Use the exact anon key, same as in your Python.
+const PUBLIC_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
++ "eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5nZW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYX"
++ "QiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0."
++ "WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
 
 let players = [];
-let dynamicToken = ""; // ← will hold supabase.auth.signInAnonymously() token
 
 // Load players.csv, parse into [{name,id},…], then populate both datalists.
 async function loadPlayersCSV() {
@@ -23,13 +20,10 @@ async function loadPlayersCSV() {
       return;
     }
     const text = await res.text();
-    players = text
-      .trim()
-      .split("\n")
-      .map((line) => {
-        const [name, id] = line.split(",");
-        return { name: name.trim(), id: id.trim() };
-      });
+    players = text.trim().split("\n").map((line) => {
+      const [name, id] = line.split(",");
+      return { name: name.trim(), id: id.trim() };
+    });
     console.log("Loaded players:", players.length, players[0]);
     populateDatalists();
   } catch (err) {
@@ -62,8 +56,6 @@ function populateDatalists() {
   ["p1-id", "p2-id"].forEach((id) => {
     const input = document.getElementById(id);
     input.addEventListener("input", () => {
-      // If user picks the “custom” option (exactly the string "custom"), and
-      // the “-manual” field doesn’t already exist, create it.
       if (input.value === "custom" && !document.getElementById(`${id}-manual`)) {
         const manual = document.createElement("input");
         manual.type = "text";
@@ -84,7 +76,8 @@ function resolveToId(inputValue) {
   return found ? found.id : inputValue;
 }
 
-// Fetch H2H sets from Supabase Edge function. Use dynamicToken (signed‐in anon token) for Authorization.
+// Fetch H2H sets from Supabase Edge function using the same approach as Python:
+// embed the anon key directly in apikey + Authorization headers.
 async function fetchH2HSets(p1IdInput, p2IdInput) {
   const p1Id = resolveToId(p1IdInput);
   const p2Id = resolveToId(p2IdInput);
@@ -115,13 +108,13 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Use the dynamicToken we obtained via signInAnonymously()
-        apikey: PUBLIC_ANON_KEY,
-        Authorization: `Bearer ${dynamicToken}`,
+        "apikey": PUBLIC_ANON_KEY,
+        "Authorization": `Bearer ${PUBLIC_ANON_KEY}`,
       },
       body: JSON.stringify(payload),
     });
 
+    console.log("Status code:", res.status);
     if (!res.ok) {
       console.error("Error fetching data:", res.status, await res.text());
       document.getElementById("results").innerText = "Error fetching data.";
@@ -177,29 +170,11 @@ document.getElementById("h2h-form").addEventListener("submit", (event) => {
   if (p1Input && p2Input) fetchH2HSets(p1Input, p2Input);
 });
 
-// On page load, first sign in anonymously to Supabase to get a valid JWT.
-window.addEventListener("DOMContentLoaded", async () => {
-  // 1) Create a Supabase client
-  const supabase = supabasejs.createClient(SUPABASE_URL, PUBLIC_ANON_KEY);
-
-  // 2) Sign in anonymously
-  const { data, error } = await supabase.auth.signInAnonymously();
-  if (error) {
-    console.error("Anonymous sign-in error:", error);
-    // If that fails, you can’t fetch. Stop here.
-    document.getElementById("results").innerText =
-      "Error initializing Supabase auth.";
-    return;
-  }
-
-  // 3) Grab the JWT and store in dynamicToken
-  dynamicToken = data.session.access_token;
-  console.log("Signed in anonymously, got token:", dynamicToken.slice(0, 30) + "...");
-
-  // 4) Now that we have a token, load players.csv and hook up the dropdowns.
+// On page load, just load players.csv and hook up the dropdowns + focus behavior.
+window.addEventListener("DOMContentLoaded", () => {
   loadPlayersCSV();
 
-  // 5) Finally, force the datalist to open when inputs gain focus:
+  // Force datalist to open on focus (so arrow-down drop works)
   ["p1-id", "p2-id"].forEach((inputId) => {
     const inp = document.getElementById(inputId);
     inp.addEventListener("focus", () => {
