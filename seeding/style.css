@@ -22,7 +22,8 @@ h1 {
   margin-bottom: 20px;
 }
 
-form input[type="text"] {
+form input[type="text"],
+form input[list] {
   padding: 10px;
   margin: 5px;
   border: 1px solid #555;
@@ -30,6 +31,7 @@ form input[type="text"] {
   color: #fff;
   border-radius: 4px;
 }
+
 
 form button {
   padding: 10px 20px;
