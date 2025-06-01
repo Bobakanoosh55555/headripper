@@ -1,10 +1,7 @@
 const SUPABASE_URL = "https://slpurukxtnleofuopadw.supabase.co";
 const PUBLIC_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJzJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5nZW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
 
-const supabase = supabasejs.createClient(SUPABASE_URL, PUBLIC_ANON_KEY);
-
 let players = [];
-let dynamicToken = "";
 
 async function loadPlayersCSV() {
   try {
@@ -99,14 +96,15 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${dynamicToken}`,
-        apikey: PUBLIC_ANON_KEY
+        "apikey": PUBLIC_ANON_KEY,
+        "Authorization": `Bearer ${PUBLIC_ANON_KEY}`
       },
       body: JSON.stringify(payload)
     });
 
-    if (res.status === 401) {
-      console.error("Unauthorized: check RLS policies on that function");
+    if (!res.ok) {
+      console.error("Error fetching data:", res.status, await res.text());
+      document.getElementById("results").innerText = "Error fetching data.";
       return;
     }
 
@@ -160,20 +158,14 @@ document.getElementById("h2h-form").addEventListener("submit", event => {
   if (p1Input && p2Input) fetchH2HSets(p1Input, p2Input);
 });
 
-window.addEventListener("DOMContentLoaded", async () => {
-  const { data, error } = await supabase.auth.signInAnonymously();
-  if (error) {
-    console.error("Anonymous sign-in error:", error);
-  } else {
-    dynamicToken = data.session.access_token;
-    loadPlayersCSV();
-    ["p1-id", "p2-id"].forEach(inputId => {
-      const inp = document.getElementById(inputId);
-      inp.addEventListener("focus", () => {
-        inp.dispatchEvent(
-          new KeyboardEvent("keydown", { key: "ArrowDown", keyCode: 40, which: 40 })
-        );
-      });
+window.addEventListener("DOMContentLoaded", () => {
+  loadPlayersCSV();
+  ["p1-id", "p2-id"].forEach(inputId => {
+    const inp = document.getElementById(inputId);
+    inp.addEventListener("focus", () => {
+      inp.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowDown", keyCode: 40, which: 40 })
+      );
     });
-  }
+  });
 });
