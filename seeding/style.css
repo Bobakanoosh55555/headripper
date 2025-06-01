@@ -15,13 +15,14 @@ body {
   padding: 20px;
   background-color: #121212;
   border: 1px solid #555;
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.7);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
 }
 
 h1 {
   margin-bottom: 20px;
 }
 
+/* Base styling for your text inputs */
 form input[type="text"],
 form input[list] {
   padding: 10px;
@@ -33,19 +34,24 @@ form input[list] {
   width: 200px;
   font-size: 14px;
 }
+
+/* ======================================
+   Styles for the “×” clear‐button inside .input-wrapper
+   ====================================== */
 .input-wrapper {
   position: relative;
   display: inline-block;
-  margin: 5px;              
-  width: 200px;             
+  margin: 5px;      /* spacing around each wrapped input */
+  width: 200px;     /* match the text‐input width */
 }
 
 .input-wrapper input {
-  width: 100%;            
-  padding-right: 1.5rem;  
+  width: 100%;           /* fill the wrapper horizontally */
+  padding-right: 1.5rem; /* leave space on right for the “×” */
   box-sizing: border-box;
 }
 
+/* The clear “×” — absolutely positioned over the right edge of the input */
 .clear-btn {
   position: absolute;
   right: 6px;
@@ -60,6 +66,7 @@ form input[list] {
   color: #666;
 }
 
+/* Hide the clear‐button when the input is empty/placeholder‐shown */
 .input-wrapper input:placeholder-shown + .clear-btn {
   visibility: hidden;
 }
@@ -91,7 +98,7 @@ form button:hover {
   border: 1px solid #555;
   background-color: #121212;
   padding: 10px;
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.7);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
 }
 
 .tabContent.active {
