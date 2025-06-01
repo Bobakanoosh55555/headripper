@@ -1,5 +1,9 @@
 const SUPABASE_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5sZW9mdW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
+
+const SUPABASE_SEARCH_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5sZW9mdW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
+
 const API_URL_SEARCH =
   "https://slpurukxtnleofuopadw.supabase.co/functions/v1/player-search-v2";
 const API_URL_H2H =
@@ -119,8 +123,8 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        apikey: SUPABASE_KEY,
-        Authorization: `Bearer ${SUPABASE_KEY}`,
+        apikey: SUPABASE_SEARCH_KEY,
+        Authorization: `Bearer ${SUPABASE_SEARCH_KEY}`,
       },
       body: JSON.stringify(payload),
     });
