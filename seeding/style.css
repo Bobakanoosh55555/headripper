@@ -35,9 +35,9 @@ form input[list] {
   font-size: 14px;
 }
 
-/* ======================================
-   Styles for the “×” clear‐button inside .input-wrapper
-   ====================================== */
+/* ==============================
+   New styles for the “×” clear‐button inside .input-wrapper
+   ============================== */
 .input-wrapper {
   position: relative;
   display: inline-block;
@@ -46,15 +46,17 @@ form input[list] {
 }
 
 .input-wrapper input {
-  width: 100%;           /* fill the wrapper horizontally */
-  padding-right: 1.5rem; /* leave space on right for the “×” */
+  width: 100%;           
+  /* Increase right padding so dropdown arrow + “×” both fit */
+  padding-right: 2.5rem; 
   box-sizing: border-box;
 }
 
-/* The clear “×” — absolutely positioned over the right edge of the input */
+/* The clear “×” — absolutely positioned just left of the browser arrow */
 .clear-btn {
   position: absolute;
-  right: 6px;
+  /* push button left enough to clear arrow region */
+  right: 1rem;               
   top: 50%;
   transform: translateY(-50%);
   border: none;
