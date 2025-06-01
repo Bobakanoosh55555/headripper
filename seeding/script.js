@@ -1,58 +1,65 @@
 const API_URL = "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5sZW9mdW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJz...";
 
 let players = [];
 
 async function loadPlayersCSV() {
   const res = await fetch("players.csv");
   const text = await res.text();
-  players = text.trim().split("\n").map(line => {
-    const [name, id] = line.split(",");
-    return { name: name.trim(), id: id.trim() };
-  });
+  players = text
+    .trim()
+    .split("\n")
+    .map(line => {
+      const [name, id] = line.split(",");
+      return { name: name.trim(), id: id.trim() };
+    });
 
   populateDatalists();
 }
 
 function populateDatalists() {
-  const p1 = document.getElementById("p1-id");
-  const p2 = document.getElementById("p2-id");
+  // grab the <datalist> elements, not the <input>
+  const p1List = document.getElementById("p1-list");
+  const p2List = document.getElementById("p2-list");
 
-  [p1, p2].forEach(select => {
-    select.innerHTML = ""; // Clear
+  [p1List, p2List].forEach(list => {
+    list.innerHTML = ""; // clear any existing <option>
     players.forEach(p => {
       const option = document.createElement("option");
-      option.value = p.id;
-      option.textContent = p.name;
-      select.appendChild(option);
+      // Each option.value should be the player’s NAME (so the user sees the name)
+      option.value = p.name;
+      list.appendChild(option);
     });
 
-    const manual = document.createElement("option");
-    manual.value = "custom";
-    manual.textContent = "Other (type ID)";
-    select.appendChild(manual);
+    // “Other (type ID)” lets the user switch to manual ID entry
+    const manualOption = document.createElement("option");
+    manualOption.value = "custom";
+    manualOption.textContent = "Other (type ID)";
+    list.appendChild(manualOption);
   });
 
-  // Add fallback text input if "custom" selected
+  // If the user picks “custom,” hide the original input and add a plain‐text field
   ["p1-id", "p2-id"].forEach(id => {
-    const select = document.getElementById(id);
-    select.addEventListener("change", () => {
-      if (select.value === "custom") {
-        const input = document.createElement("input");
-        input.type = "text";
-        input.placeholder = "Enter ID manually";
-        input.id = `${id}-manual`;
+    const input = document.getElementById(id);
+    input.addEventListener("input", () => {
+      if (input.value === "custom") {
+        const manual = document.createElement("input");
+        manual.type = "text";
+        manual.placeholder = "Enter ID manually";
+        manual.id = `${id}-manual`;
 
-        select.insertAdjacentElement("afterend", input);
-        select.classList.add("hidden");
+        input.insertAdjacentElement("afterend", manual);
+        input.classList.add("hidden");
       }
     });
   });
 }
 
-
 function resolveToId(inputValue) {
-  const found = players.find(p => p.name.toLowerCase() === inputValue.toLowerCase());
+  // Look up by name (case‐insensitive). If not found, assume they already typed an ID.
+  const found = players.find(
+    p => p.name.toLowerCase() === inputValue.toLowerCase()
+  );
   return found ? found.id : inputValue;
 }
 
@@ -86,14 +93,16 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${SUPABASE_KEY}`,
-        "apikey": SUPABASE_KEY
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+        apikey: SUPABASE_KEY
       },
       body: JSON.stringify(payload)
     });
 
     const json = await res.json();
-    const matches = json?.data?.matches?.filter(m => m.type === "match" && m.match) || [];
+    const matches = json?.data?.matches
+      ?.filter(m => m.type === "match" && m.match)
+      .slice(0, 5) || [];
 
     const container = document.getElementById("results");
     if (matches.length === 0) {
@@ -101,14 +110,15 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
       return;
     }
 
-    const lines = matches.slice(0, 5).map(m => {
+    const now = new Date();
+    const lines = matches.map(m => {
       const match = m.match;
       const p1 = match.p1_info;
       const p2 = match.p2_info;
       const date = new Date(match.event_info.start_date);
-      const now = new Date();
       const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
-      const dateStr = diffDays === 0 ? "today" : `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
+      const dateStr =
+        diffDays === 0 ? "today" : `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
       const winner = p1.is_winner ? p1.tag : p2.tag;
       const loser = p1.is_winner ? p2.tag : p1.tag;
       return `${dateStr}: ${winner} beat ${loser}`;
@@ -121,12 +131,19 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
   }
 }
 
-const form = document.getElementById("h2h-form");
-form.addEventListener("submit", event => {
-  event.preventDefault();
-  const p1Input = document.getElementById("p1-id").value.trim();
-  const p2Input = document.getElementById("p2-id").value.trim();
-  if (p1Input && p2Input) fetchH2HSets(p1Input, p2Input);
-});
+document
+  .getElementById("h2h-form")
+  .addEventListener("submit", event => {
+    event.preventDefault();
+    // If the user used “custom”, grab the manual‐ID field’s value instead
+    const p1Input = document.getElementById("p1-id").classList.contains("hidden")
+      ? document.getElementById("p1-id-manual").value.trim()
+      : document.getElementById("p1-id").value.trim();
+    const p2Input = document.getElementById("p2-id").classList.contains("hidden")
+      ? document.getElementById("p2-id-manual").value.trim()
+      : document.getElementById("p2-id").value.trim();
+
+    if (p1Input && p2Input) fetchH2HSets(p1Input, p2Input);
+  });
 
 window.addEventListener("DOMContentLoaded", loadPlayersCSV);
