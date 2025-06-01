@@ -10,13 +10,14 @@
   <div class="container">
     <h1>H2H Match Viewer</h1>
     <form id="h2h-form">
-      <!-- Player 1 wrapped in .input-wrapper -->
+      <!-- Player 1: wrap input + clear‐button in .input-wrapper -->
       <div class="input-wrapper">
         <input
           type="text"
           id="p1-id"
           list="p1-list"
           placeholder="Player 1"
+          autocomplete="off"
           required
         />
         <button
@@ -28,13 +29,14 @@
         <datalist id="p1-list"></datalist>
       </div>
 
-      <!-- Player 2 wrapped in .input-wrapper -->
+      <!-- Player 2: wrap input + clear‐button in .input-wrapper -->
       <div class="input-wrapper">
         <input
           type="text"
           id="p2-id"
           list="p2-list"
           placeholder="Player 2"
+          autocomplete="off"
           required
         />
         <button
