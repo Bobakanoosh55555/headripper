@@ -181,23 +181,19 @@ async function fetchH2HSets(p1Id, p2Id) {
     sport: "melee",
     p1PlayerId: p1Id,
     p2PlayerId: p2Id,
-    tab: "matches",
+    tab: "overview",
     globalDateRange: "All Time",
     globalFilterContext: "All",
     filterToVods: false,
-    filterToP1Wins: false,
-    filterToP2Wins: false,
-    sortBy: "date_desc",
     matchesTabSettings: {
       filterToP1Wins: false,
       filterToP2Wins: false,
-      sortBy: "date_desc",
+      sortBy: "date_desc"
     },
     placementsTabSettings: {
-      sortBy: "date_desc",
-    },
+      sortBy: "date_desc"
+    }
   };
-
   try {
     const res = await fetch(API_URL_H2H, {
       method: "POST",
