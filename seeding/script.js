@@ -1,63 +1,174 @@
 const SUPABASE_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5sZW9mdW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
-const API_URL =
-  "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
+const API_URL_SEARCH = "https://slpurukxtnleofuopadw.supabase.co/functions/v1/player-search-v2";
+const API_URL_H2H    = "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
 
-let players = [];
+let p1SearchResults = {}; // { tagString → player_idString }
+let p2SearchResults = {};
 
-async function loadPlayersCSV() {
+let p1DebounceTimer = null;
+let p2DebounceTimer = null;
+
+window.addEventListener("DOMContentLoaded", () => {
+  const p1Input = document.getElementById("p1-id");
+  const p2Input = document.getElementById("p2-id");
+
+  // Whenever Player 1 types, debounce and then call search
+  p1Input.addEventListener("input", () => {
+    clearTimeout(p1DebounceTimer);
+    p1DebounceTimer = setTimeout(() => {
+      performPlayerSearch(p1Input.value.trim(), "p1");
+    }, 300); // 300ms debounce
+  });
+
+  // Whenever Player 2 types, debounce and then call search
+  p2Input.addEventListener("input", () => {
+    clearTimeout(p2DebounceTimer);
+    p2DebounceTimer = setTimeout(() => {
+      performPlayerSearch(p2Input.value.trim(), "p2");
+    }, 300);
+  });
+
+  // Show datalist suggestions on focus (arrow-down hack)
+  ["p1-id", "p2-id"].forEach((inputId) => {
+    const inp = document.getElementById(inputId);
+    inp.addEventListener("focus", () => {
+      inp.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: "ArrowDown",
+          keyCode: 40,
+          which: 40,
+        })
+      );
+    });
+  });
+
+  // Clear-button logic (×) for both inputs
+  document.querySelectorAll(".clear-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.dataset.target;
+      const input = document.getElementById(targetId);
+      if (input) {
+        input.value = "";
+        input.focus();
+        // Also clear out any stored results for that input:
+        if (targetId === "p1-id") {
+          p1SearchResults = {};
+          document.getElementById("p1-list").innerHTML = "";
+        } else {
+          p2SearchResults = {};
+          document.getElementById("p2-list").innerHTML = "";
+        }
+      }
+    });
+  });
+
+  // Form‐submit logic
+  document.getElementById("h2h-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // Read what’s currently in both inputs
+    const rawP1 = document.getElementById("p1-id").value.trim();
+    const rawP2 = document.getElementById("p2-id").value.trim();
+    if (!rawP1 || !rawP2) return;
+
+    // Resolve tag → player_id (if we have it); otherwise assume they typed a raw ID
+    const p1Id = p1SearchResults[rawP1] || rawP1;
+    const p2Id = p2SearchResults[rawP2] || rawP2;
+
+    fetchH2HSets(p1Id, p2Id);
+  });
+});
+
+
+// ─────────────────────────────────────────────────────────
+// 1) performPlayerSearch(term, whichPlayer)
+// ─────────────────────────────────────────────────────────
+//
+// Fetch from `/player-search-v2` with JSON: { sport: "melee", searchTerm: term, searchMode: "all-players" }
+// Then populate the appropriate <datalist> (p1-list or p2-list) with options.
+// Also update p1SearchResults or p2SearchResults to map each returned tag → its player_id.
+// ─────────────────────────────────────────────────────────
+async function performPlayerSearch(searchTerm, whichPlayer) {
+  const listEl = document.getElementById(whichPlayer === "p1" ? "p1-list" : "p2-list");
+  const resultsMap = whichPlayer === "p1" ? p1SearchResults : p2SearchResults;
+
+  // Clear previous mapping & dropdown
+  resultsMap = {};
+  listEl.innerHTML = "";
+
+  if (!searchTerm) {
+    // If input is empty, don’t query; just clear the dropdown.
+    return;
+  }
+
+  const payload = {
+    sport: "melee",
+    searchTerm: searchTerm,
+    searchMode: "all-players",
+  };
+
   try {
-    const res = await fetch("players.csv");
+    const res = await fetch(API_URL_SEARCH, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
     if (!res.ok) {
-      console.error("Failed to fetch players.csv:", res.status);
+      console.error("Player search failed:", res.status, await res.text());
       return;
     }
-    const text = await res.text();
-    players = text.trim().split("\n").map((line) => {
-      const [name, id] = line.split(",");
-      return { name: name.trim(), id: id.trim() };
+
+    const json = await res.json();
+    // json.data is an array of objects, e.g. { tag: "a", player_id: "S2443527", num_events: 88, … }
+
+    // Clear any old entries
+    if (whichPlayer === "p1") {
+      p1SearchResults = {};
+    } else {
+      p2SearchResults = {};
+    }
+    listEl.innerHTML = "";
+
+    json.data.forEach((player) => {
+      const tag = player.tag;
+      const pid = player.player_id;
+      const count = player.num_events;
+
+      // Store mapping tag → player_id
+      if (whichPlayer === "p1") {
+        p1SearchResults[tag] = pid;
+      } else {
+        p2SearchResults[tag] = pid;
+      }
+
+      // Create an <option> so the dropdown shows “Tag (num_events)”
+      // Browsers that support label on datalist options will display the label instead of value.
+      const opt = document.createElement("option");
+      opt.value = tag;
+      // label is what shows in the dropdown. If the browser does not support label,
+      // end‐users will still see “tag” but we want “tag (count)”.
+      opt.label = `${tag} (${count})`;
+      listEl.appendChild(opt);
     });
-    console.log("Loaded players:", players.length, players[0]);
-    populateDatalists();
   } catch (err) {
-    console.error("Error in loadPlayersCSV():", err);
+    console.error("Error in performPlayerSearch():", err);
   }
 }
 
-function populateDatalists() {
-  const p1List = document.getElementById("p1-list");
-  const p2List = document.getElementById("p2-list");
 
-  [p1List, p2List].forEach((list) => {
-    list.innerHTML = "";
-    players.forEach((p) => {
-      const option = document.createElement("option");
-      option.value = p.name;
-      list.appendChild(option);
-    });
-    // We no longer append a “custom” option here,
-    // because we don't want to inject a second textbox.
-    console.log(list.id, "now has", list.options.length, "options");
-  });
-}
-
-function resolveToId(inputValue) {
-  const found = players.find(
-    (p) => p.name.toLowerCase() === inputValue.toLowerCase()
-  );
-  // If the typed value exactly matches a player name, return its ID;
-  // otherwise, assume the user typed a raw ID and return that.
-  return found ? found.id : inputValue;
-}
-
+// ─────────────────────────────────────────────────────────
+// 2) fetchH2HSets(p1Id, p2Id)
+// ─────────────────────────────────────────────────────────
+//
+// Exactly as before: POST to `/h2h-sheet-v2` with payload. Then render up to 5 lines.
+// ─────────────────────────────────────────────────────────
 async function fetchH2HSets(p1Id, p2Id) {
-  console.log(
-    "✔︎ SUPABASE_KEY (length",
-    SUPABASE_KEY.length,
-    "):",
-    SUPABASE_KEY
-  );
-
   const payload = {
     sport: "melee",
     p1PlayerId: p1Id,
@@ -80,7 +191,7 @@ async function fetchH2HSets(p1Id, p2Id) {
   };
 
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(API_URL_H2H, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -90,10 +201,9 @@ async function fetchH2HSets(p1Id, p2Id) {
       body: JSON.stringify(payload),
     });
 
-    console.log("Status code:", res.status);
     if (!res.ok) {
       const txt = await res.text();
-      console.error("Error fetching data:", res.status, txt);
+      console.error("Error fetching H2H:", res.status, txt);
       document.getElementById("results").innerText = "Error fetching data.";
       return;
     }
@@ -102,10 +212,9 @@ async function fetchH2HSets(p1Id, p2Id) {
     const matches = (json?.data?.matches || []).filter(
       (m) => m.type === "match" && m.match
     );
-
     const container = document.getElementById("results");
     if (matches.length === 0) {
-      container.innerText = "No matches found test.";
+      container.innerText = "No matches found.";
       return;
     }
 
@@ -131,45 +240,3 @@ async function fetchH2HSets(p1Id, p2Id) {
     console.error("fetchH2HSets() exception:", err);
   }
 }
-
-window.addEventListener("DOMContentLoaded", () => {
-  // 1) Populate the datalists from players.csv
-  loadPlayersCSV();
-
-  // 2) On focus, fire an “ArrowDown” so the datalist dropdown opens
-  ["p1-id", "p2-id"].forEach((inputId) => {
-    const inp = document.getElementById(inputId);
-    inp.addEventListener("focus", () => {
-      inp.dispatchEvent(
-        new KeyboardEvent("keydown", { key: "ArrowDown", keyCode: 40, which: 40 })
-      );
-    });
-  });
-
-  // 3) Attach clear‐button logic (same as before)
-  document.querySelectorAll(".clear-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.dataset.target;
-      const input = document.getElementById(targetId);
-      if (input) {
-        input.value = "";
-        input.focus();
-      }
-    });
-  });
-
-  // 4) Form‐submission: simply read whatever is typed in p1-id/p2-id
-  document.getElementById("h2h-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    // Grab the raw text from each input
-    const rawP1 = document.getElementById("p1-id").value.trim();
-    const rawP2 = document.getElementById("p2-id").value.trim();
-    if (!rawP1 || !rawP2) return;
-
-    // Resolve names → IDs if they match a known player, else assume it’s already an ID
-    const id1 = resolveToId(rawP1);
-    const id2 = resolveToId(rawP2);
-    fetchH2HSets(id1, id2);
-  });
-});
