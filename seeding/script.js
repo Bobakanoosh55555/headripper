@@ -1,8 +1,3 @@
-// -----------------------------------
-// Replace your old script.js entirely
-// with the code below.
-// -----------------------------------
-
 const SUPABASE_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5sZW9mdW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
 const API_URL =
@@ -40,29 +35,9 @@ function populateDatalists() {
       option.value = p.name;
       list.appendChild(option);
     });
-    const manualOption = document.createElement("option");
-    manualOption.value = "custom";
-    manualOption.textContent = "Other (type ID)";
-    list.appendChild(manualOption);
+    // We no longer append a “custom” option here,
+    // because we don't want to inject a second textbox.
     console.log(list.id, "now has", list.options.length, "options");
-  });
-
-  ["p1-id", "p2-id"].forEach((id) => {
-    const input = document.getElementById(id);
-    input.addEventListener("input", () => {
-      if (
-        input.value === "custom" &&
-        !document.getElementById(`${id}-manual`)
-      ) {
-        const manual = document.createElement("input");
-        manual.type = "text";
-        manual.placeholder = "Enter ID manually";
-        manual.id = `${id}-manual`;
-        input.insertAdjacentElement("afterend", manual);
-        input.value = "";
-        console.log("Switched", id, "to manual input mode");
-      }
-    });
   });
 }
 
@@ -70,6 +45,8 @@ function resolveToId(inputValue) {
   const found = players.find(
     (p) => p.name.toLowerCase() === inputValue.toLowerCase()
   );
+  // If the typed value exactly matches a player name, return its ID;
+  // otherwise, assume the user typed a raw ID and return that.
   return found ? found.id : inputValue;
 }
 
@@ -117,7 +94,7 @@ async function fetchH2HSets(p1Id, p2Id) {
     if (!res.ok) {
       const txt = await res.text();
       console.error("Error fetching data:", res.status, txt);
-      document.getElementById("results").innerText = "Error fetching data fr.";
+      document.getElementById("results").innerText = "Error fetching data.";
       return;
     }
 
@@ -155,57 +132,44 @@ async function fetchH2HSets(p1Id, p2Id) {
   }
 }
 
-// All of our setup (including clear-button wiring) happens inside DOMContentLoaded
 window.addEventListener("DOMContentLoaded", () => {
-  // 1) Load CSV → populate datalists + “custom”‐ID logic
+  // 1) Populate the datalists from players.csv
   loadPlayersCSV();
 
-  // 2) Show datalist suggestions on focus (arrow-down)
+  // 2) On focus, fire an “ArrowDown” so the datalist dropdown opens
   ["p1-id", "p2-id"].forEach((inputId) => {
     const inp = document.getElementById(inputId);
     inp.addEventListener("focus", () => {
       inp.dispatchEvent(
-        new KeyboardEvent("keydown", {
-          key: "ArrowDown",
-          keyCode: 40,
-          which: 40,
-        })
+        new KeyboardEvent("keydown", { key: "ArrowDown", keyCode: 40, which: 40 })
       );
     });
   });
 
-  // 3) Attach click handlers to all existing .clear-btn elements
+  // 3) Attach clear‐button logic (same as before)
   document.querySelectorAll(".clear-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      console.log("Clear-button clicked for:", btn.dataset.target);
       const targetId = btn.dataset.target;
       const input = document.getElementById(targetId);
       if (input) {
         input.value = "";
         input.focus();
-        // If a “-manual” <input> was injected, remove it now
-        const manual = document.getElementById(`${targetId}-manual`);
-        if (manual) manual.remove();
       }
     });
   });
 
-  // 4) Form submission (unchanged)
+  // 4) Form‐submission: simply read whatever is typed in p1-id/p2-id
   document.getElementById("h2h-form").addEventListener("submit", (event) => {
     event.preventDefault();
-    let p1Input = document.getElementById("p1-id").value.trim();
-    const p1ManualElem = document.getElementById("p1-id-manual");
-    if (p1Input === "custom" && p1ManualElem) {
-      p1Input = p1ManualElem.value.trim();
-    }
-    let p2Input = document.getElementById("p2-id").value.trim();
-    const p2ManualElem = document.getElementById("p2-id-manual");
-    if (p2Input === "custom" && p2ManualElem) {
-      p2Input = p2ManualElem.value.trim();
-    }
-    if (!p1Input || !p2Input) return;
-    const id1 = resolveToId(p1Input);
-    const id2 = resolveToId(p2Input);
+
+    // Grab the raw text from each input
+    const rawP1 = document.getElementById("p1-id").value.trim();
+    const rawP2 = document.getElementById("p2-id").value.trim();
+    if (!rawP1 || !rawP2) return;
+
+    // Resolve names → IDs if they match a known player, else assume it’s already an ID
+    const id1 = resolveToId(rawP1);
+    const id2 = resolveToId(rawP2);
     fetchH2HSets(id1, id2);
   });
 });
