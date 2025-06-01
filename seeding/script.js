@@ -1,5 +1,10 @@
+// -----------------------------------
+// Replace your old script.js entirely
+// with the code below.
+// -----------------------------------
+
 const SUPABASE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG9sZW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJTdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG9sZW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
 const API_URL =
   "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
 
@@ -45,7 +50,10 @@ function populateDatalists() {
   ["p1-id", "p2-id"].forEach((id) => {
     const input = document.getElementById(id);
     input.addEventListener("input", () => {
-      if (input.value === "custom" && !document.getElementById(`${id}-manual`)) {
+      if (
+        input.value === "custom" &&
+        !document.getElementById(`${id}-manual`)
+      ) {
         const manual = document.createElement("input");
         manual.type = "text";
         manual.placeholder = "Enter ID manually";
@@ -147,37 +155,42 @@ async function fetchH2HSets(p1Id, p2Id) {
   }
 }
 
-// Wrap DOMContentLoaded so we can hook up everything at once
+// All of our setup (including clear-button wiring) happens inside DOMContentLoaded
 window.addEventListener("DOMContentLoaded", () => {
-  // 1) Load the players CSV (populates datalists + “custom” logic)
+  // 1) Load CSV → populate datalists + “custom”‐ID logic
   loadPlayersCSV();
 
-  // 2) The existing “arrowDown on focus” logic for showing datalist suggestions
+  // 2) Show datalist suggestions on focus (arrow-down)
   ["p1-id", "p2-id"].forEach((inputId) => {
     const inp = document.getElementById(inputId);
     inp.addEventListener("focus", () => {
       inp.dispatchEvent(
-        new KeyboardEvent("keydown", { key: "ArrowDown", keyCode: 40, which: 40 })
+        new KeyboardEvent("keydown", {
+          key: "ArrowDown",
+          keyCode: 40,
+          which: 40,
+        })
       );
     });
   });
 
-  // 3) Attach click‐handlers to all .clear-btn elements
+  // 3) Attach click handlers to all existing .clear-btn elements
   document.querySelectorAll(".clear-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
+      console.log("Clear-button clicked for:", btn.dataset.target);
       const targetId = btn.dataset.target;
       const input = document.getElementById(targetId);
       if (input) {
         input.value = "";
         input.focus();
-        // Remove the “-manual” input if it exists
+        // If a “-manual” <input> was injected, remove it now
         const manual = document.getElementById(`${targetId}-manual`);
         if (manual) manual.remove();
       }
     });
   });
 
-  // 4) Form submission logic (unchanged)
+  // 4) Form submission (unchanged)
   document.getElementById("h2h-form").addEventListener("submit", (event) => {
     event.preventDefault();
     let p1Input = document.getElementById("p1-id").value.trim();
