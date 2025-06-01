@@ -1,8 +1,20 @@
+// script.js
+
+// 1) Import Supabase client via CDN in your HTML before this script.
+//    (Make sure you have this line in index.html, just above <script src="script.js">:)
+//    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.umd.min.js"></script>
+
 const SUPABASE_URL = "https://slpurukxtnleofuopadw.supabase.co";
-const PUBLIC_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJzJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5nZW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
+
+// Revert to using the real public anon key here. (If yours is different, replace it.)
+// This must match the “anon key” that Smashers.app was using. If that key ever rolls,
+// grab the latest value from Smashers.app’s page source or network calls.
+const PUBLIC_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5sZW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
 
 let players = [];
+let dynamicToken = ""; // ← will hold supabase.auth.signInAnonymously() token
 
+// Load players.csv, parse into [{name,id},…], then populate both datalists.
 async function loadPlayersCSV() {
   try {
     const res = await fetch("players.csv");
@@ -11,10 +23,13 @@ async function loadPlayersCSV() {
       return;
     }
     const text = await res.text();
-    players = text.trim().split("\n").map(line => {
-      const [name, id] = line.split(",");
-      return { name: name.trim(), id: id.trim() };
-    });
+    players = text
+      .trim()
+      .split("\n")
+      .map((line) => {
+        const [name, id] = line.split(",");
+        return { name: name.trim(), id: id.trim() };
+      });
     console.log("Loaded players:", players.length, players[0]);
     populateDatalists();
   } catch (err) {
@@ -22,19 +37,19 @@ async function loadPlayersCSV() {
   }
 }
 
+// Fill <datalist> for both inputs. Each <option>’s value=player.name.
+// We also add one extra “Other (type ID)” option at the end.
 function populateDatalists() {
   const p1List = document.getElementById("p1-list");
   const p2List = document.getElementById("p2-list");
 
-  [p1List, p2List].forEach(list => {
+  [p1List, p2List].forEach((list) => {
     list.innerHTML = "";
-
-    players.forEach(p => {
+    players.forEach((p) => {
       const option = document.createElement("option");
       option.value = p.name;
       list.appendChild(option);
     });
-
     const manualOption = document.createElement("option");
     manualOption.value = "custom";
     manualOption.textContent = "Other (type ID)";
@@ -43,29 +58,33 @@ function populateDatalists() {
     console.log(list.id, "now has", list.options.length, "options");
   });
 
-  ["p1-id", "p2-id"].forEach(id => {
+  // Watch for “custom” selection. When chosen, insert a second <input>
+  ["p1-id", "p2-id"].forEach((id) => {
     const input = document.getElementById(id);
     input.addEventListener("input", () => {
+      // If user picks the “custom” option (exactly the string "custom"), and
+      // the “-manual” field doesn’t already exist, create it.
       if (input.value === "custom" && !document.getElementById(`${id}-manual`)) {
         const manual = document.createElement("input");
         manual.type = "text";
         manual.placeholder = "Enter ID manually";
         manual.id = `${id}-manual`;
         input.insertAdjacentElement("afterend", manual);
-        input.value = "";
+        input.value = ""; // clear the “custom” value so they actually type the ID
         console.log("Switched", id, "to manual input mode");
       }
     });
   });
 }
 
+// If user typed a player NAME (e.g. “Bobakanoosh”), convert to the numeric ID (“S657175”).
+// Otherwise assume they already typed the exact code, so return it verbatim.
 function resolveToId(inputValue) {
-  const found = players.find(
-    p => p.name.toLowerCase() === inputValue.toLowerCase()
-  );
+  const found = players.find((p) => p.name.toLowerCase() === inputValue.toLowerCase());
   return found ? found.id : inputValue;
 }
 
+// Fetch H2H sets from Supabase Edge function. Use dynamicToken (signed‐in anon token) for Authorization.
 async function fetchH2HSets(p1IdInput, p2IdInput) {
   const p1Id = resolveToId(p1IdInput);
   const p2Id = resolveToId(p2IdInput);
@@ -84,11 +103,11 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
     matchesTabSettings: {
       filterToP1Wins: false,
       filterToP2Wins: false,
-      sortBy: "date_desc"
+      sortBy: "date_desc",
     },
     placementsTabSettings: {
-      sortBy: "date_desc"
-    }
+      sortBy: "date_desc",
+    },
   };
 
   try {
@@ -96,10 +115,11 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "apikey": PUBLIC_ANON_KEY,
-        "Authorization": `Bearer ${PUBLIC_ANON_KEY}`
+        // Use the dynamicToken we obtained via signInAnonymously()
+        apikey: PUBLIC_ANON_KEY,
+        Authorization: `Bearer ${dynamicToken}`,
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     });
 
     if (!res.ok) {
@@ -111,7 +131,7 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
     const json = await res.json();
     const matches =
       json?.data?.matches
-        ?.filter(m => m.type === "match" && m.match)
+        ?.filter((m) => m.type === "match" && m.match)
         .slice(0, 5) || [];
 
     const container = document.getElementById("results");
@@ -121,29 +141,28 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
     }
 
     const now = new Date();
-    const lines = matches.map(m => {
+    const lines = matches.map((m) => {
       const match = m.match;
       const p1 = match.p1_info;
       const p2 = match.p2_info;
       const date = new Date(match.event_info.start_date);
       const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
       const dateStr =
-        diffDays === 0
-          ? "today"
-          : `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
+        diffDays === 0 ? "today" : `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
       const winner = p1.is_winner ? p1.tag : p2.tag;
       const loser = p1.is_winner ? p2.tag : p1.tag;
       return `${dateStr}: ${winner} beat ${loser}`;
     });
 
-    container.innerHTML = lines.map(line => `<div>${line}</div>`).join("");
+    container.innerHTML = lines.map((line) => `<div>${line}</div>`).join("");
   } catch (err) {
     document.getElementById("results").innerText = "Error fetching data.";
     console.error("Error in fetchH2HSets():", err);
   }
 }
 
-document.getElementById("h2h-form").addEventListener("submit", event => {
+// Form‐submit handler: gather either “selected” name or manual ID, then call fetchH2HSets.
+document.getElementById("h2h-form").addEventListener("submit", (event) => {
   event.preventDefault();
   let p1Input = document.getElementById("p1-id").value.trim();
   const p1ManualElem = document.getElementById("p1-id-manual");
@@ -158,9 +177,30 @@ document.getElementById("h2h-form").addEventListener("submit", event => {
   if (p1Input && p2Input) fetchH2HSets(p1Input, p2Input);
 });
 
-window.addEventListener("DOMContentLoaded", () => {
+// On page load, first sign in anonymously to Supabase to get a valid JWT.
+window.addEventListener("DOMContentLoaded", async () => {
+  // 1) Create a Supabase client
+  const supabase = supabasejs.createClient(SUPABASE_URL, PUBLIC_ANON_KEY);
+
+  // 2) Sign in anonymously
+  const { data, error } = await supabase.auth.signInAnonymously();
+  if (error) {
+    console.error("Anonymous sign-in error:", error);
+    // If that fails, you can’t fetch. Stop here.
+    document.getElementById("results").innerText =
+      "Error initializing Supabase auth.";
+    return;
+  }
+
+  // 3) Grab the JWT and store in dynamicToken
+  dynamicToken = data.session.access_token;
+  console.log("Signed in anonymously, got token:", dynamicToken.slice(0, 30) + "...");
+
+  // 4) Now that we have a token, load players.csv and hook up the dropdowns.
   loadPlayersCSV();
-  ["p1-id", "p2-id"].forEach(inputId => {
+
+  // 5) Finally, force the datalist to open when inputs gain focus:
+  ["p1-id", "p2-id"].forEach((inputId) => {
     const inp = document.getElementById(inputId);
     inp.addEventListener("focus", () => {
       inp.dispatchEvent(
