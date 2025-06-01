@@ -30,6 +30,8 @@ form input[list] {
   background-color: #222;
   color: #fff;
   border-radius: 4px;
+  width: 200px;
+  font-size: 14px;
 }
 
 
