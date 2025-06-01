@@ -106,7 +106,7 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
     });
 
     if (res.status === 401) {
-      console.error("Unauthorized: check your RLS policies");
+      console.error("Unauthorized: check RLS policies on that function");
       return;
     }
 
