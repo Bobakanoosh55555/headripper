@@ -105,7 +105,7 @@ async function fetchH2HSets(p1Id, p2Id) {
 
     const container = document.getElementById("results");
     if (matches.length === 0) {
-      container.innerText = "No matches found.";
+      container.innerText = "No matches found test.";
       return;
     }
 
