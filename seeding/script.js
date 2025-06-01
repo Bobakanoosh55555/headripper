@@ -9,7 +9,8 @@ const API_URL_SEARCH =
 const API_URL_H2H =
   "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
 
-// These hold tag → player_id mappings
+
+// Now we map "displayString" → player_id
 let p1SearchResults = {};
 let p2SearchResults = {};
 
@@ -70,7 +71,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Form-submission: resolve tag→ID, then fetch H2H
+  // Form-submission: resolve displayString → player_id, then fetch H2H
   document.getElementById("h2h-form").addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -78,14 +79,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const rawP2 = document.getElementById("p2-id").value.trim();
     if (!rawP1 || !rawP2) return;
 
-    // If the user chose a known tag, use its mapped ID; otherwise, assume raw ID
+    // Look up the exact displayString in our map; otherwise assume raw ID
     const p1Id = p1SearchResults[rawP1] || rawP1;
     const p2Id = p2SearchResults[rawP2] || rawP2;
 
     fetchH2HSets(p1Id, p2Id);
   });
 });
-
 
 // ─────────────────────────────────────────────────────────
 // performPlayerSearch(searchTerm, whichPlayer)
@@ -94,6 +94,7 @@ window.addEventListener("DOMContentLoaded", () => {
 // POST to /player-search-v2 with { sport: "melee", searchTerm, searchMode: "all-players" }
 // Populate the correct <datalist> (p1-list or p2-list). Also reset
 // p1SearchResults or p2SearchResults by clearing the global object directly.
+// Now we use the full "tag (num_events)" as the <option>.value.
 // ─────────────────────────────────────────────────────────
 async function performPlayerSearch(searchTerm, whichPlayer) {
   const listEl = document.getElementById(
@@ -135,9 +136,10 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
     }
 
     const json = await res.json();
-    // Example json.data entry: { tag: "Jboss", player_id: "S12345", num_events: 8, … }
+    // json.data is an array of objects like:
+    // { tag: "Bobakanoosh", player_id: "S12345", num_events: 175, … }
 
-    // Ensure the correct global map is cleared before repopulating
+    // Make sure our map is cleared before repopulating
     if (whichPlayer === "p1") {
       p1SearchResults = {};
     } else {
@@ -150,25 +152,25 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
       const pid = player.player_id;
       const count = player.num_events;
 
-      // Store mapping tag → player_id
+      // Build a unique display string, e.g. "Bobakanoosh (175)"
+      const displayString = `${tag} (${count})`;
+
+      // Store mapping from that exact displayString → player_id
       if (whichPlayer === "p1") {
-        p1SearchResults[tag] = pid;
+        p1SearchResults[displayString] = pid;
       } else {
-        p2SearchResults[tag] = pid;
+        p2SearchResults[displayString] = pid;
       }
 
-      // Create an <option> so the dropdown shows “tag (num_events)”
+      // Create an <option> whose value is the display string
       const opt = document.createElement("option");
-      opt.value = tag;
-      // Use label for display text if supported; fallback is value
-      opt.label = `${tag} (${count})`;
+      opt.value = displayString;
       listEl.appendChild(opt);
     });
   } catch (err) {
     console.error("Error in performPlayerSearch():", err);
   }
 }
-
 
 // ─────────────────────────────────────────────────────────
 // fetchH2HSets(p1Id, p2Id)
@@ -181,19 +183,20 @@ async function fetchH2HSets(p1Id, p2Id) {
     sport: "melee",
     p1PlayerId: p1Id,
     p2PlayerId: p2Id,
-    tab: "overview",
+    tab: "overview",              // “overview” to get match data first
     globalDateRange: "All Time",
     globalFilterContext: "All",
     filterToVods: false,
     matchesTabSettings: {
       filterToP1Wins: false,
       filterToP2Wins: false,
-      sortBy: "date_desc"
+      sortBy: "date_desc",
     },
     placementsTabSettings: {
-      sortBy: "date_desc"
-    }
+      sortBy: "date_desc",
+    },
   };
+
   try {
     const res = await fetch(API_URL_H2H, {
       method: "POST",
@@ -213,6 +216,7 @@ async function fetchH2HSets(p1Id, p2Id) {
     }
 
     const json = await res.json();
+    // The “overview” response includes `data.matches` array
     const matches = (json?.data?.matches || []).filter(
       (m) => m.type === "match" && m.match
     );
