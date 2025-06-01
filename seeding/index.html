@@ -10,8 +10,10 @@
   <div class="container">
     <h1>H2H Match Viewer</h1>
     <form id="h2h-form">
-      <select id="p1-id"></select>
-      <select id="p2-id"></select>
+      <input type="text" id="p1-id" list="p1-list" placeholder="Player 1" required />
+      <datalist id="p1-list"></datalist>
+      <input type="text" id="p2-id" list="p2-list" placeholder="Player 2" required />
+      <datalist id="p2-list"></datalist>
       <button type="submit">Get H2H</button>
     </form>
     <div id="results"></div>
