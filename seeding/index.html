@@ -10,14 +10,44 @@
   <div class="container">
     <h1>H2H Match Viewer</h1>
     <form id="h2h-form">
-      <input type="text" id="p1-id" list="p1-list" placeholder="Player 1" required />
-      <datalist id="p1-list"></datalist>
-      <input type="text" id="p2-id" list="p2-list" placeholder="Player 2" required />
-      <datalist id="p2-list"></datalist>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="p1-id"
+          list="p1-list"
+          placeholder="Player 1"
+          required
+        />
+        <button
+          type="button"
+          class="clear-btn"
+          data-target="p1-id"
+          aria-label="Clear Player 1"
+        >×</button>
+        <datalist id="p1-list"></datalist>
+      </div>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="p2-id"
+          list="p2-list"
+          placeholder="Player 2"
+          required
+        />
+        <button
+          type="button"
+          class="clear-btn"
+          data-target="p2-id"
+          aria-label="Clear Player 2"
+        >×</button>
+        <datalist id="p2-list"></datalist>
+      </div>
+
       <button type="submit">Get H2H</button>
     </form>
     <div id="results"></div>
   </div>
+
   <script src="script.js" defer></script>
 </body>
 </html>
