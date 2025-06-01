@@ -46,13 +46,12 @@ function populateDatalists() {
   ["p1-id", "p2-id"].forEach(id => {
     const input = document.getElementById(id);
     input.addEventListener("input", () => {
-      if (input.value === "custom") {
+      if (input.value === "custom" && !document.getElementById(`${id}-manual`)) {
         const manual = document.createElement("input");
         manual.type = "text";
         manual.placeholder = "Enter ID manually";
         manual.id = `${id}-manual`;
         input.insertAdjacentElement("afterend", manual);
-        input.classList.add("hidden");
         console.log("Switched", id, "to manual input mode");
       }
     });
@@ -139,16 +138,16 @@ async function fetchH2HSets(p1IdInput, p2IdInput) {
 
 document.getElementById("h2h-form").addEventListener("submit", event => {
   event.preventDefault();
-  const p1Input = document
-    .getElementById("p1-id")
-    .classList.contains("hidden")
-    ? document.getElementById("p1-id-manual").value.trim()
-    : document.getElementById("p1-id").value.trim();
-  const p2Input = document
-    .getElementById("p2-id")
-    .classList.contains("hidden")
-    ? document.getElementById("p2-id-manual").value.trim()
-    : document.getElementById("p2-id").value.trim();
+  let p1Input = document.getElementById("p1-id").value.trim();
+  const p1ManualElem = document.getElementById("p1-id-manual");
+  if (p1Input === "custom" && p1ManualElem) {
+    p1Input = p1ManualElem.value.trim();
+  }
+  let p2Input = document.getElementById("p2-id").value.trim();
+  const p2ManualElem = document.getElementById("p2-id-manual");
+  if (p2Input === "custom" && p2ManualElem) {
+    p2Input = p2ManualElem.value.trim();
+  }
   if (p1Input && p2Input) fetchH2HSets(p1Input, p2Input);
 });
 
