@@ -1,5 +1,52 @@
+// Updated script.js to support CSV autocomplete + raw ID fallback
+
 const API_URL = "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5sZW9mdW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0.WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
+
+let tagToIdMap = {};
+
+async function loadPlayers() {
+  try {
+    const res = await fetch("players.csv");
+    const text = await res.text();
+    text.split("\n").forEach(line => {
+      const [tag, id] = line.trim().split(",");
+      if (tag && id) tagToIdMap[tag.toLowerCase()] = id.trim();
+    });
+  } catch (err) {
+    console.error("Failed to load player list", err);
+  }
+}
+
+function createAutocomplete(input) {
+  input.addEventListener("input", function () {
+    closeAllLists();
+    const val = this.value.toLowerCase();
+    if (!val) return;
+
+    const list = document.createElement("div");
+    list.setAttribute("class", "autocomplete-items");
+    this.parentNode.appendChild(list);
+
+    Object.keys(tagToIdMap).forEach(tag => {
+      if (tag.startsWith(val)) {
+        const item = document.createElement("div");
+        item.innerHTML = `<strong>${tag.slice(0, val.length)}</strong>${tag.slice(val.length)}`;
+        item.addEventListener("click", () => {
+          input.value = tagToIdMap[tag];
+          closeAllLists();
+        });
+        list.appendChild(item);
+      }
+    });
+  });
+
+  function closeAllLists() {
+    document.querySelectorAll(".autocomplete-items").forEach(e => e.remove());
+  }
+
+  document.addEventListener("click", e => closeAllLists());
+}
 
 async function fetchH2HSets(p1Id, p2Id) {
   const payload = {
@@ -63,11 +110,18 @@ async function fetchH2HSets(p1Id, p2Id) {
   }
 }
 
-// Event listener for form
-const form = document.getElementById("h2h-form");
-form.addEventListener("submit", event => {
-  event.preventDefault();
-  const p1 = document.getElementById("p1-id").value.trim();
-  const p2 = document.getElementById("p2-id").value.trim();
-  if (p1 && p2) fetchH2HSets(p1, p2);
+// On DOM load
+window.addEventListener("DOMContentLoaded", async () => {
+  await loadPlayers();
+  createAutocomplete(document.getElementById("p1-id"));
+  createAutocomplete(document.getElementById("p2-id"));
+
+  document.getElementById("h2h-form").addEventListener("submit", event => {
+    event.preventDefault();
+    const p1Input = document.getElementById("p1-id").value.trim();
+    const p2Input = document.getElementById("p2-id").value.trim();
+    const p1Id = tagToIdMap[p1Input.toLowerCase()] || p1Input;
+    const p2Id = tagToIdMap[p2Input.toLowerCase()] || p2Input;
+    fetchH2HSets(p1Id, p2Id);
+  });
 });
