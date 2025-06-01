@@ -33,7 +33,36 @@ form input[list] {
   width: 200px;
   font-size: 14px;
 }
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 5px;              
+  width: 200px;             
+}
 
+.input-wrapper input {
+  width: 100%;            
+  padding-right: 1.5rem;  
+  box-sizing: border-box;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  color: #666;
+}
+
+.input-wrapper input:placeholder-shown + .clear-btn {
+  visibility: hidden;
+}
 
 form button {
   padding: 10px 20px;
