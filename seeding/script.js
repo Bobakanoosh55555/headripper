@@ -117,7 +117,7 @@ async function fetchH2HSets(p1Id, p2Id) {
     if (!res.ok) {
       const txt = await res.text();
       console.error("Error fetching data:", res.status, txt);
-      document.getElementById("results").innerText = "Error fetching data.";
+      document.getElementById("results").innerText = "Error fetching data fr.";
       return;
     }
 
