@@ -1,21 +1,18 @@
-// script.js
-
-const API_URL =
-  "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Paste the exact anon JWT you see in Smashers.app’s Network panel here.  
-// It must be exactly the same, or Supabase will respond 401.
-// ─────────────────────────────────────────────────────────────────────────────
+// ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+// Replace the string below with exactly the 174-character key you copied
+// from Smashers.app’s Network → Request Headers → Authorization: Bearer <…>
+// ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 const SUPABASE_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
 + "eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscHVydWt4dG5nZW9wYWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQyMzYwMjIsImV4cCI6MTk4OTgxMjAyMn0."
 + "WN3Th51ocS4riD01CGhxJv6BsXtG8bqLPHZFeepyoyk";
-// ─────────────────────────────────────────────────────────────────────────────
+// ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+
+const API_URL =
+  "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
 
 let players = [];
 
-// 1) Load players.csv, parse into [{name,id},…], then populate datalists.
 async function loadPlayersCSV() {
   try {
     const res = await fetch("players.csv");
@@ -35,7 +32,6 @@ async function loadPlayersCSV() {
   }
 }
 
-// 2) Fill both <datalist> elements with player names + an “Other (type ID)” option.
 function populateDatalists() {
   const p1List = document.getElementById("p1-list");
   const p2List = document.getElementById("p2-list");
@@ -54,25 +50,22 @@ function populateDatalists() {
     console.log(list.id, "now has", list.options.length, "options");
   });
 
-  // If user types/selects “custom,” insert an adjacent <input> for manual ID entry.
   ["p1-id", "p2-id"].forEach((id) => {
     const input = document.getElementById(id);
     input.addEventListener("input", () => {
-      // Only create the “-manual” field once, when “custom” is selected.
       if (input.value === "custom" && !document.getElementById(`${id}-manual`)) {
         const manual = document.createElement("input");
         manual.type = "text";
         manual.placeholder = "Enter ID manually";
         manual.id = `${id}-manual`;
         input.insertAdjacentElement("afterend", manual);
-        input.value = ""; // Clear “custom” so the user can type a real ID
+        input.value = "";
         console.log("Switched", id, "to manual input mode");
       }
     });
   });
 }
 
-// 3) If user typed a player NAME, convert to ID. Otherwise assume it’s already an ID.
 function resolveToId(inputValue) {
   const found = players.find(
     (p) => p.name.toLowerCase() === inputValue.toLowerCase()
@@ -80,11 +73,11 @@ function resolveToId(inputValue) {
   return found ? found.id : inputValue;
 }
 
-// 4) Exactly the same fetch that worked before—static key + payload, no Supabase client library.
 async function fetchH2HSets(p1Id, p2Id) {
-  // Print out the key so you can compare it to Smashers.app’s request in DevTools.
   console.log(
-    "✔︎ SUPABASE_KEY (length " + SUPABASE_KEY.length + "):",
+    "✔︎ SUPABASE_KEY (length",
+    SUPABASE_KEY.length,
+    "):",
     SUPABASE_KEY
   );
 
@@ -114,7 +107,6 @@ async function fetchH2HSets(p1Id, p2Id) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // These two headers must exactly match what Smashers.app sends:
         apikey: SUPABASE_KEY,
         Authorization: `Bearer ${SUPABASE_KEY}`,
       },
@@ -130,9 +122,9 @@ async function fetchH2HSets(p1Id, p2Id) {
     }
 
     const json = await res.json();
-    const matches =
-      (json?.data?.matches || []).filter((m) => m.type === "match" && m.match) ||
-      [];
+    const matches = (json?.data?.matches || []).filter(
+      (m) => m.type === "match" && m.match
+    );
 
     const container = document.getElementById("results");
     if (matches.length === 0) {
@@ -163,7 +155,6 @@ async function fetchH2HSets(p1Id, p2Id) {
   }
 }
 
-// 5) Form-submit handler: check for manual ID fields if “custom” was chosen.
 document.getElementById("h2h-form").addEventListener("submit", (event) => {
   event.preventDefault();
   let p1Input = document.getElementById("p1-id").value.trim();
@@ -182,7 +173,6 @@ document.getElementById("h2h-form").addEventListener("submit", (event) => {
   fetchH2HSets(id1, id2);
 });
 
-// 6) On page load, pull in players.csv and force the datalist → arrow-down trick.
 window.addEventListener("DOMContentLoaded", () => {
   loadPlayersCSV();
   ["p1-id", "p2-id"].forEach((inputId) => {
