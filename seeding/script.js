@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  // Show datalist suggestions on focus (arrow‐down hack)
+  // Show datalist suggestions on focus (ArrowDown hack)
   ["p1-id", "p2-id"].forEach((inputId) => {
     const inp = document.getElementById(inputId);
     inp.addEventListener("focus", () => {
@@ -49,7 +49,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Clear-button (“×”) logic
+  // Clear‐button (“×”) logic
   document.querySelectorAll(".clear-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const targetId = btn.dataset.target;
@@ -68,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // —— Revised submit handler that awaits missing searches ——
+  // Revised submit handler that ensures lookup before sending
   document
     .getElementById("h2h-form")
     .addEventListener("submit", async (event) => {
@@ -82,20 +82,24 @@ window.addEventListener("DOMContentLoaded", () => {
       const normP1 = rawP1.replace(/\s+/g, " ");
       const normP2 = rawP2.replace(/\s+/g, " ");
 
+      // Strip “(count)” to get just the tag for a fresh search if needed
+      let baseTag1 = normP1.replace(/\s*\(.*\)$/, "");
+      let baseTag2 = normP2.replace(/\s*\(.*\)$/, "");
+
       // 1) Try exact lookup
       let p1Id = p1SearchResults[normP1];
       let p2Id = p2SearchResults[normP2];
 
-      // 2) If p1Id not found, re‐run search on rawP1 and await it
+      // 2) If p1Id not found, run a fresh search on the tag
       if (!p1Id) {
-        await performPlayerSearch(rawP1, "p1");
+        await performPlayerSearch(baseTag1, "p1");
         p1Id = p1SearchResults[normP1];
       }
-      // 3) If still not found, fallback to “startsWith(tag (”)
+      // 3) If still not found, fallback to prefix match
       if (!p1Id) {
         const fallbackKeyP1 = Object.keys(p1SearchResults).find((key) => {
           const normKey = key.replace(/\s+/g, " ");
-          return normKey.startsWith(normP1 + " (");
+          return normKey.startsWith(baseTag1 + " (");
         });
         if (fallbackKeyP1) {
           p1Id = p1SearchResults[fallbackKeyP1];
@@ -104,20 +108,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
       // Repeat for Player 2
       if (!p2Id) {
-        await performPlayerSearch(rawP2, "p2");
+        await performPlayerSearch(baseTag2, "p2");
         p2Id = p2SearchResults[normP2];
       }
       if (!p2Id) {
         const fallbackKeyP2 = Object.keys(p2SearchResults).find((key) => {
           const normKey = key.replace(/\s+/g, " ");
-          return normKey.startsWith(normP2 + " (");
+          return normKey.startsWith(baseTag2 + " (");
         });
         if (fallbackKeyP2) {
           p2Id = p2SearchResults[fallbackKeyP2];
         }
       }
 
-      // 4) If still nothing, log available keys and bail
+      // 4) If still missing either ID, log and bail
       if (!p1Id || !p2Id) {
         console.error("Could not resolve to player_id:");
         if (!p1Id) {
@@ -131,7 +135,7 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Now we have the correct IDs—fetch H2H
+      // 5) Now we have real IDs—fetch H2H
       fetchH2HSets(p1Id, p2Id);
     });
 }); // ← close DOMContentLoaded
@@ -141,12 +145,12 @@ window.addEventListener("DOMContentLoaded", () => {
 // performPlayerSearch(searchTerm, whichPlayer)
 // ─────────────────────────────────────────────────────────
 //
-// If “searchTerm” already ends with “(number)”, skip the API call
-// (so selecting “Bobakanoosh (159)” doesn’t clear the map). Otherwise,
-// call the endpoint and populate p?_SearchResults with “tag (num_events)” → player_id.
+// If searchTerm ends with “(number)”, skip the API call.
+// Otherwise, fetch from player-search-v2, populate
+// displayString → player_id mappings, and build datalist.
 // ─────────────────────────────────────────────────────────
 async function performPlayerSearch(searchTerm, whichPlayer) {
-  // If searchTerm already matches “tag (number)” pattern, do nothing:
+  // If the user’s input already looks like “Tag (count)”, do nothing
   if (/\(.+\)$/.test(searchTerm)) {
     return;
   }
@@ -181,6 +185,7 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
       },
       body: JSON.stringify(payload),
     });
+
     if (!res.ok) {
       console.error("Player search failed:", res.status, await res.text());
       return;
@@ -221,7 +226,8 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
 // fetchH2HSets(p1Id, p2Id)
 // ─────────────────────────────────────────────────────────
 //
-// POST to /h2h-sheet-v2 with tab="overview" so the response includes data.matches.
+// POST to /h2h-sheet-v2 with tab="overview" so we get data.matches.
+// Then render up to 5 match lines.
 // ─────────────────────────────────────────────────────────
 async function fetchH2HSets(p1Id, p2Id) {
   const payload = {
@@ -252,6 +258,7 @@ async function fetchH2HSets(p1Id, p2Id) {
       },
       body: JSON.stringify(payload),
     });
+
     if (!res.ok) {
       const txt = await res.text();
       console.error("Error fetching H2H:", res.status, txt);
