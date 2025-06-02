@@ -268,38 +268,53 @@ async function fetchH2HSets(p1Id, p2Id) {
 
     const json = await res.json();
 
-    // “overview” returns matches inside data.last_5_matches
-    const matches = (json?.data?.last_5_matches || []).filter(
-      (m) => m.match_id && m.sport === "melee"
-    );
+    // 1) Log the raw array so you can inspect its structure:
+    console.log("RAW last_5_matches:", json.data.last_5_matches);
+
+    // 2) Use the entire array, without extra filtering:
+    const matches = json.data.last_5_matches || [];
+
     const container = document.getElementById("results");
     if (matches.length === 0) {
       container.innerText = "No matches found.";
       return;
     }
 
+    // 3) Build lines from each match object:
     const now = new Date();
     const lines = matches.map((m) => {
-      // m has structure similar to:
-      // { match_id, sport, event_id, winners_side, best_of, rfv, grands, ... }
-      // We need p1_info/p2_info inside each m to determine winner/loser.
-      // In “overview” JSON, last_5_matches entries look like:
-      //   { match_id: "...", p1_info: {...}, p2_info: {...}, event_info: {...}, ... }
+      // Expect each m to have:
+      //   - m.p1_info: { tag: "...", is_winner: true/false, ... }
+      //   - m.p2_info: { tag: "...", is_winner: ... }
+      //   - m.event_info.start_date: ISO string
       const p1 = m.p1_info;
       const p2 = m.p2_info;
-      const date = new Date(m.event_info.start_date);
+      const start = m.event_info.start_date;
+
+      // If any of these are missing, skip that entry:
+      if (!p1 || !p2 || !start) return null;
+
+      const date = new Date(start);
       const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
       const dateStr =
         diffDays === 0 ? "today" : `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
+
       const winner = p1.is_winner ? p1.tag : p2.tag;
       const loser = p1.is_winner ? p2.tag : p1.tag;
       return `${dateStr}: ${winner} beat ${loser}`;
-    });
+    })
+    .filter(Boolean); // drop any nulls
 
+    // 4) If after mapping there are still no valid lines, show “No matches”:
+    if (lines.length === 0) {
+      container.innerText = "No matches found.";
+      return;
+    }
+
+    // 5) Otherwise render the lines:
     container.innerHTML = lines.map((line) => `<div>${line}</div>`).join("");
   } catch (err) {
     document.getElementById("results").innerText = "Error fetching data.";
     console.error("fetchH2HSets() exception:", err);
   }
 }
-
