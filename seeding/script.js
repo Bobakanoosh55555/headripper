@@ -77,10 +77,27 @@ window.addEventListener("DOMContentLoaded", () => {
     const rawP2 = document.getElementById("p2-id").value.trim();
     if (!rawP1 || !rawP2) return;
 
-    // *** Crucial lines: ***
-    // We expect rawP1 === e.g. "Bobakanoosh (159)", so:
-    const p1Id = p1SearchResults[rawP1];
-    const p2Id = p2SearchResults[rawP2];
+    // Try exact lookup first:
+    let p1Id = p1SearchResults[rawP1];
+    let p2Id = p2SearchResults[rawP2];
+
+    // If exact key not found, attempt to match "tag (" prefix:
+    if (!p1Id) {
+      const fallbackKey = Object.keys(p1SearchResults).find(k =>
+        k.startsWith(rawP1 + " (")
+      );
+      if (fallbackKey) {
+        p1Id = p1SearchResults[fallbackKey];
+      }
+    }
+    if (!p2Id) {
+      const fallbackKey = Object.keys(p2SearchResults).find(k =>
+        k.startsWith(rawP2 + " (")
+      );
+      if (fallbackKey) {
+        p2Id = p2SearchResults[fallbackKey];
+      }
+    }
 
     if (!p1Id || !p2Id) {
       console.error(
