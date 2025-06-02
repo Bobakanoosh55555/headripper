@@ -8,7 +8,7 @@ const API_URL_SEARCH =
   "https://slpurukxtnleofuopadw.supabase.co/functions/v1/player-search-v2";
 const API_URL_H2H =
   "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
-// Map displayString → player_id
+// Map “displayString” → player_id
 let p1SearchResults = {};
 let p2SearchResults = {};
 
@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const p1Input = document.getElementById("p1-id");
   const p2Input = document.getElementById("p2-id");
 
-  // Player 1 typing → debounce → search
+  // Whenever Player 1 types, debounce then search
   p1Input.addEventListener("input", () => {
     clearTimeout(p1DebounceTimer);
     p1DebounceTimer = setTimeout(() => {
@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  // Player 2 typing → debounce → search
+  // Whenever Player 2 types, debounce then search
   p2Input.addEventListener("input", () => {
     clearTimeout(p2DebounceTimer);
     p2DebounceTimer = setTimeout(() => {
@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  // Show datalist on focus (arrow-down hack)
+  // Show datalist suggestions on focus (arrow‐down hack)
   ["p1-id", "p2-id"].forEach((inputId) => {
     const inp = document.getElementById(inputId);
     inp.addEventListener("focus", () => {
@@ -49,7 +49,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Clear‐button (“×”) logic
+  // Clear-button (“×”) logic
   document.querySelectorAll(".clear-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const targetId = btn.dataset.target;
@@ -68,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // —— Revised submit handler to await missing searches —— 
+  // —— Revised submit handler that awaits missing searches ——
   document
     .getElementById("h2h-form")
     .addEventListener("submit", async (event) => {
@@ -82,16 +82,16 @@ window.addEventListener("DOMContentLoaded", () => {
       const normP1 = rawP1.replace(/\s+/g, " ");
       const normP2 = rawP2.replace(/\s+/g, " ");
 
-      // Attempt to look up immediately
+      // 1) Try exact lookup
       let p1Id = p1SearchResults[normP1];
       let p2Id = p2SearchResults[normP2];
 
-      // If p1Id not found, run the search once more and await it
+      // 2) If p1Id not found, re‐run search on rawP1 and await it
       if (!p1Id) {
         await performPlayerSearch(rawP1, "p1");
         p1Id = p1SearchResults[normP1];
       }
-      // If p1Id still not found, try prefix match
+      // 3) If still not found, fallback to “startsWith(tag (”)
       if (!p1Id) {
         const fallbackKeyP1 = Object.keys(p1SearchResults).find((key) => {
           const normKey = key.replace(/\s+/g, " ");
@@ -102,7 +102,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Same for Player 2
+      // Repeat for Player 2
       if (!p2Id) {
         await performPlayerSearch(rawP2, "p2");
         p2Id = p2SearchResults[normP2];
@@ -117,7 +117,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // If still missing, log and bail
+      // 4) If still nothing, log available keys and bail
       if (!p1Id || !p2Id) {
         console.error("Could not resolve to player_id:");
         if (!p1Id) {
@@ -131,7 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Now we have real IDs, fetch H2H
+      // Now we have the correct IDs—fetch H2H
       fetchH2HSets(p1Id, p2Id);
     });
 }); // ← close DOMContentLoaded
@@ -140,7 +140,17 @@ window.addEventListener("DOMContentLoaded", () => {
 // ─────────────────────────────────────────────────────────
 // performPlayerSearch(searchTerm, whichPlayer)
 // ─────────────────────────────────────────────────────────
+//
+// If “searchTerm” already ends with “(number)”, skip the API call
+// (so selecting “Bobakanoosh (159)” doesn’t clear the map). Otherwise,
+// call the endpoint and populate p?_SearchResults with “tag (num_events)” → player_id.
+// ─────────────────────────────────────────────────────────
 async function performPlayerSearch(searchTerm, whichPlayer) {
+  // If searchTerm already matches “tag (number)” pattern, do nothing:
+  if (/\(.+\)$/.test(searchTerm)) {
+    return;
+  }
+
   const listEl = document.getElementById(
     whichPlayer === "p1" ? "p1-list" : "p2-list"
   );
@@ -177,7 +187,7 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
     }
 
     const json = await res.json();
-    // Clear again before populating
+    // Clear again before repopulating
     if (whichPlayer === "p1") {
       p1SearchResults = {};
     } else {
@@ -189,8 +199,6 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
       const tag = player.tag;
       const pid = player.player_id;
       const count = player.num_events;
-
-      // e.g. "Bobakanoosh (159)"
       const displayString = `${tag} (${count})`;
 
       if (whichPlayer === "p1") {
@@ -211,6 +219,9 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
 
 // ─────────────────────────────────────────────────────────
 // fetchH2HSets(p1Id, p2Id)
+// ─────────────────────────────────────────────────────────
+//
+// POST to /h2h-sheet-v2 with tab="overview" so the response includes data.matches.
 // ─────────────────────────────────────────────────────────
 async function fetchH2HSets(p1Id, p2Id) {
   const payload = {
