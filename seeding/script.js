@@ -267,8 +267,10 @@ async function fetchH2HSets(p1Id, p2Id) {
     }
 
     const json = await res.json();
-    const matches = (json?.data?.matches || []).filter(
-      (m) => m.type === "match" && m.match
+
+    // “overview” returns matches inside data.last_5_matches
+    const matches = (json?.data?.last_5_matches || []).filter(
+      (m) => m.match_id && m.sport === "melee"
     );
     const container = document.getElementById("results");
     if (matches.length === 0) {
@@ -277,16 +279,18 @@ async function fetchH2HSets(p1Id, p2Id) {
     }
 
     const now = new Date();
-    const lines = matches.slice(0, 5).map((m) => {
-      const match = m.match;
-      const p1 = match.p1_info;
-      const p2 = match.p2_info;
-      const date = new Date(match.event_info.start_date);
+    const lines = matches.map((m) => {
+      // m has structure similar to:
+      // { match_id, sport, event_id, winners_side, best_of, rfv, grands, ... }
+      // We need p1_info/p2_info inside each m to determine winner/loser.
+      // In “overview” JSON, last_5_matches entries look like:
+      //   { match_id: "...", p1_info: {...}, p2_info: {...}, event_info: {...}, ... }
+      const p1 = m.p1_info;
+      const p2 = m.p2_info;
+      const date = new Date(m.event_info.start_date);
       const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
       const dateStr =
-        diffDays === 0
-          ? "today"
-          : `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
+        diffDays === 0 ? "today" : `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
       const winner = p1.is_winner ? p1.tag : p2.tag;
       const loser = p1.is_winner ? p2.tag : p1.tag;
       return `${dateStr}: ${winner} beat ${loser}`;
@@ -298,3 +302,4 @@ async function fetchH2HSets(p1Id, p2Id) {
     console.error("fetchH2HSets() exception:", err);
   }
 }
+
