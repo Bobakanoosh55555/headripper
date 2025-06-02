@@ -8,9 +8,7 @@ const API_URL_SEARCH =
   "https://slpurukxtnleofuopadw.supabase.co/functions/v1/player-search-v2";
 const API_URL_H2H =
   "https://slpurukxtnleofuopadw.supabase.co/functions/v1/h2h-sheet-v2";
-
-
-// Now we map "displayString" → player_id
+// We’ll map the exact displayString → player_id
 let p1SearchResults = {};
 let p2SearchResults = {};
 
@@ -21,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const p1Input = document.getElementById("p1-id");
   const p2Input = document.getElementById("p2-id");
 
-  // When Player 1 types, debounce then search
+  // Whenever Player 1 types, debounce then search
   p1Input.addEventListener("input", () => {
     clearTimeout(p1DebounceTimer);
     p1DebounceTimer = setTimeout(() => {
@@ -29,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  // When Player 2 types, debounce then search
+  // Whenever Player 2 types, debounce then search
   p2Input.addEventListener("input", () => {
     clearTimeout(p2DebounceTimer);
     p2DebounceTimer = setTimeout(() => {
@@ -37,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  // Show datalist suggestions on focus (ArrowDown event)
+  // Show datalist as soon as input is focused (ArrowDown hack)
   ["p1-id", "p2-id"].forEach((inputId) => {
     const inp = document.getElementById(inputId);
     inp.addEventListener("focus", () => {
@@ -51,7 +49,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Clear-button (“×”) logic for both inputs
+  // Clear‐button (“×”) logic for both inputs
   document.querySelectorAll(".clear-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const targetId = btn.dataset.target;
@@ -59,7 +57,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (input) {
         input.value = "";
         input.focus();
-        // Also clear out stored results and dropdown
+        // Clear mapping and dropdown for that player
         if (targetId === "p1-id") {
           p1SearchResults = {};
           document.getElementById("p1-list").innerHTML = "";
@@ -71,7 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Form-submission: resolve displayString → player_id, then fetch H2H
+  // Form submission: look up exact displayString → player_id, then fetch H2H
   document.getElementById("h2h-form").addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -79,29 +77,41 @@ window.addEventListener("DOMContentLoaded", () => {
     const rawP2 = document.getElementById("p2-id").value.trim();
     if (!rawP1 || !rawP2) return;
 
-    // Look up the exact displayString in our map; otherwise assume raw ID
-    const p1Id = p1SearchResults[rawP1] || rawP1;
-    const p2Id = p2SearchResults[rawP2] || rawP2;
+    // *** Crucial lines: ***
+    // We expect rawP1 === e.g. "Bobakanoosh (159)", so:
+    const p1Id = p1SearchResults[rawP1];
+    const p2Id = p2SearchResults[rawP2];
+
+    if (!p1Id || !p2Id) {
+      console.error(
+        "Could not resolve",
+        rawP1,
+        "or",
+        rawP2,
+        "to a player_id."
+      );
+      return;
+    }
 
     fetchH2HSets(p1Id, p2Id);
   });
 });
+
 
 // ─────────────────────────────────────────────────────────
 // performPlayerSearch(searchTerm, whichPlayer)
 // ─────────────────────────────────────────────────────────
 //
 // POST to /player-search-v2 with { sport: "melee", searchTerm, searchMode: "all-players" }
-// Populate the correct <datalist> (p1-list or p2-list). Also reset
-// p1SearchResults or p2SearchResults by clearing the global object directly.
-// Now we use the full "tag (num_events)" as the <option>.value.
+// Populate the correct <datalist> (p1-list or p2-list), using displayString = `${tag} (${count})`
+// as the .value of each <option>, and store that exact displayString → player_id.
 // ─────────────────────────────────────────────────────────
 async function performPlayerSearch(searchTerm, whichPlayer) {
   const listEl = document.getElementById(
     whichPlayer === "p1" ? "p1-list" : "p2-list"
   );
 
-  // Clear the appropriate global map and dropdown
+  // Clear previous mapping + dropdown
   if (whichPlayer === "p1") {
     p1SearchResults = {};
   } else {
@@ -110,7 +120,7 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
   listEl.innerHTML = "";
 
   if (!searchTerm) {
-    return;
+    return; // nothing to do
   }
 
   const payload = {
@@ -129,14 +139,16 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
       },
       body: JSON.stringify(payload),
     });
+
     if (!res.ok) {
       console.error("Player search failed:", res.status, await res.text());
       return;
     }
 
     const json = await res.json();
+    // json.data is an array of objects: { tag, player_id, num_events, … }
 
-    // Clear again (just in case) before repopulating
+    // Double‐clear before repopulating
     if (whichPlayer === "p1") {
       p1SearchResults = {};
     } else {
@@ -149,18 +161,17 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
       const pid = player.player_id;
       const count = player.num_events;
 
-      // Build a unique display string, e.g. "Bobakanoosh (159)"
+      // Build the unique display string, e.g. "Bobakanoosh (159)"
       const displayString = `${tag} (${count})`;
 
-      // Store mapping from that exact displayString → player_id
+      // Map displayString → player_id
       if (whichPlayer === "p1") {
         p1SearchResults[displayString] = pid;
       } else {
         p2SearchResults[displayString] = pid;
       }
 
-      // Create an <option> whose value is the displayString
-      // (We do NOT set opt.label here—just opt.value)
+      // Create an <option> whose value is exactly displayString
       const opt = document.createElement("option");
       opt.value = displayString;
       listEl.appendChild(opt);
@@ -175,14 +186,15 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
 // fetchH2HSets(p1Id, p2Id)
 // ─────────────────────────────────────────────────────────
 //
-// POST to /h2h-sheet-v2 with payload. Renders up to 5 match lines.
+// POST to /h2h-sheet-v2 with payload: tab="overview" so that
+// the response includes data.matches. Then render the top 5 lines.
 // ─────────────────────────────────────────────────────────
 async function fetchH2HSets(p1Id, p2Id) {
   const payload = {
     sport: "melee",
     p1PlayerId: p1Id,
     p2PlayerId: p2Id,
-    tab: "overview",              // “overview” to get match data first
+    tab: "overview",
     globalDateRange: "All Time",
     globalFilterContext: "All",
     filterToVods: false,
@@ -215,7 +227,6 @@ async function fetchH2HSets(p1Id, p2Id) {
     }
 
     const json = await res.json();
-    // The “overview” response includes `data.matches` array
     const matches = (json?.data?.matches || []).filter(
       (m) => m.type === "match" && m.match
     );
