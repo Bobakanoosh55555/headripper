@@ -110,7 +110,7 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
   listEl.innerHTML = "";
 
   if (!searchTerm) {
-    return; // nothing to search if input is empty
+    return;
   }
 
   const payload = {
@@ -129,17 +129,14 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
       },
       body: JSON.stringify(payload),
     });
-
     if (!res.ok) {
       console.error("Player search failed:", res.status, await res.text());
       return;
     }
 
     const json = await res.json();
-    // json.data is an array of objects like:
-    // { tag: "Bobakanoosh", player_id: "S12345", num_events: 175, … }
 
-    // Make sure our map is cleared before repopulating
+    // Clear again (just in case) before repopulating
     if (whichPlayer === "p1") {
       p1SearchResults = {};
     } else {
@@ -152,7 +149,7 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
       const pid = player.player_id;
       const count = player.num_events;
 
-      // Build a unique display string, e.g. "Bobakanoosh (175)"
+      // Build a unique display string, e.g. "Bobakanoosh (159)"
       const displayString = `${tag} (${count})`;
 
       // Store mapping from that exact displayString → player_id
@@ -162,7 +159,8 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
         p2SearchResults[displayString] = pid;
       }
 
-      // Create an <option> whose value is the display string
+      // Create an <option> whose value is the displayString
+      // (We do NOT set opt.label here—just opt.value)
       const opt = document.createElement("option");
       opt.value = displayString;
       listEl.appendChild(opt);
@@ -171,6 +169,7 @@ async function performPlayerSearch(searchTerm, whichPlayer) {
     console.error("Error in performPlayerSearch():", err);
   }
 }
+
 
 // ─────────────────────────────────────────────────────────
 // fetchH2HSets(p1Id, p2Id)
