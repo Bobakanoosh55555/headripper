@@ -70,50 +70,60 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // Form submission: look up exact displayString → player_id, then fetch H2H
+  // Revised form‐submit logic (complete replacement of the previous handler)
   document.getElementById("h2h-form").addEventListener("submit", (event) => {
     event.preventDefault();
-
+  
     const rawP1 = document.getElementById("p1-id").value.trim();
     const rawP2 = document.getElementById("p2-id").value.trim();
     if (!rawP1 || !rawP2) return;
-
-    // Try exact lookup first:
-    let p1Id = p1SearchResults[rawP1];
-    let p2Id = p2SearchResults[rawP2];
-
-    // If exact key not found, attempt to match "tag (" prefix:
+  
+    // Normalize: collapse multiple spaces to a single space
+    const normP1 = rawP1.replace(/\s+/g, " ");
+    const normP2 = rawP2.replace(/\s+/g, " ");
+  
+    // 1) Try exact match first
+    let p1Id = p1SearchResults[normP1];
+    let p2Id = p2SearchResults[normP2];
+  
+    // 2) If no exact match, attempt to match keys that start with the tag + " ("
     if (!p1Id) {
-      const fallbackKey = Object.keys(p1SearchResults).find(k =>
-        k.startsWith(rawP1 + " (")
-      );
-      if (fallbackKey) {
-        p1Id = p1SearchResults[fallbackKey];
+      const fallbackKeyP1 = Object.keys(p1SearchResults).find((key) => {
+        // Normalize key’s whitespace as well
+        const normKey = key.replace(/\s+/g, " ");
+        return normKey.startsWith(normP1 + " (");
+      });
+      if (fallbackKeyP1) {
+        p1Id = p1SearchResults[fallbackKeyP1];
       }
     }
     if (!p2Id) {
-      const fallbackKey = Object.keys(p2SearchResults).find(k =>
-        k.startsWith(rawP2 + " (")
-      );
-      if (fallbackKey) {
-        p2Id = p2SearchResults[fallbackKey];
+      const fallbackKeyP2 = Object.keys(p2SearchResults).find((key) => {
+        const normKey = key.replace(/\s+/g, " ");
+        return normKey.startsWith(normP2 + " (");
+      });
+      if (fallbackKeyP2) {
+        p2Id = p2SearchResults[fallbackKeyP2];
       }
     }
-
+  
+    // 3) If we still don’t have IDs, log all keys to help debug
     if (!p1Id || !p2Id) {
-      console.error(
-        "Could not resolve",
-        rawP1,
-        "or",
-        rawP2,
-        "to a player_id."
-      );
+      console.error("Could not resolve to player_id:");
+      if (!p1Id) {
+        console.error("• P1 raw input:", rawP1);
+        console.error("• Available P1 keys:", Object.keys(p1SearchResults));
+      }
+      if (!p2Id) {
+        console.error("• P2 raw input:", rawP2);
+        console.error("• Available P2 keys:", Object.keys(p2SearchResults));
+      }
       return;
     }
-
+  
     fetchH2HSets(p1Id, p2Id);
   });
 });
-
 
 // ─────────────────────────────────────────────────────────
 // performPlayerSearch(searchTerm, whichPlayer)
