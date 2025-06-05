@@ -10,19 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
   const playerCardsContainer = document.getElementById('playerCards');
   const endpoint = "https://internal.slippi.gg/graphql";
   const query = `
-    fragment profileFieldsV2 on NetplayProfileV2 {
+    fragment profileFields on NetplayProfile {
       id ratingOrdinal ratingUpdateCount wins losses dailyGlobalPlacement dailyRegionalPlacement continent 
       characters { character gameCount __typename } __typename 
     }
     fragment userProfilePage on User {
       fbUid displayName connectCode { code __typename } status activeSubscription { level hasGiftSub __typename }
-      rankedNetplayProfile { ...profileFieldsV2 __typename }
-      rankedNetplayProfileHistory { ...profileFieldsV2 season { id startedAt endedAt name status __typename } __typename }
+      rankedNetplayProfile { ...profileFields __typename }
+      rankedNetplayProfileHistory { ...profileFields season { id startedAt endedAt name status __typename } __typename }
       __typename 
     }
     query AccountManagementPageQuery($cc: String!, $uid: String!) {
       getUser(fbUid: $uid) { ...userProfilePage __typename }
-      getConnectCode(code: $cc) { user { ...userProfilePage __typename } __typename }
     }
   `;
   
