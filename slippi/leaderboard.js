@@ -114,45 +114,47 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     let fetchPromises = codes.map(code => {
-      const payload = {
-        operationName: "AccountManagementPageQuery",
-        query: query,
-        variables: { cc: code, uid: code }
-      };
-      
-      return fetch(endpoint, {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'apollographql-client-name': 'slippi-web'
-        },
-        body: JSON.stringify(payload)
-      })
-      .then(response => response.json())
-      .then(data => {
-        const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
-        if (user && user.rankedNetplayProfile && user.rankedNetplayProfile.ratingUpdateCount > 0) {
-          const topChars = (user.rankedNetplayProfile.characters || [])
-            .slice()
-            .sort((a, b) => Number(b.gameCount) - Number(a.gameCount))
-            .slice(0, 3);
-          return {
-            code: code,
-            displayName: user.displayName || code,
-            rating: user.rankedNetplayProfile.ratingOrdinal || 0,
-            wins: user.rankedNetplayProfile.wins || 0,
-            losses: user.rankedNetplayProfile.losses || 0,
-            topChars: topChars
-          };
-        } else {
-          return null;
-        }
-      })
-      .catch(err => {
-        console.error("Error fetching data for", code, err);
+    const payload = {
+      operationName: "AccountManagementPageQuery",
+      query: query,
+      variables: { cc: code, uid: code }
+    };
+    
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'apollographql-client-name': 'slippi-web',
+        'Origin': 'https://slippi.gg',
+        'Referer': 'https://slippi.gg/'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+      const user = data.data.getUser;
+      if (user && user.rankedNetplayProfile && user.rankedNetplayProfile.ratingUpdateCount > 0) {
+        const topChars = (user.rankedNetplayProfile.characters || [])
+          .slice()
+          .sort((a, b) => Number(b.gameCount) - Number(a.gameCount))
+          .slice(0, 3);
+        return {
+          code: user.connectCode.code,
+          displayName: user.displayName || user.connectCode.code,
+          rating: user.rankedNetplayProfile.ratingOrdinal || 0,
+          wins: user.rankedNetplayProfile.wins || 0,
+          losses: user.rankedNetplayProfile.losses || 0,
+          topChars: topChars
+        };
+      } else {
         return null;
-      });
+      }
+    })
+    .catch(err => {
+      console.error("Error fetching data for", code, err);
+      return null;
     });
+  });
     
     Promise.all(fetchPromises).then(results => {
       results = results.filter(result => result !== null);
