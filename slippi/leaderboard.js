@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const altView = document.getElementById('altView');
   const verticalBar = document.getElementById('verticalBar');
   const playerCardsContainer = document.getElementById('playerCards');
-  const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
-  
+  const endpoint = "https://internal.slippi.gg/graphql";
   const query = `
     fragment profileFieldsV2 on NetplayProfileV2 {
       id ratingOrdinal ratingUpdateCount wins losses dailyGlobalPlacement dailyRegionalPlacement continent 
@@ -124,7 +123,10 @@ document.addEventListener('DOMContentLoaded', function() {
       
       return fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'apollographql-client-name': 'slippi-web'
+        },
         body: JSON.stringify(payload)
       })
       .then(response => response.json())
