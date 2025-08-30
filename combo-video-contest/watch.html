@@ -248,7 +248,9 @@
                 width: '1280',
                 playerVars: {
                     listType: 'playlist',
-                    list: playlistId
+                    list: playlistId,
+                    enablejsapi: 1,
+                    origin: 'https://headripper.com' // scheme + host ONLY
                 },
                 events: {
                     onReady: onPlayerReady,
