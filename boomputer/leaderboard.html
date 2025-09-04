@@ -34,6 +34,12 @@
     <span class="tab" onclick="showTab('pbProgression')">PB Progression</span>
     <span class="tab" onclick="showTab('allRuns')">All Runs</span>
   </div>
+  <div class="global-toggle">
+    <label>
+      <input type="checkbox" id="toggleRemix" onchange="toggleRemixCharacters()">
+      Include Remix Characters
+    </label>
+  </div>
   <div id="leaderboard" class="tabContent active">
     <label><input type="checkbox" id="toggleObsolete" onchange="toggleObsolete()" /> Show Obsoleted Runs</label>
     <table>
@@ -78,6 +84,41 @@
     const playerColors = {};
     let showSinglePB = true, showSingleAll = true;
     let lastHue = Math.random();
+    // Characters that are **kept** when Remix is excluded (vanilla-only list)
+    const vanillaCharacters = new Set([
+      'Pika','Yoshi','Falcon','Kirby','Puff','Fox','Mario','Ness','DK','Luigi','Link','Samus'
+    ]);
+    // Global state for the new toggle (OFF by default)
+    let includeRemix = false;
+    // Helper: whether a run’s character is allowed under current toggle
+    function isAllowedCharacter(char) {
+      return includeRemix ? true : vanillaCharacters.has(char);
+    }
+    // Filtered view of runs based on the toggle
+    function getFilteredRuns() {
+      return runs.filter(r => isAllowedCharacter(r.character));
+    }
+    // Compute best run per player for a given list (used for obsolete shading)
+    function computeBestRuns(list) {
+      const map = {};
+      list.forEach(run => {
+        const score = parseInt(run.score, 10);
+        if (!map[run.player] || score > parseInt(map[run.player].score, 10)) {
+          map[run.player] = run;
+        }
+      });
+      return map;
+    }
+    // Toggle handler
+    function toggleRemixCharacters() {
+      includeRemix = document.getElementById('toggleRemix').checked;
+      // Re-render leaderboard
+      renderLeaderboard(runs);
+      // Update charts if already initialized
+      if (recordChartInitialized) updateRecordProgressionChart();
+      if (pbChartInitialized)     updatePBProgressionChart();
+      if (allRunsChartInitialized)updateAllRunsChart();
+    }
     function getDistinctColor() {
       const goldenRatioConjugate = 0.618033988749895;
       lastHue = (lastHue + goldenRatioConjugate) % 1;
@@ -100,21 +141,29 @@
       catch (error) { console.error("Error loading leaderboard data:", error); }
     }
     function processAndRenderData(runsData) {
-      bestRuns = {};
-      runsData.forEach(run => { run.score = run.score.toString().padStart(8, '0'); if (!bestRuns[run.player] || run.score > bestRuns[run.player].score) bestRuns[run.player] = run; });
+      // keep numeric comparisons stable by padding, like you already do
+      runsData.forEach(run => {
+        run.score = run.score.toString().padStart(8, '0');
+      });
+      // sort descending by numeric score
       runsData.sort((a, b) => parseInt(b.score, 10) - parseInt(a.score, 10));
       runs = runsData;
       renderLeaderboard(runs);
     }
-    function renderLeaderboard(runs) {
-      let rowsHtml = "";
+    function renderLeaderboard(allRuns) {
       const showObsolete = document.getElementById("toggleObsolete").checked;
-      runs.forEach(run => {
-        const isBestRun = bestRuns[run.player].score === run.score;
+      // Filter by character setting
+      const visibleRuns = getFilteredRuns();
+      // Best runs **within the filtered set**
+      const bestByPlayer = computeBestRuns(visibleRuns);
+      // Build rows **only** from filtered runs
+      let rowsHtml = "";
+      visibleRuns.forEach(run => {
+        const isBestRun = bestByPlayer[run.player] && bestByPlayer[run.player].score === run.score;
         const rowClass = !isBestRun ? 'gray' : '';
         const rowHidden = (!isBestRun && !showObsolete) ? 'hidden' : '';
-        const dateParts = run.timestamp.split("-");
-        const formattedDate = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[0].slice(2);
+        const [yyyy, mm, dd] = run.timestamp.split("-");
+        const formattedDate = `${mm}/${dd}/${yyyy.slice(2)}`;
         rowsHtml += `<tr class="${rowClass} ${rowHidden}"><td></td><td>${run.player}</td><td>${run.character}</td><td>${run.score}</td><td>${formattedDate}</td></tr>`;
       });
       document.getElementById("leaderboard-body").innerHTML = rowsHtml;
@@ -125,35 +174,58 @@
       document.querySelectorAll("#leaderboard-body tr").forEach(row => { if (!row.classList.contains('hidden')) row.cells[0].innerText = '#' + rank++; });
     }
     function updateRecordProgressionChart() {
-      const runsByDate = runs.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+      const filtered = getFilteredRuns().slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
       let recordProgression = [], currentRecord = 0;
-      runsByDate.forEach(run => { const score = parseInt(run.score, 10); if (score > currentRecord) { currentRecord = score; recordProgression.push(run); } });
-      const chartData = recordProgression.map(run => ({ x: new Date(run.timestamp), y: parseInt(run.score, 10), run: run }));
+      filtered.forEach(run => {
+        const score = parseInt(run.score, 10);
+        if (score > currentRecord) {
+          currentRecord = score;
+          recordProgression.push(run);
+        }
+      });
+      const chartData = recordProgression.map(run => ({
+        x: new Date(run.timestamp),
+        y: parseInt(run.score, 10),
+        run
+      }));
       if (!recordChart) {
         const ctx = document.getElementById('recordChart').getContext('2d');
         recordChart = new Chart(ctx, {
           type: 'line',
           data: { datasets: [{ label: 'Record Progression', data: chartData, fill: false, borderColor: 'blue', tension: 0, pointRadius: 5, pointHoverRadius: 7 }] },
           options: {
-            responsive: true,
-            maintainAspectRatio: true,
+            responsive: true, maintainAspectRatio: true,
             scales: {
               x: { type: 'time', time: { unit: 'year', displayFormats: { year: 'yyyy' }, tooltipFormat: 'MM/dd/yy' }, title: { display: true, text: 'Year', color: "#ffffff" }, ticks: { color: "#ffffff" } },
               y: { title: { display: true, text: 'Score', color: "#ffffff" }, ticks: { color: "#ffffff" } }
             },
-            plugins: { legend: { labels: { color: "#ffffff" } }, tooltip: { callbacks: { label: (context) => { const run = context.raw.run; return `${run.player} | ${run.character} | ${run.score}`; } } } }
+            plugins: { legend: { labels: { color: "#ffffff" } }, tooltip: { callbacks: { label: (ctx) => { const run = ctx.raw.run; return `${run.player} | ${run.character} | ${run.score}`; } } } }
           }
         });
-      } else { recordChart.data.datasets[0].data = chartData; recordChart.update(); }
+      } else {
+        recordChart.data.datasets[0].data = chartData;
+        recordChart.update();
+      }
     }
     function updatePBProgressionChart() {
+      const filtered = getFilteredRuns();
       const pbProgressions = {};
-      runs.forEach(run => { if (!pbProgressions[run.player]) pbProgressions[run.player] = []; pbProgressions[run.player].push(run); });
+      filtered.forEach(run => {
+        if (!pbProgressions[run.player]) pbProgressions[run.player] = [];
+        pbProgressions[run.player].push(run);
+      });
       const datasets = [];
       for (const player in pbProgressions) {
         const playerRuns = pbProgressions[player].slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-        const progression = []; let currentPB = 0;
-        playerRuns.forEach(run => { const score = parseInt(run.score, 10); if (score > currentPB) { currentPB = score; progression.push({ x: new Date(run.timestamp), y: score, run: run }); } });
+        const progression = [];
+        let currentPB = 0;
+        playerRuns.forEach(run => {
+          const score = parseInt(run.score, 10);
+          if (score > currentPB) {
+            currentPB = score;
+            progression.push({ x: new Date(run.timestamp), y: score, run });
+          }
+        });
         if (!(progression.length === 1 && !showSinglePB)) {
           if (!playerColors[player]) playerColors[player] = getDistinctColor();
           datasets.push({ label: player, data: progression, fill: false, borderColor: playerColors[player], tension: 0, pointRadius: 5, pointHoverRadius: 7 });
@@ -165,24 +237,30 @@
           type: 'line',
           data: { datasets },
           options: {
-            responsive: true,
-            maintainAspectRatio: true,
+            responsive: true, maintainAspectRatio: true,
             scales: {
               x: { type: 'time', time: { unit: 'year', displayFormats: { year: 'yyyy' }, tooltipFormat: 'MM/dd/yy' }, title: { display: true, text: 'Year', color: "#ffffff" }, ticks: { color: "#ffffff" } },
               y: { title: { display: true, text: 'Score', color: "#ffffff" }, ticks: { color: "#ffffff" } }
             },
-            plugins: { legend: { labels: { color: "#ffffff" } }, tooltip: { callbacks: { label: (context) => { const run = context.raw.run; return `${run.player} | ${run.character} | ${run.score}`; } } } }
+            plugins: { legend: { labels: { color: "#ffffff" } }, tooltip: { callbacks: { label: (ctx) => { const run = ctx.raw.run; return `${run.player} | ${run.character} | ${run.score}`; } } } }
           }
         });
-      } else { pbChart.data.datasets = datasets; pbChart.update(); }
+      } else {
+        pbChart.data.datasets = datasets;
+        pbChart.update();
+      }
     }
     function updateAllRunsChart() {
+      const filtered = getFilteredRuns();
       const allRunsByPlayer = {};
-      runs.forEach(run => { if (!allRunsByPlayer[run.player]) allRunsByPlayer[run.player] = []; allRunsByPlayer[run.player].push(run); });
+      filtered.forEach(run => {
+        if (!allRunsByPlayer[run.player]) allRunsByPlayer[run.player] = [];
+        allRunsByPlayer[run.player].push(run);
+      });
       const datasets = [];
       for (const player in allRunsByPlayer) {
         const playerRuns = allRunsByPlayer[player].slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-        const allData = playerRuns.map(run => ({ x: new Date(run.timestamp), y: parseInt(run.score, 10), run: run }));
+        const allData = playerRuns.map(run => ({ x: new Date(run.timestamp), y: parseInt(run.score, 10), run }));
         if (!(allData.length === 1 && !showSingleAll)) {
           if (!playerColors[player]) playerColors[player] = getDistinctColor();
           datasets.push({ label: player, data: allData, fill: false, borderColor: playerColors[player], tension: 0, pointRadius: 5, pointHoverRadius: 7 });
@@ -194,16 +272,18 @@
           type: 'line',
           data: { datasets },
           options: {
-            responsive: true,
-            maintainAspectRatio: true,
+            responsive: true, maintainAspectRatio: true,
             scales: {
               x: { type: 'time', time: { unit: 'year', displayFormats: { year: 'yyyy' }, tooltipFormat: 'MM/dd/yy' }, title: { display: true, text: 'Year', color: "#ffffff" }, ticks: { color: "#ffffff" } },
               y: { title: { display: true, text: 'Score', color: "#ffffff" }, ticks: { color: "#ffffff" } }
             },
-            plugins: { legend: { labels: { color: "#ffffff" } }, tooltip: { callbacks: { label: (context) => { const run = context.raw.run; return `${run.player} | ${run.character} | ${run.score}`; } } } }
+            plugins: { legend: { labels: { color: "#ffffff" } }, tooltip: { callbacks: { label: (ctx) => { const run = ctx.raw.run; return `${run.player} | ${run.character} | ${run.score}`; } } } }
           }
         });
-      } else { allRunsChart.data.datasets = datasets; allRunsChart.update(); }
+      } else {
+        allRunsChart.data.datasets = datasets;
+        allRunsChart.update();
+      }
     }
     function toggleSinglePointPB() { showSinglePB = document.getElementById("toggleSinglePB").checked; if (pbChartInitialized) updatePBProgressionChart(); }
     function toggleSinglePointAll() { showSingleAll = document.getElementById("toggleSingleAll").checked; if (allRunsChartInitialized) updateAllRunsChart(); }
