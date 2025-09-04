@@ -11,17 +11,42 @@ document.addEventListener('DOMContentLoaded', function() {
   const endpoint = "https://internal.slippi.gg/graphql";
   const query = `
     fragment profileFields on NetplayProfile {
-      id ratingOrdinal ratingUpdateCount wins losses dailyGlobalPlacement dailyRegionalPlacement continent 
-      characters { character gameCount __typename } __typename 
+      id
+      ratingOrdinal
+      ratingUpdateCount
+      wins
+      losses
+      dailyGlobalPlacement
+      dailyRegionalPlacement
+      continent
+      characters {
+        character
+        gameCount
+        __typename
+      }
+      __typename
     }
+  
     fragment userProfilePage on User {
-      fbUid displayName connectCode { code __typename } status activeSubscription { level hasGiftSub __typename }
+      fbUid
+      displayName
+      connectCode { code __typename }
+      status
+      activeSubscription { level hasGiftSub __typename }
       rankedNetplayProfile { ...profileFields __typename }
-      rankedNetplayProfileHistory { ...profileFields season { id startedAt endedAt name status __typename } __typename }
-      __typename 
+      rankedNetplayProfileHistory {
+        ...profileFields
+        season { id startedAt endedAt name status __typename }
+        __typename
+      }
+      __typename
     }
-    query AccountManagementPageQuery($uid: String!) {
-      getUser(fbUid: $uid) { ...userProfilePage __typename }
+  
+    query UserProfilePageQuery($cc: String, $uid: String) {
+      getUser(fbUid: $uid, connectCode: $cc) {
+        ...userProfilePage
+        __typename
+      }
     }
   `;
   
@@ -115,14 +140,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let fetchPromises = codes.map(code => {
       const payload = {
-        operationName: "AccountManagementPageQuery",
-        query: query,
-        variables: { uid: code }
+        operationName: "UserProfilePageQuery",
+        query,
+        variables: { cc: code, uid: code }
       };
-      
       return fetch(endpoint, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'apollographql-client-name': 'slippi-web',
           'Origin': 'https://slippi.gg',
@@ -130,49 +154,54 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         body: JSON.stringify(payload)
       })
-      .then(response => response.json())
-      .then(data => {
-        const user = data.data.getUser;
-        if (user && user.rankedNetplayProfile && user.rankedNetplayProfile.ratingUpdateCount > 0) {
-          const topChars = (user.rankedNetplayProfile.characters || [])
-            .slice()
-            .sort((a, b) => Number(b.gameCount) - Number(a.gameCount))
-            .slice(0, 3);
-          return {
-            code: user.connectCode.code,
-            displayName: user.displayName || user.connectCode.code,
-            rating: user.rankedNetplayProfile.ratingOrdinal || 0,
-            wins: user.rankedNetplayProfile.wins || 0,
-            losses: user.rankedNetplayProfile.losses || 0,
-            topChars: topChars
-          };
-        } else {
+      .then(res => {
+        if (!res.ok) {
+          console.error('HTTP error:', res.status, res.statusText);
           return null;
         }
+        return res.json();
+      })
+      .then(data => {
+        if (!data || data.errors) {
+          console.error('GraphQL error:', data && data.errors);
+          return null;
+        }
+        const user = data.data?.getUser;
+        if (!user || !user.rankedNetplayProfile || !(user.rankedNetplayProfile.ratingUpdateCount > 0)) {
+          return null;
+        }
+    
+        const topChars = (user.rankedNetplayProfile.characters || [])
+          .slice()
+          .sort((a, b) => Number(b.gameCount) - Number(a.gameCount))
+          .slice(0, 3);
+    
+        return {
+          code: user.connectCode.code,
+          displayName: user.displayName || user.connectCode.code,
+          rating: user.rankedNetplayProfile.ratingOrdinal || 0,
+          wins: user.rankedNetplayProfile.wins || 0,
+          losses: user.rankedNetplayProfile.losses || 0,
+          topChars
+        };
       })
       .catch(err => {
-        console.error("Error fetching data for", code, err);
+        console.error('Network/parse error for', code, err);
         return null;
       });
-    });
+    }); // <-- close the .map here
     
     Promise.all(fetchPromises).then(results => {
       results = results.filter(result => result !== null);
-      // If there are no new valid entries and nothing in our current leaderboard, show a message.
       if (results.length === 0 && playersData.length === 0) {
         leaderboardResults.innerHTML = 'No valid ranked users found.';
         return;
       }
-      
-      // Append new results to the existing playersData.
       playersData = playersData.concat(results);
-      // Sort the leaderboard by rating in descending order.
       playersData.sort((a, b) => b.rating - a.rating);
-      
       updateDisplay();
     });
   }
-  
   // Helper function to update the leaderboard display.
   function updateDisplay() {
     let tableHTML = '<table style="width:100%; border-collapse: collapse;">';
@@ -210,6 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function showAlternateView(players) {
     playerCardsContainer.innerHTML = "";
+    altView.querySelectorAll('.connector').forEach(el => el.remove());    
     const minRating = 700, maxRating = 3000;
     const viewHeight = altView.offsetHeight;  // expected 8000px
     const verticalOffset = 130;  // shift all cards/lines down by this offset
@@ -318,14 +348,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // New Reset button functionality.
   if (resetButton) {
     resetButton.addEventListener('click', function() {
-      // Clear stored data and UI elements.
       playersData = [];
       leaderboardResults.innerHTML = '';
-      altView.innerHTML = '';
       playerCardsContainer.innerHTML = '';
+      altView.querySelectorAll('.connector').forEach(el => el.remove());
     });
   }
 });
