@@ -28,27 +28,44 @@ const characterColors = {
   "zelda": "thistle"
 };
 
-// GraphQL endpoint and base payload
-const endpoint = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql";
-const payload = {
-  operationName: "AccountManagementPageQuery",
-  query: `
-    fragment profileFieldsV2 on NetplayProfileV2 {
-      id ratingOrdinal ratingUpdateCount wins losses dailyGlobalPlacement dailyRegionalPlacement continent 
-      characters { character gameCount __typename } __typename 
+// GraphQL endpoint and base query
+const endpoint = "https://internal.slippi.gg/graphql";
+const query = `
+  fragment profileFields on NetplayProfile {
+    id
+    ratingOrdinal
+    ratingUpdateCount
+    wins
+    losses
+    dailyGlobalPlacement
+    dailyRegionalPlacement
+    continent
+    characters { character gameCount __typename }
+    __typename
+  }
+
+  fragment userProfilePage on User {
+    fbUid
+    displayName
+    connectCode { code __typename }
+    status
+    activeSubscription { level hasGiftSub __typename }
+    rankedNetplayProfile { ...profileFields __typename }
+    rankedNetplayProfileHistory {
+      ...profileFields
+      season { id startedAt endedAt name status __typename }
+      __typename
     }
-    fragment userProfilePage on User {
-      fbUid displayName connectCode { code __typename } status activeSubscription { level hasGiftSub __typename }
-      rankedNetplayProfile { ...profileFieldsV2 __typename }
-      rankedNetplayProfileHistory { ...profileFieldsV2 season { id startedAt endedAt name status __typename } __typename }
-      __typename 
+    __typename
+  }
+
+  query UserProfilePageQuery($cc: String, $uid: String) {
+    getUser(fbUid: $uid, connectCode: $cc) {
+      ...userProfilePage
+      __typename
     }
-    query AccountManagementPageQuery($cc: String!, $uid: String!) {
-      getUser(fbUid: $uid) { ...userProfilePage __typename }
-      getConnectCode(code: $cc) { user { ...userProfilePage __typename } __typename }
-    }`,
-  variables: { cc: "DMAR#554", uid: "DMAR#554" }
-};
+  }
+`;
 
 // Helper to convert any string to title case, handling spaces and underscores.
 function titleCase(str) {
@@ -140,19 +157,12 @@ function renderUserProfile(user) {
     return;
   }
   
-  // Subscription Status formatting change:
-  // - If activeSubscription.level is "NONE", display "INACTIVE".
-  // - Otherwise, display "ACTIVE - TIER 1/2/3" and append "(Gifted)" if applicable.
-  let subscriptionStatus = '';
-  if (user.activeSubscription.level === 'NONE') {
-    subscriptionStatus = 'INACTIVE';
-  } else {
-    subscriptionStatus = `${titleCase(user.status)} - ${titleCase(user.activeSubscription.level).replace(/(Tier)(\d+)/i, '$1 $2')}`;
-  }
-  if (user.activeSubscription.hasGiftSub) {
-    subscriptionStatus += ' (Gifted)';
-  }
-  
+  const sub = user.activeSubscription || { level: 'NONE', hasGiftSub: false };
+  let subscriptionStatus = (sub.level === 'NONE')
+    ? 'INACTIVE'
+    : `${titleCase(user.status)} - ${titleCase(sub.level).replace(/(Tier)(\d+)/i, '$1 $2')}`;
+  if (sub.hasGiftSub) subscriptionStatus += ' (Gifted)';
+
   const userHeader = document.createElement('div');
   userHeader.innerHTML = `
     <h1>${user.displayName}</h1>
@@ -255,24 +265,39 @@ function renderUserProfile(user) {
 }
 
 function fetchProfile(userCode) {
-  const dynamicPayload = {
-    ...payload,
+  const payload = {
+    operationName: "UserProfilePageQuery",
+    query,
     variables: { cc: userCode, uid: userCode }
   };
-  
+
   fetch(endpoint, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(dynamicPayload)
+    headers: {
+      'Content-Type': 'application/json',
+      'apollographql-client-name': 'slippi-web'
+      // Browsers set Origin/Referer automatically; no need to add them.
+    },
+    body: JSON.stringify(payload)
   })
-    .then(response => response.json())
-    .then(data => {
-      const user = data.data.getUser || (data.data.getConnectCode && data.data.getConnectCode.user);
-      renderUserProfile(user);
-    })
-    .catch(error => {
-      document.getElementById('profile').textContent = 'Error: ' + error;
-    });
+  .then(res => {
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status} ${res.statusText}`);
+    }
+    return res.json();
+  })
+  .then(data => {
+    if (!data || data.errors) {
+      console.error('GraphQL error:', data?.errors);
+      throw new Error('GraphQL error');
+    }
+    const user = data.data?.getUser || null;
+    renderUserProfile(user);
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById('profile').textContent = 'Error loading profile.';
+  });
 }
 
 document.getElementById('userForm').addEventListener('submit', function(e) {
