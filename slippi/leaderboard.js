@@ -109,7 +109,16 @@ document.addEventListener('DOMContentLoaded', function() {
   function normalizeKey(name) {
     return name.toLowerCase().replace(/[_\s]+/g, "-");
   }
-  
+
+    // Case-insensitive connect-code handling
+  function looksLikeConnectCode(s) {
+    return /^[A-Za-z0-9]+#\d{1,4}$/.test((s || '').trim());
+  }
+  function normCodeForQuery(s) {
+    const t = (s || '').trim();
+    return looksLikeConnectCode(t) ? t.toUpperCase() : t; // only uppercase real connect codes
+  }
+
   function renderCharacterIcons(chars) {
     let html = "";
     chars.forEach(ch => {
@@ -128,9 +137,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     leaderboardResults.innerHTML = 'Loading leaderboard...';
-    
-    // Filter out any codes that are already present.
-    codes = codes.filter(code => !playersData.some(p => p.code === code));
+    // Filter out any codes that are already present (case-insensitive on connect codes)
+    const have = new Set(playersData.map(p => (p.code || '').toUpperCase()));
+    codes = codes.filter(c => !have.has(normCodeForQuery(c)));
     
     // If none are new, just rebuild the display.
     if (codes.length === 0) {
@@ -324,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     let codesInput = document.getElementById('codesInput').value;
     let codes = codesInput.split(',')
-      .map(code => code.trim())
+      .map(normCodeForQuery) // 👈 normalize here
       .filter(code => code !== '');
     processLeaderboardCodes(codes);
   });
@@ -337,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.text())
         .then(text => {
           let codes = text.split(/[\r\n,]+/)
-            .map(code => code.trim())
+            .map(normCodeForQuery) // 👈 normalize here
             .filter(code => code !== '');
           processLeaderboardCodes(codes);
         })
