@@ -84,6 +84,15 @@ function normalizeKey(name) {
   return typeof name === 'string' ? name.toLowerCase().replace(/[_\s]+/g, "-").trim() : name;
 }
 
+// Case-insensitive connect-code handling
+function looksLikeConnectCode(s) {
+  return /^[A-Za-z0-9]+#\d{1,4}$/.test((s || '').trim());
+}
+function normCodeForQuery(s) {
+  const t = (s || '').trim();
+  return looksLikeConnectCode(t) ? t.toUpperCase() : t; // only uppercase real connect codes
+}
+
 // Converts a normalized key into title case with spaces.
 function titleCaseFromKey(key) {
   return key.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
@@ -308,8 +317,10 @@ function fetchProfile(userCode) {
 
 document.getElementById('userForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  const userCode = document.getElementById('userCode').value.trim();
+  const raw = document.getElementById('userCode').value;
+  const userCode = normCodeForQuery(raw);
   if (userCode) {
     fetchProfile(userCode);
   }
 });
+
