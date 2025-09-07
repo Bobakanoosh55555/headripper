@@ -191,8 +191,8 @@ function renderUserProfile(user) {
   if (user.rankedNetplayProfileHistory && user.rankedNetplayProfileHistory.length > 0) {
     const tabsHTML = `
       <div class="tabs">
-        <button class="tab-button active" data-target="aggregateData">Aggregate Data</button>
-        <button class="tab-button" data-target="previousSeason">Previous Season</button>
+        <button type="button" class="tab-button active" data-target="aggregateData">Aggregate Data</button>
+        <button type="button" class="tab-button" data-target="previousSeason">Previous Season</button>
       </div>
       <div id="aggregateData" class="tab-content active">
         <div class="chart-container"><canvas id="aggregate-chart"></canvas></div>
@@ -252,13 +252,19 @@ function renderUserProfile(user) {
       createCharacterBarChart("aggregate-chart", aggregateArray);
     }
     
-    document.querySelectorAll('.tab-button').forEach(button => {
-      button.addEventListener('click', function() {
-        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    // Scope the tab toggle to the current profile render (prevents form submits / cross-page interference)
+    const tabsRoot = profileContainer;
+    tabsRoot.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault(); // extra guard if inside a <form>
+    
+        tabsRoot.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        tabsRoot.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    
         this.classList.add('active');
         const target = this.getAttribute('data-target');
-        document.getElementById(target).classList.add('active');
+        const panel = tabsRoot.querySelector(`#${CSS.escape(target)}`);
+        if (panel) panel.classList.add('active');
       });
     });
   }
