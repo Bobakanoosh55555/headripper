@@ -105,6 +105,35 @@ p {
 .preset-buttons {
   margin-bottom: 20px;
 }
+/* --- Inner Tabs (Aggregate vs Previous Season) --- */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.tabs .tab-button {
+  padding: 6px 12px;
+  background-color: #555;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.tabs .tab-button.active {
+  background-color: #121212; /* match card bg */
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
 
 /* --- Alternate Graphical Leaderboard View Styles --- */
 
