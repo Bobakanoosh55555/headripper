@@ -185,13 +185,17 @@ document.addEventListener('DOMContentLoaded', function() {
           .sort((a, b) => Number(b.gameCount) - Number(a.gameCount))
           .slice(0, 3);
     
+        const sub = user.activeSubscription || { level: 'NONE', hasGiftSub: false };
         return {
           code: user.connectCode.code,
           displayName: user.displayName || user.connectCode.code,
           rating: user.rankedNetplayProfile.ratingOrdinal || 0,
           wins: user.rankedNetplayProfile.wins || 0,
           losses: user.rankedNetplayProfile.losses || 0,
-          topChars
+          topChars,
+          // NEW: subscription fields for the Paid? column
+          subLevel: sub.level || 'NONE',
+          hasGift: !!sub.hasGiftSub
         };
       })
       .catch(err => {
@@ -220,10 +224,25 @@ document.addEventListener('DOMContentLoaded', function() {
       + '<th style="padding: 8px;">Display Name</th>'
       + '<th style="padding: 8px;">Rating</th>'
       + '<th style="padding: 8px;">W/L</th>'
+      + '<th style="padding: 8px;">Paid?</th>'   // NEW
       + '</tr>';
-    
+
     playersData.forEach((result, index) => {
       const rank = getRank(result.rating);
+    
+      // NEW: compute the Paid? cell HTML here
+      const paidCellHTML = (() => {
+        if (result.hasGift) {
+          return '<span title="Gifted subscription">🎁</span>';
+        }
+        const tierMap = { TIER1: 1, TIER2: 2, TIER3: 3 };
+        const n = tierMap[result.subLevel] || 0;
+        if (n > 0) {
+          return `<span title="Tier ${n} (Paid)">${'💵'.repeat(n)}</span>`;
+        }
+        return '<span title="No active subscription">❌</span>';
+      })();
+    
       tableHTML += `<tr style="border-bottom: 1px solid #555; color: ${rank.color};">
                       <td style="padding: 8px;">${index + 1}</td>
                       <td style="padding: 8px;">${result.code}</td>
@@ -234,8 +253,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span style="color: #fff;">/</span>
                         <span style="color: #FF073A;">${result.losses}</span>
                       </td>
+                      <td style="padding: 8px; text-align: center;">${paidCellHTML}</td>
                     </tr>`;
     });
+
     tableHTML += '</table>';
     
     leaderboardResults.innerHTML = tableHTML;
