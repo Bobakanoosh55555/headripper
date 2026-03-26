@@ -78,33 +78,49 @@
     border-left: 1px solid var(--border);
     padding-left: 2rem;
   }
-  .mode-toggle {
-    margin-left: auto;
-    display: flex;
+  /* Tooltip */
+  .tooltip-wrap {
+    position: relative;
+    display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.35rem;
   }
-  .mode-toggle-label {
-    font-size: 11px;
+  .tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid var(--muted2);
     color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-  .mode-toggle select {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
     font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    padding: 0.3rem 0.6rem;
-    outline: none;
-    cursor: pointer;
-    transition: border-color 0.15s;
+    cursor: default;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: border-color 0.15s, color 0.15s;
   }
-  .mode-toggle select:focus { border-color: var(--red); }
+  .tooltip-wrap:hover .tooltip-icon { border-color: var(--muted); color: var(--text); }
+  .tooltip-box {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--red);
+    padding: 0.75rem 1rem;
+    width: 280px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+    z-index: 50;
+    pointer-events: none;
+  }
+  .tooltip-box strong { color: var(--text); display: block; margin-bottom: 0.2rem; }
+  .tooltip-box .tooltip-divider { border: none; border-top: 1px solid var(--border); margin: 0.6rem 0; }
+  .tooltip-wrap:hover .tooltip-box { display: block; }
 
   /* ── Nav tabs ── */
   nav {
@@ -714,13 +730,6 @@
       SMASH <span>64</span> 2026
     </div>
     <div class="header-meta" id="header-meta">Loading...</div>
-    <div class="mode-toggle">
-      <span class="mode-toggle-label">Ratings mode:</span>
-      <select id="ratings-mode" onchange="switchRatingsMode()">
-        <option value="retroactive" selected>Retroactive</option>
-        <option value="sequential">Sequential</option>
-      </select>
-    </div>
   </div>
 </header>
 
@@ -758,6 +767,21 @@
         <option value="winrate">Win Rate</option>
         <option value="sets">Sets Played</option>
       </select>
+      <span class="filter-label">Mode:</span>
+      <div class="tooltip-wrap">
+        <select class="filter-select" id="ratings-mode" onchange="switchRatingsMode()">
+          <option value="retroactive" selected>Retroactive</option>
+          <option value="sequential">Sequential</option>
+        </select>
+        <span class="tooltip-icon">?</span>
+        <div class="tooltip-box">
+          <strong>Retroactive</strong>
+          Reprocesses all prior tournaments each time new data arrives, using full-season context to set seed ratings. Early wins against players who later prove strong are valued accordingly. Recommended for end-of-season reference.
+          <hr class="tooltip-divider">
+          <strong>Sequential</strong>
+          Processes tournaments in order, using only information available at the time. Each tournament's ratings are final once committed. More conservative — a win is only worth what the opponent was rated at that moment.
+        </div>
+      </div>
     </div>
 
     <table class="data-table" id="players-table">
