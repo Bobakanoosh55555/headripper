@@ -196,20 +196,28 @@ def run_tournament(playable, prior_states, dq_losses=None):
         if max_delta < CONVERGE_DELTA:
             break
 
-    # Apply DQ losses: each DQ'd player takes a synthetic loss against a
-    # neutral 1500-rated opponent. Penalises the DQ without rewarding anyone.
+    # Apply DQ losses: each DQ'd player takes a half-penalty loss against
+    # their actual opponent's converged rating. A score of 0.25 (halfway
+    # between 0=full loss and 0.5=draw) gives half the normal Glicko-2
+    # penalty. Using the real opponent means losing to a strong player
+    # hurts less than losing to a weak one, as expected.
     if dq_losses:
         mu0_g2, phi0_g2 = to_g2(MU_0, PHI_0)
-        for tag in dq_losses:
+        for tag, opp_tag in dq_losses:
             cur = states.get(tag)
             if cur is None:
-                prior_mu = get_prior(tag)[0]
-                cur = [prior_mu, phi0_g2, SIGMA_0]
+                cur = [get_prior(tag)[0], phi0_g2, SIGMA_0]
+            # Use opponent's converged rating if available, else their prior
+            if opp_tag in states:
+                opp_mu  = states[opp_tag][0]
+                opp_phi = frozen_phi.get(opp_tag, states[opp_tag][1])
+            else:
+                opp_mu, opp_phi = get_prior(opp_tag)[:2]
             nm, np, ns = glicko2_update(
                 get_prior(tag)[0],
                 frozen_phi.get(tag, cur[1]),
                 SIGMA_0,
-                [(mu0_g2, phi0_g2, 0.0)]   # loss vs neutral 1500
+                [(opp_mu, opp_phi, 0.25)]  # half-penalty vs actual opponent
             )
             states[tag] = [nm, frozen_phi.get(tag, cur[1]), SIGMA_0]
 
@@ -342,10 +350,12 @@ def main():
                 if is_dq(s):
                     # DQ only affects Glicko-2 (via dq_losses), not the
                     # displayed record/win rate — those reflect real sets only.
+                    # Store (dq'd player, opponent) so penalty reflects
+                    # opponent strength — losing to a strong player hurts less.
                     if s.get('score_b') == 'DQ':
-                        dq_losses.append(tag_b)
+                        dq_losses.append((tag_b, tag_a))
                     elif s.get('score_a') == 'DQ':
-                        dq_losses.append(tag_a)
+                        dq_losses.append((tag_a, tag_b))
                 continue
             playable.append((tag_a, tag_b, outcome[0], outcome[1]))
             players_with_real_sets.add(tag_a)
