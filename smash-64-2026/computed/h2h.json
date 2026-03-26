@@ -141,6 +141,706 @@
   },
   {
     "players": [
+      "22K",
+      "Baninawi"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "22K",
+      "Don M89"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "22K",
+      "KillaHertz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "22K",
+      "Lalo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "22K",
+      "Sicc1"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "22K",
+      "maxx"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "22K",
+      "pkdownkicks"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "22K",
+      "zgamer2000"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "2hp",
+      "Fry"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "2hp",
+      "LouieG"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "2hp",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "2hp",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "2hp",
+      "eddyspageddy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "2hp",
+      "g3"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "2hp",
+      "まっすん"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "Bendy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "Cagt"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "Darumi Packgod"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "Double A Battery"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "Falpan"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "Kung Fu Kenny"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "Lalo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "Menost"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "Moustasher"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "ToT"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "kysk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&amp;B",
+      "samsonites"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AKARed",
+      "Cool Lime"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AKARed",
+      "Hunter"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AKARed",
+      "Malfunky"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AKARed",
+      "Monkey"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AKARed",
+      "XIF"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AKARed",
+      "jaycoby"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "ALVIN",
       "Antonio"
     ],
@@ -2201,6 +2901,286 @@
   },
   {
     "players": [
+      "Baninawi",
+      "Don M89"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Baninawi",
+      "KillaHertz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Baninawi",
+      "Lalo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Baninawi",
+      "Sicc1"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Baninawi",
+      "maxx"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Baninawi",
+      "pkdownkicks"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Baninawi",
+      "zgamer2000"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bendy",
+      "Cagt"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bendy",
+      "Darumi Packgod"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bendy",
+      "Double A Battery"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bendy",
+      "Kung Fu Kenny"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bendy",
+      "Menost"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bendy",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bendy",
+      "samsonites"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Bimbo",
       "Fancy"
     ],
@@ -2862,6 +3842,86 @@
   {
     "players": [
       "Cagt",
+      "Cool Lime"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "Darumi Packgod"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "Double A Battery"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "Dr. Grin"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "GgX"
     ],
     "wins": [
@@ -2902,6 +3962,46 @@
   {
     "players": [
       "Cagt",
+      "Josh Brody"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "Kung Fu Kenny"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "LoCoSm4sH"
     ],
     "wins": [
@@ -2914,6 +4014,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "LouieG"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -2942,6 +4062,66 @@
   {
     "players": [
       "Cagt",
+      "Menost"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "Paco"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "ReefyBeefy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "SHREDGAR"
     ],
     "wins": [
@@ -2954,6 +4134,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "Sicc1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -3042,6 +4242,26 @@
   {
     "players": [
       "Cagt",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "elel"
     ],
     "wins": [
@@ -3071,6 +4291,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "samsonites"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -3242,6 +4482,26 @@
   {
     "players": [
       "Cool Lime",
+      "Dr. Grin"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "Dr. Sauce"
     ],
     "wins": [
@@ -3382,6 +4642,26 @@
   {
     "players": [
       "Cool Lime",
+      "Hooded"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "Htom"
     ],
     "wins": [
@@ -3391,6 +4671,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Hunter"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -3482,6 +4782,46 @@
   {
     "players": [
       "Cool Lime",
+      "Josh Brody"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "LouieG"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "Louwiz"
     ],
     "wins": [
@@ -3522,6 +4862,26 @@
   {
     "players": [
       "Cool Lime",
+      "Malfunky"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "Maniac379"
     ],
     "wins": [
@@ -3531,6 +4891,46 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Monkey"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Natty"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           0,
           1
@@ -3562,6 +4962,26 @@
   {
     "players": [
       "Cool Lime",
+      "Paco"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "Rafael"
     ],
     "wins": [
@@ -3571,6 +4991,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "ReefyBeefy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -3642,6 +5082,26 @@
   {
     "players": [
       "Cool Lime",
+      "Sicc1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "Soldado"
     ],
     "wins": [
@@ -3682,6 +5142,26 @@
   {
     "players": [
       "Cool Lime",
+      "XIF"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "Xengar"
     ],
     "wins": [
@@ -3691,6 +5171,46 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "derstuk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "jaycoby"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -3994,6 +5514,286 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "Hooded"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "Hunter"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "James Jr"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "KillaHertz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "Paco"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "Queso"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "ReefyBeefy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "YJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "derstuk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darumi Packgod",
+      "Double A Battery"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darumi Packgod",
+      "Kung Fu Kenny"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darumi Packgod",
+      "Menost"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darumi Packgod",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darumi Packgod",
+      "samsonites"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -4401,6 +6201,346 @@
   },
   {
     "players": [
+      "Don M89",
+      "Huntsman"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "Isai"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "KillaHertz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "Lalo"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "Monkey"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "NJ"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "Natty"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "Sicc1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "XIF"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "maxx"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "pkdownkicks"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "zgamer2000"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Don M89",
+      "まっすん"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Double A Battery",
+      "Kung Fu Kenny"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Double A Battery",
+      "Menost"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Double A Battery",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Double A Battery",
+      "samsonites"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "DoubleJ",
       "Duff man"
     ],
@@ -4491,6 +6631,266 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "Falpan"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "James Jr"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "Josh Brody"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "LouieG"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "Moustasher"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "Paco"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "Quhzk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "ReefyBeefy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "Sicc1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "StarWing"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "Yaruzu"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "iGreatFox"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Grin",
+      "roadbeef"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -5271,6 +7671,226 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "James Jr"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "Lalo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "Moustasher"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "Quhzk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "StarWing"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "ToT"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "Yaruzu"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "iGreatFox"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "kysk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Falpan",
+      "roadbeef"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -6021,6 +8641,126 @@
   },
   {
     "players": [
+      "Fry",
+      "LouieG"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fry",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fry",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fry",
+      "eddyspageddy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fry",
+      "g3"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fry",
+      "まっすん"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Gerson",
       "Isai"
     ],
@@ -6541,6 +9281,206 @@
   },
   {
     "players": [
+      "Hooded",
+      "Hunter"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "James Jr"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "Josh Brody"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "KillaHertz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "Paco"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "Queso"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "ToT"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "YJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "blondie"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "derstuk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Htom",
       "Looshes"
     ],
@@ -6781,6 +9721,346 @@
   },
   {
     "players": [
+      "Hunter",
+      "James Jr"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "KillaHertz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "Malfunky"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "Monkey"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "XIF"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "YJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "jaycoby"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Huntsman",
+      "Isai"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Huntsman",
+      "Monkey"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Huntsman",
+      "NJ"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Huntsman",
+      "Natty"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Huntsman",
+      "XIF"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Huntsman",
+      "YJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Huntsman",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Huntsman",
+      "まっすん"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
       "Isai",
       "JeyKeyAr"
     ],
@@ -6805,10 +10085,10 @@
       "Josh Brody"
     ],
     "wins": [
-      1,
+      3,
       0
     ],
-    "sets": 1,
+    "sets": 3,
     "by_tournament": {
       "inkafest-3": {
         "wins": [
@@ -6816,6 +10096,13 @@
           0
         ],
         "sets": 1
+      },
+      "genesis-x3": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
       }
     }
   },
@@ -6862,6 +10149,86 @@
   {
     "players": [
       "Isai",
+      "Monkey"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Isai",
+      "Moustasher"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Isai",
+      "NJ"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Isai",
+      "Natty"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Isai",
       "Nax"
     ],
     "wins": [
@@ -6902,6 +10269,26 @@
   {
     "players": [
       "Isai",
+      "Paco"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Isai",
       "Soldado"
     ],
     "wins": [
@@ -6931,6 +10318,46 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Isai",
+      "XIF"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Isai",
+      "まっすん"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -7151,6 +10578,206 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "KillaHertz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "Moustasher"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "Quhzk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "StarWing"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "YJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "Yaruzu"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "iGreatFox"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "James Jr",
+      "roadbeef"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -7482,6 +11109,26 @@
   {
     "players": [
       "Josh Brody",
+      "LouieG"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
       "Masayuki"
     ],
     "wins": [
@@ -7491,6 +11138,46 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
+      "Paco"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
+      "ReefyBeefy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -7531,6 +11218,26 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
+      "Sicc1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -7629,6 +11336,26 @@
   {
     "players": [
       "Josh Brody",
+      "derstuk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
       "dmolz"
     ],
     "wins": [
@@ -7663,6 +11390,26 @@
           1
         ],
         "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
+      "kysk"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
       }
     }
   },
@@ -7768,6 +11515,226 @@
   },
   {
     "players": [
+      "KillaHertz",
+      "Lalo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KillaHertz",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KillaHertz",
+      "Sicc1"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KillaHertz",
+      "YJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KillaHertz",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KillaHertz",
+      "maxx"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KillaHertz",
+      "pkdownkicks"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KillaHertz",
+      "zgamer2000"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Kung Fu Kenny",
+      "Menost"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Kung Fu Kenny",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Kung Fu Kenny",
+      "samsonites"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Kurabba",
       "LoCoSm4sH"
     ],
@@ -7858,6 +11825,186 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "Moustasher"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "Sicc1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "ToT"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "kysk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "maxx"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "pkdownkicks"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "samsonites"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "zgamer2000"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -8428,6 +12575,166 @@
   },
   {
     "players": [
+      "LouieG",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "LouieG",
+      "Paco"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "LouieG",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "LouieG",
+      "ReefyBeefy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "LouieG",
+      "Sicc1"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "LouieG",
+      "eddyspageddy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "LouieG",
+      "g3"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "LouieG",
+      "まっすん"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Louwiz",
       "POCHITO"
     ],
@@ -8948,6 +13255,66 @@
   },
   {
     "players": [
+      "Malfunky",
+      "Monkey"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Malfunky",
+      "XIF"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Malfunky",
+      "jaycoby"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Maniac379",
       "Masayuki"
     ],
@@ -9248,6 +13615,46 @@
   },
   {
     "players": [
+      "Menost",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Menost",
+      "samsonites"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Mijo!",
       "Moonshoes"
     ],
@@ -9288,6 +13695,106 @@
   },
   {
     "players": [
+      "Monkey",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Monkey",
+      "Natty"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Monkey",
+      "XIF"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Monkey",
+      "jaycoby"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Monkey",
+      "まっすん"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Moonshoes",
       "cobr"
     ],
@@ -9303,6 +13810,326 @@
           1
         ],
         "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moustasher",
+      "Quhzk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moustasher",
+      "StarWing"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moustasher",
+      "ToT"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Moustasher",
+      "Yaruzu"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moustasher",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moustasher",
+      "iGreatFox"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moustasher",
+      "kysk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moustasher",
+      "roadbeef"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moustasher",
+      "samsonites"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "Natty"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "Queso"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "XIF"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "dubbies"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "eddyspageddy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "g3"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "まっすん"
+    ],
+    "wins": [
+      1,
+      1
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
       }
     }
   },
@@ -9418,6 +14245,86 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Natty",
+      "ToT"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Natty",
+      "XIF"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Natty",
+      "YJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Natty",
+      "まっすん"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -9668,6 +14575,86 @@
   },
   {
     "players": [
+      "Paco",
+      "ReefyBeefy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Paco",
+      "Sicc1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Paco",
+      "YJ"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Paco",
+      "kysk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Pokehero",
       "Robert"
     ],
@@ -9769,6 +14756,26 @@
   {
     "players": [
       "Queso",
+      "YJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Queso",
       "Z-Rex"
     ],
     "wins": [
@@ -9809,6 +14816,66 @@
   {
     "players": [
       "Queso",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Queso",
+      "eddyspageddy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Queso",
+      "g3"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Queso",
       "typo"
     ],
     "wins": [
@@ -9818,6 +14885,106 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Queso",
+      "まっすん"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Quhzk",
+      "StarWing"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Quhzk",
+      "Yaruzu"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Quhzk",
+      "iGreatFox"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Quhzk",
+      "roadbeef"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -9981,6 +15148,66 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "ReefyBeefy",
+      "Sicc1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "ReefyBeefy",
+      "YJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "ReefyBeefy",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -10208,6 +15435,66 @@
   },
   {
     "players": [
+      "Sicc1",
+      "maxx"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Sicc1",
+      "pkdownkicks"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Sicc1",
+      "zgamer2000"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Smurf",
       "fedef"
     ],
@@ -10238,6 +15525,66 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "StarWing",
+      "Yaruzu"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "StarWing",
+      "iGreatFox"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "StarWing",
+      "roadbeef"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           0,
           1
@@ -10398,6 +15745,66 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "ToT",
+      "blondie"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "ToT",
+      "kysk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "ToT",
+      "samsonites"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -10668,6 +16075,126 @@
   },
   {
     "players": [
+      "XIF",
+      "jaycoby"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "XIF",
+      "まっすん"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "YJ",
+      "derstuk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "YJ",
+      "kysk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Yaruzu",
+      "iGreatFox"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Yaruzu",
+      "roadbeef"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Z-Rex",
       "typo"
     ],
@@ -10678,6 +16205,46 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "blondie",
+      "kysk"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "blondie",
+      "samsonites"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -10788,6 +16355,86 @@
   },
   {
     "players": [
+      "derstuk",
+      "samsonites"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "dubbies",
+      "まっすん"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "eddyspageddy",
+      "g3"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "eddyspageddy",
+      "まっすん"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "elel",
       "neat"
     ],
@@ -10798,6 +16445,46 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "g3",
+      "まっすん"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "iGreatFox",
+      "roadbeef"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           1,
           0
@@ -10838,6 +16525,106 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "kysk",
+      "samsonites"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "kysk",
+      "まっすん"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "maxx",
+      "pkdownkicks"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "maxx",
+      "zgamer2000"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "pkdownkicks",
+      "zgamer2000"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "genesis-x3": {
         "wins": [
           0,
           1
