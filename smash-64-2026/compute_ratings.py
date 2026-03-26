@@ -217,7 +217,7 @@ def run_tournament(playable, prior_states, dq_losses=None):
                 get_prior(tag)[0],
                 frozen_phi.get(tag, cur[1]),
                 SIGMA_0,
-                [(opp_mu, opp_phi, 0.125)]  # quarter-penalty vs actual opponent
+                [(opp_mu, opp_phi, 0.0)]  # quarter-penalty vs actual opponent
             )
             states[tag] = [nm, frozen_phi.get(tag, cur[1]), SIGMA_0]
 
