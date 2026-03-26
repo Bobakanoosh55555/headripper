@@ -1,0 +1,2858 @@
+[
+  {
+    "round": "Winners Round 1",
+    "player_a": "Nax",
+    "player_b": "CTG",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 1",
+    "player_a": "Robert",
+    "player_b": "The Drink",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 1",
+    "player_a": "Dogs_Johnson",
+    "player_b": "Cool Lime",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 1",
+    "player_a": "Josh Brody",
+    "player_b": "Janco",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 1",
+    "player_a": "Lowww",
+    "player_b": "Couchsachraga",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 1",
+    "player_a": "kix",
+    "player_b": "Waxy:Joe",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 1",
+    "player_a": "Wizzrobe",
+    "player_b": "EG",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 1",
+    "player_a": "Bo",
+    "player_b": "B33F",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Winners Quarter-Final",
+    "player_a": "Nax",
+    "player_b": "Robert",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Quarter-Final",
+    "player_a": "Dogs_Johnson",
+    "player_b": "Josh Brody",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Winners Quarter-Final",
+    "player_a": "Lowww",
+    "player_b": "kix",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Quarter-Final",
+    "player_a": "Wizzrobe",
+    "player_b": "Bo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Semi-Final",
+    "player_a": "Nax",
+    "player_b": "Dogs_Johnson",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Winners Semi-Final",
+    "player_a": "Wizzrobe",
+    "player_b": "Lowww",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Final",
+    "player_a": "Wizzrobe",
+    "player_b": "Nax",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Grand Final",
+    "player_a": "Nax",
+    "player_b": "Wizzrobe",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Grand Final Reset",
+    "player_a": "Nax",
+    "player_b": "Wizzrobe",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 1",
+    "player_a": "The Drink",
+    "player_b": "CTG",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 1",
+    "player_a": "Janco",
+    "player_b": "Cool Lime",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 1",
+    "player_a": "Waxy:Joe",
+    "player_b": "Couchsachraga",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 1",
+    "player_a": "B33F",
+    "player_b": "EG",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 2",
+    "player_a": "The Drink",
+    "player_b": "Bo",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 2",
+    "player_a": "kix",
+    "player_b": "Janco",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 2",
+    "player_a": "Josh Brody",
+    "player_b": "Waxy:Joe",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 2",
+    "player_a": "Robert",
+    "player_b": "B33F",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 3",
+    "player_a": "kix",
+    "player_b": "The Drink",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 3",
+    "player_a": "Robert",
+    "player_b": "Josh Brody",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Quarter-Final",
+    "player_a": "Dogs_Johnson",
+    "player_b": "kix",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Quarter-Final",
+    "player_a": "Robert",
+    "player_b": "Lowww",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Losers Semi-Final",
+    "player_a": "Robert",
+    "player_b": "Dogs_Johnson",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Final",
+    "player_a": "Nax",
+    "player_b": "Robert",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "Nax",
+    "player_b": "kix",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "Nax",
+    "player_b": "Janco",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "Nax",
+    "player_b": "EG",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "Nax",
+    "player_b": "Maafia",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "Nax",
+    "player_b": "Dishier Wand",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "kix",
+    "player_b": "Janco",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "kix",
+    "player_b": "EG",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "kix",
+    "player_b": "Maafia",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "kix",
+    "player_b": "Dishier Wand",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "Janco",
+    "player_b": "EG",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "Janco",
+    "player_b": "Maafia",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "Janco",
+    "player_b": "Dishier Wand",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "EG",
+    "player_b": "Maafia",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "EG",
+    "player_b": "Dishier Wand",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G1",
+    "player_a": "Dishier Wand",
+    "player_b": "Maafia",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Robert",
+    "player_b": "Cool Lime",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Robert",
+    "player_b": "Pokehero",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Robert",
+    "player_b": "Bo",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Robert",
+    "player_b": "Htom",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Lowww",
+    "player_b": "Robert",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Lowww",
+    "player_b": "Cool Lime",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Lowww",
+    "player_b": "Pokehero",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Lowww",
+    "player_b": "Bo",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Lowww",
+    "player_b": "Htom",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Cool Lime",
+    "player_b": "Pokehero",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Cool Lime",
+    "player_b": "Htom",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Bo",
+    "player_b": "Cool Lime",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Bo",
+    "player_b": "Pokehero",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Bo",
+    "player_b": "Htom",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G2",
+    "player_a": "Htom",
+    "player_b": "Pokehero",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Wizzrobe",
+    "player_b": "Josh Brody",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Wizzrobe",
+    "player_b": "CTG",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Wizzrobe",
+    "player_b": "Waxy:Joe",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Wizzrobe",
+    "player_b": "dmolz",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Wizzrobe",
+    "player_b": "Freean",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Josh Brody",
+    "player_b": "CTG",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Josh Brody",
+    "player_b": "Waxy:Joe",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Josh Brody",
+    "player_b": "dmolz",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Josh Brody",
+    "player_b": "Freean",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "CTG",
+    "player_b": "dmolz",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Waxy:Joe",
+    "player_b": "CTG",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Waxy:Joe",
+    "player_b": "dmolz",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Waxy:Joe",
+    "player_b": "Freean",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "dmolz",
+    "player_b": "Freean",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G3",
+    "player_a": "Freean",
+    "player_b": "CTG",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "Dogs_Johnson",
+    "player_b": "Zero",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "Dogs_Johnson",
+    "player_b": "The Drink",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "Dogs_Johnson",
+    "player_b": "B33F",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "Dogs_Johnson",
+    "player_b": "Gravyfingers",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "Dogs_Johnson",
+    "player_b": "Couchsachraga",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "The Drink",
+    "player_b": "Zero",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "The Drink",
+    "player_b": "Gravyfingers",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "The Drink",
+    "player_b": "Couchsachraga",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "B33F",
+    "player_b": "Zero",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "B33F",
+    "player_b": "The Drink",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "B33F",
+    "player_b": "Gravyfingers",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "B33F",
+    "player_b": "Couchsachraga",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "Gravyfingers",
+    "player_b": "Zero",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "Couchsachraga",
+    "player_b": "Zero",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 1 Pool G4",
+    "player_a": "Couchsachraga",
+    "player_b": "Gravyfingers",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Janco",
+    "player_b": "dmolz",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Janco",
+    "player_b": "Pokehero",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Janco",
+    "player_b": "Fancy",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Janco",
+    "player_b": "Couchsachraga",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Janco",
+    "player_b": "Duff man",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Janco",
+    "player_b": "AlanDeez",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Janco",
+    "player_b": "deathline",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "dmolz",
+    "player_b": "Fancy",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "dmolz",
+    "player_b": "Couchsachraga",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "dmolz",
+    "player_b": "Duff man",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "dmolz",
+    "player_b": "AlanDeez",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "dmolz",
+    "player_b": "deathline",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Pokehero",
+    "player_b": "dmolz",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Pokehero",
+    "player_b": "Fancy",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Pokehero",
+    "player_b": "Duff man",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Pokehero",
+    "player_b": "AlanDeez",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Pokehero",
+    "player_b": "deathline",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Fancy",
+    "player_b": "Couchsachraga",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Fancy",
+    "player_b": "Duff man",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Fancy",
+    "player_b": "AlanDeez",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Couchsachraga",
+    "player_b": "Pokehero",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Couchsachraga",
+    "player_b": "Duff man",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Couchsachraga",
+    "player_b": "AlanDeez",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Couchsachraga",
+    "player_b": "deathline",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Duff man",
+    "player_b": "AlanDeez",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "Duff man",
+    "player_b": "deathline",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "deathline",
+    "player_b": "Fancy",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F1",
+    "player_a": "deathline",
+    "player_b": "AlanDeez",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "EG",
+    "player_b": "Dr. Sauce",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "EG",
+    "player_b": "Gravyfingers",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "EG",
+    "player_b": "Rafael",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "EG",
+    "player_b": "Freean",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "EG",
+    "player_b": "FASTLIKERAT",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "EG",
+    "player_b": "Aut0pilot",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Dr. Sauce",
+    "player_b": "Cool Lime",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Dr. Sauce",
+    "player_b": "Rafael",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Dr. Sauce",
+    "player_b": "FASTLIKERAT",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Dr. Sauce",
+    "player_b": "Aut0pilot",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Cool Lime",
+    "player_b": "EG",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Cool Lime",
+    "player_b": "Gravyfingers",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Cool Lime",
+    "player_b": "Rafael",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Cool Lime",
+    "player_b": "Freean",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Cool Lime",
+    "player_b": "FASTLIKERAT",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Cool Lime",
+    "player_b": "Aut0pilot",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Gravyfingers",
+    "player_b": "Dr. Sauce",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Gravyfingers",
+    "player_b": "Rafael",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Gravyfingers",
+    "player_b": "Freean",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Gravyfingers",
+    "player_b": "FASTLIKERAT",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Gravyfingers",
+    "player_b": "Aut0pilot",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Rafael",
+    "player_b": "Aut0pilot",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Freean",
+    "player_b": "Dr. Sauce",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Freean",
+    "player_b": "Rafael",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Freean",
+    "player_b": "FASTLIKERAT",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "Freean",
+    "player_b": "Aut0pilot",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "FASTLIKERAT",
+    "player_b": "Rafael",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F2",
+    "player_a": "FASTLIKERAT",
+    "player_b": "Aut0pilot",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "B33F",
+    "player_b": "Shears",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "B33F",
+    "player_b": "cobr",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "B33F",
+    "player_b": "Htom",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "B33F",
+    "player_b": "Queso",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "B33F",
+    "player_b": "Maafia",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "CTG",
+    "player_b": "B33F",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "CTG",
+    "player_b": "Shears",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "CTG",
+    "player_b": "cobr",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "CTG",
+    "player_b": "Htom",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "CTG",
+    "player_b": "Queso",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "CTG",
+    "player_b": "Maafia",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "cobr",
+    "player_b": "Shears",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "Htom",
+    "player_b": "Shears",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "Htom",
+    "player_b": "cobr",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "Htom",
+    "player_b": "Queso",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "Queso",
+    "player_b": "Shears",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "Queso",
+    "player_b": "cobr",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "Maafia",
+    "player_b": "Shears",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "Maafia",
+    "player_b": "cobr",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "Maafia",
+    "player_b": "Htom",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F3",
+    "player_a": "Maafia",
+    "player_b": "Queso",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "The Drink",
+    "player_b": "Waxy:Joe",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "The Drink",
+    "player_b": "Bo",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "The Drink",
+    "player_b": "Dishier Wand",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "The Drink",
+    "player_b": "Nackle",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "The Drink",
+    "player_b": "Terra",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "The Drink",
+    "player_b": "Neilstradamus",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Waxy:Joe",
+    "player_b": "Bo",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Waxy:Joe",
+    "player_b": "Dishier Wand",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Waxy:Joe",
+    "player_b": "Nackle",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Waxy:Joe",
+    "player_b": "Terra",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Waxy:Joe",
+    "player_b": "Neilstradamus",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Bo",
+    "player_b": "Dishier Wand",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Bo",
+    "player_b": "Nackle",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Bo",
+    "player_b": "Terra",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Bo",
+    "player_b": "Neilstradamus",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Dishier Wand",
+    "player_b": "Nackle",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Dishier Wand",
+    "player_b": "Terra",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Dishier Wand",
+    "player_b": "Neilstradamus",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Nackle",
+    "player_b": "Terra",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Nackle",
+    "player_b": "Neilstradamus",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 2 Pool F4",
+    "player_a": "Neilstradamus",
+    "player_b": "Terra",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Gravyfingers",
+    "player_b": "Maafia",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Gravyfingers",
+    "player_b": "Cagt",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Gravyfingers",
+    "player_b": "Terra",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Gravyfingers",
+    "player_b": "elel",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Gravyfingers",
+    "player_b": "TimberRoodles",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Gravyfingers",
+    "player_b": "neat",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Gravyfingers",
+    "player_b": "GgX",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Maafia",
+    "player_b": "Cagt",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Maafia",
+    "player_b": "elel",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Maafia",
+    "player_b": "TimberRoodles",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Maafia",
+    "player_b": "neat",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Maafia",
+    "player_b": "GgX",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Cagt",
+    "player_b": "Terra",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Cagt",
+    "player_b": "TimberRoodles",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Cagt",
+    "player_b": "neat",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Cagt",
+    "player_b": "GgX",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Terra",
+    "player_b": "Maafia",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Terra",
+    "player_b": "elel",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Terra",
+    "player_b": "TimberRoodles",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Terra",
+    "player_b": "neat",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "Terra",
+    "player_b": "GgX",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "elel",
+    "player_b": "Cagt",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "elel",
+    "player_b": "TimberRoodles",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "elel",
+    "player_b": "neat",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "elel",
+    "player_b": "GgX",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "TimberRoodles",
+    "player_b": "neat",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "TimberRoodles",
+    "player_b": "GgX",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E1",
+    "player_a": "neat",
+    "player_b": "GgX",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Queso",
+    "player_b": "Neilstradamus",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Queso",
+    "player_b": "Bimbo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Queso",
+    "player_b": "Z-Rex",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Queso",
+    "player_b": "Lv20ninja",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Queso",
+    "player_b": "1upShyguy",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Queso",
+    "player_b": "typo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Neilstradamus",
+    "player_b": "Fancy",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Neilstradamus",
+    "player_b": "Bimbo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Neilstradamus",
+    "player_b": "Z-Rex",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Neilstradamus",
+    "player_b": "Lv20ninja",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Neilstradamus",
+    "player_b": "1upShyguy",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Neilstradamus",
+    "player_b": "typo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Fancy",
+    "player_b": "Queso",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Fancy",
+    "player_b": "Bimbo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Fancy",
+    "player_b": "Z-Rex",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Fancy",
+    "player_b": "Lv20ninja",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Fancy",
+    "player_b": "1upShyguy",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Fancy",
+    "player_b": "typo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Bimbo",
+    "player_b": "Z-Rex",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Bimbo",
+    "player_b": "Lv20ninja",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Bimbo",
+    "player_b": "1upShyguy",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Bimbo",
+    "player_b": "typo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Z-Rex",
+    "player_b": "Lv20ninja",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "Z-Rex",
+    "player_b": "typo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "1upShyguy",
+    "player_b": "Z-Rex",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "1upShyguy",
+    "player_b": "Lv20ninja",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "1upShyguy",
+    "player_b": "typo",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E2",
+    "player_a": "typo",
+    "player_b": "Lv20ninja",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "SOTO",
+    "player_b": "The_Smashfather",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "SOTO",
+    "player_b": "Halofactory",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "SOTO",
+    "player_b": "Gossamer",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "SOTO",
+    "player_b": "DoubleJ",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Dishier Wand",
+    "player_b": "SOTO",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Dishier Wand",
+    "player_b": "FASTLIKERAT",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Dishier Wand",
+    "player_b": "Duff man",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Dishier Wand",
+    "player_b": "The_Smashfather",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Dishier Wand",
+    "player_b": "Halofactory",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Dishier Wand",
+    "player_b": "Gossamer",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Dishier Wand",
+    "player_b": "DoubleJ",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "FASTLIKERAT",
+    "player_b": "SOTO",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "FASTLIKERAT",
+    "player_b": "The_Smashfather",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "FASTLIKERAT",
+    "player_b": "Halofactory",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "FASTLIKERAT",
+    "player_b": "Gossamer",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "FASTLIKERAT",
+    "player_b": "DoubleJ",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Duff man",
+    "player_b": "SOTO",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Duff man",
+    "player_b": "FASTLIKERAT",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Duff man",
+    "player_b": "The_Smashfather",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Duff man",
+    "player_b": "Halofactory",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Duff man",
+    "player_b": "Gossamer",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Duff man",
+    "player_b": "DoubleJ",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "The_Smashfather",
+    "player_b": "Halofactory",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "The_Smashfather",
+    "player_b": "Gossamer",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "Halofactory",
+    "player_b": "Gossamer",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "DoubleJ",
+    "player_b": "The_Smashfather",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "DoubleJ",
+    "player_b": "Halofactory",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E3",
+    "player_a": "DoubleJ",
+    "player_b": "Gossamer",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "cobr",
+    "player_b": "Freean",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "cobr",
+    "player_b": "Moonshoes",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "cobr",
+    "player_b": "AlanDeez",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "cobr",
+    "player_b": "Araknowsall",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "cobr",
+    "player_b": "MUGEN 無限",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "cobr",
+    "player_b": "Accru Fenix",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "cobr",
+    "player_b": "Mijo!",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Freean",
+    "player_b": "Moonshoes",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Freean",
+    "player_b": "AlanDeez",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Freean",
+    "player_b": "Araknowsall",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Freean",
+    "player_b": "MUGEN 無限",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Freean",
+    "player_b": "Accru Fenix",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Freean",
+    "player_b": "Mijo!",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Moonshoes",
+    "player_b": "Araknowsall",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Moonshoes",
+    "player_b": "MUGEN 無限",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Moonshoes",
+    "player_b": "Accru Fenix",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Moonshoes",
+    "player_b": "Mijo!",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "AlanDeez",
+    "player_b": "Moonshoes",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "AlanDeez",
+    "player_b": "Araknowsall",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "AlanDeez",
+    "player_b": "MUGEN 無限",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "AlanDeez",
+    "player_b": "Accru Fenix",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "AlanDeez",
+    "player_b": "Mijo!",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Araknowsall",
+    "player_b": "Accru Fenix",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Araknowsall",
+    "player_b": "Mijo!",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "MUGEN 無限",
+    "player_b": "Araknowsall",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "MUGEN 無限",
+    "player_b": "Accru Fenix",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "MUGEN 無限",
+    "player_b": "Mijo!",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E4",
+    "player_a": "Accru Fenix",
+    "player_b": "Mijo!",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Nackle",
+    "player_b": "Couchsachraga",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Nackle",
+    "player_b": "Aut0pilot",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Nackle",
+    "player_b": "phresh",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Nackle",
+    "player_b": "irrelevant",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Nackle",
+    "player_b": "chacalaca88",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Nackle",
+    "player_b": "Ed Sheeran",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Nackle",
+    "player_b": "shyguyking",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Couchsachraga",
+    "player_b": "Aut0pilot",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Couchsachraga",
+    "player_b": "phresh",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Couchsachraga",
+    "player_b": "irrelevant",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Couchsachraga",
+    "player_b": "chacalaca88",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Couchsachraga",
+    "player_b": "Ed Sheeran",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Couchsachraga",
+    "player_b": "shyguyking",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Aut0pilot",
+    "player_b": "phresh",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Aut0pilot",
+    "player_b": "irrelevant",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Aut0pilot",
+    "player_b": "chacalaca88",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Aut0pilot",
+    "player_b": "Ed Sheeran",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Aut0pilot",
+    "player_b": "shyguyking",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "phresh",
+    "player_b": "irrelevant",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "phresh",
+    "player_b": "chacalaca88",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "phresh",
+    "player_b": "Ed Sheeran",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "phresh",
+    "player_b": "shyguyking",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "irrelevant",
+    "player_b": "chacalaca88",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "irrelevant",
+    "player_b": "Ed Sheeran",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "irrelevant",
+    "player_b": "shyguyking",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "chacalaca88",
+    "player_b": "Ed Sheeran",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "chacalaca88",
+    "player_b": "shyguyking",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E5",
+    "player_a": "Ed Sheeran",
+    "player_b": "shyguyking",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "sextc",
+    "player_b": "Estrogwen",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "sextc",
+    "player_b": "Looshes",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "sextc",
+    "player_b": "ChronicMexican",
+    "score_a": "W",
+    "score_b": "L",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "sextc",
+    "player_b": "tarp",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Rafael",
+    "player_b": "sextc",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Rafael",
+    "player_b": "deathline",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Rafael",
+    "player_b": "Estrogwen",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Rafael",
+    "player_b": "Looshes",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Rafael",
+    "player_b": "ChronicMexican",
+    "score_a": "W",
+    "score_b": "L",
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Rafael",
+    "player_b": "tarp",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "deathline",
+    "player_b": "sextc",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "deathline",
+    "player_b": "Estrogwen",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "deathline",
+    "player_b": "Looshes",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "deathline",
+    "player_b": "ChronicMexican",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "deathline",
+    "player_b": "tarp",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Htom",
+    "player_b": "sextc",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Htom",
+    "player_b": "Rafael",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Htom",
+    "player_b": "deathline",
+    "score_a": 3,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Htom",
+    "player_b": "Estrogwen",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Htom",
+    "player_b": "Looshes",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Htom",
+    "player_b": "ChronicMexican",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Htom",
+    "player_b": "tarp",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Estrogwen",
+    "player_b": "Looshes",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Estrogwen",
+    "player_b": "ChronicMexican",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Estrogwen",
+    "player_b": "tarp",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "Looshes",
+    "player_b": "tarp",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "ChronicMexican",
+    "player_b": "Looshes",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Division 3 Pool E6",
+    "player_a": "tarp",
+    "player_b": "ChronicMexican",
+    "score_a": "W",
+    "score_b": "L",
+    "vod": ""
+  }
+]
