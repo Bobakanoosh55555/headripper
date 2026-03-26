@@ -141,7 +141,7 @@ def glicko2_update(mu, phi, sigma, results):
 # Rating convergence
 # ---------------------------------------------------------------------------
 
-def run_tournament(playable, prior_states):
+def run_tournament(playable, prior_states, dq_losses=None):
     """
     Compute converged ratings for one tournament period.
     prior_states already has placement seeds applied for new players.
@@ -195,6 +195,23 @@ def run_tournament(playable, prior_states):
         states = new_states
         if max_delta < CONVERGE_DELTA:
             break
+
+    # Apply DQ losses: each DQ'd player takes a synthetic loss against a
+    # neutral 1500-rated opponent. Penalises the DQ without rewarding anyone.
+    if dq_losses:
+        mu0_g2, phi0_g2 = to_g2(MU_0, PHI_0)
+        for tag in dq_losses:
+            cur = states.get(tag)
+            if cur is None:
+                prior_mu = get_prior(tag)[0]
+                cur = [prior_mu, phi0_g2, SIGMA_0]
+            nm, np, ns = glicko2_update(
+                get_prior(tag)[0],
+                frozen_phi.get(tag, cur[1]),
+                SIGMA_0,
+                [(mu0_g2, phi0_g2, 0.0)]   # loss vs neutral 1500
+            )
+            states[tag] = [nm, frozen_phi.get(tag, cur[1]), SIGMA_0]
 
     return states
 
@@ -311,8 +328,10 @@ def main():
         placement_map = {resolve(p['tag'], alt_index): p['place']
                          for p in tournament.get('placements', [])}
 
-        playable = []
-        dq_count = 0
+        playable  = []
+        dq_losses = []  # tags of DQ'd players, for Glicko-2 loss penalty
+        dq_count  = 0
+        players_with_real_sets = set()
 
         for s in raw_sets:
             outcome = set_outcome(s)
@@ -321,18 +340,19 @@ def main():
             if outcome is None:
                 dq_count += 1
                 if is_dq(s):
+                    # DQ = loss for DQ'd player only; opponent gets no win credit
                     if s.get('score_b') == 'DQ':
-                        stats_acc[tag_a]['sets_won']   += 1
-                        stats_acc[tag_a]['sets_total'] += 1
                         stats_acc[tag_b]['sets_lost']  += 1
                         stats_acc[tag_b]['sets_total'] += 1
+                        dq_losses.append(tag_b)
                     elif s.get('score_a') == 'DQ':
-                        stats_acc[tag_b]['sets_won']   += 1
-                        stats_acc[tag_b]['sets_total'] += 1
                         stats_acc[tag_a]['sets_lost']  += 1
                         stats_acc[tag_a]['sets_total'] += 1
+                        dq_losses.append(tag_a)
                 continue
             playable.append((tag_a, tag_b, outcome[0], outcome[1]))
+            players_with_real_sets.add(tag_a)
+            players_with_real_sets.add(tag_b)
 
         period_players = set(t for ta, tb, _, __ in playable for t in (ta, tb))
 
@@ -404,7 +424,7 @@ def main():
                 else:
                     prior[tag] = [mu0, phi0, SIGMA_0]
 
-        new_ratings = run_tournament(playable, prior)
+        new_ratings = run_tournament(playable, prior, dq_losses)
 
         # RD decay for absent players
         for tag, st in global_ratings.items():
@@ -426,10 +446,12 @@ def main():
             global_ratings[tag] = [nr[0], nr[1], nr[2], prev[3] + set_count, prev[4] + 1]
 
         for tag in all_tournament_players:
-            stats_acc[tag]['tournaments'] += 1
-            place = placement_map.get(tag)
-            if place is not None:
-                stats_acc[tag]['placements'].append({"tournament": tid, "place": place})
+            # Fully DQ'd players (never played a real set) don't count as attending
+            if tag in players_with_real_sets:
+                stats_acc[tag]['tournaments'] += 1
+                place = placement_map.get(tag)
+                if place is not None:
+                    stats_acc[tag]['placements'].append({"tournament": tid, "place": place})
 
         # Snapshot
         ranked = sorted(
