@@ -1,43 +1,23 @@
 [
   {
-    "tag": "Nax",
+    "tag": "Kurabba",
     "tournaments": 1,
-    "sets_total": 12,
-    "sets_won": 11,
+    "sets_total": 13,
+    "sets_won": 12,
     "sets_lost": 1,
-    "win_rate": 0.9167,
+    "win_rate": 0.9231,
     "best_placement": 1,
     "placements": [
       {
-        "tournament": "hitstun-7-last-call",
+        "tournament": "inkafest-3",
         "place": 1
       }
     ],
-    "peak_rating": 1837.73,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1837.73,
-    "current_rd": 137.81,
+    "peak_rating": 1768.12,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1768.12,
+    "current_rd": 133.52,
     "current_rank": 1
-  },
-  {
-    "tag": "Wizzrobe",
-    "tournaments": 1,
-    "sets_total": 11,
-    "sets_won": 9,
-    "sets_lost": 2,
-    "win_rate": 0.8182,
-    "best_placement": 2,
-    "placements": [
-      {
-        "tournament": "hitstun-7-last-call",
-        "place": 2
-      }
-    ],
-    "peak_rating": 1774.21,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1774.21,
-    "current_rd": 142.93,
-    "current_rank": 2
   },
   {
     "tag": "Robert",
@@ -56,8 +36,8 @@
     "peak_rating": 1743.48,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1743.48,
-    "current_rd": 137.81,
-    "current_rank": 3
+    "current_rd": 138.2,
+    "current_rank": 2
   },
   {
     "tag": "Dogs_Johnson",
@@ -76,8 +56,8 @@
     "peak_rating": 1741.01,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1741.01,
-    "current_rd": 155.17,
-    "current_rank": 4
+    "current_rd": 155.52,
+    "current_rank": 3
   },
   {
     "tag": "Lowww",
@@ -96,48 +76,28 @@
     "peak_rating": 1724.04,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1724.04,
-    "current_rd": 155.17,
+    "current_rd": 155.52,
+    "current_rank": 4
+  },
+  {
+    "tag": "Freezer",
+    "tournaments": 1,
+    "sets_total": 17,
+    "sets_won": 11,
+    "sets_lost": 6,
+    "win_rate": 0.6471,
+    "best_placement": 25,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 25
+      }
+    ],
+    "peak_rating": 1677.6,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1677.6,
+    "current_rd": 147.57,
     "current_rank": 5
-  },
-  {
-    "tag": "kix",
-    "tournaments": 1,
-    "sets_total": 10,
-    "sets_won": 7,
-    "sets_lost": 3,
-    "win_rate": 0.7,
-    "best_placement": 5,
-    "placements": [
-      {
-        "tournament": "hitstun-7-last-call",
-        "place": 5
-      }
-    ],
-    "peak_rating": 1705.18,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1705.18,
-    "current_rd": 148.67,
-    "current_rank": 6
-  },
-  {
-    "tag": "Josh Brody",
-    "tournaments": 1,
-    "sets_total": 9,
-    "sets_won": 6,
-    "sets_lost": 3,
-    "win_rate": 0.6667,
-    "best_placement": 7,
-    "placements": [
-      {
-        "tournament": "hitstun-7-last-call",
-        "place": 7
-      }
-    ],
-    "peak_rating": 1678.21,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1678.21,
-    "current_rd": 155.17,
-    "current_rank": 7
   },
   {
     "tag": "Andykins",
@@ -156,8 +116,32 @@
     "peak_rating": 1673.62,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1673.62,
-    "current_rd": 129.02,
-    "current_rank": 8
+    "current_rd": 129.44,
+    "current_rank": 6
+  },
+  {
+    "tag": "Nax",
+    "tournaments": 2,
+    "sets_total": 24,
+    "sets_won": 21,
+    "sets_lost": 3,
+    "win_rate": 0.875,
+    "best_placement": 1,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 1
+      },
+      {
+        "tournament": "inkafest-3",
+        "place": 2
+      }
+    ],
+    "peak_rating": 1837.73,
+    "peak_rating_after": "hitstun-7-last-call",
+    "current_rating": 1671.97,
+    "current_rd": 111.94,
+    "current_rank": 7
   },
   {
     "tag": "Janco",
@@ -176,8 +160,72 @@
     "peak_rating": 1665.89,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1665.89,
-    "current_rd": 125.21,
+    "current_rd": 125.65,
+    "current_rank": 8
+  },
+  {
+    "tag": "Isai",
+    "tournaments": 1,
+    "sets_total": 12,
+    "sets_won": 9,
+    "sets_lost": 3,
+    "win_rate": 0.75,
+    "best_placement": 3,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 3
+      }
+    ],
+    "peak_rating": 1658.52,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1658.52,
+    "current_rd": 136.08,
     "current_rank": 9
+  },
+  {
+    "tag": "JeyKeyAr",
+    "tournaments": 1,
+    "sets_total": 14,
+    "sets_won": 11,
+    "sets_lost": 3,
+    "win_rate": 0.7857,
+    "best_placement": 7,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 7
+      }
+    ],
+    "peak_rating": 1647.38,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1647.38,
+    "current_rd": 129.73,
+    "current_rank": 10
+  },
+  {
+    "tag": "Wizzrobe",
+    "tournaments": 2,
+    "sets_total": 22,
+    "sets_won": 18,
+    "sets_lost": 4,
+    "win_rate": 0.8182,
+    "best_placement": 2,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 2
+      },
+      {
+        "tournament": "inkafest-3",
+        "place": 4
+      }
+    ],
+    "peak_rating": 1774.21,
+    "peak_rating_after": "hitstun-7-last-call",
+    "current_rating": 1643.95,
+    "current_rd": 107.16,
+    "current_rank": 11
   },
   {
     "tag": "B33F",
@@ -196,8 +244,8 @@
     "peak_rating": 1643.91,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1643.91,
-    "current_rd": 133.2,
-    "current_rank": 10
+    "current_rd": 133.6,
+    "current_rank": 12
   },
   {
     "tag": "Waxy:Joe",
@@ -216,8 +264,28 @@
     "peak_rating": 1634.99,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1634.99,
-    "current_rd": 129.02,
-    "current_rank": 11
+    "current_rd": 129.44,
+    "current_rank": 13
+  },
+  {
+    "tag": "ALVIN",
+    "tournaments": 1,
+    "sets_total": 11,
+    "sets_won": 7,
+    "sets_lost": 4,
+    "win_rate": 0.6364,
+    "best_placement": 5,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 5
+      }
+    ],
+    "peak_rating": 1620.1,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1620.1,
+    "current_rd": 142.13,
+    "current_rank": 14
   },
   {
     "tag": "Bo",
@@ -236,8 +304,52 @@
     "peak_rating": 1608.44,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1608.44,
-    "current_rd": 129.02,
-    "current_rank": 12
+    "current_rd": 129.44,
+    "current_rank": 15
+  },
+  {
+    "tag": "JaimeHR",
+    "tournaments": 1,
+    "sets_total": 13,
+    "sets_won": 9,
+    "sets_lost": 4,
+    "win_rate": 0.6923,
+    "best_placement": 9,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 9
+      }
+    ],
+    "peak_rating": 1607.71,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1607.71,
+    "current_rd": 126.54,
+    "current_rank": 16
+  },
+  {
+    "tag": "kix",
+    "tournaments": 2,
+    "sets_total": 22,
+    "sets_won": 16,
+    "sets_lost": 6,
+    "win_rate": 0.7273,
+    "best_placement": 5,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 5
+      },
+      {
+        "tournament": "inkafest-3",
+        "place": 13
+      }
+    ],
+    "peak_rating": 1705.18,
+    "peak_rating_after": "hitstun-7-last-call",
+    "current_rating": 1593.06,
+    "current_rd": 105.32,
+    "current_rank": 17
   },
   {
     "tag": "EG",
@@ -256,8 +368,48 @@
     "peak_rating": 1591.43,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1591.43,
-    "current_rd": 129.02,
-    "current_rank": 13
+    "current_rd": 129.44,
+    "current_rank": 18
+  },
+  {
+    "tag": "Leo",
+    "tournaments": 1,
+    "sets_total": 15,
+    "sets_won": 10,
+    "sets_lost": 5,
+    "win_rate": 0.6667,
+    "best_placement": 5,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 5
+      }
+    ],
+    "peak_rating": 1590.96,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1590.96,
+    "current_rd": 125.97,
+    "current_rank": 19
+  },
+  {
+    "tag": "Antonio",
+    "tournaments": 1,
+    "sets_total": 19,
+    "sets_won": 13,
+    "sets_lost": 6,
+    "win_rate": 0.6842,
+    "best_placement": 9,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 9
+      }
+    ],
+    "peak_rating": 1585.6,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1585.6,
+    "current_rd": 115.44,
+    "current_rank": 20
   },
   {
     "tag": "CTG",
@@ -276,28 +428,8 @@
     "peak_rating": 1579.15,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1579.15,
-    "current_rd": 133.2,
-    "current_rank": 14
-  },
-  {
-    "tag": "Cool Lime",
-    "tournaments": 1,
-    "sets_total": 14,
-    "sets_won": 8,
-    "sets_lost": 6,
-    "win_rate": 0.5714,
-    "best_placement": 13,
-    "placements": [
-      {
-        "tournament": "hitstun-7-last-call",
-        "place": 13
-      }
-    ],
-    "peak_rating": 1574.64,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1574.64,
-    "current_rd": 133.2,
-    "current_rank": 15
+    "current_rd": 133.6,
+    "current_rank": 21
   },
   {
     "tag": "Gravyfingers",
@@ -316,8 +448,8 @@
     "peak_rating": 1574.46,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1574.46,
-    "current_rd": 118.51,
-    "current_rank": 16
+    "current_rd": 118.97,
+    "current_rank": 22
   },
   {
     "tag": "Nackle",
@@ -336,8 +468,8 @@
     "peak_rating": 1569.0,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1569.0,
-    "current_rd": 137.81,
-    "current_rank": 17
+    "current_rd": 138.2,
+    "current_rank": 23
   },
   {
     "tag": "Dishier Wand",
@@ -356,8 +488,28 @@
     "peak_rating": 1566.56,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1566.56,
-    "current_rd": 118.51,
-    "current_rank": 18
+    "current_rd": 118.97,
+    "current_rank": 24
+  },
+  {
+    "tag": "Legend@rito",
+    "tournaments": 1,
+    "sets_total": 10,
+    "sets_won": 6,
+    "sets_lost": 4,
+    "win_rate": 0.6,
+    "best_placement": 7,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 7
+      }
+    ],
+    "peak_rating": 1566.04,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1566.04,
+    "current_rd": 142.9,
+    "current_rank": 25
   },
   {
     "tag": "Htom",
@@ -376,8 +528,8 @@
     "peak_rating": 1556.72,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1556.72,
-    "current_rd": 115.54,
-    "current_rank": 19
+    "current_rd": 116.01,
+    "current_rank": 26
   },
   {
     "tag": "Fancy",
@@ -396,8 +548,23 @@
     "peak_rating": 1549.8,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1549.8,
-    "current_rd": 129.02,
-    "current_rank": 20
+    "current_rd": 129.44,
+    "current_rank": 27
+  },
+  {
+    "tag": "Tavomono.Pe",
+    "tournaments": 1,
+    "sets_total": 8,
+    "sets_won": 5,
+    "sets_lost": 3,
+    "win_rate": 0.625,
+    "best_placement": null,
+    "placements": [],
+    "peak_rating": 1549.37,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1549.37,
+    "current_rd": 171.91,
+    "current_rank": 28
   },
   {
     "tag": "dmolz",
@@ -416,8 +583,28 @@
     "peak_rating": 1544.39,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1544.39,
-    "current_rd": 137.81,
-    "current_rank": 21
+    "current_rd": 138.2,
+    "current_rank": 29
+  },
+  {
+    "tag": "Gerson",
+    "tournaments": 1,
+    "sets_total": 9,
+    "sets_won": 5,
+    "sets_lost": 4,
+    "win_rate": 0.5556,
+    "best_placement": 9,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 9
+      }
+    ],
+    "peak_rating": 1542.21,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1542.21,
+    "current_rd": 154.21,
+    "current_rank": 30
   },
   {
     "tag": "Dr. Sauce",
@@ -436,8 +623,8 @@
     "peak_rating": 1542.08,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1542.08,
-    "current_rd": 171.21,
-    "current_rank": 22
+    "current_rd": 171.53,
+    "current_rank": 31
   },
   {
     "tag": "Freean",
@@ -456,8 +643,8 @@
     "peak_rating": 1539.69,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1539.69,
-    "current_rd": 112.78,
-    "current_rank": 23
+    "current_rd": 113.26,
+    "current_rank": 32
   },
   {
     "tag": "Queso",
@@ -476,8 +663,28 @@
     "peak_rating": 1533.82,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1533.82,
-    "current_rd": 133.2,
-    "current_rank": 24
+    "current_rd": 133.6,
+    "current_rank": 33
+  },
+  {
+    "tag": "Louwiz",
+    "tournaments": 1,
+    "sets_total": 17,
+    "sets_won": 11,
+    "sets_lost": 6,
+    "win_rate": 0.6471,
+    "best_placement": 17,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 17
+      }
+    ],
+    "peak_rating": 1532.87,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1532.87,
+    "current_rd": 124.44,
+    "current_rank": 34
   },
   {
     "tag": "Couchsachraga",
@@ -496,8 +703,8 @@
     "peak_rating": 1529.19,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1529.19,
-    "current_rd": 112.78,
-    "current_rank": 25
+    "current_rd": 113.26,
+    "current_rank": 35
   },
   {
     "tag": "cobr",
@@ -516,8 +723,8 @@
     "peak_rating": 1525.69,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1525.69,
-    "current_rd": 133.2,
-    "current_rank": 26
+    "current_rd": 133.6,
+    "current_rank": 36
   },
   {
     "tag": "Pokehero",
@@ -536,8 +743,32 @@
     "peak_rating": 1521.02,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1521.02,
-    "current_rd": 142.93,
-    "current_rank": 27
+    "current_rd": 143.31,
+    "current_rank": 37
+  },
+  {
+    "tag": "Cool Lime",
+    "tournaments": 2,
+    "sets_total": 31,
+    "sets_won": 19,
+    "sets_lost": 12,
+    "win_rate": 0.6129,
+    "best_placement": 13,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 13
+      },
+      {
+        "tournament": "inkafest-3",
+        "place": 17
+      }
+    ],
+    "peak_rating": 1574.64,
+    "peak_rating_after": "hitstun-7-last-call",
+    "current_rating": 1514.65,
+    "current_rd": 96.5,
+    "current_rank": 38
   },
   {
     "tag": "Wiseacre",
@@ -556,8 +787,8 @@
     "peak_rating": 1514.41,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1514.41,
-    "current_rd": 133.2,
-    "current_rank": 28
+    "current_rd": 133.6,
+    "current_rank": 39
   },
   {
     "tag": "Maafia",
@@ -576,8 +807,32 @@
     "peak_rating": 1512.89,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1512.89,
-    "current_rd": 115.54,
-    "current_rank": 29
+    "current_rd": 116.01,
+    "current_rank": 40
+  },
+  {
+    "tag": "Josh Brody",
+    "tournaments": 2,
+    "sets_total": 21,
+    "sets_won": 12,
+    "sets_lost": 9,
+    "win_rate": 0.5714,
+    "best_placement": 7,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 7
+      },
+      {
+        "tournament": "inkafest-3",
+        "place": 13
+      }
+    ],
+    "peak_rating": 1678.21,
+    "peak_rating_after": "hitstun-7-last-call",
+    "current_rating": 1511.78,
+    "current_rd": 106.86,
+    "current_rank": 41
   },
   {
     "tag": "Duff man",
@@ -596,8 +851,68 @@
     "peak_rating": 1499.82,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1499.82,
-    "current_rd": 133.2,
-    "current_rank": 30
+    "current_rd": 133.6,
+    "current_rank": 42
+  },
+  {
+    "tag": "LoCoSm4sH",
+    "tournaments": 1,
+    "sets_total": 19,
+    "sets_won": 11,
+    "sets_lost": 8,
+    "win_rate": 0.5789,
+    "best_placement": 13,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 13
+      }
+    ],
+    "peak_rating": 1498.67,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1498.67,
+    "current_rd": 119.61,
+    "current_rank": 43
+  },
+  {
+    "tag": "Apolo",
+    "tournaments": 1,
+    "sets_total": 17,
+    "sets_won": 7,
+    "sets_lost": 10,
+    "win_rate": 0.4118,
+    "best_placement": 25,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 25
+      }
+    ],
+    "peak_rating": 1493.83,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1493.83,
+    "current_rd": 147.99,
+    "current_rank": 44
+  },
+  {
+    "tag": "POCHITO",
+    "tournaments": 1,
+    "sets_total": 20,
+    "sets_won": 11,
+    "sets_lost": 9,
+    "win_rate": 0.55,
+    "best_placement": 9,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 9
+      }
+    ],
+    "peak_rating": 1492.57,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1492.57,
+    "current_rd": 111.44,
+    "current_rank": 45
   },
   {
     "tag": "Rafael",
@@ -616,28 +931,8 @@
     "peak_rating": 1490.58,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1490.58,
-    "current_rd": 133.2,
-    "current_rank": 31
-  },
-  {
-    "tag": "Cagt",
-    "tournaments": 1,
-    "sets_total": 7,
-    "sets_won": 4,
-    "sets_lost": 3,
-    "win_rate": 0.5714,
-    "best_placement": 45,
-    "placements": [
-      {
-        "tournament": "hitstun-7-last-call",
-        "place": 45
-      }
-    ],
-    "peak_rating": 1487.05,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1487.05,
-    "current_rd": 171.21,
-    "current_rank": 32
+    "current_rd": 133.6,
+    "current_rank": 46
   },
   {
     "tag": "Bimbo",
@@ -656,8 +951,8 @@
     "peak_rating": 1486.05,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1486.05,
-    "current_rd": 171.21,
-    "current_rank": 33
+    "current_rd": 171.53,
+    "current_rank": 47
   },
   {
     "tag": "elel",
@@ -676,8 +971,8 @@
     "peak_rating": 1484.11,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1484.11,
-    "current_rd": 171.21,
-    "current_rank": 34
+    "current_rd": 171.53,
+    "current_rank": 48
   },
   {
     "tag": "deathline",
@@ -696,28 +991,8 @@
     "peak_rating": 1478.76,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1478.76,
-    "current_rd": 129.02,
-    "current_rank": 35
-  },
-  {
-    "tag": "sextc",
-    "tournaments": 1,
-    "sets_total": 7,
-    "sets_won": 4,
-    "sets_lost": 3,
-    "win_rate": 0.5714,
-    "best_placement": 39,
-    "placements": [
-      {
-        "tournament": "hitstun-7-last-call",
-        "place": 39
-      }
-    ],
-    "peak_rating": 1475.27,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1475.27,
-    "current_rd": 171.21,
-    "current_rank": 36
+    "current_rd": 129.44,
+    "current_rank": 49
   },
   {
     "tag": "Moonshoes",
@@ -736,8 +1011,32 @@
     "peak_rating": 1468.93,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1468.93,
-    "current_rd": 171.21,
-    "current_rank": 37
+    "current_rd": 171.53,
+    "current_rank": 50
+  },
+  {
+    "tag": "sextc",
+    "tournaments": 2,
+    "sets_total": 18,
+    "sets_won": 10,
+    "sets_lost": 8,
+    "win_rate": 0.5556,
+    "best_placement": 29,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 39
+      },
+      {
+        "tournament": "inkafest-3",
+        "place": 29
+      }
+    ],
+    "peak_rating": 1475.27,
+    "peak_rating_after": "hitstun-7-last-call",
+    "current_rating": 1466.64,
+    "current_rd": 121.91,
+    "current_rank": 51
   },
   {
     "tag": "FASTLIKERAT",
@@ -756,8 +1055,48 @@
     "peak_rating": 1464.22,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1464.22,
-    "current_rd": 133.2,
-    "current_rank": 38
+    "current_rd": 133.6,
+    "current_rank": 52
+  },
+  {
+    "tag": "Schmerka Berl",
+    "tournaments": 1,
+    "sets_total": 16,
+    "sets_won": 8,
+    "sets_lost": 8,
+    "win_rate": 0.5,
+    "best_placement": 21,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 21
+      }
+    ],
+    "peak_rating": 1458.58,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1458.58,
+    "current_rd": 121.13,
+    "current_rank": 53
+  },
+  {
+    "tag": "WoKeRico",
+    "tournaments": 1,
+    "sets_total": 17,
+    "sets_won": 8,
+    "sets_lost": 9,
+    "win_rate": 0.4706,
+    "best_placement": 17,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 17
+      }
+    ],
+    "peak_rating": 1453.35,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1453.35,
+    "current_rd": 117.16,
+    "current_rank": 54
   },
   {
     "tag": "SOTO",
@@ -776,8 +1115,8 @@
     "peak_rating": 1446.87,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1446.87,
-    "current_rd": 181.35,
-    "current_rank": 39
+    "current_rd": 181.65,
+    "current_rank": 55
   },
   {
     "tag": "Terra",
@@ -796,8 +1135,28 @@
     "peak_rating": 1445.34,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1445.34,
-    "current_rd": 133.2,
-    "current_rank": 40
+    "current_rd": 133.6,
+    "current_rank": 56
+  },
+  {
+    "tag": "Soldado",
+    "tournaments": 1,
+    "sets_total": 16,
+    "sets_won": 8,
+    "sets_lost": 8,
+    "win_rate": 0.5,
+    "best_placement": 21,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 21
+      }
+    ],
+    "peak_rating": 1444.88,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1444.88,
+    "current_rd": 128.18,
+    "current_rank": 57
   },
   {
     "tag": "phresh",
@@ -816,8 +1175,112 @@
     "peak_rating": 1440.17,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1440.17,
-    "current_rd": 181.35,
-    "current_rank": 41
+    "current_rd": 181.65,
+    "current_rank": 58
+  },
+  {
+    "tag": "Fernando",
+    "tournaments": 1,
+    "sets_total": 16,
+    "sets_won": 7,
+    "sets_lost": 9,
+    "win_rate": 0.4375,
+    "best_placement": 25,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 25
+      }
+    ],
+    "peak_rating": 1437.24,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1437.24,
+    "current_rd": 122.34,
+    "current_rank": 59
+  },
+  {
+    "tag": "fedef",
+    "tournaments": 1,
+    "sets_total": 16,
+    "sets_won": 7,
+    "sets_lost": 9,
+    "win_rate": 0.4375,
+    "best_placement": 21,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 21
+      }
+    ],
+    "peak_rating": 1435.34,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1435.34,
+    "current_rd": 123.95,
+    "current_rank": 60
+  },
+  {
+    "tag": "Shears",
+    "tournaments": 2,
+    "sets_total": 16,
+    "sets_won": 5,
+    "sets_lost": 11,
+    "win_rate": 0.3125,
+    "best_placement": 29,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 33
+      },
+      {
+        "tournament": "inkafest-3",
+        "place": 29
+      }
+    ],
+    "peak_rating": 1430.79,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1430.79,
+    "current_rd": 128.25,
+    "current_rank": 61
+  },
+  {
+    "tag": "SHREDGAR",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 4,
+    "sets_lost": 3,
+    "win_rate": 0.5714,
+    "best_placement": 34,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 34
+      }
+    ],
+    "peak_rating": 1426.12,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1426.12,
+    "current_rd": 184.49,
+    "current_rank": 62
+  },
+  {
+    "tag": "Zkeptic",
+    "tournaments": 1,
+    "sets_total": 17,
+    "sets_won": 8,
+    "sets_lost": 9,
+    "win_rate": 0.4706,
+    "best_placement": 17,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 17
+      }
+    ],
+    "peak_rating": 1425.78,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1425.78,
+    "current_rd": 124.8,
+    "current_rank": 63
   },
   {
     "tag": "1upShyguy",
@@ -836,8 +1299,28 @@
     "peak_rating": 1424.95,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1424.95,
-    "current_rd": 171.21,
-    "current_rank": 42
+    "current_rd": 171.53,
+    "current_rank": 64
+  },
+  {
+    "tag": "Masayuki",
+    "tournaments": 1,
+    "sets_total": 17,
+    "sets_won": 7,
+    "sets_lost": 10,
+    "win_rate": 0.4118,
+    "best_placement": 25,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 25
+      }
+    ],
+    "peak_rating": 1417.07,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1417.07,
+    "current_rd": 119.37,
+    "current_rank": 65
   },
   {
     "tag": "Estrogwen",
@@ -856,8 +1339,8 @@
     "peak_rating": 1414.14,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1414.14,
-    "current_rd": 171.21,
-    "current_rank": 43
+    "current_rd": 171.53,
+    "current_rank": 66
   },
   {
     "tag": "AlanDeez",
@@ -876,8 +1359,8 @@
     "peak_rating": 1410.17,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1410.17,
-    "current_rd": 129.02,
-    "current_rank": 44
+    "current_rd": 129.44,
+    "current_rank": 67
   },
   {
     "tag": "MUGEN 無限",
@@ -896,8 +1379,28 @@
     "peak_rating": 1407.35,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1407.35,
-    "current_rd": 171.21,
-    "current_rank": 45
+    "current_rd": 171.53,
+    "current_rank": 68
+  },
+  {
+    "tag": "Maniac379",
+    "tournaments": 1,
+    "sets_total": 17,
+    "sets_won": 7,
+    "sets_lost": 10,
+    "win_rate": 0.4118,
+    "best_placement": 21,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 21
+      }
+    ],
+    "peak_rating": 1398.29,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1398.29,
+    "current_rd": 122.34,
+    "current_rank": 69
   },
   {
     "tag": "Aut0pilot",
@@ -916,8 +1419,8 @@
     "peak_rating": 1391.77,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1391.77,
-    "current_rd": 133.2,
-    "current_rank": 46
+    "current_rd": 133.6,
+    "current_rank": 70
   },
   {
     "tag": "DoubleJ",
@@ -936,8 +1439,8 @@
     "peak_rating": 1378.5,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1378.5,
-    "current_rd": 181.35,
-    "current_rank": 47
+    "current_rd": 181.65,
+    "current_rank": 71
   },
   {
     "tag": "irrelevant",
@@ -956,8 +1459,8 @@
     "peak_rating": 1371.12,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1371.12,
-    "current_rd": 181.35,
-    "current_rank": 48
+    "current_rd": 181.65,
+    "current_rank": 72
   },
   {
     "tag": "Z-Rex",
@@ -976,8 +1479,8 @@
     "peak_rating": 1364.33,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1364.33,
-    "current_rd": 171.21,
-    "current_rank": 49
+    "current_rd": 171.53,
+    "current_rank": 73
   },
   {
     "tag": "TimberRoodles",
@@ -996,8 +1499,68 @@
     "peak_rating": 1362.94,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1362.94,
-    "current_rd": 171.21,
-    "current_rank": 50
+    "current_rd": 171.53,
+    "current_rank": 74
+  },
+  {
+    "tag": "Kaiser",
+    "tournaments": 1,
+    "sets_total": 10,
+    "sets_won": 4,
+    "sets_lost": 6,
+    "win_rate": 0.4,
+    "best_placement": 29,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 29
+      }
+    ],
+    "peak_rating": 1362.53,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1362.53,
+    "current_rd": 162.6,
+    "current_rank": 75
+  },
+  {
+    "tag": "kurja",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 3,
+    "sets_lost": 4,
+    "win_rate": 0.4286,
+    "best_placement": 39,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 39
+      }
+    ],
+    "peak_rating": 1350.51,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1350.51,
+    "current_rd": 184.55,
+    "current_rank": 76
+  },
+  {
+    "tag": "Heny935",
+    "tournaments": 1,
+    "sets_total": 11,
+    "sets_won": 4,
+    "sets_lost": 7,
+    "win_rate": 0.3636,
+    "best_placement": 29,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 29
+      }
+    ],
+    "peak_rating": 1350.49,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1350.49,
+    "current_rd": 146.95,
+    "current_rank": 77
   },
   {
     "tag": "Araknowsall",
@@ -1016,8 +1579,92 @@
     "peak_rating": 1346.35,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1346.35,
-    "current_rd": 171.21,
-    "current_rank": 51
+    "current_rd": 171.53,
+    "current_rank": 78
+  },
+  {
+    "tag": "Bob",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 3,
+    "sets_lost": 4,
+    "win_rate": 0.4286,
+    "best_placement": 34,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 34
+      }
+    ],
+    "peak_rating": 1344.37,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1344.37,
+    "current_rd": 184.55,
+    "current_rank": 79
+  },
+  {
+    "tag": "Velizer0",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 3,
+    "sets_lost": 4,
+    "win_rate": 0.4286,
+    "best_placement": 34,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 34
+      }
+    ],
+    "peak_rating": 1334.03,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1334.03,
+    "current_rd": 183.34,
+    "current_rank": 80
+  },
+  {
+    "tag": "Cagt",
+    "tournaments": 2,
+    "sets_total": 14,
+    "sets_won": 6,
+    "sets_lost": 8,
+    "win_rate": 0.4286,
+    "best_placement": 39,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 45
+      },
+      {
+        "tournament": "inkafest-3",
+        "place": 39
+      }
+    ],
+    "peak_rating": 1487.05,
+    "peak_rating_after": "hitstun-7-last-call",
+    "current_rating": 1331.72,
+    "current_rd": 137.99,
+    "current_rank": 81
+  },
+  {
+    "tag": "Racilor",
+    "tournaments": 1,
+    "sets_total": 10,
+    "sets_won": 3,
+    "sets_lost": 7,
+    "win_rate": 0.3,
+    "best_placement": 29,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 29
+      }
+    ],
+    "peak_rating": 1328.96,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1328.96,
+    "current_rd": 150.27,
+    "current_rank": 82
   },
   {
     "tag": "The_Smashfather",
@@ -1036,28 +1683,8 @@
     "peak_rating": 1311.02,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1311.02,
-    "current_rd": 181.35,
-    "current_rank": 52
-  },
-  {
-    "tag": "Shears",
-    "tournaments": 1,
-    "sets_total": 6,
-    "sets_won": 0,
-    "sets_lost": 6,
-    "win_rate": 0.0,
-    "best_placement": 33,
-    "placements": [
-      {
-        "tournament": "hitstun-7-last-call",
-        "place": 33
-      }
-    ],
-    "peak_rating": 1310.23,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1310.23,
-    "current_rd": 181.35,
-    "current_rank": 53
+    "current_rd": 181.65,
+    "current_rank": 83
   },
   {
     "tag": "typo",
@@ -1076,8 +1703,8 @@
     "peak_rating": 1304.39,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1304.39,
-    "current_rd": 171.21,
-    "current_rank": 54
+    "current_rd": 171.53,
+    "current_rank": 84
   },
   {
     "tag": "neat",
@@ -1096,8 +1723,8 @@
     "peak_rating": 1303.27,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1303.27,
-    "current_rd": 171.21,
-    "current_rank": 55
+    "current_rd": 171.53,
+    "current_rank": 85
   },
   {
     "tag": "chacalaca88",
@@ -1116,48 +1743,8 @@
     "peak_rating": 1303.02,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1303.02,
-    "current_rd": 181.35,
-    "current_rank": 56
-  },
-  {
-    "tag": "tarp",
-    "tournaments": 1,
-    "sets_total": 7,
-    "sets_won": 1,
-    "sets_lost": 6,
-    "win_rate": 0.1429,
-    "best_placement": 63,
-    "placements": [
-      {
-        "tournament": "hitstun-7-last-call",
-        "place": 63
-      }
-    ],
-    "peak_rating": 1293.65,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1293.65,
-    "current_rd": 171.21,
-    "current_rank": 57
-  },
-  {
-    "tag": "Looshes",
-    "tournaments": 1,
-    "sets_total": 7,
-    "sets_won": 1,
-    "sets_lost": 6,
-    "win_rate": 0.1429,
-    "best_placement": 57,
-    "placements": [
-      {
-        "tournament": "hitstun-7-last-call",
-        "place": 57
-      }
-    ],
-    "peak_rating": 1293.65,
-    "peak_rating_after": "hitstun-7-last-call",
-    "current_rating": 1293.65,
-    "current_rd": 171.21,
-    "current_rank": 58
+    "current_rd": 181.65,
+    "current_rank": 86
   },
   {
     "tag": "ChronicMexican",
@@ -1176,8 +1763,68 @@
     "peak_rating": 1293.65,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1293.65,
-    "current_rd": 171.21,
-    "current_rank": 59
+    "current_rd": 171.53,
+    "current_rank": 87
+  },
+  {
+    "tag": "tarp",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 1,
+    "sets_lost": 6,
+    "win_rate": 0.1429,
+    "best_placement": 63,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 63
+      }
+    ],
+    "peak_rating": 1293.65,
+    "peak_rating_after": "hitstun-7-last-call",
+    "current_rating": 1293.65,
+    "current_rd": 171.53,
+    "current_rank": 88
+  },
+  {
+    "tag": "Looshes",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 1,
+    "sets_lost": 6,
+    "win_rate": 0.1429,
+    "best_placement": 57,
+    "placements": [
+      {
+        "tournament": "hitstun-7-last-call",
+        "place": 57
+      }
+    ],
+    "peak_rating": 1293.65,
+    "peak_rating_after": "hitstun-7-last-call",
+    "current_rating": 1293.65,
+    "current_rd": 171.53,
+    "current_rank": 89
+  },
+  {
+    "tag": "Alls",
+    "tournaments": 1,
+    "sets_total": 6,
+    "sets_won": 2,
+    "sets_lost": 4,
+    "win_rate": 0.3333,
+    "best_placement": 34,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 34
+      }
+    ],
+    "peak_rating": 1291.68,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1291.68,
+    "current_rd": 188.97,
+    "current_rank": 90
   },
   {
     "tag": "Accru Fenix",
@@ -1196,8 +1843,48 @@
     "peak_rating": 1286.07,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1286.07,
-    "current_rd": 171.21,
-    "current_rank": 60
+    "current_rd": 171.53,
+    "current_rank": 91
+  },
+  {
+    "tag": "JK",
+    "tournaments": 1,
+    "sets_total": 6,
+    "sets_won": 2,
+    "sets_lost": 4,
+    "win_rate": 0.3333,
+    "best_placement": 34,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 34
+      }
+    ],
+    "peak_rating": 1267.84,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1267.84,
+    "current_rd": 208.56,
+    "current_rank": 92
+  },
+  {
+    "tag": "Xengar",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 2,
+    "sets_lost": 5,
+    "win_rate": 0.2857,
+    "best_placement": 39,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 39
+      }
+    ],
+    "peak_rating": 1260.67,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1260.67,
+    "current_rd": 195.96,
+    "current_rank": 93
   },
   {
     "tag": "Lv20ninja",
@@ -1216,8 +1903,8 @@
     "peak_rating": 1245.12,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1245.12,
-    "current_rd": 171.21,
-    "current_rank": 61
+    "current_rd": 171.53,
+    "current_rank": 94
   },
   {
     "tag": "Halofactory",
@@ -1236,8 +1923,8 @@
     "peak_rating": 1244.49,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1244.49,
-    "current_rd": 181.35,
-    "current_rank": 62
+    "current_rd": 181.65,
+    "current_rank": 95
   },
   {
     "tag": "GgX",
@@ -1256,8 +1943,8 @@
     "peak_rating": 1244.27,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1244.27,
-    "current_rd": 171.21,
-    "current_rank": 63
+    "current_rd": 171.53,
+    "current_rank": 96
   },
   {
     "tag": "Ed Sheeran",
@@ -1276,8 +1963,8 @@
     "peak_rating": 1235.87,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1235.87,
-    "current_rd": 181.35,
-    "current_rank": 64
+    "current_rd": 181.65,
+    "current_rank": 97
   },
   {
     "tag": "Mijo!",
@@ -1296,8 +1983,128 @@
     "peak_rating": 1226.45,
     "peak_rating_after": "hitstun-7-last-call",
     "current_rating": 1226.45,
-    "current_rd": 171.21,
-    "current_rank": 65
+    "current_rd": 171.53,
+    "current_rank": 98
+  },
+  {
+    "tag": "Smurf",
+    "tournaments": 1,
+    "sets_total": 6,
+    "sets_won": 1,
+    "sets_lost": 5,
+    "win_rate": 0.1667,
+    "best_placement": 39,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 39
+      }
+    ],
+    "peak_rating": 1216.59,
+    "peak_rating_after": "inkafest-3",
+    "current_rating": 1216.59,
+    "current_rd": 188.97,
+    "current_rank": 99
+  },
+  {
+    "tag": "Abduul",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 1,
+    "sets_lost": 6,
+    "win_rate": 0.1429,
+    "best_placement": 44,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 44
+      }
+    ],
+    "peak_rating": null,
+    "peak_rating_after": null,
+    "current_rating": null,
+    "current_rd": null,
+    "current_rank": null
+  },
+  {
+    "tag": "Ashley",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 0,
+    "sets_lost": 7,
+    "win_rate": 0.0,
+    "best_placement": 49,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 49
+      }
+    ],
+    "peak_rating": null,
+    "peak_rating_after": null,
+    "current_rating": null,
+    "current_rd": null,
+    "current_rank": null
+  },
+  {
+    "tag": "DK",
+    "tournaments": 1,
+    "sets_total": 6,
+    "sets_won": 1,
+    "sets_lost": 5,
+    "win_rate": 0.1667,
+    "best_placement": 39,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 39
+      }
+    ],
+    "peak_rating": null,
+    "peak_rating_after": null,
+    "current_rating": null,
+    "current_rd": null,
+    "current_rank": null
+  },
+  {
+    "tag": "Edum_",
+    "tournaments": 1,
+    "sets_total": 6,
+    "sets_won": 0,
+    "sets_lost": 6,
+    "win_rate": 0.0,
+    "best_placement": 44,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 44
+      }
+    ],
+    "peak_rating": null,
+    "peak_rating_after": null,
+    "current_rating": null,
+    "current_rd": null,
+    "current_rank": null
+  },
+  {
+    "tag": "ElBateSoli",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 0,
+    "sets_lost": 7,
+    "win_rate": 0.0,
+    "best_placement": 49,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 49
+      }
+    ],
+    "peak_rating": null,
+    "peak_rating_after": null,
+    "current_rating": null,
+    "current_rd": null,
+    "current_rank": null
   },
   {
     "tag": "Gossamer",
@@ -1311,6 +2118,86 @@
       {
         "tournament": "hitstun-7-last-call",
         "place": 63
+      }
+    ],
+    "peak_rating": null,
+    "peak_rating_after": null,
+    "current_rating": null,
+    "current_rd": null,
+    "current_rank": null
+  },
+  {
+    "tag": "Musulman0630",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 1,
+    "sets_lost": 6,
+    "win_rate": 0.1429,
+    "best_placement": 44,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 44
+      }
+    ],
+    "peak_rating": null,
+    "peak_rating_after": null,
+    "current_rating": null,
+    "current_rd": null,
+    "current_rank": null
+  },
+  {
+    "tag": "NJ",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 1,
+    "sets_lost": 6,
+    "win_rate": 0.1429,
+    "best_placement": 44,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 44
+      }
+    ],
+    "peak_rating": null,
+    "peak_rating_after": null,
+    "current_rating": null,
+    "current_rd": null,
+    "current_rank": null
+  },
+  {
+    "tag": "Rey Falcon",
+    "tournaments": 1,
+    "sets_total": 7,
+    "sets_won": 0,
+    "sets_lost": 7,
+    "win_rate": 0.0,
+    "best_placement": 49,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 49
+      }
+    ],
+    "peak_rating": null,
+    "peak_rating_after": null,
+    "current_rating": null,
+    "current_rd": null,
+    "current_rank": null
+  },
+  {
+    "tag": "THECOPY",
+    "tournaments": 1,
+    "sets_total": 6,
+    "sets_won": 0,
+    "sets_lost": 6,
+    "win_rate": 0.0,
+    "best_placement": 44,
+    "placements": [
+      {
+        "tournament": "inkafest-3",
+        "place": 44
       }
     ],
     "peak_rating": null,
