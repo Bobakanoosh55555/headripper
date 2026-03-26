@@ -17,6 +17,16 @@ Outputs:
     computed/stats.json    - Per-player career stats
 
 DQ sets are excluded from all rating calculations but are counted in stats.
+
+Rating approach:
+  New players (no prior rating) are seeded from their final tournament
+  placement before Glicko-2 runs. 1st place seeds at 1700, last place at
+  1300, smooth curve in between scaled to field size. This gives the
+  convergence loop a meaningful prior so established players aren't unfairly
+  penalised by facing a strong newcomer who entered at a flat 1500.
+
+  Established players always use their actual Glicko-2 prior — placement
+  seeding only applies to first appearances.
 """
 
 import sys
@@ -40,6 +50,28 @@ SCALE   = 173.7178
 MAX_PASSES     = 200
 CONVERGE_DELTA = 0.1
 
+# Placement seeding parameters (new players only)
+SEED_TOP    = 1700.0   # rating for 1st place
+SEED_BOTTOM = 1300.0   # rating for last place
+SEED_CURVE  = 0.6      # exponent — < 1 stretches top end, > 1 stretches bottom
+
+
+def placement_seed(place, n):
+    """
+    Map a final placement to a starting rating.
+    place: 1-indexed finishing position
+    n: total entrants in the tournament
+    """
+    if n <= 1:
+        return MU_0
+    t = 1.0 - (place - 1) / (n - 1)   # 1.0 for 1st, 0.0 for last
+    spread = SEED_TOP - SEED_BOTTOM
+    return SEED_BOTTOM + spread * (t ** SEED_CURVE)
+
+
+# ---------------------------------------------------------------------------
+# Glicko-2 core
+# ---------------------------------------------------------------------------
 
 def to_g2(mu, phi):
     return (mu - MU_0) / SCALE, phi / SCALE
@@ -106,6 +138,68 @@ def glicko2_update(mu, phi, sigma, results):
 
 
 # ---------------------------------------------------------------------------
+# Rating convergence
+# ---------------------------------------------------------------------------
+
+def run_tournament(playable, prior_states):
+    """
+    Compute converged ratings for one tournament period.
+    prior_states already has placement seeds applied for new players.
+
+    Pass 1: standard Glicko-2 (establishes RD/volatility).
+    Passes 2+: freeze RD/volatility, iterate ratings until convergence.
+    """
+    period_players = set(t for ta, tb, _, __ in playable for t in (ta, tb))
+    mu0, phi0 = to_g2(MU_0, PHI_0)
+
+    def get_prior(tag):
+        return prior_states.get(tag, [mu0, phi0, SIGMA_0])
+
+    # Pass 1
+    states = {}
+    for tag in period_players:
+        cur = get_prior(tag)
+        results = [
+            (get_prior(tb)[0], get_prior(tb)[1], oa) if ta == tag
+            else (get_prior(ta)[0], get_prior(ta)[1], ob)
+            for ta, tb, oa, ob in playable if ta == tag or tb == tag
+        ]
+        nm, np, ns = glicko2_update(cur[0], cur[1], cur[2], results)
+        states[tag] = [nm, np, ns]
+
+    frozen_phi   = {t: states[t][1] for t in period_players}
+    frozen_sigma = {t: states[t][2] for t in period_players}
+
+    # Passes 2+ — iterate ratings only, starting from each player's prior
+    # (not from mu0=1500). This is critical: using mu0 would treat all
+    # established players as 1500 during convergence, completely ignoring
+    # their actual rating when computing expected outcomes.
+    for _ in range(1, MAX_PASSES):
+        new_states = {}
+        for tag in period_players:
+            phi, sigma = frozen_phi[tag], frozen_sigma[tag]
+            prior_mu = get_prior(tag)[0]
+            results = [
+                (states[tb][0], frozen_phi[tb], oa) if ta == tag
+                else (states[ta][0], frozen_phi[ta], ob)
+                for ta, tb, oa, ob in playable if ta == tag or tb == tag
+            ]
+            nm, np, ns = glicko2_update(prior_mu, phi, sigma, results)
+            new_states[tag] = [nm, frozen_phi[tag], frozen_sigma[tag]]
+
+        max_delta = max(
+            abs(to_display(new_states[t][0], 0)[0] -
+                to_display(states[t][0], 0)[0])
+            for t in period_players
+        )
+        states = new_states
+        if max_delta < CONVERGE_DELTA:
+            break
+
+    return states
+
+
+# ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
@@ -132,7 +226,6 @@ def is_dq(s):
 
 
 def set_outcome(s):
-    """Return (score_a, score_b) as floats, or None to skip."""
     if is_dq(s):
         return None
     sa, sb = s.get('score_a'), s.get('score_b')
@@ -146,59 +239,27 @@ def set_outcome(s):
 
 
 def h2h_key(a, b):
-    """Canonical sorted key for a player pair."""
     return tuple(sorted([a, b]))
 
 
-# ---------------------------------------------------------------------------
-# Rating convergence
-# ---------------------------------------------------------------------------
-
-def run_tournament(playable, prior_states):
-    period_players = set(t for ta, tb, _, __ in playable for t in (ta, tb))
-    mu0, phi0 = to_g2(MU_0, PHI_0)
-
-    def get_prior(tag):
-        return prior_states.get(tag, [mu0, phi0, SIGMA_0])
-
-    # Pass 1: standard Glicko-2
-    states = {}
-    for tag in period_players:
-        cur = get_prior(tag)
-        results = [
-            (get_prior(tb)[0], get_prior(tb)[1], oa) if ta == tag
-            else (get_prior(ta)[0], get_prior(ta)[1], ob)
-            for ta, tb, oa, ob in playable if ta == tag or tb == tag
-        ]
-        nm, np, ns = glicko2_update(cur[0], cur[1], cur[2], results)
-        states[tag] = [nm, np, ns]
-
-    frozen_phi   = {t: states[t][1] for t in period_players}
-    frozen_sigma = {t: states[t][2] for t in period_players}
-
-    # Passes 2+: iterate ratings only
-    for _ in range(1, MAX_PASSES):
-        new_states = {}
-        for tag in period_players:
-            phi, sigma = frozen_phi[tag], frozen_sigma[tag]
-            results = [
-                (states[tb][0], frozen_phi[tb], oa) if ta == tag
-                else (states[ta][0], frozen_phi[ta], ob)
-                for ta, tb, oa, ob in playable if ta == tag or tb == tag
-            ]
-            nm, np, ns = glicko2_update(mu0, phi, sigma, results)
-            new_states[tag] = [nm, frozen_phi[tag], frozen_sigma[tag]]
-
-        max_delta = max(
-            abs(to_display(new_states[t][0], 0)[0] -
-                to_display(states[t][0], 0)[0])
-            for t in period_players
-        )
-        states = new_states
-        if max_delta < CONVERGE_DELTA:
-            break
-
-    return states
+def round_weight(round_name):
+    """
+    Return a weight multiplier for a set based on its round.
+    Pool sets are baseline 1.0. Bracket rounds increase toward finals.
+    This ensures a Grand Final loss doesn't disproportionately punish
+    a player who ran the entire winners bracket to get there.
+    """
+    r = round_name.lower()
+    if 'pool' in r:                    return 1.0
+    if 'round 1' in r:                 return 1.1
+    if 'round 2' in r:                 return 1.15
+    if 'round 3' in r:                 return 1.2
+    if 'quarter' in r:                 return 1.25
+    if 'semi' in r:                    return 1.35
+    if 'final' in r and 'grand' not in r: return 1.5
+    if 'grand final reset' in r:       return 1.6
+    if 'grand final' in r:             return 1.6
+    return 1.0
 
 
 # ---------------------------------------------------------------------------
@@ -222,28 +283,15 @@ def main():
             tournaments.append(load_json(os.path.join(tournaments_dir, fname)))
     tournaments.sort(key=lambda t: t['date'])
 
-    # --- Persistent state ---
     mu0, phi0 = to_g2(MU_0, PHI_0)
-    global_ratings = {}   # tag -> [mu, phi, sigma, sets, tournaments]
+    global_ratings = {}
 
-    # H2H: (tag_a, tag_b) sorted -> {wins_a, wins_b, sets, tournaments: {tid: {wins_a, wins_b, sets}}}
-    h2h = defaultdict(lambda: {
-        "wins": [0, 0],
-        "sets": 0,
-        "by_tournament": {}
-    })
+    h2h = defaultdict(lambda: {"wins": [0, 0], "sets": 0, "by_tournament": {}})
 
-    # Stats accumulators per player
-    # We'll track: sets_won, sets_lost, sets_total, tournaments, placements,
-    #              best_placement, peak_rating, peak_rating_after
     stats_acc = defaultdict(lambda: {
-        "sets_won":       0,
-        "sets_lost":      0,
-        "sets_total":     0,
-        "tournaments":    0,
-        "placements":     [],   # list of {tournament, place}
-        "peak_rating":    None,
-        "peak_rating_after": None,
+        "sets_won": 0, "sets_lost": 0, "sets_total": 0,
+        "tournaments": 0, "placements": [],
+        "peak_rating": None, "peak_rating_after": None,
     })
 
     snapshots = []
@@ -252,6 +300,7 @@ def main():
         tid  = tournament['id']
         date = tournament['date']
         name = tournament['name']
+        n_entrants = tournament.get('entrant_count', 0)
 
         sets_path = os.path.join(sets_dir, f"{tid}.json")
         if not os.path.exists(sets_path):
@@ -259,20 +308,18 @@ def main():
             continue
 
         raw_sets = load_json(sets_path)
+        placement_map = {resolve(p['tag'], alt_index): p['place']
+                         for p in tournament.get('placements', [])}
 
-        # Build placement lookup for this tournament
-        placement_map = {resolve(p['tag'], alt_index): p['place'] for p in tournament.get('placements', [])}
-
-        # Separate DQ and playable sets
         playable = []
         dq_count = 0
+
         for s in raw_sets:
             outcome = set_outcome(s)
-            tag_a = resolve(s['player_a'], alt_index)
-            tag_b = resolve(s['player_b'], alt_index)
+            tag_a   = resolve(s['player_a'], alt_index)
+            tag_b   = resolve(s['player_b'], alt_index)
             if outcome is None:
                 dq_count += 1
-                # Still count DQ in stats (as a loss for the DQ'd player)
                 if is_dq(s):
                     if s.get('score_b') == 'DQ':
                         stats_acc[tag_a]['sets_won']   += 1
@@ -289,7 +336,7 @@ def main():
 
         period_players = set(t for ta, tb, _, __ in playable for t in (ta, tb))
 
-        # --- Update stats from playable sets ---
+        # Stats
         for tag_a, tag_b, oa, ob in playable:
             stats_acc[tag_a]['sets_total'] += 1
             stats_acc[tag_b]['sets_total'] += 1
@@ -300,30 +347,63 @@ def main():
                 stats_acc[tag_b]['sets_won']  += 1
                 stats_acc[tag_a]['sets_lost'] += 1
 
-        # --- Update H2H from playable sets ---
+        # H2H
         for tag_a, tag_b, oa, ob in playable:
             key = h2h_key(tag_a, tag_b)
             entry = h2h[key]
             is_a_first = key[0] == tag_a
-
             if tid not in entry['by_tournament']:
                 entry['by_tournament'][tid] = {"wins": [0, 0], "sets": 0}
             bt = entry['by_tournament'][tid]
-
             entry['sets'] += 1
             bt['sets']    += 1
-
-            if oa > ob:   # tag_a won
+            if oa > ob:
                 idx = 0 if is_a_first else 1
                 entry['wins'][idx] += 1
                 bt['wins'][idx]    += 1
-            elif ob > oa: # tag_b won
+            elif ob > oa:
                 idx = 1 if is_a_first else 0
                 entry['wins'][idx] += 1
                 bt['wins'][idx]    += 1
 
-        # --- Ratings ---
-        prior = {t: global_ratings[t][:3] for t in global_ratings}
+        # Build prior states:
+        # - Established players: use their actual Glicko-2 rating
+        # - New players: seed from final placement, using the highest
+        #   established player's rating as the curve ceiling.
+        #   This prevents new players from seeding above the best known
+        #   player in the field.
+        established_ratings = [
+            to_display(global_ratings[t][0], 0)[0]
+            for t in period_players if t in global_ratings
+        ]
+        has_established = len(established_ratings) > 0
+        if has_established:
+            sorted_est = sorted(established_ratings)
+            seed_top = sorted_est[len(sorted_est) // 2]  # median
+        else:
+            seed_top = SEED_TOP
+
+        prior = {}
+        new_seeded = 0
+        for tag in period_players:
+            if tag in global_ratings:
+                prior[tag] = global_ratings[tag][:3]
+            else:
+                place = placement_map.get(tag)
+                if has_established and place is not None and n_entrants > 1:
+                    # Seed new players from placement, capped at the highest
+                    # established player's rating. Only applies when there are
+                    # established players to anchor against — at the first
+                    # tournament everyone starts from default and iterative
+                    # convergence handles calibration on its own.
+                    t_norm = 1.0 - (place - 1) / (n_entrants - 1)
+                    seed_mu = SEED_BOTTOM + (seed_top - SEED_BOTTOM) * (t_norm ** SEED_CURVE)
+                    seed_mu_g2, _ = to_g2(seed_mu, 0)
+                    prior[tag] = [seed_mu_g2, phi0, SIGMA_0]
+                    new_seeded += 1
+                else:
+                    prior[tag] = [mu0, phi0, SIGMA_0]
+
         new_ratings = run_tournament(playable, prior)
 
         # RD decay for absent players
@@ -332,145 +412,96 @@ def main():
                 phi_d = min(math.sqrt(st[1]**2 + st[2]**2), PHI_0 / SCALE)
                 global_ratings[tag][1] = phi_d
 
-        # Commit ratings and update tournament counts
-        all_tournament_players = set()
-        for tag_a, tag_b, _, __ in playable:
-            all_tournament_players.add(tag_a)
-            all_tournament_players.add(tag_b)
-        # Also include DQ players in tournament count
+        # Commit
+        all_tournament_players = set(period_players)
         for s in raw_sets:
             if is_dq(s):
                 all_tournament_players.add(resolve(s['player_a'], alt_index))
                 all_tournament_players.add(resolve(s['player_b'], alt_index))
 
         for tag in period_players:
-            nr  = new_ratings[tag]
+            nr   = new_ratings[tag]
             prev = global_ratings.get(tag, [mu0, phi0, SIGMA_0, 0, 0])
             set_count = sum(1 for ta, tb, _, __ in playable if ta == tag or tb == tag)
-            global_ratings[tag] = [
-                nr[0], nr[1], nr[2],
-                prev[3] + set_count,
-                prev[4] + 1
-            ]
+            global_ratings[tag] = [nr[0], nr[1], nr[2], prev[3] + set_count, prev[4] + 1]
 
         for tag in all_tournament_players:
             stats_acc[tag]['tournaments'] += 1
             place = placement_map.get(tag)
-            # Also check alternate tags for placement lookup
-
             if place is not None:
-                stats_acc[tag]['placements'].append({
-                    "tournament": tid,
-                    "place": place
-                })
+                stats_acc[tag]['placements'].append({"tournament": tid, "place": place})
 
-        # --- Build ratings snapshot ---
+        # Snapshot
         ranked = sorted(
-            [
-                {
-                    "tag":         tag,
-                    "rank":        0,
-                    "rating":      round(to_display(st[0], 0)[0], 2),
-                    "rd":          round(to_display(0, st[1])[1], 2),
-                    "volatility":  round(st[2], 6),
-                    "sets":        st[3],
-                    "tournaments": st[4],
-                }
-                for tag, st in global_ratings.items()
-            ],
-            key=lambda x: x['rating'],
-            reverse=True
+            [{"tag": tag, "rank": 0,
+              "rating":      round(to_display(st[0], 0)[0], 2),
+              "rd":          round(to_display(0, st[1])[1], 2),
+              "volatility":  round(st[2], 6),
+              "sets":        st[3],
+              "tournaments": st[4]}
+             for tag, st in global_ratings.items()],
+            key=lambda x: x['rating'], reverse=True
         )
         for i, p in enumerate(ranked):
             p['rank'] = i + 1
 
-        # Update peak rating in stats
         for entry in ranked:
-            tag = entry['tag']
-            rating = entry['rating']
-            if (stats_acc[tag]['peak_rating'] is None or
-                    rating > stats_acc[tag]['peak_rating']):
+            tag, rating = entry['tag'], entry['rating']
+            if stats_acc[tag]['peak_rating'] is None or rating > stats_acc[tag]['peak_rating']:
                 stats_acc[tag]['peak_rating']       = rating
                 stats_acc[tag]['peak_rating_after'] = tid
 
-        snapshots.append({
-            "after":   tid,
-            "name":    name,
-            "date":    date,
-            "ratings": ranked,
-        })
+        snapshots.append({"after": tid, "name": name, "date": date, "ratings": ranked})
 
-        print(f"  {name} ({date}): {len(playable)} sets rated, "
-              f"{dq_count} DQ skipped, {len(period_players)} players")
+        new_count = len(period_players) - len([t for t in period_players if t in global_ratings
+                                               and global_ratings[t][4] > 0])
+        print(f"  {name} ({date}): {len(playable)} sets rated, {dq_count} DQ skipped, "
+              f"{len(period_players)} players ({new_seeded} new, placement-seeded)")
 
-    # --- Write ratings.json ---
+    # Write outputs
     os.makedirs(output_dir, exist_ok=True)
+
     ratings_path = os.path.join(output_dir, 'ratings.json')
     with open(ratings_path, 'w', encoding='utf-8') as f:
         json.dump({"snapshots": snapshots}, f, indent=2, ensure_ascii=False)
     print(f"\nWrote {ratings_path}")
 
-    # --- Write h2h.json ---
-    # Convert to a list keyed by sorted player pair for easy lookup
-    h2h_out = []
-    for (pa, pb), data in sorted(h2h.items()):
-        h2h_out.append({
-            "players": [pa, pb],
-            "wins":    data['wins'],        # [pa_wins, pb_wins]
-            "sets":    data['sets'],
-            "by_tournament": {
-                tid: {
-                    "wins": bt['wins'],
-                    "sets": bt['sets']
-                }
-                for tid, bt in data['by_tournament'].items()
-            }
-        })
-
+    h2h_out = [{"players": list(k), "wins": v['wins'], "sets": v['sets'],
+                 "by_tournament": {t: {"wins": b['wins'], "sets": b['sets']}
+                                   for t, b in v['by_tournament'].items()}}
+               for k, v in sorted(h2h.items())]
     h2h_path = os.path.join(output_dir, 'h2h.json')
     with open(h2h_path, 'w', encoding='utf-8') as f:
         json.dump(h2h_out, f, indent=2, ensure_ascii=False)
     print(f"Wrote {h2h_path}  ({len(h2h_out)} pairs)")
 
-    # --- Write stats.json ---
-    # Get final rating for each player from last snapshot
     final_ratings = {}
     if snapshots:
         for entry in snapshots[-1]['ratings']:
-            final_ratings[entry['tag']] = {
-                'rating': entry['rating'],
-                'rd':     entry['rd'],
-                'rank':   entry['rank'],
-            }
+            final_ratings[entry['tag']] = {'rating': entry['rating'],
+                                            'rd': entry['rd'], 'rank': entry['rank']}
 
     stats_out = []
-    all_tags = set(stats_acc.keys()) | set(final_ratings.keys())
-    for tag in sorted(all_tags):
+    for tag in sorted(set(stats_acc.keys()) | set(final_ratings.keys())):
         acc = stats_acc[tag]
         fr  = final_ratings.get(tag)
-        sets_total = acc['sets_total']
-        sets_won   = acc['sets_won']
-        placements = sorted(acc['placements'], key=lambda p: p['tournament'])
-        best_place = min((p['place'] for p in placements), default=None)
-
+        st  = acc['sets_total']
+        sw  = acc['sets_won']
+        pl  = sorted(acc['placements'], key=lambda p: p['tournament'])
         stats_out.append({
-            "tag":              tag,
-            "tournaments":      acc['tournaments'],
-            "sets_total":       sets_total,
-            "sets_won":         sets_won,
-            "sets_lost":        acc['sets_lost'],
-            "win_rate":         round(sets_won / sets_total, 4) if sets_total else 0,
-            "best_placement":   best_place,
-            "placements":       placements,
-            "peak_rating":      acc['peak_rating'],
+            "tag": tag, "tournaments": acc['tournaments'],
+            "sets_total": st, "sets_won": sw, "sets_lost": acc['sets_lost'],
+            "win_rate": round(sw / st, 4) if st else 0,
+            "best_placement": min((p['place'] for p in pl), default=None),
+            "placements": pl,
+            "peak_rating": acc['peak_rating'],
             "peak_rating_after": acc['peak_rating_after'],
-            "current_rating":   fr['rating'] if fr else None,
-            "current_rd":       fr['rd']     if fr else None,
-            "current_rank":     fr['rank']   if fr else None,
+            "current_rating": fr['rating'] if fr else None,
+            "current_rd":     fr['rd']     if fr else None,
+            "current_rank":   fr['rank']   if fr else None,
         })
 
     stats_out.sort(key=lambda x: x['current_rank'] if x['current_rank'] else 9999)
-
     stats_path = os.path.join(output_dir, 'stats.json')
     with open(stats_path, 'w', encoding='utf-8') as f:
         json.dump(stats_out, f, indent=2, ensure_ascii=False)

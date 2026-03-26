@@ -510,7 +510,7 @@
           "tournaments": 1
         },
         {
-          "tag": "ChronicMexican",
+          "tag": "tarp",
           "rank": 57,
           "rating": 1293.65,
           "rd": 171.21,
@@ -519,7 +519,7 @@
           "tournaments": 1
         },
         {
-          "tag": "tarp",
+          "tag": "Looshes",
           "rank": 58,
           "rating": 1293.65,
           "rd": 171.21,
@@ -528,7 +528,7 @@
           "tournaments": 1
         },
         {
-          "tag": "Looshes",
+          "tag": "ChronicMexican",
           "rank": 59,
           "rating": 1293.65,
           "rd": 171.21,
@@ -600,15 +600,69 @@
         {
           "tag": "Kurabba",
           "rank": 1,
-          "rating": 1768.12,
-          "rd": 133.52,
-          "volatility": 0.060003,
+          "rating": 1916.96,
+          "rd": 124.0,
+          "volatility": 0.060001,
           "sets": 13,
           "tournaments": 1
         },
         {
-          "tag": "Robert",
+          "tag": "Nax",
           "rank": 2,
+          "rating": 1909.41,
+          "rd": 107.11,
+          "volatility": 0.059998,
+          "sets": 23,
+          "tournaments": 2
+        },
+        {
+          "tag": "Wizzrobe",
+          "rank": 3,
+          "rating": 1851.43,
+          "rd": 104.04,
+          "volatility": 0.06,
+          "sets": 22,
+          "tournaments": 2
+        },
+        {
+          "tag": "Isai",
+          "rank": 4,
+          "rating": 1806.07,
+          "rd": 129.8,
+          "volatility": 0.059999,
+          "sets": 11,
+          "tournaments": 1
+        },
+        {
+          "tag": "JeyKeyAr",
+          "rank": 5,
+          "rating": 1776.74,
+          "rd": 130.27,
+          "volatility": 0.059999,
+          "sets": 13,
+          "tournaments": 1
+        },
+        {
+          "tag": "kix",
+          "rank": 6,
+          "rating": 1756.63,
+          "rd": 103.39,
+          "volatility": 0.059996,
+          "sets": 22,
+          "tournaments": 2
+        },
+        {
+          "tag": "ALVIN",
+          "rank": 7,
+          "rating": 1754.15,
+          "rd": 140.18,
+          "volatility": 0.059998,
+          "sets": 11,
+          "tournaments": 1
+        },
+        {
+          "tag": "Robert",
+          "rank": 8,
           "rating": 1743.48,
           "rd": 138.2,
           "volatility": 0.059999,
@@ -617,7 +671,7 @@
         },
         {
           "tag": "Dogs_Johnson",
-          "rank": 3,
+          "rank": 9,
           "rating": 1741.01,
           "rd": 155.52,
           "volatility": 0.059999,
@@ -625,8 +679,35 @@
           "tournaments": 1
         },
         {
+          "tag": "Freezer",
+          "rank": 10,
+          "rating": 1740.67,
+          "rd": 147.3,
+          "volatility": 0.060001,
+          "sets": 9,
+          "tournaments": 1
+        },
+        {
+          "tag": "Leo",
+          "rank": 11,
+          "rating": 1727.23,
+          "rd": 123.58,
+          "volatility": 0.059998,
+          "sets": 14,
+          "tournaments": 1
+        },
+        {
+          "tag": "JaimeHR",
+          "rank": 12,
+          "rating": 1725.71,
+          "rd": 127.29,
+          "volatility": 0.059999,
+          "sets": 13,
+          "tournaments": 1
+        },
+        {
           "tag": "Lowww",
-          "rank": 4,
+          "rank": 13,
           "rating": 1724.04,
           "rd": 155.52,
           "volatility": 0.059999,
@@ -634,17 +715,35 @@
           "tournaments": 1
         },
         {
-          "tag": "Freezer",
-          "rank": 5,
-          "rating": 1677.6,
-          "rd": 147.57,
-          "volatility": 0.060001,
-          "sets": 9,
+          "tag": "Antonio",
+          "rank": 14,
+          "rating": 1708.69,
+          "rd": 114.21,
+          "volatility": 0.059998,
+          "sets": 17,
+          "tournaments": 1
+        },
+        {
+          "tag": "Legend@rito",
+          "rank": 15,
+          "rating": 1702.86,
+          "rd": 136.92,
+          "volatility": 0.059998,
+          "sets": 10,
+          "tournaments": 1
+        },
+        {
+          "tag": "Gerson",
+          "rank": 16,
+          "rating": 1678.84,
+          "rd": 148.4,
+          "volatility": 0.059998,
+          "sets": 8,
           "tournaments": 1
         },
         {
           "tag": "Andykins",
-          "rank": 6,
+          "rank": 17,
           "rating": 1673.62,
           "rd": 129.44,
           "volatility": 0.059999,
@@ -652,17 +751,8 @@
           "tournaments": 1
         },
         {
-          "tag": "Nax",
-          "rank": 7,
-          "rating": 1671.97,
-          "rd": 111.94,
-          "volatility": 0.059996,
-          "sets": 23,
-          "tournaments": 2
-        },
-        {
           "tag": "Janco",
-          "rank": 8,
+          "rank": 18,
           "rating": 1665.89,
           "rd": 125.65,
           "volatility": 0.059999,
@@ -670,35 +760,17 @@
           "tournaments": 1
         },
         {
-          "tag": "Isai",
-          "rank": 9,
-          "rating": 1658.52,
-          "rd": 136.08,
-          "volatility": 0.06,
-          "sets": 11,
-          "tournaments": 1
-        },
-        {
-          "tag": "JeyKeyAr",
-          "rank": 10,
-          "rating": 1647.38,
-          "rd": 129.73,
-          "volatility": 0.059999,
-          "sets": 13,
-          "tournaments": 1
-        },
-        {
-          "tag": "Wizzrobe",
-          "rank": 11,
-          "rating": 1643.95,
-          "rd": 107.16,
-          "volatility": 0.059996,
-          "sets": 22,
+          "tag": "Josh Brody",
+          "rank": 19,
+          "rating": 1658.41,
+          "rd": 105.17,
+          "volatility": 0.059993,
+          "sets": 21,
           "tournaments": 2
         },
         {
           "tag": "B33F",
-          "rank": 12,
+          "rank": 20,
           "rating": 1643.91,
           "rd": 133.6,
           "volatility": 0.059999,
@@ -707,7 +779,7 @@
         },
         {
           "tag": "Waxy:Joe",
-          "rank": 13,
+          "rank": 21,
           "rating": 1634.99,
           "rd": 129.44,
           "volatility": 0.059998,
@@ -715,17 +787,35 @@
           "tournaments": 1
         },
         {
-          "tag": "ALVIN",
-          "rank": 14,
-          "rating": 1620.1,
-          "rd": 142.13,
+          "tag": "Louwiz",
+          "rank": 22,
+          "rating": 1630.78,
+          "rd": 123.64,
+          "volatility": 0.059998,
+          "sets": 14,
+          "tournaments": 1
+        },
+        {
+          "tag": "Tavomono.Pe",
+          "rank": 23,
+          "rating": 1628.79,
+          "rd": 175.39,
           "volatility": 0.059999,
-          "sets": 11,
+          "sets": 7,
+          "tournaments": 1
+        },
+        {
+          "tag": "POCHITO",
+          "rank": 24,
+          "rating": 1609.76,
+          "rd": 111.61,
+          "volatility": 0.059998,
+          "sets": 17,
           "tournaments": 1
         },
         {
           "tag": "Bo",
-          "rank": 15,
+          "rank": 25,
           "rating": 1608.44,
           "rd": 129.44,
           "volatility": 0.059998,
@@ -733,26 +823,26 @@
           "tournaments": 1
         },
         {
-          "tag": "JaimeHR",
-          "rank": 16,
-          "rating": 1607.71,
-          "rd": 126.54,
-          "volatility": 0.059999,
-          "sets": 13,
+          "tag": "LoCoSm4sH",
+          "rank": 26,
+          "rating": 1605.55,
+          "rd": 119.43,
+          "volatility": 0.059998,
+          "sets": 16,
           "tournaments": 1
         },
         {
-          "tag": "kix",
-          "rank": 17,
-          "rating": 1593.06,
-          "rd": 105.32,
-          "volatility": 0.059994,
-          "sets": 22,
+          "tag": "Cool Lime",
+          "rank": 27,
+          "rating": 1594.87,
+          "rd": 96.38,
+          "volatility": 0.059992,
+          "sets": 27,
           "tournaments": 2
         },
         {
           "tag": "EG",
-          "rank": 18,
+          "rank": 28,
           "rating": 1591.43,
           "rd": 129.44,
           "volatility": 0.059998,
@@ -760,26 +850,8 @@
           "tournaments": 1
         },
         {
-          "tag": "Leo",
-          "rank": 19,
-          "rating": 1590.96,
-          "rd": 125.97,
-          "volatility": 0.059999,
-          "sets": 14,
-          "tournaments": 1
-        },
-        {
-          "tag": "Antonio",
-          "rank": 20,
-          "rating": 1585.6,
-          "rd": 115.44,
-          "volatility": 0.059999,
-          "sets": 17,
-          "tournaments": 1
-        },
-        {
           "tag": "CTG",
-          "rank": 21,
+          "rank": 29,
           "rating": 1579.15,
           "rd": 133.6,
           "volatility": 0.059998,
@@ -788,7 +860,7 @@
         },
         {
           "tag": "Gravyfingers",
-          "rank": 22,
+          "rank": 30,
           "rating": 1574.46,
           "rd": 118.97,
           "volatility": 0.059998,
@@ -797,7 +869,7 @@
         },
         {
           "tag": "Nackle",
-          "rank": 23,
+          "rank": 31,
           "rating": 1569.0,
           "rd": 138.2,
           "volatility": 0.059999,
@@ -805,8 +877,17 @@
           "tournaments": 1
         },
         {
+          "tag": "Apolo",
+          "rank": 32,
+          "rating": 1567.43,
+          "rd": 147.5,
+          "volatility": 0.059998,
+          "sets": 9,
+          "tournaments": 1
+        },
+        {
           "tag": "Dishier Wand",
-          "rank": 24,
+          "rank": 33,
           "rating": 1566.56,
           "rd": 118.97,
           "volatility": 0.059998,
@@ -814,17 +895,8 @@
           "tournaments": 1
         },
         {
-          "tag": "Legend@rito",
-          "rank": 25,
-          "rating": 1566.04,
-          "rd": 142.9,
-          "volatility": 0.059999,
-          "sets": 10,
-          "tournaments": 1
-        },
-        {
           "tag": "Htom",
-          "rank": 26,
+          "rank": 34,
           "rating": 1556.72,
           "rd": 116.01,
           "volatility": 0.059998,
@@ -832,8 +904,17 @@
           "tournaments": 1
         },
         {
+          "tag": "WoKeRico",
+          "rank": 35,
+          "rating": 1555.01,
+          "rd": 115.53,
+          "volatility": 0.059998,
+          "sets": 15,
+          "tournaments": 1
+        },
+        {
           "tag": "Fancy",
-          "rank": 27,
+          "rank": 36,
           "rating": 1549.8,
           "rd": 129.44,
           "volatility": 0.059998,
@@ -841,17 +922,17 @@
           "tournaments": 1
         },
         {
-          "tag": "Tavomono.Pe",
-          "rank": 28,
-          "rating": 1549.37,
-          "rd": 171.91,
-          "volatility": 0.059999,
-          "sets": 7,
+          "tag": "Schmerka Berl",
+          "rank": 37,
+          "rating": 1546.86,
+          "rd": 119.51,
+          "volatility": 0.059998,
+          "sets": 14,
           "tournaments": 1
         },
         {
           "tag": "dmolz",
-          "rank": 29,
+          "rank": 38,
           "rating": 1544.39,
           "rd": 138.2,
           "volatility": 0.059998,
@@ -859,17 +940,8 @@
           "tournaments": 1
         },
         {
-          "tag": "Gerson",
-          "rank": 30,
-          "rating": 1542.21,
-          "rd": 154.21,
-          "volatility": 0.059998,
-          "sets": 8,
-          "tournaments": 1
-        },
-        {
           "tag": "Dr. Sauce",
-          "rank": 31,
+          "rank": 39,
           "rating": 1542.08,
           "rd": 171.53,
           "volatility": 0.059998,
@@ -878,7 +950,7 @@
         },
         {
           "tag": "Freean",
-          "rank": 32,
+          "rank": 40,
           "rating": 1539.69,
           "rd": 113.26,
           "volatility": 0.059998,
@@ -886,8 +958,17 @@
           "tournaments": 1
         },
         {
+          "tag": "Soldado",
+          "rank": 41,
+          "rating": 1535.62,
+          "rd": 127.45,
+          "volatility": 0.059998,
+          "sets": 13,
+          "tournaments": 1
+        },
+        {
           "tag": "Queso",
-          "rank": 33,
+          "rank": 42,
           "rating": 1533.82,
           "rd": 133.6,
           "volatility": 0.059998,
@@ -895,17 +976,8 @@
           "tournaments": 1
         },
         {
-          "tag": "Louwiz",
-          "rank": 34,
-          "rating": 1532.87,
-          "rd": 124.44,
-          "volatility": 0.059998,
-          "sets": 14,
-          "tournaments": 1
-        },
-        {
           "tag": "Couchsachraga",
-          "rank": 35,
+          "rank": 43,
           "rating": 1529.19,
           "rd": 113.26,
           "volatility": 0.059998,
@@ -914,7 +986,7 @@
         },
         {
           "tag": "cobr",
-          "rank": 36,
+          "rank": 44,
           "rating": 1525.69,
           "rd": 133.6,
           "volatility": 0.059998,
@@ -923,7 +995,7 @@
         },
         {
           "tag": "Pokehero",
-          "rank": 37,
+          "rank": 45,
           "rating": 1521.02,
           "rd": 143.31,
           "volatility": 0.059998,
@@ -931,17 +1003,17 @@
           "tournaments": 1
         },
         {
-          "tag": "Cool Lime",
-          "rank": 38,
-          "rating": 1514.65,
-          "rd": 96.5,
-          "volatility": 0.059991,
-          "sets": 27,
-          "tournaments": 2
+          "tag": "Zkeptic",
+          "rank": 46,
+          "rating": 1520.72,
+          "rd": 123.49,
+          "volatility": 0.059998,
+          "sets": 14,
+          "tournaments": 1
         },
         {
           "tag": "Wiseacre",
-          "rank": 39,
+          "rank": 47,
           "rating": 1514.41,
           "rd": 133.6,
           "volatility": 0.059998,
@@ -950,7 +1022,7 @@
         },
         {
           "tag": "Maafia",
-          "rank": 40,
+          "rank": 48,
           "rating": 1512.89,
           "rd": 116.01,
           "volatility": 0.059998,
@@ -958,17 +1030,26 @@
           "tournaments": 1
         },
         {
-          "tag": "Josh Brody",
-          "rank": 41,
-          "rating": 1511.78,
-          "rd": 106.86,
-          "volatility": 0.059996,
-          "sets": 21,
-          "tournaments": 2
+          "tag": "fedef",
+          "rank": 49,
+          "rating": 1508.98,
+          "rd": 125.6,
+          "volatility": 0.059998,
+          "sets": 15,
+          "tournaments": 1
+        },
+        {
+          "tag": "Fernando",
+          "rank": 50,
+          "rating": 1502.72,
+          "rd": 123.11,
+          "volatility": 0.059998,
+          "sets": 15,
+          "tournaments": 1
         },
         {
           "tag": "Duff man",
-          "rank": 42,
+          "rank": 51,
           "rating": 1499.82,
           "rd": 133.6,
           "volatility": 0.059998,
@@ -976,35 +1057,26 @@
           "tournaments": 1
         },
         {
-          "tag": "LoCoSm4sH",
-          "rank": 43,
-          "rating": 1498.67,
-          "rd": 119.61,
+          "tag": "Masayuki",
+          "rank": 52,
+          "rating": 1492.73,
+          "rd": 118.28,
           "volatility": 0.059998,
+          "sets": 15,
+          "tournaments": 1
+        },
+        {
+          "tag": "sextc",
+          "rank": 53,
+          "rating": 1490.93,
+          "rd": 123.37,
+          "volatility": 0.059994,
           "sets": 16,
-          "tournaments": 1
-        },
-        {
-          "tag": "Apolo",
-          "rank": 44,
-          "rating": 1493.83,
-          "rd": 147.99,
-          "volatility": 0.059998,
-          "sets": 9,
-          "tournaments": 1
-        },
-        {
-          "tag": "POCHITO",
-          "rank": 45,
-          "rating": 1492.57,
-          "rd": 111.44,
-          "volatility": 0.059998,
-          "sets": 17,
-          "tournaments": 1
+          "tournaments": 2
         },
         {
           "tag": "Rafael",
-          "rank": 46,
+          "rank": 54,
           "rating": 1490.58,
           "rd": 133.6,
           "volatility": 0.059998,
@@ -1013,7 +1085,7 @@
         },
         {
           "tag": "Bimbo",
-          "rank": 47,
+          "rank": 55,
           "rating": 1486.05,
           "rd": 171.53,
           "volatility": 0.059998,
@@ -1022,7 +1094,7 @@
         },
         {
           "tag": "elel",
-          "rank": 48,
+          "rank": 56,
           "rating": 1484.11,
           "rd": 171.53,
           "volatility": 0.059998,
@@ -1031,7 +1103,7 @@
         },
         {
           "tag": "deathline",
-          "rank": 49,
+          "rank": 57,
           "rating": 1478.76,
           "rd": 129.44,
           "volatility": 0.059998,
@@ -1039,8 +1111,26 @@
           "tournaments": 1
         },
         {
+          "tag": "Maniac379",
+          "rank": 58,
+          "rating": 1470.57,
+          "rd": 122.81,
+          "volatility": 0.059999,
+          "sets": 14,
+          "tournaments": 1
+        },
+        {
+          "tag": "SHREDGAR",
+          "rank": 59,
+          "rating": 1469.0,
+          "rd": 186.16,
+          "volatility": 0.059998,
+          "sets": 5,
+          "tournaments": 1
+        },
+        {
           "tag": "Moonshoes",
-          "rank": 50,
+          "rank": 60,
           "rating": 1468.93,
           "rd": 171.53,
           "volatility": 0.059998,
@@ -1048,17 +1138,8 @@
           "tournaments": 1
         },
         {
-          "tag": "sextc",
-          "rank": 51,
-          "rating": 1466.64,
-          "rd": 121.91,
-          "volatility": 0.059994,
-          "sets": 16,
-          "tournaments": 2
-        },
-        {
           "tag": "FASTLIKERAT",
-          "rank": 52,
+          "rank": 61,
           "rating": 1464.22,
           "rd": 133.6,
           "volatility": 0.059998,
@@ -1066,26 +1147,8 @@
           "tournaments": 1
         },
         {
-          "tag": "Schmerka Berl",
-          "rank": 53,
-          "rating": 1458.58,
-          "rd": 121.13,
-          "volatility": 0.059998,
-          "sets": 14,
-          "tournaments": 1
-        },
-        {
-          "tag": "WoKeRico",
-          "rank": 54,
-          "rating": 1453.35,
-          "rd": 117.16,
-          "volatility": 0.059998,
-          "sets": 15,
-          "tournaments": 1
-        },
-        {
           "tag": "SOTO",
-          "rank": 55,
+          "rank": 62,
           "rating": 1446.87,
           "rd": 181.65,
           "volatility": 0.059998,
@@ -1094,7 +1157,7 @@
         },
         {
           "tag": "Terra",
-          "rank": 56,
+          "rank": 63,
           "rating": 1445.34,
           "rd": 133.6,
           "volatility": 0.059998,
@@ -1102,17 +1165,8 @@
           "tournaments": 1
         },
         {
-          "tag": "Soldado",
-          "rank": 57,
-          "rating": 1444.88,
-          "rd": 128.18,
-          "volatility": 0.059998,
-          "sets": 13,
-          "tournaments": 1
-        },
-        {
           "tag": "phresh",
-          "rank": 58,
+          "rank": 64,
           "rating": 1440.17,
           "rd": 181.65,
           "volatility": 0.059998,
@@ -1120,53 +1174,17 @@
           "tournaments": 1
         },
         {
-          "tag": "Fernando",
-          "rank": 59,
-          "rating": 1437.24,
-          "rd": 122.34,
-          "volatility": 0.059998,
-          "sets": 15,
-          "tournaments": 1
-        },
-        {
-          "tag": "fedef",
-          "rank": 60,
-          "rating": 1435.34,
-          "rd": 123.95,
-          "volatility": 0.059998,
-          "sets": 15,
-          "tournaments": 1
-        },
-        {
-          "tag": "Shears",
-          "rank": 61,
-          "rating": 1430.79,
-          "rd": 128.25,
-          "volatility": 0.059998,
-          "sets": 15,
-          "tournaments": 2
-        },
-        {
-          "tag": "SHREDGAR",
-          "rank": 62,
-          "rating": 1426.12,
-          "rd": 184.49,
-          "volatility": 0.059999,
-          "sets": 5,
-          "tournaments": 1
-        },
-        {
-          "tag": "Zkeptic",
-          "rank": 63,
+          "tag": "Kaiser",
+          "rank": 65,
           "rating": 1425.78,
-          "rd": 124.8,
-          "volatility": 0.059998,
-          "sets": 14,
+          "rd": 163.84,
+          "volatility": 0.059999,
+          "sets": 8,
           "tournaments": 1
         },
         {
           "tag": "1upShyguy",
-          "rank": 64,
+          "rank": 66,
           "rating": 1424.95,
           "rd": 171.53,
           "volatility": 0.059998,
@@ -1174,17 +1192,8 @@
           "tournaments": 1
         },
         {
-          "tag": "Masayuki",
-          "rank": 65,
-          "rating": 1417.07,
-          "rd": 119.37,
-          "volatility": 0.059998,
-          "sets": 15,
-          "tournaments": 1
-        },
-        {
           "tag": "Estrogwen",
-          "rank": 66,
+          "rank": 67,
           "rating": 1414.14,
           "rd": 171.53,
           "volatility": 0.059998,
@@ -1193,7 +1202,7 @@
         },
         {
           "tag": "AlanDeez",
-          "rank": 67,
+          "rank": 68,
           "rating": 1410.17,
           "rd": 129.44,
           "volatility": 0.059998,
@@ -1201,8 +1210,17 @@
           "tournaments": 1
         },
         {
+          "tag": "Heny935",
+          "rank": 69,
+          "rating": 1409.02,
+          "rd": 146.72,
+          "volatility": 0.059999,
+          "sets": 9,
+          "tournaments": 1
+        },
+        {
           "tag": "MUGEN 無限",
-          "rank": 68,
+          "rank": 70,
           "rating": 1407.35,
           "rd": 171.53,
           "volatility": 0.059998,
@@ -1210,17 +1228,8 @@
           "tournaments": 1
         },
         {
-          "tag": "Maniac379",
-          "rank": 69,
-          "rating": 1398.29,
-          "rd": 122.34,
-          "volatility": 0.059999,
-          "sets": 14,
-          "tournaments": 1
-        },
-        {
           "tag": "Aut0pilot",
-          "rank": 70,
+          "rank": 71,
           "rating": 1391.77,
           "rd": 133.6,
           "volatility": 0.059999,
@@ -1229,7 +1238,7 @@
         },
         {
           "tag": "DoubleJ",
-          "rank": 71,
+          "rank": 72,
           "rating": 1378.5,
           "rd": 181.65,
           "volatility": 0.059999,
@@ -1237,8 +1246,17 @@
           "tournaments": 1
         },
         {
+          "tag": "Racilor",
+          "rank": 73,
+          "rating": 1371.59,
+          "rd": 150.58,
+          "volatility": 0.059999,
+          "sets": 9,
+          "tournaments": 1
+        },
+        {
           "tag": "irrelevant",
-          "rank": 72,
+          "rank": 74,
           "rating": 1371.12,
           "rd": 181.65,
           "volatility": 0.059999,
@@ -1246,8 +1264,26 @@
           "tournaments": 1
         },
         {
+          "tag": "Velizer0",
+          "rank": 75,
+          "rating": 1370.25,
+          "rd": 184.76,
+          "volatility": 0.059999,
+          "sets": 5,
+          "tournaments": 1
+        },
+        {
+          "tag": "Bob",
+          "rank": 76,
+          "rating": 1369.11,
+          "rd": 185.16,
+          "volatility": 0.059999,
+          "sets": 5,
+          "tournaments": 1
+        },
+        {
           "tag": "Z-Rex",
-          "rank": 73,
+          "rank": 77,
           "rating": 1364.33,
           "rd": 171.53,
           "volatility": 0.059999,
@@ -1255,8 +1291,17 @@
           "tournaments": 1
         },
         {
+          "tag": "Shears",
+          "rank": 78,
+          "rating": 1364.04,
+          "rd": 130.53,
+          "volatility": 0.059999,
+          "sets": 15,
+          "tournaments": 2
+        },
+        {
           "tag": "TimberRoodles",
-          "rank": 74,
+          "rank": 79,
           "rating": 1362.94,
           "rd": 171.53,
           "volatility": 0.059999,
@@ -1264,55 +1309,10 @@
           "tournaments": 1
         },
         {
-          "tag": "Kaiser",
-          "rank": 75,
-          "rating": 1362.53,
-          "rd": 162.6,
-          "volatility": 0.059999,
-          "sets": 8,
-          "tournaments": 1
-        },
-        {
           "tag": "kurja",
-          "rank": 76,
-          "rating": 1350.51,
-          "rd": 184.55,
-          "volatility": 0.059999,
-          "sets": 5,
-          "tournaments": 1
-        },
-        {
-          "tag": "Heny935",
-          "rank": 77,
-          "rating": 1350.49,
-          "rd": 146.95,
-          "volatility": 0.059999,
-          "sets": 9,
-          "tournaments": 1
-        },
-        {
-          "tag": "Araknowsall",
-          "rank": 78,
-          "rating": 1346.35,
-          "rd": 171.53,
-          "volatility": 0.059999,
-          "sets": 7,
-          "tournaments": 1
-        },
-        {
-          "tag": "Bob",
-          "rank": 79,
-          "rating": 1344.37,
-          "rd": 184.55,
-          "volatility": 0.059999,
-          "sets": 5,
-          "tournaments": 1
-        },
-        {
-          "tag": "Velizer0",
           "rank": 80,
-          "rating": 1334.03,
-          "rd": 183.34,
+          "rating": 1358.53,
+          "rd": 185.91,
           "volatility": 0.059999,
           "sets": 5,
           "tournaments": 1
@@ -1320,19 +1320,19 @@
         {
           "tag": "Cagt",
           "rank": 81,
-          "rating": 1331.72,
-          "rd": 137.99,
-          "volatility": 0.060005,
+          "rating": 1355.61,
+          "rd": 138.82,
+          "volatility": 0.060003,
           "sets": 12,
           "tournaments": 2
         },
         {
-          "tag": "Racilor",
+          "tag": "Araknowsall",
           "rank": 82,
-          "rating": 1328.96,
-          "rd": 150.27,
+          "rating": 1346.35,
+          "rd": 171.53,
           "volatility": 0.059999,
-          "sets": 9,
+          "sets": 7,
           "tournaments": 1
         },
         {
@@ -1345,8 +1345,26 @@
           "tournaments": 1
         },
         {
-          "tag": "typo",
+          "tag": "JK",
           "rank": 84,
+          "rating": 1310.27,
+          "rd": 210.66,
+          "volatility": 0.06,
+          "sets": 4,
+          "tournaments": 1
+        },
+        {
+          "tag": "Alls",
+          "rank": 85,
+          "rating": 1305.34,
+          "rd": 189.46,
+          "volatility": 0.06,
+          "sets": 5,
+          "tournaments": 1
+        },
+        {
+          "tag": "typo",
+          "rank": 86,
           "rating": 1304.39,
           "rd": 171.53,
           "volatility": 0.06,
@@ -1355,7 +1373,7 @@
         },
         {
           "tag": "neat",
-          "rank": 85,
+          "rank": 87,
           "rating": 1303.27,
           "rd": 171.53,
           "volatility": 0.06,
@@ -1364,7 +1382,7 @@
         },
         {
           "tag": "chacalaca88",
-          "rank": 86,
+          "rank": 88,
           "rating": 1303.02,
           "rd": 181.65,
           "volatility": 0.06,
@@ -1372,25 +1390,7 @@
           "tournaments": 1
         },
         {
-          "tag": "ChronicMexican",
-          "rank": 87,
-          "rating": 1293.65,
-          "rd": 171.53,
-          "volatility": 0.06,
-          "sets": 7,
-          "tournaments": 1
-        },
-        {
           "tag": "tarp",
-          "rank": 88,
-          "rating": 1293.65,
-          "rd": 171.53,
-          "volatility": 0.06,
-          "sets": 7,
-          "tournaments": 1
-        },
-        {
-          "tag": "Looshes",
           "rank": 89,
           "rating": 1293.65,
           "rd": 171.53,
@@ -1399,17 +1399,26 @@
           "tournaments": 1
         },
         {
-          "tag": "Alls",
+          "tag": "Looshes",
           "rank": 90,
-          "rating": 1291.68,
-          "rd": 188.97,
+          "rating": 1293.65,
+          "rd": 171.53,
           "volatility": 0.06,
-          "sets": 5,
+          "sets": 7,
+          "tournaments": 1
+        },
+        {
+          "tag": "ChronicMexican",
+          "rank": 91,
+          "rating": 1293.65,
+          "rd": 171.53,
+          "volatility": 0.06,
+          "sets": 7,
           "tournaments": 1
         },
         {
           "tag": "Accru Fenix",
-          "rank": 91,
+          "rank": 92,
           "rating": 1286.07,
           "rd": 171.53,
           "volatility": 0.06,
@@ -1417,19 +1426,10 @@
           "tournaments": 1
         },
         {
-          "tag": "JK",
-          "rank": 92,
-          "rating": 1267.84,
-          "rd": 208.56,
-          "volatility": 0.060001,
-          "sets": 4,
-          "tournaments": 1
-        },
-        {
           "tag": "Xengar",
           "rank": 93,
-          "rating": 1260.67,
-          "rd": 195.96,
+          "rating": 1274.03,
+          "rd": 199.18,
           "volatility": 0.06,
           "sets": 4,
           "tournaments": 1
@@ -1482,8 +1482,8 @@
         {
           "tag": "Smurf",
           "rank": 99,
-          "rating": 1216.59,
-          "rd": 188.97,
+          "rating": 1218.84,
+          "rd": 188.91,
           "volatility": 0.060001,
           "sets": 5,
           "tournaments": 1
