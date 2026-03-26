@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smash 64 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:     #c41e1e;
+    --red-dim: #7a1212;
+    --bg:      #0a0a0a;
+    --bg2:     #111111;
+    --bg3:     #1a1a1a;
+    --border:  #222222;
+    --text:    #f0f0f0;
+    --muted:   #888888;
+    --muted2:  #555555;
+    --win:     #2a7a3b;
+    --win-t:   #4caf6a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Header ── */
+  header {
+    position: relative;
+    background: var(--bg2);
+    border-bottom: 2px solid var(--red);
+    padding: 0 2rem;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px
+    );
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.25rem 0;
+  }
+  .site-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    line-height: 1;
+    cursor: pointer;
+  }
+  .site-title span { color: var(--red); }
+  .header-meta {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-left: 1px solid var(--border);
+    padding-left: 2rem;
+  }
+
+  /* ── Nav tabs ── */
+  nav {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    padding: 0 0;
+  }
+  .tab-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--red); border-bottom-color: var(--red); }
+
+  /* ── Main layout ── */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Section headers ── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .section-count {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Controls row ── */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .search-box {
+    flex: 1;
+    min-width: 200px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    padding: 0.5rem 0.75rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-box:focus { border-color: var(--red); }
+  .search-box::placeholder { color: var(--muted2); }
+
+  .filter-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  select.filter-select {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    padding: 0.5rem 0.75rem;
+    outline: none;
+    cursor: pointer;
+  }
+  select.filter-select:focus { border-color: var(--red); }
+
+  /* ── Players table ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .data-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  .data-table th:hover { color: var(--text); }
+  .data-table th.sorted { color: var(--red); }
+  .data-table th .sort-arrow { margin-left: 4px; opacity: 0.5; }
+  .data-table th.sorted .sort-arrow { opacity: 1; }
+
+  .data-table td {
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .data-table tr:hover td { background: var(--bg3); }
+  .data-table tr.clickable { cursor: pointer; }
+
+  .rank-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.05rem;
+    color: var(--muted2);
+    width: 3rem;
+    text-align: right;
+  }
+  .rank-num.top3 { color: var(--red); }
+
+  .player-tag {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .player-alts {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  .rating-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+
+  .confidence-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .confidence-bar {
+    width: 60px;
+    height: 4px;
+    background: var(--bg3);
+    overflow: hidden;
+  }
+  .confidence-fill {
+    height: 100%;
+    background: var(--red);
+    transition: width 0.3s;
+  }
+  .confidence-label {
+    font-size: 11px;
+    color: var(--muted);
+    width: 32px;
+  }
+
+  .win-rate {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .record-small { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  /* ── Player modal / detail panel ── */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 100;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+  }
+  .overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+  .modal {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    width: 100%;
+    max-width: 760px;
+    padding: 2rem;
+    position: relative;
+    animation: slideIn 0.18s ease;
+  }
+  @keyframes slideIn {
+    from { transform: translateY(-16px); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
+  }
+  .modal-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none; border: none;
+    color: var(--muted); font-size: 1.4rem;
+    cursor: pointer; line-height: 1;
+    transition: color 0.15s;
+  }
+  .modal-close:hover { color: var(--text); }
+
+  .player-hero {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .player-hero-rank {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    color: var(--red);
+    line-height: 1;
+  }
+  .player-hero-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .player-hero-alts {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+  .stat-cell {
+    background: var(--bg3);
+    padding: 0.875rem 1rem;
+  }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .stat-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-value.red { color: var(--red); }
+
+  .modal-section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.875rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Tournament history in modal */
+  .tournament-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .tournament-row:hover { background: var(--bg3); margin: 0 -2rem; padding: 0.6rem 2rem; }
+  .t-place {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    min-width: 2.5rem;
+    text-align: right;
+  }
+  .t-place.top1 { color: #ffd700; }
+  .t-place.top3 { color: #c0c0c0; }
+  .t-place.top4 { color: #cd7f32; }
+  .t-place.other { color: var(--muted); }
+  .t-name { flex: 1; font-weight: 500; }
+  .t-date { font-size: 12px; color: var(--muted); }
+
+  /* H2H rows in modal */
+  .h2h-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .h2h-row:hover { background: var(--bg3); margin: 0 -2rem; padding: 0.5rem 2rem; }
+  .h2h-opponent { flex: 1; font-weight: 500; }
+  .h2h-record {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .h2h-record.winning { color: var(--win-t); }
+  .h2h-record.losing  { color: #e05555; }
+  .h2h-record.even    { color: var(--muted); }
+  .h2h-sets { font-size: 11px; color: var(--muted); }
+
+  .modal-link-btn {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid var(--red-dim);
+    padding: 0.3rem 0.75rem;
+    text-decoration: none;
+    transition: background 0.15s;
+    cursor: pointer;
+    background: none;
+  }
+  .modal-link-btn:hover { background: var(--red-dim); color: var(--text); }
+
+  /* ── Tournaments tab ── */
+  .tournament-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    transition: border-left-color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .tournament-card:hover { border-left-color: var(--red); background: var(--bg3); }
+  .t-card-date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    min-width: 100px;
+  }
+  .t-card-name {
+    flex: 1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+  }
+  .t-card-meta { font-size: 12px; color: var(--muted); }
+  .t-card-entrants {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--red);
+    text-align: right;
+    min-width: 60px;
+  }
+  .t-card-entrants-label { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* Tournament detail modal */
+  .placement-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .placement-row:hover { background: var(--bg3); margin: 0 -2rem; padding: 0.5rem 2rem; }
+  .p-rank {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    min-width: 2.5rem;
+    text-align: right;
+    color: var(--muted);
+  }
+  .p-rank.top1 { color: #ffd700; }
+  .p-rank.top3 { color: #c0c0c0; }
+  .p-rank.top4 { color: #cd7f32; }
+  .p-tag { flex: 1; font-weight: 500; }
+  .p-rating { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; color: var(--muted); font-size: 13px; }
+
+  /* ── H2H tab ── */
+  .h2h-builder {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .h2h-builder-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .h2h-player-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    min-height: 38px;
+    align-items: center;
+  }
+  .player-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.6rem;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .player-chip button {
+    background: none; border: none;
+    color: var(--muted); cursor: pointer;
+    font-size: 14px; line-height: 1;
+    padding: 0;
+    transition: color 0.1s;
+  }
+  .player-chip button:hover { color: var(--red); }
+  .h2h-add-row { display: flex; gap: 0.75rem; }
+  .h2h-add-input {
+    flex: 1;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    padding: 0.5rem 0.75rem;
+    outline: none;
+  }
+  .h2h-add-input:focus { border-color: var(--red); }
+  .h2h-autocomplete {
+    position: relative;
+  }
+  .h2h-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-top: none;
+    z-index: 50;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .h2h-dropdown.open { display: block; }
+  .h2h-dropdown-item {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.1s;
+  }
+  .h2h-dropdown-item:hover { background: var(--bg3); color: var(--red); }
+
+  /* H2H matrix table */
+  .h2h-matrix-wrap { overflow-x: auto; }
+  .h2h-matrix {
+    border-collapse: collapse;
+    min-width: 100%;
+  }
+  .h2h-matrix th, .h2h-matrix td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .h2h-matrix th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    background: var(--bg3);
+    color: var(--muted);
+  }
+  .h2h-matrix th.row-header { text-align: left; color: var(--text); }
+  .h2h-matrix td.self { background: var(--bg3); }
+  .h2h-matrix td.win  { background: rgba(42,122,59,0.25); color: var(--win-t); font-weight: 600; }
+  .h2h-matrix td.loss { background: rgba(200,60,60,0.15); color: #e05555; font-weight: 600; }
+  .h2h-matrix td.even { color: var(--muted); }
+  .h2h-matrix td.no-data { color: var(--muted2); }
+
+  /* ── Utility ── */
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .badge {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    font-weight: 700;
+  }
+  .badge-red { background: var(--red-dim); color: #ff9090; }
+
+  a { color: var(--red); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    main { padding: 1.25rem 1rem; }
+    .player-hero-rank { font-size: 2.5rem; }
+    .player-hero-name { font-size: 1.5rem; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    header { padding: 0 1rem; }
+    .tab-btn { padding: 0.875rem 1rem; font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="site-title" onclick="showTab('players')">
+      SMASH <span>64</span> RANKINGS
+    </div>
+    <div class="header-meta" id="header-meta">Loading...</div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="showTab('players')"   id="tab-players">Players</button>
+    <button class="tab-btn"        onclick="showTab('tournaments')" id="tab-tournaments">Tournaments</button>
+    <button class="tab-btn"        onclick="showTab('h2h')"        id="tab-h2h">Head-to-Head</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ══════════════════════════════════════════════════
+       TAB: PLAYERS
+  ══════════════════════════════════════════════════ -->
+  <div class="tab-panel active" id="panel-players">
+    <div class="section-header">
+      <div class="section-title">Player Rankings</div>
+      <div class="section-count" id="players-count"></div>
+    </div>
+
+    <div class="controls">
+      <input class="search-box" type="text" placeholder="Search by tag or alternate tag…" id="player-search" oninput="filterPlayers()">
+      <span class="filter-label">Confidence:</span>
+      <select class="filter-select" id="confidence-filter" onchange="filterPlayers()">
+        <option value="0">All players</option>
+        <option value="0.33">Medium+</option>
+        <option value="0.66">High+</option>
+        <option value="0.9">Very high only</option>
+      </select>
+      <span class="filter-label">Sort:</span>
+      <select class="filter-select" id="sort-select" onchange="filterPlayers()">
+        <option value="rank">Ranking</option>
+        <option value="rating">Rating</option>
+        <option value="winrate">Win Rate</option>
+        <option value="sets">Sets Played</option>
+      </select>
+    </div>
+
+    <table class="data-table" id="players-table">
+      <thead>
+        <tr>
+          <th style="width:3.5rem; text-align:right">#</th>
+          <th>Player</th>
+          <th>Rating</th>
+          <th>Confidence</th>
+          <th>Record</th>
+          <th>Win %</th>
+          <th>Events</th>
+        </tr>
+      </thead>
+      <tbody id="players-tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       TAB: TOURNAMENTS
+  ══════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="panel-tournaments">
+    <div class="section-header">
+      <div class="section-title">Tournaments</div>
+      <div class="section-count" id="tournaments-count"></div>
+    </div>
+    <div id="tournaments-list"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       TAB: H2H
+  ══════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="panel-h2h">
+    <div class="section-header">
+      <div class="section-title">Head-to-Head</div>
+    </div>
+
+    <div class="h2h-builder">
+      <div class="h2h-builder-label">Select 2 or more players to compare</div>
+      <div class="h2h-player-chips" id="h2h-chips"></div>
+      <div class="h2h-add-row">
+        <div class="h2h-autocomplete" style="flex:1; position:relative;">
+          <input class="h2h-add-input" type="text" placeholder="Add a player…" id="h2h-search" oninput="h2hSearchInput()" onkeydown="h2hKeydown(event)" autocomplete="off">
+          <div class="h2h-dropdown" id="h2h-dropdown"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="h2h-output"></div>
+  </div>
+
+</main>
+
+<!-- ══════════════════════════════════════════════════
+     PLAYER MODAL
+══════════════════════════════════════════════════ -->
+<div class="overlay" id="player-overlay" onclick="closeOverlayIfBg(event, 'player-overlay')">
+  <div class="modal" id="player-modal">
+    <button class="modal-close" onclick="closeOverlay('player-overlay')">✕</button>
+    <div id="player-modal-content"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TOURNAMENT MODAL
+══════════════════════════════════════════════════ -->
+<div class="overlay" id="tournament-overlay" onclick="closeOverlayIfBg(event, 'tournament-overlay')">
+  <div class="modal" id="tournament-modal">
+    <button class="modal-close" onclick="closeOverlay('tournament-overlay')">✕</button>
+    <div id="tournament-modal-content"></div>
+  </div>
+</div>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────
+
+let DB = {
+  ratings: null,   // full ratings.json
+  h2h: null,       // full h2h.json
+  stats: null,     // full stats.json
+  players: null,   // players.json (for alt tags + links)
+  tournaments: [], // tournament metadata files
+};
+
+// Derived lookup maps
+let playerMap = {};   // tag -> stats entry
+let ratingMap = {};   // tag -> rating entry (latest snapshot)
+let altMap    = {};   // lowercase tag or alt -> canonical tag
+let h2hIndex  = {};   // "tagA|||tagB" (sorted) -> h2h entry
+let tournamentMeta = {}; // tid -> tournament json
+
+// ── Bootstrap ─────────────────────────────────────────────────────────────
+
+async function loadJSON(path) {
+  const r = await fetch(path);
+  if (!r.ok) throw new Error(`Failed to load ${path}`);
+  return r.json();
+}
+
+async function init() {
+  try {
+    [DB.ratings, DB.h2h, DB.stats, DB.players] = await Promise.all([
+      loadJSON('computed/ratings.json'),
+      loadJSON('computed/h2h.json'),
+      loadJSON('computed/stats.json'),
+      loadJSON('players.json'),
+    ]);
+
+    // Build alt index from players.json
+    for (const p of DB.players) {
+      altMap[p.tag.toLowerCase()] = p.tag;
+      for (const alt of (p.alternate_tags || [])) {
+        altMap[alt.toLowerCase()] = p.tag;
+      }
+    }
+
+    // Build stat/rating maps
+    for (const s of DB.stats) {
+      playerMap[s.tag] = s;
+    }
+    const latestSnap = DB.ratings.snapshots[DB.ratings.snapshots.length - 1];
+    for (const r of latestSnap.ratings) {
+      ratingMap[r.tag] = r;
+    }
+
+    // Build H2H index
+    for (const entry of DB.h2h) {
+      const key = entry.players.slice().sort().join('|||');
+      h2hIndex[key] = entry;
+    }
+
+    // Load tournament metadata — discover from ratings snapshots
+    const tids = DB.ratings.snapshots.map(s => s.after);
+    await Promise.all(tids.map(async tid => {
+      try {
+        const t = await loadJSON(`tournaments/${tid}.json`);
+        tournamentMeta[tid] = t;
+        DB.tournaments.push(t);
+      } catch(e) {}
+    }));
+    DB.tournaments.sort((a, b) => b.date.localeCompare(a.date));
+
+    // Header meta
+    const snap = DB.ratings.snapshots[DB.ratings.snapshots.length - 1];
+    document.getElementById('header-meta').textContent =
+      `${snap.ratings.length} players · ${DB.tournaments.length} tournament${DB.tournaments.length !== 1 ? 's' : ''} · updated ${snap.date}`;
+
+    renderPlayers();
+    renderTournaments();
+  } catch(e) {
+    console.error(e);
+    document.getElementById('header-meta').textContent = 'Error loading data';
+  }
+}
+
+// ── Tab switching ─────────────────────────────────────────────────────────
+
+function showTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`panel-${name}`).classList.add('active');
+  document.getElementById(`tab-${name}`).classList.add('active');
+}
+
+// ── Confidence helper ─────────────────────────────────────────────────────
+// RD ranges from ~107 (high confidence) to 350 (no data).
+// Confidence = 1 - (RD - minRD) / (350 - minRD)
+
+function confidenceScore(rd) {
+  const minRD = 100, maxRD = 350;
+  return Math.max(0, Math.min(1, 1 - (rd - minRD) / (maxRD - minRD)));
+}
+
+function confidenceLabel(score) {
+  if (score >= 0.85) return 'Very High';
+  if (score >= 0.66) return 'High';
+  if (score >= 0.33) return 'Medium';
+  return 'Low';
+}
+
+// ── Players tab ───────────────────────────────────────────────────────────
+
+let currentPlayers = [];
+
+function filterPlayers() {
+  const search    = document.getElementById('player-search').value.toLowerCase().trim();
+  const minConf   = parseFloat(document.getElementById('confidence-filter').value);
+  const sortBy    = document.getElementById('sort-select').value;
+
+  // Start from stats list (all 68 players)
+  let list = DB.stats.map(s => {
+    const rm = ratingMap[s.tag];
+    const rd = rm ? rm.rd : 350;
+    const conf = confidenceScore(rd);
+    return { ...s, rd, rating: rm ? rm.rating : null, rank: rm ? rm.rank : null, conf };
+  });
+
+  // Filter by confidence
+  list = list.filter(p => p.conf >= minConf);
+
+  // Filter by search (tag + alts)
+  if (search) {
+    list = list.filter(p => {
+      if (p.tag.toLowerCase().includes(search)) return true;
+      const pm = DB.players.find(pl => pl.tag === p.tag);
+      if (pm) return (pm.alternate_tags || []).some(a => a.toLowerCase().includes(search));
+      return false;
+    });
+  }
+
+  // Sort
+  list.sort((a, b) => {
+    if (sortBy === 'rank')    return (a.rank || 9999) - (b.rank || 9999);
+    if (sortBy === 'rating')  return (b.rating || 0) - (a.rating || 0);
+    if (sortBy === 'winrate') return b.win_rate - a.win_rate;
+    if (sortBy === 'sets')    return b.sets_total - a.sets_total;
+    return 0;
+  });
+
+  currentPlayers = list;
+  document.getElementById('players-count').textContent = `${list.length} players`;
+  renderPlayersTable(list);
+}
+
+function renderPlayers() {
+  filterPlayers();
+}
+
+function renderPlayersTable(list) {
+  const tbody = document.getElementById('players-tbody');
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state">No players match your filters.</div></td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = list.map((p, i) => {
+    const pm = DB.players.find(pl => pl.tag === p.tag);
+    const alts = pm ? (pm.alternate_tags || []) : [];
+    const conf = p.conf;
+    const confPct = Math.round(conf * 100);
+    const rankClass = p.rank <= 3 ? 'top3' : '';
+    const rankDisplay = p.rank ? `#${p.rank}` : '—';
+    const ratingDisplay = p.rating ? Math.round(p.rating) : '—';
+    const winPct = p.sets_total ? Math.round(p.win_rate * 100) : 0;
+
+    return `<tr class="clickable" onclick="openPlayer('${p.tag.replace(/'/g,"\\'")}')">
+      <td class="rank-num ${rankClass}">${rankDisplay}</td>
+      <td>
+        <div class="player-tag">${p.tag}</div>
+        ${alts.length ? `<div class="player-alts">aka ${alts.join(', ')}</div>` : ''}
+      </td>
+      <td><span class="rating-val">${ratingDisplay}</span></td>
+      <td>
+        <div class="confidence-bar-wrap">
+          <div class="confidence-bar"><div class="confidence-fill" style="width:${confPct}%"></div></div>
+          <span class="confidence-label">${confidenceLabel(conf)}</span>
+        </div>
+      </td>
+      <td>
+        <div>${p.sets_won}W – ${p.sets_lost}L</div>
+        <div class="record-small">${p.sets_total} sets</div>
+      </td>
+      <td><span class="win-rate" style="color:${winPct>=60?'var(--win-t)':winPct<=40?'#e05555':'var(--text)'}">${winPct}%</span></td>
+      <td style="color:var(--muted)">${p.tournaments}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Player modal ──────────────────────────────────────────────────────────
+
+function openPlayer(tag) {
+  const s  = playerMap[tag];
+  const rm = ratingMap[tag];
+  const pm = DB.players.find(p => p.tag === tag);
+  if (!s) return;
+
+  const conf = rm ? confidenceScore(rm.rd) : 0;
+  const rankDisplay = s.current_rank ? `#${s.current_rank}` : '—';
+  const ratingDisplay = s.current_rating ? Math.round(s.current_rating) : '—';
+  const alts = pm ? (pm.alternate_tags || []) : [];
+
+  // H2H against other players (who have faced this player)
+  const h2hEntries = DB.h2h
+    .filter(e => e.players.includes(tag))
+    .map(e => {
+      const idx = e.players.indexOf(tag);
+      const opp = e.players[1 - idx];
+      const wins = e.wins[idx];
+      const losses = e.wins[1 - idx];
+      return { opp, wins, losses, sets: e.sets };
+    })
+    .sort((a, b) => (b.wins + b.losses) - (a.wins + a.losses) || b.wins - a.wins);
+
+  // Tournament history
+  const tourHistory = (s.placements || []).map(pl => {
+    const t = tournamentMeta[pl.tournament];
+    return { ...pl, name: t ? t.name : pl.tournament, date: t ? t.date : '' };
+  }).sort((a, b) => b.date.localeCompare(a.date));
+
+  const placeClass = place => {
+    if (place === 1) return 'top1';
+    if (place <= 3)  return 'top3';
+    if (place <= 4)  return 'top4';
+    return 'other';
+  };
+
+  const h2hClass = (w, l) => w > l ? 'winning' : w < l ? 'losing' : 'even';
+
+  const links = pm ? pm.links : {};
+  const linkBtns = [
+    links.startgg  ? `<a class="modal-link-btn" href="${links.startgg}" target="_blank">start.gg</a>` : '',
+    links.twitter  ? `<a class="modal-link-btn" href="${links.twitter}"  target="_blank">Twitter</a>` : '',
+    links.twitch   ? `<a class="modal-link-btn" href="${links.twitch}"   target="_blank">Twitch</a>`  : '',
+  ].filter(Boolean).join(' ');
+
+  document.getElementById('player-modal-content').innerHTML = `
+    <div class="player-hero">
+      <div class="player-hero-rank">${rankDisplay}</div>
+      <div>
+        <div class="player-hero-name">${tag}</div>
+        ${alts.length ? `<div class="player-hero-alts">Also known as: ${alts.join(', ')}</div>` : ''}
+        ${linkBtns ? `<div style="margin-top:0.75rem; display:flex; gap:0.5rem;">${linkBtns}</div>` : ''}
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-label">Rating</div>
+        <div class="stat-value red">${ratingDisplay}</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Confidence</div>
+        <div class="stat-value">${confidenceLabel(conf)}</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Record</div>
+        <div class="stat-value">${s.sets_won}–${s.sets_lost}</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Win Rate</div>
+        <div class="stat-value">${s.sets_total ? Math.round(s.win_rate*100) : 0}%</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Sets Played</div>
+        <div class="stat-value">${s.sets_total}</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Best Finish</div>
+        <div class="stat-value">${s.best_placement ? `${s.best_placement}${ordinal(s.best_placement)}` : '—'}</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Peak Rating</div>
+        <div class="stat-value">${s.peak_rating ? Math.round(s.peak_rating) : '—'}</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Events</div>
+        <div class="stat-value">${s.tournaments}</div>
+      </div>
+    </div>
+
+    ${tourHistory.length ? `
+      <div class="modal-section-title">Tournament History</div>
+      ${tourHistory.map(t => `
+        <div class="tournament-row" onclick="event.stopPropagation(); openTournament('${t.tournament}')">
+          <div class="t-place ${placeClass(t.place)}">${t.place}${ordinal(t.place)}</div>
+          <div class="t-name">${t.name}</div>
+          <div class="t-date">${formatDate(t.date)}</div>
+        </div>`).join('')}
+    ` : ''}
+
+    ${h2hEntries.length ? `
+      <div class="modal-section-title">Head-to-Head Records</div>
+      ${h2hEntries.map(e => `
+        <div class="h2h-row" onclick="event.stopPropagation(); openPlayer('${e.opp.replace(/'/g,"\\'")}')">
+          <div class="h2h-opponent">${e.opp}</div>
+          <div class="h2h-record ${h2hClass(e.wins, e.losses)}">${e.wins}–${e.losses}</div>
+          <div class="h2h-sets">${e.sets} set${e.sets !== 1 ? 's' : ''}</div>
+          <button class="modal-link-btn" onclick="event.stopPropagation(); openH2HFor('${tag}', '${e.opp.replace(/'/g,"\\'")}')">H2H →</button>
+        </div>`).join('')}
+    ` : ''}
+  `;
+
+  document.getElementById('player-overlay').classList.add('open');
+}
+
+// ── Tournaments tab ───────────────────────────────────────────────────────
+
+function renderTournaments() {
+  const el = document.getElementById('tournaments-list');
+  document.getElementById('tournaments-count').textContent = `${DB.tournaments.length} events`;
+
+  if (!DB.tournaments.length) {
+    el.innerHTML = '<div class="empty-state">No tournament data found.</div>';
+    return;
+  }
+
+  el.innerHTML = DB.tournaments.map(t => `
+    <div class="tournament-card" onclick="openTournament('${t.id}')">
+      <div class="t-card-date">${formatDate(t.date)}</div>
+      <div>
+        <div class="t-card-name">${t.name}</div>
+        <div class="t-card-meta">${t.location || ''}</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="t-card-entrants">${t.entrant_count}</div>
+        <div class="t-card-entrants-label">entrants</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openTournament(tid) {
+  const t = tournamentMeta[tid];
+  if (!t) return;
+
+  // Get the snapshot for this tournament
+  const snap = DB.ratings.snapshots.find(s => s.after === tid);
+  const snapRatingMap = {};
+  if (snap) snap.ratings.forEach(r => snapRatingMap[r.tag] = r);
+
+  const placeClass = place => {
+    if (place === 1) return 'top1';
+    if (place <= 3)  return 'top3';
+    if (place <= 4)  return 'top4';
+    return '';
+  };
+
+  // Group placements by place
+  const placements = [...(t.placements || [])].sort((a, b) => a.place - b.place);
+
+  const links = t.links || {};
+  const linkBtns = [
+    links.bracket ? `<a class="modal-link-btn" href="${links.bracket}" target="_blank">Bracket</a>` : '',
+    links.vod     ? `<a class="modal-link-btn" href="${links.vod}"     target="_blank">VOD</a>`     : '',
+  ].filter(Boolean).join(' ');
+
+  document.getElementById('tournament-modal-content').innerHTML = `
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:2rem; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:0.25rem;">${t.name}</div>
+      <div style="color:var(--muted); font-size:14px; margin-bottom:0.75rem;">${formatDate(t.date)}${t.location ? ' · ' + t.location : ''} · ${t.entrant_count} entrants</div>
+      ${linkBtns ? `<div style="display:flex; gap:0.5rem;">${linkBtns}</div>` : ''}
+    </div>
+
+    <div class="modal-section-title">Final Standings</div>
+    ${placements.map(p => {
+      const rm = snapRatingMap[p.tag] || snapRatingMap[resolveTag(p.tag)];
+      const ratingStr = rm ? `<span class="p-rating">${Math.round(rm.rating)}</span>` : '';
+      const tag = resolveTag(p.tag);
+      return `<div class="placement-row" onclick="event.stopPropagation(); closeOverlay('tournament-overlay'); openPlayer('${tag.replace(/'/g,"\\'")}')">
+        <div class="p-rank ${placeClass(p.place)}">${p.place}${ordinal(p.place)}</div>
+        <div class="p-tag">${tag}</div>
+        ${ratingStr}
+      </div>`;
+    }).join('')}
+  `;
+
+  // Close player overlay if open, then open tournament
+  closeOverlay('player-overlay');
+  document.getElementById('tournament-overlay').classList.add('open');
+}
+
+// ── H2H tab ───────────────────────────────────────────────────────────────
+
+let h2hSelected = [];
+
+function h2hSearchInput() {
+  const val = document.getElementById('h2h-search').value.toLowerCase().trim();
+  const dd  = document.getElementById('h2h-dropdown');
+  if (!val) { dd.classList.remove('open'); return; }
+
+  const matches = DB.stats
+    .filter(s => {
+      if (h2hSelected.includes(s.tag)) return false;
+      if (s.tag.toLowerCase().includes(val)) return true;
+      const pm = DB.players.find(p => p.tag === s.tag);
+      return pm && (pm.alternate_tags||[]).some(a => a.toLowerCase().includes(val));
+    })
+    .slice(0, 8);
+
+  if (!matches.length) { dd.classList.remove('open'); return; }
+
+  dd.innerHTML = matches.map(s =>
+    `<div class="h2h-dropdown-item" onmousedown="addH2HPlayer('${s.tag.replace(/'/g,"\\'")}'); event.preventDefault();">${s.tag}</div>`
+  ).join('');
+  dd.classList.add('open');
+}
+
+function h2hKeydown(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('h2h-dropdown').classList.remove('open');
+    document.getElementById('h2h-search').value = '';
+  }
+  if (e.key === 'Enter') {
+    const first = document.querySelector('.h2h-dropdown-item');
+    if (first) first.dispatchEvent(new MouseEvent('mousedown'));
+  }
+}
+
+function addH2HPlayer(tag) {
+  if (h2hSelected.includes(tag)) return;
+  h2hSelected.push(tag);
+  document.getElementById('h2h-search').value = '';
+  document.getElementById('h2h-dropdown').classList.remove('open');
+  renderH2HChips();
+  renderH2HMatrix();
+}
+
+function removeH2HPlayer(tag) {
+  h2hSelected = h2hSelected.filter(t => t !== tag);
+  renderH2HChips();
+  renderH2HMatrix();
+}
+
+function renderH2HChips() {
+  document.getElementById('h2h-chips').innerHTML = h2hSelected.map(tag =>
+    `<div class="player-chip">${tag}
+       <button onclick="removeH2HPlayer('${tag.replace(/'/g,"\\'")}')">✕</button>
+     </div>`
+  ).join('');
+}
+
+function renderH2HMatrix() {
+  const out = document.getElementById('h2h-output');
+  if (h2hSelected.length < 2) {
+    out.innerHTML = '<div class="empty-state">Select at least 2 players to see their head-to-head records.</div>';
+    return;
+  }
+
+  const players = h2hSelected;
+  let html = `<div class="h2h-matrix-wrap"><table class="h2h-matrix"><thead><tr>
+    <th class="row-header">Player</th>
+    ${players.map(p => `<th>${p}</th>`).join('')}
+    <th>W–L</th>
+  </tr></thead><tbody>`;
+
+  for (const pa of players) {
+    let totalW = 0, totalL = 0;
+    let cells = players.map(pb => {
+      if (pa === pb) return `<td class="self">—</td>`;
+      const key = [pa, pb].sort().join('|||');
+      const entry = h2hIndex[key];
+      if (!entry) return `<td class="no-data">–</td>`;
+      const idx = entry.players.indexOf(pa);
+      const w = entry.wins[idx];
+      const l = entry.wins[1 - idx];
+      totalW += w; totalL += l;
+      const cls = w > l ? 'win' : w < l ? 'loss' : 'even';
+      return `<td class="${cls}">${w}–${l}</td>`;
+    });
+
+    const totalCls = totalW > totalL ? 'win' : totalW < totalL ? 'loss' : 'even';
+    html += `<tr>
+      <th class="row-header" style="cursor:pointer" onclick="openPlayer('${pa.replace(/'/g,"\\'")}')">
+        ${pa}${ratingMap[pa] ? ` <span style="color:var(--muted);font-weight:400;font-size:11px;">#${ratingMap[pa].rank}</span>` : ''}
+      </th>
+      ${cells.join('')}
+      <td class="${totalCls}" style="font-weight:700">${totalW}–${totalL}</td>
+    </tr>`;
+  }
+
+  html += '</tbody></table></div>';
+  out.innerHTML = html;
+}
+
+function openH2HFor(tag1, tag2) {
+  h2hSelected = [tag1, tag2];
+  closeOverlay('player-overlay');
+  showTab('h2h');
+  renderH2HChips();
+  renderH2HMatrix();
+}
+
+// ── Overlay helpers ───────────────────────────────────────────────────────
+
+function closeOverlay(id) {
+  document.getElementById(id).classList.remove('open');
+}
+function closeOverlayIfBg(e, id) {
+  if (e.target === document.getElementById(id)) closeOverlay(id);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeOverlay('player-overlay');
+    closeOverlay('tournament-overlay');
+    document.getElementById('h2h-dropdown').classList.remove('open');
+  }
+});
+
+// ── Utility ───────────────────────────────────────────────────────────────
+
+function resolveTag(tag) {
+  return altMap[tag.toLowerCase()] || tag;
+}
+
+function ordinal(n) {
+  const s = ['th','st','nd','rd'];
+  const v = n % 100;
+  return s[(v-20)%10] || s[v] || s[0];
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const [y, m, d] = dateStr.split('-');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${months[parseInt(m)-1]} ${parseInt(d)}, ${y}`;
+}
+
+// ── Start ─────────────────────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>
