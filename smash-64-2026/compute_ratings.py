@@ -197,10 +197,11 @@ def run_tournament(playable, prior_states, dq_losses=None):
             break
 
     # Apply DQ losses: each DQ'd player takes a half-penalty loss against
-    # their actual opponent's converged rating. A score of 0.75 (3/4ths
-    # between 0=full loss and 1=win) gives half the normal Glicko-2
-    # penalty. Using the real opponent means losing to a strong player
-    # hurts less than losing to a weak one, as expected.
+    # their actual opponent's converged rating. A score of 0.25 (halfway
+    # between 0=full loss and 0.5=draw) gives half the normal Glicko-2
+    # penalty applied ON TOP of the converged rating — not from the prior.
+    # Using the real opponent means losing to a strong player hurts less
+    # than losing to a weak one, as expected.
     if dq_losses:
         mu0_g2, phi0_g2 = to_g2(MU_0, PHI_0)
         for tag, opp_tag in dq_losses:
@@ -213,11 +214,13 @@ def run_tournament(playable, prior_states, dq_losses=None):
                 opp_phi = frozen_phi.get(opp_tag, states[opp_tag][1])
             else:
                 opp_mu, opp_phi = get_prior(opp_tag)[:2]
+            # Start from converged rating (cur[0]), not prior, so the penalty
+            # applies on top of what they actually earned in real sets
             nm, np, ns = glicko2_update(
-                get_prior(tag)[0],
+                cur[0],
                 frozen_phi.get(tag, cur[1]),
                 SIGMA_0,
-                [(opp_mu, opp_phi, 0.75)]  # quarter-penalty vs actual opponent
+                [(opp_mu, opp_phi, 0.25)]  # half-penalty vs actual opponent
             )
             states[tag] = [nm, frozen_phi.get(tag, cur[1]), SIGMA_0]
 
