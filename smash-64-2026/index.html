@@ -78,6 +78,33 @@
     border-left: 1px solid var(--border);
     padding-left: 2rem;
   }
+  .mode-toggle {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .mode-toggle-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .mode-toggle select {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.6rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .mode-toggle select:focus { border-color: var(--red); }
 
   /* ── Nav tabs ── */
   nav {
@@ -687,6 +714,13 @@
       SMASH <span>64</span> 2026
     </div>
     <div class="header-meta" id="header-meta">Loading...</div>
+    <div class="mode-toggle">
+      <span class="mode-toggle-label">Ratings mode:</span>
+      <select id="ratings-mode" onchange="switchRatingsMode()">
+        <option value="retroactive" selected>Retroactive</option>
+        <option value="sequential">Sequential</option>
+      </select>
+    </div>
   </div>
 </header>
 
@@ -801,12 +835,14 @@
 // ── Data ──────────────────────────────────────────────────────────────────
 
 let DB = {
-  ratings: null,   // full ratings.json
-  h2h: null,       // full h2h.json
-  stats: null,     // full stats.json
-  players: null,   // players.json (for alt tags + links)
-  tournaments: [], // tournament metadata files
-  sets: {},        // tid -> raw set array, loaded on demand
+  ratings: null,            // currently active ratings
+  ratingsSequential: null,  // computed/ratings.json
+  ratingsRetroactive: null, // computed/ratings-retroactive.json
+  h2h: null,
+  stats: null,
+  players: null,
+  tournaments: [],
+  sets: {},
 };
 
 // Derived lookup maps
@@ -826,12 +862,15 @@ async function loadJSON(path) {
 
 async function init() {
   try {
-    [DB.ratings, DB.h2h, DB.stats, DB.players] = await Promise.all([
+    [DB.ratingsSequential, DB.ratingsRetroactive, DB.h2h, DB.stats, DB.players] = await Promise.all([
       loadJSON('computed/ratings.json'),
+      loadJSON('computed/ratings-retroactive.json'),
       loadJSON('computed/h2h.json'),
       loadJSON('computed/stats.json'),
       loadJSON('players.json'),
     ]);
+    // Default to retroactive
+    DB.ratings = DB.ratingsRetroactive;
 
     // Build alt index from players.json
     for (const p of DB.players) {
@@ -888,6 +927,37 @@ async function getSets(tid) {
     catch(e) { DB.sets[tid] = []; }
   }
   return DB.sets[tid];
+}
+
+// ── Ratings mode switch ──────────────────────────────────────────────────
+
+function switchRatingsMode() {
+  const mode = document.getElementById('ratings-mode').value;
+  DB.ratings = mode === 'retroactive' ? DB.ratingsRetroactive : DB.ratingsSequential;
+
+  // Rebuild ratingMap from new active ratings
+  const latestSnap = DB.ratings.snapshots[DB.ratings.snapshots.length - 1];
+  for (const r of latestSnap.ratings) {
+    ratingMap[r.tag] = r;
+  }
+  // Clear tags not in this snapshot
+  const activeTags = new Set(latestSnap.ratings.map(r => r.tag));
+  for (const tag of Object.keys(ratingMap)) {
+    if (!activeTags.has(tag)) delete ratingMap[tag];
+  }
+
+  // Update stats current_rank/rating to match active mode
+  for (const s of DB.stats) {
+    const r = ratingMap[s.tag];
+    s.current_rating = r ? r.rating : null;
+    s.current_rd     = r ? r.rd     : null;
+    s.current_rank   = r ? r.rank   : null;
+  }
+  // Re-sort stats by new rank
+  DB.stats.sort((a, b) => (a.current_rank || 9999) - (b.current_rank || 9999));
+  for (const s of DB.stats) { playerMap[s.tag] = s; }
+
+  renderPlayers();
 }
 
 // ── Tab switching ─────────────────────────────────────────────────────────

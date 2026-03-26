@@ -291,6 +291,240 @@ def round_weight(round_name):
 
 
 # ---------------------------------------------------------------------------
+# Pipeline
+# ---------------------------------------------------------------------------
+
+def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_ratings=None):
+    """
+    Process all tournaments and return (snapshots, h2h, stats_acc).
+
+    retroactive=False  — sequential: each tournament uses ratings from all
+                         prior tournaments as priors (standard Glicko-2).
+
+    retroactive=True   — retroactive: before processing tournament N, reset
+                         global ratings and reprocess tournaments 1..N-1 from
+                         scratch. This means every snapshot is computed with
+                         full-season context, so early wins against players who
+                         later prove strong are correctly valued.
+    """
+    mu0, phi0 = to_g2(MU_0, PHI_0)
+
+    h2h = defaultdict(lambda: {"wins": [0, 0], "sets": 0, "by_tournament": {}})
+    stats_acc = defaultdict(lambda: {
+        "sets_won": 0, "sets_lost": 0, "sets_total": 0,
+        "tournaments": 0, "placements": [],
+        "peak_rating": None, "peak_rating_after": None,
+    })
+    snapshots = []
+
+    def process_tournaments_up_to(idx, existing_h2h=None, existing_stats=None):
+        """Process tournaments[0..idx] and return global_ratings."""
+        gr = {}
+        for tournament in tournaments[:idx + 1]:
+            gr = process_one_tournament(tournament, gr, sets_dir, alt_index,
+                                        mu0, phi0, existing_h2h, existing_stats)
+        return gr
+
+    def process_one_tournament(tournament, global_ratings, sets_dir, alt_index,
+                                mu0, phi0, h2h_acc=None, stats_acc_=None,
+                                season_ratings=None):
+        tid        = tournament['id']
+        n_entrants = tournament.get('entrant_count', 0)
+        sets_path  = os.path.join(sets_dir, f"{tid}.json")
+        if not os.path.exists(sets_path):
+            return global_ratings
+
+        raw_sets      = load_json(sets_path)
+        placement_map = {resolve(p['tag'], alt_index): p['place']
+                         for p in tournament.get('placements', [])}
+
+        playable  = []
+        dq_losses = []
+        dq_count  = 0
+        players_with_real_sets = set()
+
+        for s in raw_sets:
+            outcome = set_outcome(s)
+            tag_a   = resolve(s['player_a'], alt_index)
+            tag_b   = resolve(s['player_b'], alt_index)
+            if outcome is None:
+                dq_count += 1
+                if is_dq(s):
+                    if s.get('score_b') == 'DQ':
+                        dq_losses.append((tag_b, tag_a))
+                        if stats_acc_ is not None:
+                            stats_acc_[tag_b]['sets_lost']  += 1
+                            stats_acc_[tag_b]['sets_total'] += 1
+                    elif s.get('score_a') == 'DQ':
+                        dq_losses.append((tag_a, tag_b))
+                        if stats_acc_ is not None:
+                            stats_acc_[tag_a]['sets_lost']  += 1
+                            stats_acc_[tag_a]['sets_total'] += 1
+                continue
+            playable.append((tag_a, tag_b, outcome[0], outcome[1]))
+            players_with_real_sets.add(tag_a)
+            players_with_real_sets.add(tag_b)
+
+        period_players = set(t for ta, tb, _, __ in playable for t in (ta, tb))
+
+        if stats_acc_ is not None:
+            for tag_a, tag_b, oa, ob in playable:
+                stats_acc_[tag_a]['sets_total'] += 1
+                stats_acc_[tag_b]['sets_total'] += 1
+                if oa > ob:
+                    stats_acc_[tag_a]['sets_won']  += 1
+                    stats_acc_[tag_b]['sets_lost'] += 1
+                elif ob > oa:
+                    stats_acc_[tag_b]['sets_won']  += 1
+                    stats_acc_[tag_a]['sets_lost'] += 1
+
+        if h2h_acc is not None:
+            for tag_a, tag_b, oa, ob in playable:
+                key = h2h_key(tag_a, tag_b)
+                entry = h2h_acc[key]
+                is_a_first = key[0] == tag_a
+                if tid not in entry['by_tournament']:
+                    entry['by_tournament'][tid] = {"wins": [0, 0], "sets": 0}
+                bt = entry['by_tournament'][tid]
+                entry['sets'] += 1
+                bt['sets']    += 1
+                if oa > ob:
+                    idx_ = 0 if is_a_first else 1
+                    entry['wins'][idx_] += 1
+                    bt['wins'][idx_]    += 1
+                elif ob > oa:
+                    idx_ = 1 if is_a_first else 0
+                    entry['wins'][idx_] += 1
+                    bt['wins'][idx_]    += 1
+
+        established_ratings = [
+            to_display(global_ratings[t][0], 0)[0]
+            for t in period_players if t in global_ratings
+        ]
+        has_established = len(established_ratings) > 0
+
+        if season_ratings is not None:
+            # Retroactive mode: use median of ALL players in this field's
+            # final season ratings as the ceiling. This means a stacked field
+            # gets a higher ceiling even if most players were new at the time.
+            field_season_ratings = sorted([
+                season_ratings[t] for t in period_players if t in season_ratings
+            ])
+            if field_season_ratings:
+                seed_top = field_season_ratings[len(field_season_ratings) // 2]
+            else:
+                seed_top = SEED_TOP
+            has_established = True  # always seed from placement in retroactive mode
+        elif has_established:
+            sorted_est = sorted(established_ratings)
+            seed_top = sorted_est[len(sorted_est) // 2]
+        else:
+            seed_top = SEED_TOP
+
+        prior = {}
+        for tag in period_players:
+            if tag in global_ratings:
+                prior[tag] = global_ratings[tag][:3]
+            else:
+                place = placement_map.get(tag)
+                if has_established and place is not None and n_entrants > 1:
+                    t_norm = 1.0 - (place - 1) / (n_entrants - 1)
+                    seed_mu = SEED_BOTTOM + (seed_top - SEED_BOTTOM) * (t_norm ** SEED_CURVE)
+                    seed_mu_g2, _ = to_g2(seed_mu, 0)
+                    prior[tag] = [seed_mu_g2, phi0, SIGMA_0]
+                else:
+                    prior[tag] = [mu0, phi0, SIGMA_0]
+
+        new_ratings = run_tournament(playable, prior, dq_losses)
+
+        # RD decay for absent players
+        for tag, st in global_ratings.items():
+            if tag not in period_players:
+                phi_d = min(math.sqrt(st[1]**2 + st[2]**2), PHI_0 / SCALE)
+                global_ratings[tag][1] = phi_d
+
+        all_tournament_players = set(period_players)
+        for s in raw_sets:
+            if is_dq(s):
+                all_tournament_players.add(resolve(s['player_a'], alt_index))
+                all_tournament_players.add(resolve(s['player_b'], alt_index))
+
+        for tag in period_players:
+            nr   = new_ratings[tag]
+            prev = global_ratings.get(tag, [mu0, phi0, SIGMA_0, 0, 0])
+            set_count = sum(1 for ta, tb, _, __ in playable if ta == tag or tb == tag)
+            global_ratings[tag] = [nr[0], nr[1], nr[2], prev[3] + set_count, prev[4] + 1]
+
+        if stats_acc_ is not None:
+            for tag in all_tournament_players:
+                if tag in players_with_real_sets:
+                    stats_acc_[tag]['tournaments'] += 1
+                    place = placement_map.get(tag)
+                    if place is not None:
+                        stats_acc_[tag]['placements'].append({"tournament": tid, "place": place})
+
+        return global_ratings
+
+    # ── Main loop ──
+    global_ratings = {}
+    for i, tournament in enumerate(tournaments):
+        tid  = tournament['id']
+        date = tournament['date']
+        name = tournament['name']
+
+        sets_path = os.path.join(sets_dir, f"{tid}.json")
+        if not os.path.exists(sets_path):
+            print(f"  WARNING: no sets file for {tid}, skipping", file=sys.stderr)
+            continue
+
+        if retroactive and i > 0:
+            # For the retroactive snapshot of tournament i, reprocess all
+            # prior tournaments from scratch using the same logic, but without
+            # accumulating h2h/stats (those come from the sequential pass).
+            # This gives us ratings for tournaments 0..i-1 that already reflect
+            # the full context of who those players turned out to be.
+            retroactive_ratings = {}
+            for j, prior_t in enumerate(tournaments[:i]):
+                prior_path = os.path.join(sets_dir, f"{prior_t['id']}.json")
+                if os.path.exists(prior_path):
+                    retroactive_ratings = process_one_tournament(
+                        prior_t, retroactive_ratings, sets_dir, alt_index,
+                        mu0, phi0, None, None, season_ratings
+                    )
+            global_ratings = retroactive_ratings
+
+        global_ratings = process_one_tournament(
+            tournament, global_ratings, sets_dir, alt_index,
+            mu0, phi0, h2h, stats_acc, season_ratings
+        )
+
+        ranked = sorted(
+            [{"tag": tag, "rank": 0,
+              "rating":      round(to_display(st[0], 0)[0], 2),
+              "rd":          round(to_display(0, st[1])[1], 2),
+              "volatility":  round(st[2], 6),
+              "sets":        st[3],
+              "tournaments": st[4]}
+             for tag, st in global_ratings.items()],
+            key=lambda x: x['rating'], reverse=True
+        )
+        for i_, p in enumerate(ranked):
+            p['rank'] = i_ + 1
+
+        for entry in ranked:
+            tag, rating = entry['tag'], entry['rating']
+            if stats_acc[tag]['peak_rating'] is None or rating > stats_acc[tag]['peak_rating']:
+                stats_acc[tag]['peak_rating']       = rating
+                stats_acc[tag]['peak_rating_after'] = tid
+
+        snapshots.append({"after": tid, "name": name, "date": date, "ratings": ranked})
+        mode = "retroactive" if retroactive else "sequential"
+        print(f"  [{mode}] {name} ({date}): {len(ranked)} players")
+
+    return snapshots, h2h, stats_acc
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -311,211 +545,54 @@ def main():
             tournaments.append(load_json(os.path.join(tournaments_dir, fname)))
     tournaments.sort(key=lambda t: t['date'])
 
-    mu0, phi0 = to_g2(MU_0, PHI_0)
-    global_ratings = {}
-
-    h2h = defaultdict(lambda: {"wins": [0, 0], "sets": 0, "by_tournament": {}})
-
-    stats_acc = defaultdict(lambda: {
-        "sets_won": 0, "sets_lost": 0, "sets_total": 0,
-        "tournaments": 0, "placements": [],
-        "peak_rating": None, "peak_rating_after": None,
-    })
-
-    snapshots = []
-
-    for tournament in tournaments:
-        tid  = tournament['id']
-        date = tournament['date']
-        name = tournament['name']
-        n_entrants = tournament.get('entrant_count', 0)
-
-        sets_path = os.path.join(sets_dir, f"{tid}.json")
-        if not os.path.exists(sets_path):
-            print(f"  WARNING: no sets file for {tid}, skipping", file=sys.stderr)
-            continue
-
-        raw_sets = load_json(sets_path)
-        placement_map = {resolve(p['tag'], alt_index): p['place']
-                         for p in tournament.get('placements', [])}
-
-        playable  = []
-        dq_losses = []  # tags of DQ'd players, for Glicko-2 loss penalty
-        dq_count  = 0
-        players_with_real_sets = set()
-
-        for s in raw_sets:
-            outcome = set_outcome(s)
-            tag_a   = resolve(s['player_a'], alt_index)
-            tag_b   = resolve(s['player_b'], alt_index)
-            if outcome is None:
-                dq_count += 1
-                if is_dq(s):
-                    # DQ only affects Glicko-2 (via dq_losses), not the
-                    # displayed record/win rate — those reflect real sets only.
-                    # Store (dq'd player, opponent) so penalty reflects
-                    # opponent strength — losing to a strong player hurts less.
-                    if s.get('score_b') == 'DQ':
-                        dq_losses.append((tag_b, tag_a))
-                    elif s.get('score_a') == 'DQ':
-                        dq_losses.append((tag_a, tag_b))
-                continue
-            playable.append((tag_a, tag_b, outcome[0], outcome[1]))
-            players_with_real_sets.add(tag_a)
-            players_with_real_sets.add(tag_b)
-
-        period_players = set(t for ta, tb, _, __ in playable for t in (ta, tb))
-
-        # Stats
-        for tag_a, tag_b, oa, ob in playable:
-            stats_acc[tag_a]['sets_total'] += 1
-            stats_acc[tag_b]['sets_total'] += 1
-            if oa > ob:
-                stats_acc[tag_a]['sets_won']  += 1
-                stats_acc[tag_b]['sets_lost'] += 1
-            elif ob > oa:
-                stats_acc[tag_b]['sets_won']  += 1
-                stats_acc[tag_a]['sets_lost'] += 1
-
-        # H2H
-        for tag_a, tag_b, oa, ob in playable:
-            key = h2h_key(tag_a, tag_b)
-            entry = h2h[key]
-            is_a_first = key[0] == tag_a
-            if tid not in entry['by_tournament']:
-                entry['by_tournament'][tid] = {"wins": [0, 0], "sets": 0}
-            bt = entry['by_tournament'][tid]
-            entry['sets'] += 1
-            bt['sets']    += 1
-            if oa > ob:
-                idx = 0 if is_a_first else 1
-                entry['wins'][idx] += 1
-                bt['wins'][idx]    += 1
-            elif ob > oa:
-                idx = 1 if is_a_first else 0
-                entry['wins'][idx] += 1
-                bt['wins'][idx]    += 1
-
-        # Build prior states:
-        # - Established players: use their actual Glicko-2 rating
-        # - New players: seed from final placement, using the highest
-        #   established player's rating as the curve ceiling.
-        #   This prevents new players from seeding above the best known
-        #   player in the field.
-        established_ratings = [
-            to_display(global_ratings[t][0], 0)[0]
-            for t in period_players if t in global_ratings
-        ]
-        has_established = len(established_ratings) > 0
-        if has_established:
-            sorted_est = sorted(established_ratings)
-            seed_top = sorted_est[len(sorted_est) // 2]  # median
-        else:
-            seed_top = SEED_TOP
-
-        prior = {}
-        new_seeded = 0
-        for tag in period_players:
-            if tag in global_ratings:
-                prior[tag] = global_ratings[tag][:3]
-            else:
-                place = placement_map.get(tag)
-                if has_established and place is not None and n_entrants > 1:
-                    # Seed new players from placement, capped at the highest
-                    # established player's rating. Only applies when there are
-                    # established players to anchor against — at the first
-                    # tournament everyone starts from default and iterative
-                    # convergence handles calibration on its own.
-                    t_norm = 1.0 - (place - 1) / (n_entrants - 1)
-                    seed_mu = SEED_BOTTOM + (seed_top - SEED_BOTTOM) * (t_norm ** SEED_CURVE)
-                    seed_mu_g2, _ = to_g2(seed_mu, 0)
-                    prior[tag] = [seed_mu_g2, phi0, SIGMA_0]
-                    new_seeded += 1
-                else:
-                    prior[tag] = [mu0, phi0, SIGMA_0]
-
-        new_ratings = run_tournament(playable, prior, dq_losses)
-
-        # RD decay for absent players
-        for tag, st in global_ratings.items():
-            if tag not in period_players:
-                phi_d = min(math.sqrt(st[1]**2 + st[2]**2), PHI_0 / SCALE)
-                global_ratings[tag][1] = phi_d
-
-        # Commit
-        all_tournament_players = set(period_players)
-        for s in raw_sets:
-            if is_dq(s):
-                all_tournament_players.add(resolve(s['player_a'], alt_index))
-                all_tournament_players.add(resolve(s['player_b'], alt_index))
-
-        for tag in period_players:
-            nr   = new_ratings[tag]
-            prev = global_ratings.get(tag, [mu0, phi0, SIGMA_0, 0, 0])
-            set_count = sum(1 for ta, tb, _, __ in playable if ta == tag or tb == tag)
-            global_ratings[tag] = [nr[0], nr[1], nr[2], prev[3] + set_count, prev[4] + 1]
-
-        for tag in all_tournament_players:
-            # Fully DQ'd players (never played a real set) don't count as attending
-            if tag in players_with_real_sets:
-                stats_acc[tag]['tournaments'] += 1
-                place = placement_map.get(tag)
-                if place is not None:
-                    stats_acc[tag]['placements'].append({"tournament": tid, "place": place})
-
-        # Snapshot
-        ranked = sorted(
-            [{"tag": tag, "rank": 0,
-              "rating":      round(to_display(st[0], 0)[0], 2),
-              "rd":          round(to_display(0, st[1])[1], 2),
-              "volatility":  round(st[2], 6),
-              "sets":        st[3],
-              "tournaments": st[4]}
-             for tag, st in global_ratings.items()],
-            key=lambda x: x['rating'], reverse=True
-        )
-        for i, p in enumerate(ranked):
-            p['rank'] = i + 1
-
-        for entry in ranked:
-            tag, rating = entry['tag'], entry['rating']
-            if stats_acc[tag]['peak_rating'] is None or rating > stats_acc[tag]['peak_rating']:
-                stats_acc[tag]['peak_rating']       = rating
-                stats_acc[tag]['peak_rating_after'] = tid
-
-        snapshots.append({"after": tid, "name": name, "date": date, "ratings": ranked})
-
-        new_count = len(period_players) - len([t for t in period_players if t in global_ratings
-                                               and global_ratings[t][4] > 0])
-        print(f"  {name} ({date}): {len(playable)} sets rated, {dq_count} DQ skipped, "
-              f"{len(period_players)} players ({new_seeded} new, placement-seeded)")
-
-    # Write outputs
     os.makedirs(output_dir, exist_ok=True)
 
-    ratings_path = os.path.join(output_dir, 'ratings.json')
-    with open(ratings_path, 'w', encoding='utf-8') as f:
-        json.dump({"snapshots": snapshots}, f, indent=2, ensure_ascii=False)
-    print(f"\nWrote {ratings_path}")
+    # ── Run both pipelines ──
+    print("Running sequential pipeline...")
+    seq_snaps, seq_h2h, seq_stats = run_pipeline(tournaments, sets_dir, alt_index, retroactive=False)
 
+    # Build season_ratings: each player's rating after their last attended tournament.
+    # Used by the retroactive pass to set informed seed ceilings even for tournament 1.
+    season_ratings = {}
+    for snap in seq_snaps:
+        for p in snap['ratings']:
+            # Overwrite each time — last snapshot where player appears wins
+            season_ratings[p['tag']] = p['rating']
+
+    print("Running retroactive pipeline...")
+    ret_snaps, _, _ = run_pipeline(tournaments, sets_dir, alt_index,
+                                    retroactive=True, season_ratings=season_ratings)
+
+    # ── Write ratings files ──
+    seq_path = os.path.join(output_dir, 'ratings.json')
+    with open(seq_path, 'w', encoding='utf-8') as f:
+        json.dump({"snapshots": seq_snaps}, f, indent=2, ensure_ascii=False)
+    print(f"\nWrote {seq_path}")
+
+    ret_path = os.path.join(output_dir, 'ratings-retroactive.json')
+    with open(ret_path, 'w', encoding='utf-8') as f:
+        json.dump({"snapshots": ret_snaps}, f, indent=2, ensure_ascii=False)
+    print(f"Wrote {ret_path}")
+
+    # ── H2H (same for both — based on actual results, not ratings) ──
     h2h_out = [{"players": list(k), "wins": v['wins'], "sets": v['sets'],
                  "by_tournament": {t: {"wins": b['wins'], "sets": b['sets']}
                                    for t, b in v['by_tournament'].items()}}
-               for k, v in sorted(h2h.items())]
+               for k, v in sorted(seq_h2h.items())]
     h2h_path = os.path.join(output_dir, 'h2h.json')
     with open(h2h_path, 'w', encoding='utf-8') as f:
         json.dump(h2h_out, f, indent=2, ensure_ascii=False)
     print(f"Wrote {h2h_path}  ({len(h2h_out)} pairs)")
 
+    # ── Stats (use sequential ratings as current_rating/rank baseline) ──
     final_ratings = {}
-    if snapshots:
-        for entry in snapshots[-1]['ratings']:
-            final_ratings[entry['tag']] = {'rating': entry['rating'],
-                                            'rd': entry['rd'], 'rank': entry['rank']}
+    for entry in seq_snaps[-1]['ratings']:
+        final_ratings[entry['tag']] = {'rating': entry['rating'],
+                                        'rd': entry['rd'], 'rank': entry['rank']}
 
     stats_out = []
-    for tag in sorted(set(stats_acc.keys()) | set(final_ratings.keys())):
-        acc = stats_acc[tag]
+    for tag in sorted(set(seq_stats.keys()) | set(final_ratings.keys())):
+        acc = seq_stats[tag]
         fr  = final_ratings.get(tag)
         st  = acc['sets_total']
         sw  = acc['sets_won']
