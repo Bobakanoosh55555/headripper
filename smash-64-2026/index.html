@@ -461,11 +461,16 @@
     min-width: 100px;
   }
   .t-card-name {
-    flex: 1;
+    width: 340px;
+    min-width: 340px;
+    max-width: 340px;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
     font-size: 1.2rem;
     letter-spacing: 0.02em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .t-card-meta { font-size: 12px; color: var(--muted); }
   .t-card-entrants {
@@ -632,6 +637,35 @@
   }
   .badge-red { background: var(--red-dim); color: #ff9090; }
 
+  /* Set history rows in player modal */
+  .set-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .set-row:hover { background: var(--bg3); margin: 0 -2rem; padding: 0.45rem 2rem; }
+  .set-row.set-dq { opacity: 0.4; }
+  .set-round { color: var(--muted); min-width: 180px; font-size: 12px; }
+  .set-opp { flex: 1; font-weight: 500; }
+  .set-score { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; min-width: 3rem; text-align: right; }
+  .set-score.win  { color: var(--win-t); }
+  .set-score.loss { color: #e05555; }
+  .set-score.dq   { color: var(--muted2); }
+
+  /* Disabled (empty) link buttons */
+  .modal-link-btn.disabled {
+    color: var(--muted2);
+    border-color: var(--muted2);
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.4;
+  }
+
   a { color: var(--red); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
@@ -772,6 +806,7 @@ let DB = {
   stats: null,     // full stats.json
   players: null,   // players.json (for alt tags + links)
   tournaments: [], // tournament metadata files
+  sets: {},        // tid -> raw set array, loaded on demand
 };
 
 // Derived lookup maps
@@ -843,6 +878,16 @@ async function init() {
     console.error(e);
     document.getElementById('header-meta').textContent = 'Error loading data';
   }
+}
+
+// ── Sets loader ───────────────────────────────────────────────────────────
+
+async function getSets(tid) {
+  if (!DB.sets[tid]) {
+    try { DB.sets[tid] = await loadJSON(`sets/${tid}.json`); }
+    catch(e) { DB.sets[tid] = []; }
+  }
+  return DB.sets[tid];
 }
 
 // ── Tab switching ─────────────────────────────────────────────────────────
@@ -960,7 +1005,7 @@ function renderPlayersTable(list) {
 
 // ── Player modal ──────────────────────────────────────────────────────────
 
-function openPlayer(tag) {
+async function openPlayer(tag) {
   const s  = playerMap[tag];
   const rm = ratingMap[tag];
   const pm = DB.players.find(p => p.tag === tag);
@@ -999,11 +1044,14 @@ function openPlayer(tag) {
   const h2hClass = (w, l) => w > l ? 'winning' : w < l ? 'losing' : 'even';
 
   const links = pm ? pm.links : {};
+  const mkLink = (label, url) => url
+    ? `<a class="modal-link-btn" href="${url}" target="_blank">${label}</a>`
+    : `<span class="modal-link-btn disabled">${label}</span>`;
   const linkBtns = [
-    links.startgg  ? `<a class="modal-link-btn" href="${links.startgg}" target="_blank">start.gg</a>` : '',
-    links.twitter  ? `<a class="modal-link-btn" href="${links.twitter}"  target="_blank">Twitter</a>` : '',
-    links.twitch   ? `<a class="modal-link-btn" href="${links.twitch}"   target="_blank">Twitch</a>`  : '',
-  ].filter(Boolean).join(' ');
+    mkLink('start.gg', links.startgg),
+    mkLink('Twitter',  links.twitter),
+    mkLink('Twitch',   links.twitch),
+  ].join(' ');
 
   document.getElementById('player-modal-content').innerHTML = `
     <div class="player-hero">
@@ -1011,7 +1059,7 @@ function openPlayer(tag) {
       <div>
         <div class="player-hero-name">${tag}</div>
         ${alts.length ? `<div class="player-hero-alts">Also known as: ${alts.join(', ')}</div>` : ''}
-        ${linkBtns ? `<div style="margin-top:0.75rem; display:flex; gap:0.5rem;">${linkBtns}</div>` : ''}
+        <div style="margin-top:0.75rem; display:flex; gap:0.5rem; flex-wrap:wrap;">${linkBtns}</div>
       </div>
     </div>
 
@@ -1062,9 +1110,49 @@ function openPlayer(tag) {
           <button class="modal-link-btn" onclick="event.stopPropagation(); openH2HFor('${tag}', '${e.opp.replace(/'/g,"\\'")}')">H2H →</button>
         </div>`).join('')}
     ` : ''}
+    <div id="player-sets-section"><div class="modal-section-title">Set History</div><div style="color:var(--muted);font-size:13px;padding:0.5rem 0;">Loading…</div></div>
   `;
 
   document.getElementById('player-overlay').classList.add('open');
+
+  // Load set history async after modal is visible
+  const tids = (s.placements || []).map(p => p.tournament);
+  const allSetRows = [];
+  for (const tid of tids) {
+    const raw = await getSets(tid);
+    const tm  = tournamentMeta[tid];
+    for (const set of raw) {
+      const ra = resolveTag(set.player_a);
+      const rb = resolveTag(set.player_b);
+      if (ra !== tag && rb !== tag) continue;
+      const playerIsA = ra === tag;
+      const isDQ = set.score_a === 'DQ' || set.score_b === 'DQ';
+      const opp  = playerIsA ? rb : ra;
+      let scoreStr, scoreClass;
+      if (isDQ) {
+        const playerDQd = (playerIsA && set.score_a === 'DQ') || (!playerIsA && set.score_b === 'DQ');
+        scoreStr  = playerDQd ? 'DQ – W' : 'W – DQ';
+        scoreClass = 'dq';
+      } else {
+        const won = playerIsA; // player_a is always the winner
+        scoreStr  = won ? 'W' : 'L';
+        scoreClass = won ? 'win' : 'loss';
+      }
+      allSetRows.push(
+        `<div class="set-row${isDQ ? ' set-dq' : ''}" onclick="event.stopPropagation(); openPlayer('${opp.replace(/'/g,"\\'")}')">` +
+        `<div class="set-round">${set.round}</div>` +
+        `<div class="set-opp">${opp}</div>` +
+        `<div class="set-score ${scoreClass}">${scoreStr}</div>` +
+        `</div>`
+      );
+    }
+  }
+  const setsEl = document.getElementById('player-sets-section');
+  if (setsEl) {
+    setsEl.innerHTML = allSetRows.length
+      ? `<div class="modal-section-title">Set History</div>${allSetRows.join('')}`
+      : '';
+  }
 }
 
 // ── Tournaments tab ───────────────────────────────────────────────────────
@@ -1113,16 +1201,16 @@ function openTournament(tid) {
   const placements = [...(t.placements || [])].sort((a, b) => a.place - b.place);
 
   const links = t.links || {};
-  const linkBtns = [
-    links.bracket ? `<a class="modal-link-btn" href="${links.bracket}" target="_blank">Bracket</a>` : '',
-    links.vod     ? `<a class="modal-link-btn" href="${links.vod}"     target="_blank">VOD</a>`     : '',
-  ].filter(Boolean).join(' ');
+  const mkTLink = (label, url) => url
+    ? `<a class="modal-link-btn" href="${url}" target="_blank">${label}</a>`
+    : `<span class="modal-link-btn disabled">${label}</span>`;
+  const linkBtns = [mkTLink('Bracket', links.bracket), mkTLink('VOD', links.vod)].join(' ');
 
   document.getElementById('tournament-modal-content').innerHTML = `
     <div style="margin-bottom:1.5rem;">
       <div style="font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:2rem; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:0.25rem;">${t.name}</div>
       <div style="color:var(--muted); font-size:14px; margin-bottom:0.75rem;">${formatDate(t.date)}${t.location ? ' · ' + t.location : ''} · ${t.entrant_count} entrants</div>
-      ${linkBtns ? `<div style="display:flex; gap:0.5rem;">${linkBtns}</div>` : ''}
+      <div style="display:flex; gap:0.5rem;">${linkBtns}</div>
     </div>
 
     <div class="modal-section-title">Final Standings</div>
