@@ -340,14 +340,11 @@ def main():
             if outcome is None:
                 dq_count += 1
                 if is_dq(s):
-                    # DQ = loss for DQ'd player only; opponent gets no win credit
+                    # DQ only affects Glicko-2 (via dq_losses), not the
+                    # displayed record/win rate — those reflect real sets only.
                     if s.get('score_b') == 'DQ':
-                        stats_acc[tag_b]['sets_lost']  += 1
-                        stats_acc[tag_b]['sets_total'] += 1
                         dq_losses.append(tag_b)
                     elif s.get('score_a') == 'DQ':
-                        stats_acc[tag_a]['sets_lost']  += 1
-                        stats_acc[tag_a]['sets_total'] += 1
                         dq_losses.append(tag_a)
                 continue
             playable.append((tag_a, tag_b, outcome[0], outcome[1]))
