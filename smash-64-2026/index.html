@@ -1131,6 +1131,7 @@ function switchRatingsMode() {
   for (const s of DB.stats) { playerMap[s.tag] = s; }
 
   renderPlayers();
+  renderH2HMatrix();
 }
 
 // ── Tab switching ─────────────────────────────────────────────────────────
@@ -1556,10 +1557,20 @@ function renderH2HMatrix() {
     return;
   }
 
-  const players = h2hSelected;
+  // Sort by current rank in active ratings mode (unranked go last)
+  const players = [...h2hSelected].sort((a, b) => {
+    const ra = ratingMap[a] ? ratingMap[a].rank : 9999;
+    const rb = ratingMap[b] ? ratingMap[b].rank : 9999;
+    return ra - rb;
+  });
+
+  const rankSpan = tag => ratingMap[tag]
+    ? ` <span style="color:var(--muted);font-weight:400;font-size:11px;">#${ratingMap[tag].rank}</span>`
+    : '';
+
   let html = `<div class="h2h-matrix-wrap"><table class="h2h-matrix"><thead><tr>
     <th class="row-header">Player</th>
-    ${players.map(p => `<th>${p}</th>`).join('')}
+    ${players.map(p => `<th>${p}${rankSpan(p)}</th>`).join('')}
   </tr></thead><tbody>`;
 
   for (const pa of players) {
@@ -1577,7 +1588,7 @@ function renderH2HMatrix() {
 
     html += `<tr>
       <th class="row-header" style="cursor:pointer" onclick="openPlayer(this.dataset.tag)" data-tag="${htmlEsc(pa)}">
-        ${pa}${ratingMap[pa] ? ` <span style="color:var(--muted);font-weight:400;font-size:11px;">#${ratingMap[pa].rank}</span>` : ''}
+        ${pa}${rankSpan(pa)}
       </th>
       ${cells.join('')}
     </tr>`;
