@@ -1449,13 +1449,18 @@ async function openPlayer(tag) {
   //   losses contribute -0.4/rank (losing to low-ranked hurts more than losing to top)
   //   tournaments with 0 wins go into a separate bucket below all win-bearing tournaments,
   //   sorted among themselves by their loss score (fewer/better losses = less bad)
+  // Performance score:
+  //   wins:   +1/rank   — beating rank 1 = +1.0, rank 10 = +0.1, rank 100 = +0.01
+  //   losses: -0.3*(rank/200) — losing to rank 2 ≈ 0 penalty, rank 100 = -0.15
+  //   Losing to a top player barely hurts; losing to a low-ranked player is penalised.
+  const MAX_RANK = 200;
   const perfScore = tid => {
     const td = tourSetData[tid];
     if (!td) return -Infinity;
     const winScore  = td.wins.reduce((sum, {rank}) => sum + 1 / rank, 0);
-    const lossScore = td.losses.reduce((sum, {rank}) => sum + 1 / rank, 0);
+    const lossScore = td.losses.reduce((sum, {rank}) => sum + rank / MAX_RANK, 0);
     if (td.wins.length === 0) return -(lossScore + 1000);
-    return winScore - 0.4 * lossScore;
+    return winScore - 0.3 * lossScore;
   };
 
   const sortedTourHistory = [...tourHistory].sort((a, b) =>
