@@ -804,7 +804,7 @@
 
     /* Controls — stack search on its own row, dropdowns wrap below */
     .controls { gap: 0.6rem; }
-    .search-box { min-width: 0; width: 100%; }
+    .search-box { min-width: 0; width: 100%; min-height: 38px; font-size: 16px; }
     .filter-label { font-size: 11px; }
     select.filter-select { font-size: 12px; padding: 0.4rem 0.5rem; }
 
@@ -1235,7 +1235,7 @@ function renderPlayersTable(list) {
     const ratingDisplay = p.rating ? Math.round(p.rating) : '—';
     const winPct = p.sets_total ? Math.round(p.win_rate * 100) : 0;
 
-    return `<tr class="clickable" onclick="openPlayer('${p.tag.replace(/'/g,"\\'")}')">
+    return `<tr class="clickable" onclick="openPlayer(this.dataset.tag)" data-tag="${htmlEsc(p.tag)}">
       <td class="rank-num" style="color:${rColor}">${rankDisplay}</td>
       <td>
         <div class="player-tag">${p.tag}</div>
@@ -1358,7 +1358,7 @@ async function openPlayer(tag) {
     ${h2hEntries.length ? `
       <div class="modal-section-title">Head-to-Head Records</div>
       ${h2hEntries.map(e => `
-        <div class="h2h-row" onclick="event.stopPropagation(); openPlayer('${e.opp.replace(/'/g,"\\'")}')">
+        <div class="h2h-row" onclick="event.stopPropagation(); openPlayer(this.dataset.tag)" data-tag="${htmlEsc(e.opp)}">
           <div class="h2h-opponent">${e.opp}</div>
           <div class="h2h-record ${h2hClass(e.wins, e.losses)}">${e.wins}–${e.losses}</div>
           <div class="h2h-sets">${e.sets} set${e.sets !== 1 ? 's' : ''}</div>
@@ -1394,7 +1394,7 @@ async function openPlayer(tag) {
         scoreClass = won ? 'win' : 'loss';
       }
       allSetRows.push(
-        `<div class="set-row${isDQ ? ' set-dq' : ''}" onclick="event.stopPropagation(); openPlayer('${opp.replace(/'/g,"\\'")}')">` +
+        `<div class="set-row${isDQ ? ' set-dq' : ''}" onclick="event.stopPropagation(); openPlayer(this.dataset.tag)" data-tag="${htmlEsc(opp)}">` +
         `<div class="set-round">${set.round}</div>` +
         `<div class="set-opp">${opp}</div>` +
         `<div class="set-score ${scoreClass}">${scoreStr}</div>` +
@@ -1473,7 +1473,7 @@ function openTournament(tid) {
       const rm = snapRatingMap[p.tag] || snapRatingMap[resolveTag(p.tag)];
       const ratingStr = rm ? `<span class="p-rating">${Math.round(rm.rating)}</span>` : '';
       const tag = resolveTag(p.tag);
-      return `<div class="placement-row" onclick="event.stopPropagation(); closeOverlay('tournament-overlay'); openPlayer('${tag.replace(/'/g,"\\'")}')">
+      return `<div class="placement-row" onclick="event.stopPropagation(); closeOverlay('tournament-overlay'); openPlayer(this.dataset.tag)" data-tag="${htmlEsc(tag)}">
         <div class="p-rank ${placeClass(p.place)}">${p.place}${ordinal(p.place)}</div>
         <div class="p-tag">${tag}</div>
         ${ratingStr}
@@ -1573,7 +1573,7 @@ function renderH2HMatrix() {
     });
 
     html += `<tr>
-      <th class="row-header" style="cursor:pointer" onclick="openPlayer('${pa.replace(/'/g,"\\'")}')">
+      <th class="row-header" style="cursor:pointer" onclick="openPlayer(this.dataset.tag)" data-tag="${htmlEsc(pa)}">
         ${pa}${ratingMap[pa] ? ` <span style="color:var(--muted);font-weight:400;font-size:11px;">#${ratingMap[pa].rank}</span>` : ''}
       </th>
       ${cells.join('')}
@@ -1684,7 +1684,7 @@ async function openH2HDetail(pa, pb) {
 
   document.getElementById('h2h-detail-content').innerHTML = `
     <div class="h2h-detail-hero">
-      <div class="h2h-detail-player" onclick="closeOverlay('h2h-detail-overlay'); openPlayer('${pa.replace(/'/g,"\'")}')">
+      <div class="h2h-detail-player" onclick="closeOverlay('h2h-detail-overlay'); openPlayer(this.dataset.tag)" data-tag="${htmlEsc(pa)}">
         ${pa}${rankA}
       </div>
       <div>
@@ -1695,7 +1695,7 @@ async function openH2HDetail(pa, pb) {
         </div>
         <div class="h2h-detail-sets-label">${total} set${total !== 1 ? 's' : ''}</div>
       </div>
-      <div class="h2h-detail-player" style="text-align:right" onclick="closeOverlay('h2h-detail-overlay'); openPlayer('${pb.replace(/'/g,"\'")}')">
+      <div class="h2h-detail-player" style="text-align:right" onclick="closeOverlay('h2h-detail-overlay'); openPlayer(this.dataset.tag)" data-tag="${htmlEsc(pb)}">
         ${pb}${rankB}
       </div>
     </div>
@@ -1732,6 +1732,10 @@ document.addEventListener('keydown', e => {
 });
 
 // ── Utility ───────────────────────────────────────────────────────────────
+
+function htmlEsc(str) {
+  return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
 
 function resolveTag(tag) {
   return altMap[tag.toLowerCase()] || tag;
