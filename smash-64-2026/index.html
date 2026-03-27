@@ -521,7 +521,7 @@
     font-weight: 700;
     font-size: 1.4rem;
     color: var(--red);
-    text-align: right;
+    text-align: left;
     min-width: 60px;
   }
   .t-card-entrants-label { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
@@ -928,7 +928,7 @@ async function init() {
         DB.tournaments.push(t);
       } catch(e) {}
     }));
-    DB.tournaments.sort((a, b) => b.date.localeCompare(a.date));
+    DB.tournaments.sort((a, b) => a.date.localeCompare(b.date));
 
     // Header meta
     const snap = DB.ratings.snapshots[DB.ratings.snapshots.length - 1];
@@ -1267,7 +1267,7 @@ function renderTournaments() {
         <div class="t-card-name">${t.name}</div>
         <div class="t-card-meta">${t.location || ''}</div>
       </div>
-      <div style="text-align:right;">
+      <div>
         <div class="t-card-entrants">${t.entrant_count}</div>
         <div class="t-card-entrants-label">entrants</div>
       </div>
