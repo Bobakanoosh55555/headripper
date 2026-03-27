@@ -521,7 +521,7 @@
     font-weight: 700;
     font-size: 1.4rem;
     color: var(--red);
-    text-align: right;
+    text-align: left;
     min-width: 60px;
   }
   .t-card-entrants-label { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
@@ -1012,14 +1012,15 @@ function confidenceLabel(score) {
 // ── Rank color ───────────────────────────────────────────────────────────
 // Ranks 1-3: pure red. Ranks 4-64: gradient red→gray. Rank 65+: flat gray.
 function rankColor(rank) {
-  if (!rank) return '#555555';
-  if (rank <= 3)  return '#c41e1e';
+  if (!rank)      return '#555555';
   if (rank >= 65) return '#555555';
-  // t = 0 at rank 4 (red), t = 1 at rank 64 (gray)
-  const t = (rank - 4) / (64 - 4);
-  const r = Math.round(194 + (85  - 194) * t);
-  const g = Math.round(30  + (85  - 30)  * t);
-  const b = Math.round(30  + (85  - 30)  * t);
+  // Scale runs rank 1 (full red) → rank 64 (warm red-gray #6e4141).
+  // Rank 65+ drops to neutral gray #555555, creating a visible boundary
+  // that matches the end-of-year rankings cutoff.
+  const t = (rank - 1) / (64 - 1);
+  const r = Math.round(194 + (110 - 194) * t);
+  const g = Math.round(30  + (65  - 30)  * t);
+  const b = Math.round(30  + (65  - 30)  * t);
   return `rgb(${r},${g},${b})`;
 }
 
