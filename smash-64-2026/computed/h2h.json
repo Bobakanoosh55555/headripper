@@ -2301,6 +2301,106 @@
   },
   {
     "players": [
+      "Apparition",
+      "DrippinWet"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Apparition",
+      "Fireblaster"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Apparition",
+      "Razz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Apparition",
+      "Salad"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Apparition",
+      "Wiseacre"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Araknowsall",
       "Freean"
     ],
@@ -3621,6 +3721,566 @@
   },
   {
     "players": [
+      "Bobakanoosh",
+      "Box"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Cagt"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Cool Lime"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Couchsachraga"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "JPX"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Kristoff"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Razz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Shears"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Spongy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Thrillhouse"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Traydozer"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "bloogo"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "dmolz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "grain"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "DrippinWet"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "Finio"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "Heny935"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "HotMashedPotatoes"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "Josh Brody"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "Lalo"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "MasterHandJob"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "Miniohh!"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "Moonshoes"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "Stew"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "bloogo"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "slatts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "CTG",
       "Freean"
     ],
@@ -3982,6 +4642,26 @@
   {
     "players": [
       "Cagt",
+      "Kristoff"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "Kung Fu Kenny"
     ],
     "wins": [
@@ -4142,6 +4822,26 @@
   {
     "players": [
       "Cagt",
+      "Shears"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "Sicc1"
     ],
     "wins": [
@@ -4162,6 +4862,26 @@
   {
     "players": [
       "Cagt",
+      "Spongy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "Terra"
     ],
     "wins": [
@@ -4171,6 +4891,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "Thrillhouse"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -4461,6 +5201,146 @@
   },
   {
     "players": [
+      "Conceit",
+      "Maafia"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Conceit",
+      "Rusty"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Conceit",
+      "The Cook"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Conceit",
+      "The Yid"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Conceit",
+      "Traydozer"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Couchsachraga"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Dan"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Cool Lime",
       "Dogs_Johnson"
     ],
@@ -4551,6 +5431,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Fancy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -4802,6 +5702,26 @@
   {
     "players": [
       "Cool Lime",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "LouieG"
     ],
     "wins": [
@@ -4902,6 +5822,46 @@
   {
     "players": [
       "Cool Lime",
+      "MasterHandJob"
+    ],
+    "wins": [
+      1,
+      1
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Mercy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "Monkey"
     ],
     "wins": [
@@ -4991,6 +5951,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Razz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -5122,6 +6102,66 @@
   {
     "players": [
       "Cool Lime",
+      "Stee"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Traydozer"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "TyloRen_"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "Velizer0"
     ],
     "wins": [
@@ -5171,6 +6211,26 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "bloogo"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -5302,6 +6362,26 @@
   {
     "players": [
       "Couchsachraga",
+      "Flats"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Couchsachraga",
       "Gravyfingers"
     ],
     "wins": [
@@ -5314,6 +6394,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Couchsachraga",
+      "Heny935"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -5342,6 +6442,26 @@
   {
     "players": [
       "Couchsachraga",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Couchsachraga",
       "Lowww"
     ],
     "wins": [
@@ -5354,6 +6474,46 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Couchsachraga",
+      "Moosh_Da_Moosh"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Couchsachraga",
+      "Motovation"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -5402,6 +6562,46 @@
   {
     "players": [
       "Couchsachraga",
+      "Razz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Couchsachraga",
+      "Traydozer"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Couchsachraga",
       "Waxy:Joe"
     ],
     "wins": [
@@ -5411,6 +6611,46 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Couchsachraga",
+      "blondie"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Couchsachraga",
+      "bloogo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           0,
           1
@@ -5511,6 +6751,86 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dan",
+      "Fancy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dan",
+      "MasterHandJob"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dan",
+      "Stee"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dan",
+      "TyloRen_"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -6602,6 +7922,66 @@
   {
     "players": [
       "DoubleJ",
+      "Lalo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DoubleJ",
+      "Luigikid64"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DoubleJ",
+      "Miniohh!"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DoubleJ",
       "SOTO"
     ],
     "wins": [
@@ -6611,6 +7991,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DoubleJ",
+      "Terra"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           0,
           1
@@ -6634,6 +8034,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DoubleJ",
+      "dmolz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -6991,6 +8411,166 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DrippinWet",
+      "Finio"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DrippinWet",
+      "Fireblaster"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DrippinWet",
+      "Heny935"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DrippinWet",
+      "Josh Brody"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DrippinWet",
+      "Lalo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DrippinWet",
+      "Razz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DrippinWet",
+      "Salad"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "DrippinWet",
+      "Wiseacre"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -7942,6 +9522,26 @@
   {
     "players": [
       "Fancy",
+      "MasterHandJob"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fancy",
       "Pokehero"
     ],
     "wins": [
@@ -7971,6 +9571,46 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fancy",
+      "Stee"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fancy",
+      "TyloRen_"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -8296,6 +9936,406 @@
           2
         ],
         "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Finio",
+      "Fireblaster"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Finio",
+      "Heny935"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Finio",
+      "JPX"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Finio",
+      "Josh Brody"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Finio",
+      "Lalo"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Finio",
+      "grain"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "Hotline"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "Miniohh!"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "Razz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "Salad"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "Shears"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "The Yid"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "Wiseacre"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "slatts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fireblaster",
+      "Á1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Flats",
+      "Heny935"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Flats",
+      "Moosh_Da_Moosh"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Flats",
+      "Motovation"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Flats",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
       }
     }
   },
@@ -9161,8 +11201,8 @@
   },
   {
     "players": [
-      "Heny935",
-      "Josh Brody"
+      "Heather",
+      "Juandamian Nebraska"
     ],
     "wins": [
       0,
@@ -9170,7 +11210,154 @@
     ],
     "sets": 1,
     "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heather",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heather",
+      "measTHEbeast"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heather",
+      "noob falcon"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heather",
+      "sailorisa"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heather",
+      "Á1"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heny935",
+      "Josh Brody"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      },
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heny935",
+      "Lalo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           0,
           1
@@ -9194,6 +11381,46 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heny935",
+      "Moosh_Da_Moosh"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heny935",
+      "Motovation"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -9271,6 +11498,26 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Heny935",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           0,
           1
@@ -9471,6 +11718,226 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "HotMashedPotatoes",
+      "Moonshoes"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "HotMashedPotatoes",
+      "Stew"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "HotMashedPotatoes",
+      "bloogo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "HotMashedPotatoes",
+      "slatts"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hotline",
+      "JPX"
+    ],
+    "wins": [
+      1,
+      1
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Hotline",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hotline",
+      "Stee"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hotline",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hotline",
+      "cuddly"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hotline",
+      "dmolz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hotline",
+      "grain"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -10428,6 +12895,146 @@
   },
   {
     "players": [
+      "JPX",
+      "Josh Brody"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JPX",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JPX",
+      "Miniohh!"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JPX",
+      "Stee"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JPX",
+      "blondie"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JPX",
+      "cuddly"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JPX",
+      "dmolz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "JaimeHR",
       "Josh Brody"
     ],
@@ -11089,6 +13696,46 @@
   {
     "players": [
       "Josh Brody",
+      "KD3"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
+      "Lalo"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
       "Legend@rito"
     ],
     "wins": [
@@ -11129,6 +13776,26 @@
   {
     "players": [
       "Josh Brody",
+      "Lowww"
+    ],
+    "wins": [
+      1,
+      2
+    ],
+    "sets": 3,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          2
+        ],
+        "sets": 3
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
       "Masayuki"
     ],
     "wins": [
@@ -11138,6 +13805,46 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
+      "MasterHandJob"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Josh Brody",
+      "Mercy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -11415,6 +14122,306 @@
   },
   {
     "players": [
+      "Juandamian Nebraska",
+      "Maafia"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Juandamian Nebraska",
+      "MasterHandJob"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Juandamian Nebraska",
+      "Mercy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Juandamian Nebraska",
+      "Spongy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Juandamian Nebraska",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Juandamian Nebraska",
+      "grain"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Juandamian Nebraska",
+      "measTHEbeast"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Juandamian Nebraska",
+      "noob falcon"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Juandamian Nebraska",
+      "sailorisa"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Juandamian Nebraska",
+      "Á1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "Razz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "Traydozer"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "bloogo"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "cuddly"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Kaiser",
       "LoCoSm4sH"
     ],
@@ -11675,6 +14682,66 @@
   },
   {
     "players": [
+      "Kristoff",
+      "Shears"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Kristoff",
+      "Spongy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Kristoff",
+      "Thrillhouse"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Kung Fu Kenny",
       "Menost"
     ],
@@ -11836,6 +14903,66 @@
   {
     "players": [
       "Lalo",
+      "Luigikid64"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "Maafia"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "Miniohh!"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
       "Moustasher"
     ],
     "wins": [
@@ -11876,6 +15003,26 @@
   {
     "players": [
       "Lalo",
+      "Terra"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
       "ToT"
     ],
     "wins": [
@@ -11908,6 +15055,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "dmolz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -12856,6 +16023,26 @@
   {
     "players": [
       "Lowww",
+      "Miniohh!"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
       "Pokehero"
     ],
     "wins": [
@@ -12896,6 +16083,46 @@
   {
     "players": [
       "Lowww",
+      "Shears"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
+      "The Yid"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
       "Wizzrobe"
     ],
     "wins": [
@@ -12916,6 +16143,26 @@
   {
     "players": [
       "Lowww",
+      "dmolz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
       "kix"
     ],
     "wins": [
@@ -12928,6 +16175,106 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
+      "slatts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
+      "Á1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Luigikid64",
+      "Miniohh!"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Luigikid64",
+      "Terra"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Luigikid64",
+      "dmolz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -13076,6 +16423,46 @@
   {
     "players": [
       "Maafia",
+      "MasterHandJob"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Maafia",
+      "Mercy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Maafia",
       "Nax"
     ],
     "wins": [
@@ -13116,6 +16503,26 @@
   {
     "players": [
       "Maafia",
+      "Rusty"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Maafia",
       "Shears"
     ],
     "wins": [
@@ -13125,6 +16532,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Maafia",
+      "Spongy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -13156,6 +16583,46 @@
   {
     "players": [
       "Maafia",
+      "The Cook"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Maafia",
+      "The Yid"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Maafia",
       "TimberRoodles"
     ],
     "wins": [
@@ -13165,6 +16632,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Maafia",
+      "Traydozer"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -13196,6 +16683,26 @@
   {
     "players": [
       "Maafia",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Maafia",
       "elel"
     ],
     "wins": [
@@ -13208,6 +16715,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Maafia",
+      "grain"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -13615,6 +17142,106 @@
   },
   {
     "players": [
+      "MasterHandJob",
+      "Mercy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MasterHandJob",
+      "Spongy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MasterHandJob",
+      "Stee"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MasterHandJob",
+      "TyloRen_"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MasterHandJob",
+      "grain"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Menost",
       "derstuk"
     ],
@@ -13645,6 +17272,66 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Mercy",
+      "Miniohh!"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Mercy",
+      "Spongy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Mercy",
+      "grain"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           0,
           1
@@ -13688,6 +17375,146 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Miniohh!",
+      "Shears"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Miniohh!",
+      "Terra"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Miniohh!",
+      "The Yid"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Miniohh!",
+      "cuddly"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Miniohh!",
+      "dmolz"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Miniohh!",
+      "slatts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Miniohh!",
+      "Á1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -13796,6 +17623,46 @@
   {
     "players": [
       "Moonshoes",
+      "Stew"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moonshoes",
+      "bloogo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moonshoes",
       "cobr"
     ],
     "wins": [
@@ -13805,6 +17672,86 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moonshoes",
+      "slatts"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moosh_Da_Moosh",
+      "Motovation"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Moosh_Da_Moosh",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Motovation",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           0,
           1
@@ -15155,6 +19102,86 @@
   },
   {
     "players": [
+      "Razz",
+      "Salad"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Razz",
+      "Traydozer"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Razz",
+      "Wiseacre"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Razz",
+      "bloogo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "ReefyBeefy",
       "Sicc1"
     ],
@@ -15205,6 +19232,66 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Rusty",
+      "The Cook"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Rusty",
+      "The Yid"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Rusty",
+      "Traydozer"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           0,
           1
@@ -15268,6 +19355,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Salad",
+      "Wiseacre"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -15396,6 +19503,86 @@
   {
     "players": [
       "Shears",
+      "Spongy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Shears",
+      "The Yid"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Shears",
+      "Thrillhouse"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Shears",
+      "bloogo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Shears",
       "cobr"
     ],
     "wins": [
@@ -15425,6 +19612,46 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Shears",
+      "slatts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Shears",
+      "Á1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -15535,6 +19762,46 @@
   },
   {
     "players": [
+      "Spongy",
+      "Thrillhouse"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Spongy",
+      "grain"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "StarWing",
       "Yaruzu"
     ],
@@ -15585,6 +19852,126 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Stee",
+      "TyloRen_"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Stee",
+      "blondie"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Stee",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Stee",
+      "dmolz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Stew",
+      "bloogo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Stew",
+      "slatts"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           0,
           1
@@ -15676,6 +20063,26 @@
   {
     "players": [
       "Terra",
+      "dmolz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Terra",
       "elel"
     ],
     "wins": [
@@ -15705,6 +20112,106 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "The Cook",
+      "The Yid"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "The Cook",
+      "Traydozer"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "The Yid",
+      "Traydozer"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "The Yid",
+      "slatts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "The Yid",
+      "Á1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -15808,6 +20315,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Traydozer",
+      "bloogo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -16216,6 +20743,46 @@
   {
     "players": [
       "blondie",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "blondie",
+      "dmolz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "blondie",
       "kysk"
     ],
     "wins": [
@@ -16245,6 +20812,46 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "bloogo",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "bloogo",
+      "slatts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
@@ -16288,6 +20895,106 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "cuddly",
+      "dmolz"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "cuddly",
+      "measTHEbeast"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "cuddly",
+      "noob falcon"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "cuddly",
+      "sailorisa"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "cuddly",
+      "Á1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -16615,6 +21322,106 @@
   },
   {
     "players": [
+      "measTHEbeast",
+      "noob falcon"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "measTHEbeast",
+      "sailorisa"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "measTHEbeast",
+      "Á1"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "noob falcon",
+      "sailorisa"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "noob falcon",
+      "Á1"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "pkdownkicks",
       "zgamer2000"
     ],
@@ -16635,6 +21442,26 @@
   },
   {
     "players": [
+      "sailorisa",
+      "Á1"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "sextc",
       "tarp"
     ],
@@ -16645,6 +21472,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "slatts",
+      "Á1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "keystoned-ix": {
         "wins": [
           1,
           0
