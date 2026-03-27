@@ -1438,9 +1438,20 @@ async function openPlayer(tag) {
       );
     }
 
+    // Deduplicate: if the same opponent appears multiple times, merge into
+    // one entry with the best rank and a count for display (e.g. "x2")
+    const dedup = (arr) => {
+      const map = {};
+      for (const {opp, rank} of arr) {
+        if (!map[opp]) map[opp] = { opp, rank, count: 1 };
+        else { map[opp].count++; map[opp].rank = Math.min(map[opp].rank, rank); }
+      }
+      return Object.values(map);
+    };
+
     tourSetData[tid] = {
-      wins:   wins.sort((a,b) => a.rank - b.rank).slice(0, 4),
-      losses: losses.sort((a,b) => b.rank - a.rank).slice(0, 4),
+      wins:   dedup(wins).sort((a,b) => a.rank - b.rank).slice(0, 4),
+      losses: dedup(losses).sort((a,b) => b.rank - a.rank).slice(0, 4),
     };
   }
 
@@ -1467,8 +1478,8 @@ async function openPlayer(tag) {
     perfScore(b.tournament) - perfScore(a.tournament)
   );
 
-  const makeChips = (arr, cls) => arr.map(({opp, rank}) =>
-    `<span class="result-chip ${cls}" onclick="event.stopPropagation(); openPlayer(this.dataset.tag)" data-tag="${htmlEsc(opp)}">#${rank} ${opp}</span>`
+  const makeChips = (arr, cls) => arr.map(({opp, rank, count}) =>
+    `<span class="result-chip ${cls}" onclick="event.stopPropagation(); openPlayer(this.dataset.tag)" data-tag="${htmlEsc(opp)}">#${rank} ${opp}${count > 1 ? ` (x${count})` : ''}</span>`
   ).join('');
 
   const tourRows = sortedTourHistory.map(t => {
