@@ -1240,12 +1240,12 @@ async function openPlayer(tag) {
   const links = pm ? pm.links : {};
   const mkLink = (label, url) => url
     ? `<a class="modal-link-btn" href="${url}" target="_blank">${label}</a>`
-    : `<span class="modal-link-btn disabled">${label}</span>`;
+    : '';
   const linkBtns = [
-    mkLink('start.gg', links.startgg),
-    mkLink('Twitter',  links.twitter),
-    mkLink('Twitch',   links.twitch),
-  ].join(' ');
+    mkLink('YouTube', links.youtube),
+    mkLink('Twitter', links.twitter),
+    mkLink('Twitch',  links.twitch),
+  ].filter(Boolean).join(' ');
 
   document.getElementById('player-modal-content').innerHTML = `
     <div class="player-hero">
