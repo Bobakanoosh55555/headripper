@@ -118,6 +118,9 @@
     z-index: 50;
     pointer-events: none;
   }
+  @media (max-width: 640px) {
+    .tooltip-box { right: auto; left: 0; width: min(280px, 85vw); }
+  }
   .tooltip-box strong { color: var(--text); display: block; margin-bottom: 0.2rem; }
   .tooltip-box .tooltip-divider { border: none; border-top: 1px solid var(--border); margin: 0.6rem 0; }
   .tooltip-wrap:hover .tooltip-box { display: block; }
@@ -802,9 +805,9 @@
     /* Nav tabs — smaller, fill width */
     .tab-btn { padding: 0.75rem 0.75rem; font-size: 0.8rem; letter-spacing: 0.06em; flex: 1; text-align: center; }
 
-    /* Controls — stack search on its own row, dropdowns wrap below */
-    .controls { gap: 0.6rem; }
-    .search-box { min-width: 0; width: 100%; min-height: 38px; font-size: 16px; }
+    /* Controls — search gets its own full row, dropdowns wrap below */
+    .controls { gap: 0.5rem; }
+    .search-box { flex-basis: 100%; min-width: 0; min-height: 38px; font-size: 16px; order: -1; }
     .filter-label { font-size: 11px; }
     select.filter-select { font-size: 12px; padding: 0.4rem 0.5rem; }
 
