@@ -788,13 +788,73 @@
   a { color: var(--red); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
+  /* ── Mobile ── */
   @media (max-width: 640px) {
-    main { padding: 1.25rem 1rem; }
+
+    /* Layout */
+    main   { padding: 1rem; }
+    header { padding: 0 1rem; }
+
+    /* Header — hide meta text, shrink title */
+    .header-meta { display: none; }
+    .site-title  { font-size: 1.35rem; }
+
+    /* Nav tabs — smaller, fill width */
+    .tab-btn { padding: 0.75rem 0.75rem; font-size: 0.8rem; letter-spacing: 0.06em; flex: 1; text-align: center; }
+
+    /* Controls — stack search on its own row, dropdowns wrap below */
+    .controls { gap: 0.6rem; }
+    .search-box { min-width: 0; width: 100%; }
+    .filter-label { font-size: 11px; }
+    select.filter-select { font-size: 12px; padding: 0.4rem 0.5rem; }
+
+    /* Players table — hide Confidence and Events columns */
+    .data-table th:nth-child(4),
+    .data-table td:nth-child(4),
+    .data-table th:nth-child(7),
+    .data-table td:nth-child(7) { display: none; }
+
+    /* Tighten table padding */
+    .data-table th, .data-table td { padding: 0.5rem 0.4rem; }
+    .rank-num { width: 2.25rem; font-size: 0.9rem; }
+    .player-tag { font-size: 13px; }
+    .rating-val { font-size: 0.9rem; }
+    .record-small { display: none; }
+
+    /* Tournament cards */
+    .t-card-name {
+      width: auto;
+      min-width: 0;
+      max-width: none;
+      flex: 1;
+      font-size: 1rem;
+    }
+    .t-card-date { min-width: 70px; font-size: 0.75rem; }
+    .t-card-entrants { font-size: 1.1rem; }
+
+    /* Modal */
+    .modal { padding: 1.25rem 1rem; }
+    .modal-close { top: 0.75rem; right: 0.75rem; }
     .player-hero-rank { font-size: 2.5rem; }
     .player-hero-name { font-size: 1.5rem; }
-    .stat-grid { grid-template-columns: repeat(2, 1fr); }  /* stays 2-col on mobile */
-    header { padding: 0 1rem; }
-    .tab-btn { padding: 0.875rem 1rem; font-size: 0.85rem; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .tournament-row:hover, .h2h-row:hover, .placement-row:hover {
+      margin: 0; padding-left: 0; padding-right: 0;
+    }
+
+    /* Set history — hide round column, keep opponent + score */
+    .set-round { display: none; }
+
+    /* H2H tab */
+    .h2h-builder { padding: 1rem; }
+    .h2h-matrix th, .h2h-matrix td { width: 60px; min-width: 60px; max-width: 60px; font-size: 11px; }
+    .h2h-matrix th.row-header { min-width: 90px; font-size: 11px; }
+
+    /* H2H detail modal */
+    .h2h-detail-player { font-size: 1.1rem; }
+    .h2h-detail-score  { font-size: 2rem; }
+    .h2h-detail-score .score-sep { font-size: 1.4rem; }
+    .h2h-detail-round  { min-width: 0; font-size: 11px; }
   }
 </style>
 </head>
