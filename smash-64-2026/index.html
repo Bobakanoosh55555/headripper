@@ -709,6 +709,81 @@
     opacity: 0.4;
   }
 
+  /* H2H detail card */
+  .h2h-detail-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .h2h-detail-player {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .h2h-detail-player:hover { color: var(--red); }
+  .h2h-detail-score {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 1;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .h2h-detail-score .score-win  { color: var(--win-t); }
+  .h2h-detail-score .score-loss { color: #e05555; }
+  .h2h-detail-score .score-sep  { color: var(--muted2); font-size: 2rem; padding: 0 0.25rem; }
+  .h2h-detail-score .score-even { color: var(--muted); }
+  .h2h-detail-sets-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 2px;
+  }
+  .h2h-tournament-group { margin-bottom: 1.25rem; }
+  .h2h-tournament-header {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .h2h-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .h2h-detail-round { color: var(--muted); flex: 1; font-size: 12px; }
+  .h2h-detail-winner {
+    font-weight: 600;
+    min-width: 120px;
+  }
+  .h2h-detail-winner.is-a { color: var(--win-t); }
+  .h2h-detail-winner.is-b { color: #e05555; }
+  .h2h-detail-result {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    min-width: 40px;
+    text-align: right;
+  }
+
   a { color: var(--red); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
@@ -842,6 +917,16 @@
   <div class="modal" id="player-modal">
     <button class="modal-close" onclick="closeOverlay('player-overlay')">✕</button>
     <div id="player-modal-content"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     H2H DETAIL MODAL
+══════════════════════════════════════════════════ -->
+<div class="overlay" id="h2h-detail-overlay" onclick="closeOverlayIfBg(event, 'h2h-detail-overlay')">
+  <div class="modal" id="h2h-detail-modal">
+    <button class="modal-close" onclick="closeOverlay('h2h-detail-overlay')">✕</button>
+    <div id="h2h-detail-content"></div>
   </div>
 </div>
 
@@ -1423,7 +1508,7 @@ function renderH2HMatrix() {
       const w = entry.wins[idx];
       const l = entry.wins[1 - idx];
       const cls = w > l ? 'win' : w < l ? 'loss' : 'even';
-      return `<td class="${cls}">${w}–${l}</td>`;
+      return `<td class="${cls}" style="cursor:pointer" data-pa="${pa.replace(/"/g,'&quot;')}" data-pb="${pb.replace(/"/g,'&quot;')}" onclick="h2hCellClick(this)">${w}–${l}</td>`;
     });
 
     html += `<tr>
@@ -1436,6 +1521,127 @@ function renderH2HMatrix() {
 
   html += '</tbody></table></div>';
   out.innerHTML = html;
+}
+
+function h2hCellClick(td) {
+  const pa = td.getAttribute('data-pa');
+  const pb = td.getAttribute('data-pb');
+  openH2HDetail(pa, pb);
+}
+
+async function openH2HDetail(pa, pb) {
+  const key   = [pa, pb].sort().join('|||');
+  const entry = h2hIndex[key];
+  if (!entry) return;
+
+  const idxA  = entry.players.indexOf(pa);
+  const idxB  = 1 - idxA;
+  const wA    = entry.wins[idxA];
+  const wB    = entry.wins[idxB];
+  const total = entry.sets;
+
+  // Score display
+  const aClass = wA > wB ? 'score-win' : wA < wB ? 'score-loss' : 'score-even';
+  const bClass = wB > wA ? 'score-win' : wB < wA ? 'score-loss' : 'score-even';
+
+  // Build set list grouped by tournament, most recent first
+  const tids = Object.keys(entry.by_tournament);
+  // Sort by tournament date descending
+  tids.sort((a, b) => {
+    const ta = tournamentMeta[a], tb = tournamentMeta[b];
+    const da = ta ? ta.date : '0000';
+    const db = tb ? tb.date : '0000';
+    return db.localeCompare(da);
+  });
+
+  // Load sets for all relevant tournaments
+  const groupsHtml = [];
+  for (const tid of tids) {
+    const tm    = tournamentMeta[tid];
+    const tname = tm ? tm.name : tid;
+    const tdate = tm ? formatDate(tm.date) : '';
+    const raw   = await getSets(tid);
+
+    // Find sets between pa and pb
+    const matchSets = raw.filter(s => {
+      const ra = resolveTag(s.player_a), rb = resolveTag(s.player_b);
+      return (ra === pa && rb === pb) || (ra === pb && rb === pa);
+    });
+
+    if (!matchSets.length) continue;
+
+    // Sort by round significance (Grand Final last → first in display = most significant first)
+    const roundOrder = r => {
+      const rl = r.toLowerCase();
+      if (rl.includes('grand final reset')) return 10;
+      if (rl.includes('grand final'))       return 9;
+      if (rl.includes('grand'))             return 9;
+      if (rl.includes('losers final'))      return 8;
+      if (rl.includes('winners final'))     return 7;
+      if (rl.includes('losers semi'))       return 6;
+      if (rl.includes('winners semi'))      return 5;
+      if (rl.includes('losers quarter'))    return 4;
+      if (rl.includes('winners quarter'))   return 3;
+      if (rl.includes('losers'))            return 2;
+      if (rl.includes('winners'))           return 1;
+      if (rl.includes('wildcard'))          return 0;
+      return -1;
+    };
+    matchSets.sort((a, b) => roundOrder(b.round) - roundOrder(a.round));
+
+    const rowsHtml = matchSets.map(s => {
+      const isDQ  = s.score_a === 'DQ' || s.score_b === 'DQ';
+      const ra    = resolveTag(s.player_a);
+      const winner = isDQ
+        ? (s.score_b === 'DQ' ? ra : resolveTag(s.player_b))
+        : ra; // player_a is always winner in non-DQ sets
+      const isAWin = winner === pa;
+      const scoreStr = isDQ
+        ? (s.score_b === 'DQ' ? 'W – DQ' : 'DQ – W')
+        : `${s.score_a} – ${s.score_b}`;
+
+      return `<div class="h2h-detail-row${isDQ ? ' set-dq' : ''}">
+        <div class="h2h-detail-round">${s.round}</div>
+        <div class="h2h-detail-winner ${isAWin ? 'is-a' : 'is-b'}">${winner}</div>
+        <div class="h2h-detail-result">${scoreStr}</div>
+      </div>`;
+    }).join('');
+
+    groupsHtml.push(`<div class="h2h-tournament-group">
+      <div class="h2h-tournament-header">
+        <span>${tname}</span>
+        <span>${tdate}</span>
+      </div>
+      ${rowsHtml}
+    </div>`);
+  }
+
+  const rA = ratingMap[pa];
+  const rB = ratingMap[pb];
+  const rankA = rA ? `<span style="color:var(--muted);font-weight:400;font-size:13px"> #${rA.rank}</span>` : '';
+  const rankB = rB ? `<span style="color:var(--muted);font-weight:400;font-size:13px"> #${rB.rank}</span>` : '';
+
+  document.getElementById('h2h-detail-content').innerHTML = `
+    <div class="h2h-detail-hero">
+      <div class="h2h-detail-player" onclick="closeOverlay('h2h-detail-overlay'); openPlayer('${pa.replace(/'/g,"\'")}')">
+        ${pa}${rankA}
+      </div>
+      <div>
+        <div class="h2h-detail-score">
+          <span class="${aClass}">${wA}</span>
+          <span class="score-sep">–</span>
+          <span class="${bClass}">${wB}</span>
+        </div>
+        <div class="h2h-detail-sets-label">${total} set${total !== 1 ? 's' : ''}</div>
+      </div>
+      <div class="h2h-detail-player" style="text-align:right" onclick="closeOverlay('h2h-detail-overlay'); openPlayer('${pb.replace(/'/g,"\'")}')">
+        ${pb}${rankB}
+      </div>
+    </div>
+    ${groupsHtml.join('')}
+  `;
+
+  document.getElementById('h2h-detail-overlay').classList.add('open');
 }
 
 function openH2HFor(tag1, tag2) {
@@ -1459,6 +1665,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeOverlay('player-overlay');
     closeOverlay('tournament-overlay');
+    closeOverlay('h2h-detail-overlay');
     document.getElementById('h2h-dropdown').classList.remove('open');
   }
 });
