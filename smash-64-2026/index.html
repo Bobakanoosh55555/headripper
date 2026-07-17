@@ -70,14 +70,6 @@
     cursor: pointer;
   }
   .site-title span { color: var(--red); }
-  .header-meta {
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-left: 1px solid var(--border);
-    padding-left: 2rem;
-  }
   /* Tooltip */
   .tooltip-wrap {
     position: relative;
@@ -860,8 +852,7 @@
     main   { padding: 1rem; }
     header { padding: 0 1rem; }
 
-    /* Header — hide meta text, shrink title */
-    .header-meta { display: none; }
+    /* Header — shrink title */
     .site-title  { font-size: 1.35rem; }
 
     /* Nav tabs — smaller, fill width */
@@ -931,7 +922,6 @@
     <div class="site-title" onclick="showTab('players')">
       SMASH <span>64</span> 2026
     </div>
-    <div class="header-meta" id="header-meta">Loading...</div>
   </div>
 </header>
 
@@ -1143,17 +1133,11 @@ async function init() {
     }));
     DB.tournaments.sort((a, b) => a.date.localeCompare(b.date));
 
-    // Header meta
-    const snap = DB.ratings.snapshots[DB.ratings.snapshots.length - 1];
-    document.getElementById('header-meta').textContent =
-      `${snap.ratings.length} players · ${DB.tournaments.length} tournament${DB.tournaments.length !== 1 ? 's' : ''} · updated ${snap.date}`;
-
     renderPlayers();
     renderTournaments();
     applyHash();
   } catch(e) {
     console.error(e);
-    document.getElementById('header-meta').textContent = 'Error loading data';
   }
 }
 
