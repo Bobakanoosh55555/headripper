@@ -1502,6 +1502,26 @@
   {
     "players": [
       "AlanDeez",
+      "CigNus"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AlanDeez",
       "Couchsachraga"
     ],
     "wins": [
@@ -1522,6 +1542,26 @@
   {
     "players": [
       "AlanDeez",
+      "Dogs_Johnson"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AlanDeez",
       "Duff man"
     ],
     "wins": [
@@ -1531,6 +1571,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AlanDeez",
+      "EG"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           0,
           1
@@ -1662,6 +1722,26 @@
   {
     "players": [
       "AlanDeez",
+      "PYT"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AlanDeez",
       "Pokehero"
     ],
     "wins": [
@@ -1671,6 +1751,46 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AlanDeez",
+      "Rocket"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AlanDeez",
+      "Shears"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           0,
           1
@@ -1846,11 +1966,18 @@
     ],
     "wins": [
       0,
-      1
+      2
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      },
+      "its-ranked-if-i-win": {
         "wins": [
           0,
           1
@@ -1922,6 +2049,26 @@
   {
     "players": [
       "Andykins",
+      "Disco Porkins"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Andykins",
       "Dishier Wand"
     ],
     "wins": [
@@ -1982,6 +2129,66 @@
   {
     "players": [
       "Andykins",
+      "Isaaccoolkid23"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Andykins",
+      "Javy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Andykins",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Andykins",
       "Nackle"
     ],
     "wins": [
@@ -1991,6 +2198,46 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Andykins",
+      "Papamark"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Andykins",
+      "Pokehero"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -2025,12 +2272,39 @@
       "Terra"
     ],
     "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      },
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Andykins",
+      "Velocity Jones"
+    ],
+    "wins": [
       1,
       0
     ],
     "sets": 1,
     "by_tournament": {
-      "hitstun-7-last-call": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -2074,6 +2348,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Andykins",
+      "epad10"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -3242,6 +3536,26 @@
   {
     "players": [
       "B33F",
+      "CoCoKoth"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "B33F",
       "Couchsachraga"
     ],
     "wins": [
@@ -3282,7 +3596,7 @@
   {
     "players": [
       "B33F",
-      "EG"
+      "Dr. Sauce"
     ],
     "wins": [
       1,
@@ -3290,12 +3604,59 @@
     ],
     "sets": 1,
     "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "B33F",
+      "EG"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
       "hitstun-7-last-call": {
         "wins": [
           1,
           0
         ],
         "sets": 1
+      },
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "B33F",
+      "Fray"
+    ],
+    "wins": [
+      1,
+      1
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
       }
     }
   },
@@ -3342,6 +3703,26 @@
   {
     "players": [
       "B33F",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "B33F",
       "Maafia"
     ],
     "wins": [
@@ -3351,6 +3732,66 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "B33F",
+      "ParryManilow"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "B33F",
+      "Pokehero"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "B33F",
+      "Pugs"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -4802,6 +5243,26 @@
   {
     "players": [
       "Box",
+      "Dogs_Johnson"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
       "DrippinWet"
     ],
     "wins": [
@@ -4842,6 +5303,26 @@
   {
     "players": [
       "Box",
+      "Halofactory"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
       "Heny935"
     ],
     "wins": [
@@ -4871,6 +5352,26 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "Javy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -4942,6 +5443,26 @@
   {
     "players": [
       "Box",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
       "MasterHandJob"
     ],
     "wins": [
@@ -5002,6 +5523,46 @@
   {
     "players": [
       "Box",
+      "Papamark"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "Queso"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
       "Stew"
     ],
     "wins": [
@@ -5011,6 +5572,46 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "WolfBiteZed"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Box",
+      "antwon420"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -5602,6 +6203,26 @@
   {
     "players": [
       "Cagt",
+      "Combo Blaze"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "Cool Lime"
     ],
     "wins": [
@@ -5709,6 +6330,26 @@
   {
     "players": [
       "Cagt",
+      "Estrogwen"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "GgX"
     ],
     "wins": [
@@ -5793,11 +6434,18 @@
     ],
     "wins": [
       0,
-      1
+      2
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      },
+      "its-ranked-if-i-win": {
         "wins": [
           0,
           1
@@ -6189,6 +6837,26 @@
   {
     "players": [
       "Cagt",
+      "TyloRen_"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "WoKeRico"
     ],
     "wins": [
@@ -6218,6 +6886,26 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           0,
           1
@@ -6321,6 +7009,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "supa"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -6518,6 +7226,326 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CigNus",
+      "Dogs_Johnson"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CigNus",
+      "EG"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CigNus",
+      "PYT"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CigNus",
+      "Rocket"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CigNus",
+      "Shears"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CoCoKoth",
+      "Dr. Sauce"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CoCoKoth",
+      "Fray"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CoCoKoth",
+      "ParryManilow"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CoCoKoth",
+      "Pokehero"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CoCoKoth",
+      "Pugs"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Combo Blaze",
+      "Dr. Sauce"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Combo Blaze",
+      "Estrogwen"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Combo Blaze",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Combo Blaze",
+      "TyloRen_"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Combo Blaze",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Combo Blaze",
+      "supa"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           0,
           1
@@ -9336,6 +10364,106 @@
   },
   {
     "players": [
+      "Disco Porkins",
+      "Isaaccoolkid23"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Disco Porkins",
+      "Papamark"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Disco Porkins",
+      "Terra"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Disco Porkins",
+      "Velocity Jones"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Disco Porkins",
+      "epad10"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Dishier Wand",
       "DoubleJ"
     ],
@@ -9657,6 +10785,26 @@
   {
     "players": [
       "Dogs_Johnson",
+      "EG"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
       "Gravyfingers"
     ],
     "wins": [
@@ -9717,6 +10865,46 @@
   {
     "players": [
       "Dogs_Johnson",
+      "KD3"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
+      "Lowww"
+    ],
+    "wins": [
+      2,
+      1
+    ],
+    "sets": 3,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          2,
+          1
+        ],
+        "sets": 3
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
       "NJ"
     ],
     "wins": [
@@ -9757,6 +10945,26 @@
   {
     "players": [
       "Dogs_Johnson",
+      "PYT"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
       "Robert"
     ],
     "wins": [
@@ -9769,6 +10977,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
+      "Rocket"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -9797,6 +11025,26 @@
   {
     "players": [
       "Dogs_Johnson",
+      "Shears"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
       "Slang"
     ],
     "wins": [
@@ -9806,6 +11054,26 @@
     "sets": 1,
     "by_tournament": {
       "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
+      "cuddly"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -10937,6 +12205,26 @@
   {
     "players": [
       "Dr. Sauce",
+      "Fray"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Sauce",
       "Freean"
     ],
     "wins": [
@@ -10989,6 +12277,106 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Sauce",
+      "ParryManilow"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Sauce",
+      "Pokehero"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Sauce",
+      "Pugs"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Sauce",
+      "Terra"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr. Sauce",
+      "antwon420"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -11357,6 +12745,26 @@
   {
     "players": [
       "EG",
+      "Fray"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "EG",
       "Freean"
     ],
     "wins": [
@@ -11417,6 +12825,26 @@
   {
     "players": [
       "EG",
+      "Javy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "EG",
       "Maafia"
     ],
     "wins": [
@@ -11469,6 +12897,66 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "EG",
+      "PYT"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "EG",
+      "Rocket"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "EG",
+      "Shears"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -11617,6 +13105,26 @@
   {
     "players": [
       "Estrogwen",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Estrogwen",
       "Looshes"
     ],
     "wins": [
@@ -11657,6 +13165,46 @@
   {
     "players": [
       "Estrogwen",
+      "TyloRen_"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Estrogwen",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Estrogwen",
       "deathline"
     ],
     "wins": [
@@ -11686,6 +13234,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Estrogwen",
+      "supa"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           0,
           1
@@ -12916,6 +14484,106 @@
   },
   {
     "players": [
+      "Fray",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Fray",
+      "ParryManilow"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fray",
+      "Pokehero"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fray",
+      "Pugs"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Fray",
+      "cuddly"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Freean",
       "Gravyfingers"
     ],
@@ -13857,6 +15525,66 @@
   {
     "players": [
       "Halofactory",
+      "Javy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Halofactory",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Halofactory",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Halofactory",
       "SOTO"
     ],
     "wins": [
@@ -13886,6 +15614,46 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Halofactory",
+      "WolfBiteZed"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Halofactory",
+      "antwon420"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           0,
           1
@@ -15751,6 +17519,86 @@
   },
   {
     "players": [
+      "Isaaccoolkid23",
+      "Papamark"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Isaaccoolkid23",
+      "Terra"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Isaaccoolkid23",
+      "Velocity Jones"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Isaaccoolkid23",
+      "epad10"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Isai",
       "JeyKeyAr"
     ],
@@ -17238,6 +19086,86 @@
   },
   {
     "players": [
+      "Javy",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Javy",
+      "Queso"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Javy",
+      "WolfBiteZed"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Javy",
+      "antwon420"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Jboss",
       "MobileGearEnjoyer"
     ],
@@ -18650,9 +20578,9 @@
     ],
     "wins": [
       0,
-      2
+      3
     ],
-    "sets": 2,
+    "sets": 3,
     "by_tournament": {
       "keystoned-ix": {
         "wins": [
@@ -18662,6 +20590,13 @@
         "sets": 1
       },
       "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      },
+      "its-ranked-if-i-win": {
         "wins": [
           0,
           1
@@ -18702,6 +20637,26 @@
     "sets": 1,
     "by_tournament": {
       "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "Pokehero"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -18793,6 +20748,26 @@
   {
     "players": [
       "KD3",
+      "TyloRen_"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
       "bloogo"
     ],
     "wins": [
@@ -18816,12 +20791,39 @@
       "cuddly"
     ],
     "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      },
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "supa"
+    ],
+    "wins": [
       1,
       0
     ],
     "sets": 1,
     "by_tournament": {
-      "keystoned-ix": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -21113,6 +23115,26 @@
   {
     "players": [
       "Lowww",
+      "Queso"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
       "Robert"
     ],
     "wins": [
@@ -21220,6 +23242,46 @@
   {
     "players": [
       "Lowww",
+      "WolfBiteZed"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
+      "antwon420"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
       "dmolz"
     ],
     "wins": [
@@ -21229,6 +23291,26 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
+      "epad10"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -24599,6 +26681,66 @@
   },
   {
     "players": [
+      "PYT",
+      "Pokehero"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "PYT",
+      "Rocket"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "PYT",
+      "Shears"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Paco",
       "ReefyBeefy"
     ],
@@ -24679,6 +26821,126 @@
   },
   {
     "players": [
+      "Papamark",
+      "Terra"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Papamark",
+      "Velocity Jones"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Papamark",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Papamark",
+      "epad10"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "ParryManilow",
+      "Pokehero"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "ParryManilow",
+      "Pugs"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Piboi",
       "freakbob58"
     ],
@@ -24689,6 +26951,26 @@
     "sets": 1,
     "by_tournament": {
       "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Pokehero",
+      "Pugs"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0
@@ -24880,6 +27162,26 @@
   {
     "players": [
       "Queso",
+      "WolfBiteZed"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Queso",
       "YJ"
     ],
     "wins": [
@@ -24932,6 +27234,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Queso",
+      "antwon420"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -25532,6 +27854,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Rocket",
+      "Shears"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -26212,6 +28554,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Shears",
+      "antwon420"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -27040,6 +29402,26 @@
   {
     "players": [
       "Terra",
+      "Velocity Jones"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Terra",
       "Waxy:Joe"
     ],
     "wins": [
@@ -27112,6 +29494,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Terra",
+      "epad10"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -27379,6 +29781,46 @@
   },
   {
     "players": [
+      "TyloRen_",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "TyloRen_",
+      "supa"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Velizer0",
       "Xengar"
     ],
@@ -27392,6 +29834,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Velocity Jones",
+      "epad10"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -27679,6 +30141,26 @@
   },
   {
     "players": [
+      "WolfBiteZed",
+      "antwon420"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "XIF",
       "jaycoby"
     ],
@@ -27812,6 +30294,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "antwon420",
+      "cuddly"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -28049,6 +30551,26 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "cuddly",
+      "supa"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "its-ranked-if-i-win": {
         "wins": [
           1,
           0

@@ -164,6 +164,18 @@
     }
   },
   {
+    "tag": "antwon420",
+    "alternate_tags": [
+      "TTFU-antwon420"
+    ],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/antwon42O",
+      "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
     "tag": "Apolo",
     "alternate_tags": [],
     "country": "",
@@ -384,6 +396,16 @@
     }
   },
   {
+    "tag": "CigNus",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/itCigNus",
+      "twitch": "https://www.twitch.tv/CigNus",
+      "youtube": ""
+    }
+  },
+  {
     "tag": "cobr",
     "alternate_tags": [],
     "country": "",
@@ -391,6 +413,26 @@
       "twitter": "",
       "twitch": "",
       "youtube": ""
+    }
+  },
+  {
+    "tag": "CoCoKoth",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/CoCoKoth",
+      "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
+    "tag": "Combo Blaze",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/ComboBlaze",
+      "twitch": "",
+      "youtube": "https://www.youtube.com/@ComboBlaze"
     }
   },
   {
@@ -467,7 +509,9 @@
   },
   {
     "tag": "cuddly",
-    "alternate_tags": [],
+    "alternate_tags": [
+      "cuddlytoys"
+    ],
     "country": "",
     "links": {
       "twitter": "https://x.com/cuddly____",
@@ -558,6 +602,16 @@
     }
   },
   {
+    "tag": "Disco Porkins",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "",
+      "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
     "tag": "Dishier Wand",
     "alternate_tags": [],
     "country": "",
@@ -589,7 +643,9 @@
   },
   {
     "tag": "Dogs_Johnson",
-    "alternate_tags": [],
+    "alternate_tags": [
+      "Dogs_Unleashed"
+    ],
     "country": "",
     "links": {
       "twitter": "https://x.com/Dogs_Johnson",
@@ -659,7 +715,9 @@
   },
   {
     "tag": "Dr. Sauce",
-    "alternate_tags": [],
+    "alternate_tags": [
+      "Dr. D"
+    ],
     "country": "",
     "links": {
       "twitter": "https://x.com/DrSauceSSB",
@@ -778,6 +836,16 @@
     }
   },
   {
+    "tag": "epad10",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/epad10",
+      "twitch": "https://www.twitch.tv/epad10",
+      "youtube": ""
+    }
+  },
+  {
     "tag": "Estrogwen",
     "alternate_tags": [],
     "country": "",
@@ -874,6 +942,16 @@
     "links": {
       "twitter": "",
       "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
+    "tag": "Fray",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/FraySSB",
+      "twitch": "https://www.twitch.tv/FraySSB",
       "youtube": ""
     }
   },
@@ -1152,6 +1230,16 @@
     }
   },
   {
+    "tag": "Isaaccoolkid23",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "",
+      "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
     "tag": "Isai",
     "alternate_tags": [],
     "country": "",
@@ -1208,6 +1296,19 @@
     "links": {
       "twitter": "https://x.com/jcahoon24",
       "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
+    "tag": "Javy",
+    "alternate_tags": [
+      "American Patriot",
+      "AP"
+    ],
+    "country": "",
+    "links": {
+      "twitter": "",
+      "twitch": "https://www.twitch.tv/TheAP64",
       "youtube": ""
     }
   },
@@ -1338,6 +1439,16 @@
     "links": {
       "twitter": "",
       "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
+    "tag": "Juice",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/JuicyJayyz",
+      "twitch": "https://www.twitch.tv/JuicyJayyz",
       "youtube": ""
     }
   },
@@ -2005,6 +2116,28 @@
     }
   },
   {
+    "tag": "Papamark",
+    "alternate_tags": [
+      "Mr. Groovy"
+    ],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/papamarkthinks",
+      "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
+    "tag": "ParryManilow",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/nmTheMistakes",
+      "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
     "tag": "PEACEPRIZE",
     "alternate_tags": [],
     "country": "",
@@ -2065,11 +2198,41 @@
     }
   },
   {
+    "tag": "Poolboy",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/youngPoolboy",
+      "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
     "tag": "Prophecy",
     "alternate_tags": [],
     "country": "",
     "links": {
       "twitter": "",
+      "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
+    "tag": "Pugs",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "",
+      "twitch": "https://www.twitch.tv/Pugs93",
+      "youtube": ""
+    }
+  },
+  {
+    "tag": "PYT",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "https://x.com/jagger8655",
       "twitch": "",
       "youtube": ""
     }
@@ -2228,7 +2391,7 @@
   },
   {
     "tag": "Sayurin",
-    "alternate_tags": [ 
+    "alternate_tags": [
       "さゆりん"
     ],
     "country": "",
@@ -2501,6 +2664,18 @@
     }
   },
   {
+    "tag": "supa",
+    "alternate_tags": [
+      "s_goon"
+    ],
+    "country": "",
+    "links": {
+      "twitter": "",
+      "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
     "tag": "SuPeRbOoMfAn",
     "alternate_tags": [],
     "country": "",
@@ -2743,6 +2918,16 @@
     "links": {
       "twitter": "https://x.com/juaninjuanjarr",
       "twitch": "",
+      "youtube": ""
+    }
+  },
+  {
+    "tag": "WolfBiteZed",
+    "alternate_tags": [],
+    "country": "",
+    "links": {
+      "twitter": "",
+      "twitch": "https://www.twitch.tv/WolfBiteZed",
       "youtube": ""
     }
   },
