@@ -18,7 +18,7 @@ Players schema:
     "tag": "Wario",
     "alternate_tags": [],
     "country": "",
-    "links": { "twitter": "", "twitch": "", "startgg": "" }
+    "links": { "twitter": "", "twitch": "", "youtube": "" }
   }
 ]
 """
@@ -82,7 +82,7 @@ def main():
                 "links": {
                     "twitter": "",
                     "twitch": "",
-                    "startgg": ""
+                    "youtube": ""
                 }
             }
             players.append(new_player)

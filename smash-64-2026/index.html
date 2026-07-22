@@ -431,8 +431,8 @@
     text-align: right;
   }
   .t-place.top1 { color: #ffd700; }
-  .t-place.top3 { color: #c0c0c0; }
-  .t-place.top4 { color: #cd7f32; }
+  .t-place.top2 { color: #a9b4bf; }
+  .t-place.top3 { color: #cd7f32; }
   .t-place.other { color: var(--muted); }
   .t-name { flex: 1; font-weight: 500; }
   .t-date { font-size: 14px; color: var(--muted); }
@@ -557,8 +557,8 @@
     color: var(--muted);
   }
   .p-rank.top1 { color: #ffd700; }
-  .p-rank.top3 { color: #c0c0c0; }
-  .p-rank.top4 { color: #cd7f32; }
+  .p-rank.top2 { color: #a9b4bf; }
+  .p-rank.top3 { color: #cd7f32; }
   .p-tag { flex: 1; font-weight: 500; }
   .p-rating { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; color: var(--muted); font-size: 15px; }
 
@@ -1375,8 +1375,8 @@ async function openPlayer(tag) {
 
   const placeClass = place => {
     if (place === 1) return 'top1';
-    if (place <= 3)  return 'top3';
-    if (place <= 4)  return 'top4';
+    if (place === 2) return 'top2';
+    if (place === 3) return 'top3';
     return 'other';
   };
 
@@ -1624,8 +1624,8 @@ function openTournament(tid) {
 
   const placeClass = place => {
     if (place === 1) return 'top1';
-    if (place <= 3)  return 'top3';
-    if (place <= 4)  return 'top4';
+    if (place === 2) return 'top2';
+    if (place === 3) return 'top3';
     return '';
   };
 

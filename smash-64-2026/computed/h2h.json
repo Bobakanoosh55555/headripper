@@ -1181,6 +1181,166 @@
   },
   {
     "players": [
+      "Acrophobic",
+      "InsertURL"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Acrophobic",
+      "J64"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Acrophobic",
+      "LeChrom Jairs"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Acrophobic",
+      "Nicky :)"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AgainAndAgain",
+      "Double J"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AgainAndAgain",
+      "Kusa"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AgainAndAgain",
+      "Schickler"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "AgainAndAgain",
+      "freakbob58"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "AlanDeez",
       "Araknowsall"
     ],
@@ -2501,6 +2661,66 @@
   },
   {
     "players": [
+      "Ashes",
+      "JacTotum"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Ashes",
+      "PEACEPRIZE"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Ashes",
+      "slender"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Aut0pilot",
       "Cool Lime"
     ],
@@ -2662,7 +2882,7 @@
   {
     "players": [
       "Aut0pilot",
-      "Nackle"
+      "Madrush21"
     ],
     "wins": [
       0,
@@ -2682,7 +2902,7 @@
   {
     "players": [
       "Aut0pilot",
-      "Rafael"
+      "Nackle"
     ],
     "wins": [
       0,
@@ -3401,6 +3621,186 @@
   },
   {
     "players": [
+      "Blooky",
+      "Cool Lime"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Blooky",
+      "Haggles"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Blooky",
+      "J64"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Blooky",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Blooky",
+      "Luigikid64"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Blooky",
+      "MOF"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Blooky",
+      "Piboi"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Blooky",
+      "Skitter"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Blooky",
+      "freakbob58"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Bo",
       "Cool Lime"
     ],
@@ -3822,6 +4222,46 @@
   {
     "players": [
       "Bobakanoosh",
+      "Jboss"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Jello"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
       "KD3"
     ],
     "wins": [
@@ -3862,6 +4302,26 @@
   {
     "players": [
       "Bobakanoosh",
+      "Nicky :)"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
       "Razz"
     ],
     "wins": [
@@ -3871,6 +4331,46 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Robert"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Schickler"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           1,
           0
@@ -3902,6 +4402,26 @@
   {
     "players": [
       "Bobakanoosh",
+      "Skitter"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
       "Spongy"
     ],
     "wins": [
@@ -3914,6 +4434,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -3956,6 +4496,26 @@
           0
         ],
         "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bobakanoosh",
+      "Velocity Jones"
+    ],
+    "wins": [
+      1,
+      1
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
       }
     }
   },
@@ -4506,14 +5066,41 @@
     ],
     "wins": [
       0,
-      1
+      2
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "genesis-x3": {
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      },
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "Darneld Leviticus Sackington"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -4622,6 +5209,26 @@
   {
     "players": [
       "Cagt",
+      "Janco"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "Josh Brody"
     ],
     "wins": [
@@ -4631,6 +5238,26 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           0,
           1
@@ -4682,6 +5309,26 @@
   {
     "players": [
       "Cagt",
+      "Lane"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "LoCoSm4sH"
     ],
     "wins": [
@@ -4722,6 +5369,26 @@
   {
     "players": [
       "Cagt",
+      "Luigikid64"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "Maafia"
     ],
     "wins": [
@@ -4751,6 +5418,26 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "PEACEPRIZE"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           1,
           0
@@ -4814,6 +5501,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
+      "Schnittsel"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -5022,6 +5729,26 @@
   {
     "players": [
       "Cagt",
+      "freakbob58"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cagt",
       "neat"
     ],
     "wins": [
@@ -5122,7 +5849,7 @@
   {
     "players": [
       "ChronicMexican",
-      "Rafael"
+      "Madrush21"
     ],
     "wins": [
       0,
@@ -5622,6 +6349,26 @@
   {
     "players": [
       "Cool Lime",
+      "J64"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "JaimeHR"
     ],
     "wins": [
@@ -5706,14 +6453,41 @@
     ],
     "wins": [
       0,
-      1
+      2
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "keystoned-ix": {
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      },
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Lane"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -5766,14 +6540,61 @@
     ],
     "wins": [
       0,
-      1
+      2
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "hitstun-7-last-call": {
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      },
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Luigikid64"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "Madrush21"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -5942,7 +6763,7 @@
   {
     "players": [
       "Cool Lime",
-      "Rafael"
+      "Piboi"
     ],
     "wins": [
       1,
@@ -5950,7 +6771,7 @@
     ],
     "sets": 1,
     "by_tournament": {
-      "hitstun-7-last-call": {
+      "frame-18": {
         "wins": [
           1,
           0
@@ -6182,6 +7003,26 @@
   {
     "players": [
       "Cool Lime",
+      "Velocity Jones"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
       "XIF"
     ],
     "wins": [
@@ -6251,6 +7092,26 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Cool Lime",
+      "freakbob58"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           1,
           0
@@ -7011,6 +7872,206 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "Janco"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "Lane"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "MobileGearEnjoyer"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "NMDusk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "PEACEPRIZE"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "Schnittsel"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "Squeegee"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "Velocity Jones"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darneld Leviticus Sackington",
+      "strawberryjam"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           1,
           0
@@ -7861,6 +8922,66 @@
   },
   {
     "players": [
+      "Double J",
+      "Kusa"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Double J",
+      "Schickler"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Double J",
+      "freakbob58"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "DoubleJ",
       "Duff man"
     ],
@@ -8402,7 +9523,7 @@
   {
     "players": [
       "Dr. Sauce",
-      "Rafael"
+      "Madrush21"
     ],
     "wins": [
       1,
@@ -8862,6 +9983,26 @@
   {
     "players": [
       "EG",
+      "Madrush21"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "EG",
       "Nax"
     ],
     "wins": [
@@ -8874,26 +10015,6 @@
         "wins": [
           0,
           1
-        ],
-        "sets": 1
-      }
-    }
-  },
-  {
-    "players": [
-      "EG",
-      "Rafael"
-    ],
-    "wins": [
-      1,
-      0
-    ],
-    "sets": 1,
-    "by_tournament": {
-      "hitstun-7-last-call": {
-        "wins": [
-          1,
-          0
         ],
         "sets": 1
       }
@@ -9062,7 +10183,7 @@
   {
     "players": [
       "Estrogwen",
-      "Rafael"
+      "Madrush21"
     ],
     "wins": [
       0,
@@ -9202,7 +10323,7 @@
   {
     "players": [
       "FASTLIKERAT",
-      "Rafael"
+      "Madrush21"
     ],
     "wins": [
       1,
@@ -10402,6 +11523,26 @@
   {
     "players": [
       "Freean",
+      "Madrush21"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Freean",
       "Mijo!"
     ],
     "wins": [
@@ -10423,26 +11564,6 @@
     "players": [
       "Freean",
       "Moonshoes"
-    ],
-    "wins": [
-      1,
-      0
-    ],
-    "sets": 1,
-    "by_tournament": {
-      "hitstun-7-last-call": {
-        "wins": [
-          1,
-          0
-        ],
-        "sets": 1
-      }
-    }
-  },
-  {
-    "players": [
-      "Freean",
-      "Rafael"
     ],
     "wins": [
       1,
@@ -11061,6 +12182,86 @@
   },
   {
     "players": [
+      "Goji",
+      "Jonny 'Gumball' Gamble"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Goji",
+      "MOOSE"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Goji",
+      "Salad"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Goji",
+      "Schnittsel"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Gravyfingers",
       "Maafia"
     ],
@@ -11154,6 +12355,46 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Haggles",
+      "MOF"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Haggles",
+      "Skitter"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -12009,6 +13250,26 @@
   {
     "players": [
       "Htom",
+      "Madrush21"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Htom",
       "Pokehero"
     ],
     "wins": [
@@ -12030,26 +13291,6 @@
     "players": [
       "Htom",
       "Queso"
-    ],
-    "wins": [
-      1,
-      0
-    ],
-    "sets": 1,
-    "by_tournament": {
-      "hitstun-7-last-call": {
-        "wins": [
-          1,
-          0
-        ],
-        "sets": 1
-      }
-    }
-  },
-  {
-    "players": [
-      "Htom",
-      "Rafael"
     ],
     "wins": [
       1,
@@ -12528,6 +13769,66 @@
   },
   {
     "players": [
+      "InsertURL",
+      "J64"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "InsertURL",
+      "LeChrom Jairs"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "InsertURL",
+      "Nicky :)"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Isai",
       "JeyKeyAr"
     ],
@@ -12835,6 +14136,146 @@
   },
   {
     "players": [
+      "J64",
+      "Jboss"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "J64",
+      "LeChrom Jairs"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "J64",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "J64",
+      "Luigikid64"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "J64",
+      "Nicky :)"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "J64",
+      "Piboi"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "J64",
+      "freakbob58"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "JK",
       "Kaiser"
     ],
@@ -13025,6 +14466,186 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JacTotum",
+      "Jboss"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JacTotum",
+      "Lane"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JacTotum",
+      "MobileGearEnjoyer"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JacTotum",
+      "PEACEPRIZE"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JacTotum",
+      "Salad"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JacTotum",
+      "Spongy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JacTotum",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JacTotum",
+      "The Yid"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "JacTotum",
+      "slender"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           1,
           0
@@ -13416,6 +15037,86 @@
   {
     "players": [
       "Janco",
+      "KD3"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Janco",
+      "Lane"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Janco",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Janco",
+      "Luigikid64"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Janco",
       "Maafia"
     ],
     "wins": [
@@ -13456,6 +15157,46 @@
   {
     "players": [
       "Janco",
+      "PEACEPRIZE"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Janco",
+      "Piboi"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Janco",
       "Pokehero"
     ],
     "wins": [
@@ -13465,6 +15206,46 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Janco",
+      "Schnittsel"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Janco",
+      "The Yid"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           1,
           0
@@ -13530,6 +15311,246 @@
           2
         ],
         "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Jboss",
+      "MobileGearEnjoyer"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jboss",
+      "Salad"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jboss",
+      "Schickler"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jboss",
+      "Spongy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jboss",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jboss",
+      "The Yid"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Jello",
+      "Luigikid64"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jello",
+      "Nicky :)"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jello",
+      "Robert"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jello",
+      "Schickler"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jello",
+      "Skitter"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jello",
+      "Velocity Jones"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
       }
     }
   },
@@ -13688,6 +15709,66 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonny 'Gumball' Gamble",
+      "MOOSE"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonny 'Gumball' Gamble",
+      "Salad"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonny 'Gumball' Gamble",
+      "Schnittsel"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -14323,18 +16404,85 @@
   {
     "players": [
       "KD3",
+      "Lane"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
       "Lowww"
     ],
     "wins": [
       0,
-      1
+      2
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "keystoned-ix": {
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      },
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "Luigikid64"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "PEACEPRIZE"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -14355,6 +16503,46 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "Schnittsel"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KD3",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -14902,6 +17090,46 @@
   },
   {
     "players": [
+      "Kusa",
+      "Schickler"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Kusa",
+      "freakbob58"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Lalo",
       "Luigikid64"
     ],
@@ -15175,6 +17403,106 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lane",
+      "Lowww"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lane",
+      "PEACEPRIZE"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lane",
+      "Salad"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lane",
+      "Schnittsel"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "LeChrom Jairs",
+      "Nicky :)"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -15663,7 +17991,7 @@
   {
     "players": [
       "Looshes",
-      "Rafael"
+      "Madrush21"
     ],
     "wins": [
       0,
@@ -16023,6 +18351,26 @@
   {
     "players": [
       "Lowww",
+      "Luigikid64"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
       "Miniohh!"
     ],
     "wins": [
@@ -16032,6 +18380,26 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
+      "Piboi"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           1,
           0
@@ -16067,14 +18435,21 @@
     ],
     "wins": [
       1,
-      1
+      3
     ],
-    "sets": 2,
+    "sets": 4,
     "by_tournament": {
       "hitstun-7-last-call": {
         "wins": [
           1,
           1
+        ],
+        "sets": 2
+      },
+      "frame-18": {
+        "wins": [
+          0,
+          2
         ],
         "sets": 2
       }
@@ -16123,6 +18498,26 @@
   {
     "players": [
       "Lowww",
+      "Velocity Jones"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
       "Wizzrobe"
     ],
     "wins": [
@@ -16152,6 +18547,26 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lowww",
+      "freakbob58"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           1,
           0
@@ -16243,6 +18658,26 @@
   {
     "players": [
       "Luigikid64",
+      "Piboi"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Luigikid64",
       "Terra"
     ],
     "wins": [
@@ -16275,6 +18710,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Luigikid64",
+      "freakbob58"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -16352,6 +18807,66 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MOF",
+      "Skitter"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MOOSE",
+      "Salad"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MOOSE",
+      "Schnittsel"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           0,
           1
@@ -16764,6 +19279,66 @@
     "players": [
       "Maafia",
       "neat"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Madrush21",
+      "deathline"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Madrush21",
+      "sextc"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Madrush21",
+      "tarp"
     ],
     "wins": [
       1,
@@ -17522,6 +20097,146 @@
   },
   {
     "players": [
+      "MobileGearEnjoyer",
+      "NMDusk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MobileGearEnjoyer",
+      "Salad"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MobileGearEnjoyer",
+      "Spongy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MobileGearEnjoyer",
+      "Squeegee"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MobileGearEnjoyer",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MobileGearEnjoyer",
+      "The Yid"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "MobileGearEnjoyer",
+      "strawberryjam"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Monkey",
       "NJ"
     ],
@@ -18082,6 +20797,46 @@
   },
   {
     "players": [
+      "NMDusk",
+      "Squeegee"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NMDusk",
+      "strawberryjam"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Nackle",
       "Terra"
     ],
@@ -18382,6 +21137,146 @@
   },
   {
     "players": [
+      "Nicky :)",
+      "Robert"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nicky :)",
+      "Schickler"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nicky :)",
+      "Skitter"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nicky :)",
+      "Velocity Jones"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "PEACEPRIZE",
+      "Schnittsel"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "PEACEPRIZE",
+      "Spongy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "PEACEPRIZE",
+      "slender"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "POCHITO",
       "Soldado"
     ],
@@ -18595,6 +21490,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Piboi",
+      "freakbob58"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -19042,66 +21957,6 @@
   },
   {
     "players": [
-      "Rafael",
-      "deathline"
-    ],
-    "wins": [
-      1,
-      0
-    ],
-    "sets": 1,
-    "by_tournament": {
-      "hitstun-7-last-call": {
-        "wins": [
-          1,
-          0
-        ],
-        "sets": 1
-      }
-    }
-  },
-  {
-    "players": [
-      "Rafael",
-      "sextc"
-    ],
-    "wins": [
-      1,
-      0
-    ],
-    "sets": 1,
-    "by_tournament": {
-      "hitstun-7-last-call": {
-        "wins": [
-          1,
-          0
-        ],
-        "sets": 1
-      }
-    }
-  },
-  {
-    "players": [
-      "Rafael",
-      "tarp"
-    ],
-    "wins": [
-      1,
-      0
-    ],
-    "sets": 1,
-    "by_tournament": {
-      "hitstun-7-last-call": {
-        "wins": [
-          1,
-          0
-        ],
-        "sets": 1
-      }
-    }
-  },
-  {
-    "players": [
       "Razz",
       "Salad"
     ],
@@ -19242,6 +22097,126 @@
   },
   {
     "players": [
+      "Robert",
+      "Schickler"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Robert",
+      "Skitter"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Robert",
+      "Spongy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Robert",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Robert",
+      "The Yid"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Robert",
+      "Velocity Jones"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Rusty",
       "The Cook"
     ],
@@ -19363,6 +22338,86 @@
   {
     "players": [
       "Salad",
+      "Schnittsel"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Salad",
+      "Spongy"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Salad",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Salad",
+      "The Yid"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Salad",
       "Wiseacre"
     ],
     "wins": [
@@ -19375,6 +22430,86 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Schickler",
+      "Skitter"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Schickler",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Schickler",
+      "Velocity Jones"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Schickler",
+      "freakbob58"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -19722,6 +22857,26 @@
   },
   {
     "players": [
+      "Skitter",
+      "Velocity Jones"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Smurf",
       "fedef"
     ],
@@ -19763,6 +22918,46 @@
   {
     "players": [
       "Spongy",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Spongy",
+      "The Yid"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Spongy",
       "Thrillhouse"
     ],
     "wins": [
@@ -19783,6 +22978,26 @@
   {
     "players": [
       "Spongy",
+      "Velocity Jones"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Spongy",
       "grain"
     ],
     "wins": [
@@ -19795,6 +23010,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Squeegee",
+      "strawberryjam"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -19975,6 +23210,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "SuPeRbOoMfAn",
+      "The Yid"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -20172,6 +23427,26 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "The Yid",
+      "Velocity Jones"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "frame-18": {
         "wins": [
           1,
           0
