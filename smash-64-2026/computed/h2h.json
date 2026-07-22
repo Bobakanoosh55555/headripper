@@ -4841,6 +4841,286 @@
   },
   {
     "players": [
+      "CONNOR",
+      "Darth Rancorous"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "Dogs_Johnson"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "Haze"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "Hunter"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "Jonboi"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "Jorts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "Katherine Radical"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "KrisKringle"
+    ],
+    "wins": [
+      0,
+      2
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          2
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "NJ"
+    ],
+    "wins": [
+      1,
+      1
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "Nicky G"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "SHREDGAR"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "Slang"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "Smurf"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "CONNOR",
+      "emptyW"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
       "CTG",
       "Freean"
     ],
@@ -7622,6 +7902,226 @@
   },
   {
     "players": [
+      "Crovy",
+      "Dankey Kang"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "Dogs_Johnson"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "Hooded"
+    ],
+    "wins": [
+      1,
+      2
+    ],
+    "sets": 3,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          2
+        ],
+        "sets": 3
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "Hunter"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "Jorts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "KrisKringle"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "Noobish"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "Queso"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "derstuk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Crovy",
+      "emptyW"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Dan",
       "Fancy"
     ],
@@ -7703,6 +8203,26 @@
   {
     "players": [
       "Dankey Kang",
+      "Dogs_Johnson"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
       "Hooded"
     ],
     "wins": [
@@ -7726,15 +8246,22 @@
       "Hunter"
     ],
     "wins": [
-      0,
+      1,
       1
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "genesis-x3": {
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      },
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -7783,6 +8310,66 @@
   {
     "players": [
       "Dankey Kang",
+      "Lalo"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "Nicky G"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "Oodles"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
       "Paco"
     ],
     "wins": [
@@ -7806,12 +8393,19 @@
       "Queso"
     ],
     "wins": [
-      1,
+      2,
       0
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      },
+      "fight-at-the-museum-2": {
         "wins": [
           1,
           0
@@ -7843,6 +8437,106 @@
   {
     "players": [
       "Dankey Kang",
+      "SHREDGAR"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "ShankS"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "Slang"
+    ],
+    "wins": [
+      1,
+      1
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "Smleemy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
       "YJ"
     ],
     "wins": [
@@ -7855,6 +8549,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dankey Kang",
+      "annex"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -8075,6 +8789,126 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darth Rancorous",
+      "Haze"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darth Rancorous",
+      "Jorts"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darth Rancorous",
+      "Katherine Radical"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darth Rancorous",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darth Rancorous",
+      "SHREDGAR"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Darth Rancorous",
+      "emptyW"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -8483,6 +9317,26 @@
   {
     "players": [
       "Dogs_Johnson",
+      "Dr freashly"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
       "Gravyfingers"
     ],
     "wins": [
@@ -8503,6 +9357,26 @@
   {
     "players": [
       "Dogs_Johnson",
+      "Hooded"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
       "Josh Brody"
     ],
     "wins": [
@@ -8512,6 +9386,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
+      "NJ"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           1,
           0
@@ -8555,6 +9449,66 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
+      "SHREDGAR"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
+      "Slang"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dogs_Johnson",
+      "derstuk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -9172,6 +10126,186 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr freashly",
+      "Lalo"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr freashly",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr freashly",
+      "Nassericha"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr freashly",
+      "Prophecy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr freashly",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr freashly",
+      "Slang"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr freashly",
+      "Smurf"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr freashly",
+      "annex"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Dr freashly",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           0,
           1
@@ -12442,6 +13576,106 @@
   },
   {
     "players": [
+      "Haze",
+      "Jorts"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Haze",
+      "Katherine Radical"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Haze",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Haze",
+      "SHREDGAR"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Haze",
+      "emptyW"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Heather",
       "Juandamian Nebraska"
     ],
@@ -12773,12 +14007,19 @@
       "Hunter"
     ],
     "wins": [
-      1,
+      2,
       0
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      },
+      "fight-at-the-museum-2": {
         "wins": [
           1,
           0
@@ -12799,6 +14040,46 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "Jonboi"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "Jorts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           1,
           0
@@ -12850,6 +14131,26 @@
   {
     "players": [
       "Hooded",
+      "Noobish"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
       "Paco"
     ],
     "wins": [
@@ -12873,15 +14174,62 @@
       "Queso"
     ],
     "wins": [
-      1,
+      2,
       0
     ],
-    "sets": 1,
+    "sets": 2,
     "by_tournament": {
       "genesis-x3": {
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      },
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "Sevilla"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -12950,7 +14298,7 @@
   {
     "players": [
       "Hooded",
-      "derstuk"
+      "decoste"
     ],
     "wins": [
       1,
@@ -12958,7 +14306,34 @@
     ],
     "sets": 1,
     "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hooded",
+      "derstuk"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      },
+      "fight-at-the-museum-2": {
         "wins": [
           1,
           0
@@ -13450,6 +14825,26 @@
   {
     "players": [
       "Hunter",
+      "Jorts"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
       "KillaHertz"
     ],
     "wins": [
@@ -13510,7 +14905,114 @@
   {
     "players": [
       "Hunter",
+      "Nicky G"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "Noobish"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "Oodles"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
       "Queso"
+    ],
+    "wins": [
+      1,
+      2
+    ],
+    "sets": 3,
+    "by_tournament": {
+      "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      },
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "ShankS"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "Slang"
     ],
     "wins": [
       0,
@@ -13518,10 +15020,30 @@
     ],
     "sets": 1,
     "by_tournament": {
-      "genesis-x3": {
+      "fight-at-the-museum-2": {
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hunter",
+      "Smleemy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -15716,6 +17238,186 @@
   },
   {
     "players": [
+      "Jonboi",
+      "KrisKringle"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonboi",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonboi",
+      "Nicky G"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonboi",
+      "Noobish"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonboi",
+      "Sevilla"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonboi",
+      "Smurf"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonboi",
+      "decoste"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonboi",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jonboi",
+      "emptyW"
+    ],
+    "wins": [
+      1,
+      1
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
       "Jonny 'Gumball' Gamble",
       "MOOSE"
     ],
@@ -15766,6 +17468,126 @@
     "sets": 1,
     "by_tournament": {
       "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jorts",
+      "Katherine Radical"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jorts",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jorts",
+      "Noobish"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jorts",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jorts",
+      "SHREDGAR"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Jorts",
+      "emptyW"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           0,
           1
@@ -16710,6 +18532,66 @@
   },
   {
     "players": [
+      "Katherine Radical",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Katherine Radical",
+      "SHREDGAR"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Katherine Radical",
+      "emptyW"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "KillaHertz",
       "Lalo"
     ],
@@ -16860,6 +18742,106 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KrisKringle",
+      "Nicky G"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KrisKringle",
+      "Queso"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KrisKringle",
+      "Smurf"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KrisKringle",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "KrisKringle",
+      "emptyW"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           1,
           0
@@ -17211,6 +19193,106 @@
   {
     "players": [
       "Lalo",
+      "NJ"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "Nassericha"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "Prophecy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "Queso"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "SHREDGAR"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
       "Sicc1"
     ],
     "wins": [
@@ -17223,6 +19305,46 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "Smurf"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -17271,6 +19393,26 @@
   {
     "players": [
       "Lalo",
+      "annex"
+    ],
+    "wins": [
+      1,
+      1
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          1
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
       "blondie"
     ],
     "wins": [
@@ -17280,6 +19422,26 @@
     "sets": 1,
     "by_tournament": {
       "genesis-x3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Lalo",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           0,
           1
@@ -20698,6 +22860,66 @@
   {
     "players": [
       "NJ",
+      "SHREDGAR"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "Slang"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
       "XIF"
     ],
     "wins": [
@@ -20710,6 +22932,26 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "derstuk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -20750,6 +22992,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "NJ",
+      "emptyW"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -20950,6 +23212,86 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nassericha",
+      "Prophecy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nassericha",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nassericha",
+      "Smurf"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nassericha",
+      "annex"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -21210,6 +23552,266 @@
         "wins": [
           0,
           1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nicky G",
+      "Oodles"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nicky G",
+      "ShankS"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nicky G",
+      "Slang"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nicky G",
+      "Smleemy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nicky G",
+      "Smurf"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Nicky G",
+      "emptyW"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Noobish",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Noobish",
+      "Sevilla"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Noobish",
+      "decoste"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Noobish",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Oodles",
+      "ShankS"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Oodles",
+      "Slang"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Oodles",
+      "Smleemy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
         ],
         "sets": 1
       }
@@ -21577,6 +24179,66 @@
   },
   {
     "players": [
+      "Prophecy",
+      "Queso"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Prophecy",
+      "Smurf"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Prophecy",
+      "annex"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Queso",
       "Shears"
     ],
@@ -21587,6 +24249,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Queso",
+      "Smurf"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           1,
           0
@@ -21647,6 +24329,26 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Queso",
+      "annex"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           1,
           0
@@ -22278,6 +24980,46 @@
   {
     "players": [
       "SHREDGAR",
+      "Slang"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "SHREDGAR",
+      "SuPeRbOoMfAn"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "SHREDGAR",
       "WoKeRico"
     ],
     "wins": [
@@ -22307,6 +25049,46 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "SHREDGAR",
+      "annex"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "SHREDGAR",
+      "emptyW"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           0,
           1
@@ -22617,6 +25399,86 @@
   },
   {
     "players": [
+      "Sevilla",
+      "decoste"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Sevilla",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "ShankS",
+      "Slang"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "ShankS",
+      "Smleemy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Shears",
       "Smurf"
     ],
@@ -22867,6 +25729,86 @@
     "sets": 1,
     "by_tournament": {
       "frame-18": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Slang",
+      "Smleemy"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Slang",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Smurf",
+      "annex"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Smurf",
+      "emptyW"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           0,
           1
@@ -23227,6 +26169,46 @@
     "sets": 1,
     "by_tournament": {
       "frame-18": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "SuPeRbOoMfAn",
+      "annex"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "SuPeRbOoMfAn",
+      "derstuk"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
         "wins": [
           1,
           0
@@ -24330,6 +27312,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "decoste",
+      "derstuk"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "fight-at-the-museum-2": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
