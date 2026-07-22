@@ -1,0 +1,442 @@
+[
+  {
+    "round": "Pool 1",
+    "player_a": "Kurabba",
+    "player_b": "Chameshi",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 1",
+    "player_a": "Kurabba",
+    "player_b": "Anonymous",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 1",
+    "player_a": "Anonymous",
+    "player_b": "Chameshi",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 2",
+    "player_a": "Wario",
+    "player_b": "Supercat Meow",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 2",
+    "player_a": "Wario",
+    "player_b": "Somei",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 2",
+    "player_a": "Somei",
+    "player_b": "Supercat Meow",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 3",
+    "player_a": "kix",
+    "player_b": "TEITO",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 3",
+    "player_a": "kix",
+    "player_b": "Sayurin",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 3",
+    "player_a": "TEITO",
+    "player_b": "Sayurin",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 4",
+    "player_a": "Ranryoku",
+    "player_b": "toted",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 4",
+    "player_a": "toted",
+    "player_b": "Jojo",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Pool 4",
+    "player_a": "toted",
+    "player_b": "Key",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 4",
+    "player_a": "Ranryoku",
+    "player_b": "Jojo",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Pool 4",
+    "player_a": "Ranryoku",
+    "player_b": "Key",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 4",
+    "player_a": "Key",
+    "player_b": "Jojo",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Pool 5",
+    "player_a": "A&B",
+    "player_b": "Mittsu-",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 5",
+    "player_a": "A&B",
+    "player_b": "mamuu",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 5",
+    "player_a": "A&B",
+    "player_b": "Hi2u1",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 5",
+    "player_a": "mamuu",
+    "player_b": "Mittsu-",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 5",
+    "player_a": "Mittsu-",
+    "player_b": "Hi2u1",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Pool 5",
+    "player_a": "mamuu",
+    "player_b": "Hi2u1",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 1",
+    "player_a": "Hi2u1",
+    "player_b": "Jojo",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 1",
+    "player_a": "Bustopher",
+    "player_b": "Sayurin",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 2",
+    "player_a": "Kurabba",
+    "player_b": "Hi2u1",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 2",
+    "player_a": "TEITO",
+    "player_b": "Somei",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 2",
+    "player_a": "A&B",
+    "player_b": "Supercat Meow",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 2",
+    "player_a": "Ranryoku",
+    "player_b": "Bustopher",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 2",
+    "player_a": "toted",
+    "player_b": "Mittsu-",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 2",
+    "player_a": "kix",
+    "player_b": "Anonymous",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 2",
+    "player_a": "mamuu",
+    "player_b": "Key",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Round 2",
+    "player_a": "Wario",
+    "player_b": "Chameshi",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Quarter-Final",
+    "player_a": "Kurabba",
+    "player_b": "TEITO",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Quarter-Final",
+    "player_a": "Ranryoku",
+    "player_b": "A&B",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Quarter-Final",
+    "player_a": "kix",
+    "player_b": "toted",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Quarter-Final",
+    "player_a": "Wario",
+    "player_b": "mamuu",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Semi-Final",
+    "player_a": "Kurabba",
+    "player_b": "Ranryoku",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Semi-Final",
+    "player_a": "Wario",
+    "player_b": "kix",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Winners Final",
+    "player_a": "Kurabba",
+    "player_b": "Wario",
+    "score_a": 3,
+    "score_b": 2,
+    "vod": ""
+  },
+  {
+    "round": "Grand Final",
+    "player_a": "Kurabba",
+    "player_b": "Wario",
+    "score_a": 3,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 1",
+    "player_a": "Chameshi",
+    "player_b": "Jojo",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 1",
+    "player_a": "Mittsu-",
+    "player_b": "Sayurin",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 2",
+    "player_a": "Chameshi",
+    "player_b": "Key",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 2",
+    "player_a": "Mittsu-",
+    "player_b": "Anonymous",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 2",
+    "player_a": "Supercat Meow",
+    "player_b": "Bustopher",
+    "score_a": 2,
+    "score_b": 1,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 2",
+    "player_a": "Somei",
+    "player_b": "Hi2u1",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 3",
+    "player_a": "A&B",
+    "player_b": "Chameshi",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 3",
+    "player_a": "Mittsu-",
+    "player_b": "TEITO",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 3",
+    "player_a": "mamuu",
+    "player_b": "Supercat Meow",
+    "score_a": "W",
+    "score_b": "DQ",
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 3",
+    "player_a": "toted",
+    "player_b": "Somei",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 4",
+    "player_a": "A&B",
+    "player_b": "Mittsu-",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Round 4",
+    "player_a": "toted",
+    "player_b": "mamuu",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Quarter-Final",
+    "player_a": "kix",
+    "player_b": "A&B",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Quarter-Final",
+    "player_a": "Ranryoku",
+    "player_b": "toted",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Semi-Final",
+    "player_a": "kix",
+    "player_b": "Ranryoku",
+    "score_a": 2,
+    "score_b": 0,
+    "vod": ""
+  },
+  {
+    "round": "Losers Final",
+    "player_a": "Wario",
+    "player_b": "kix",
+    "score_a": 2,
+    "score_b": 1,
+    "vod": ""
+  }
+]

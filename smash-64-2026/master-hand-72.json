@@ -1,0 +1,32 @@
+{
+  "name": "MasterHand72",
+  "id": "master-hand-72",
+  "date": "2026-06-12",
+  "location": "Osaka, Japan",
+  "entrant_count": 18,
+  "rankings_eligible": true,
+  "links": {
+    "bracket": "https://www.start.gg/tournament/masterhand72/event/64-64-u-ver-singles",
+    "vod": ""
+  },
+  "placements": [
+    { "tag": "Kurabba", "place": 1 },
+    { "tag": "Wario", "place": 2 },
+    { "tag": "kix", "place": 3 },
+    { "tag": "Ranryoku", "place": 4 },
+    { "tag": "A&B", "place": 5 },
+    { "tag": "toted", "place": 5 },
+    { "tag": "Mittsu-", "place": 7 },
+    { "tag": "mamuu", "place": 7 },
+    { "tag": "Chameshi", "place": 9 },
+    { "tag": "TEITO", "place": 9 },
+    { "tag": "Supercat Meow", "place": 9 },
+    { "tag": "Somei", "place": 9 },
+    { "tag": "Key", "place": 13 },
+    { "tag": "Anonymous", "place": 13 },
+    { "tag": "Bustopher", "place": 13 },
+    { "tag": "Hi2u1", "place": 13 },
+    { "tag": "Jojo", "place": 17 },
+    { "tag": "Sayurin", "place": 17 }
+  ]
+}

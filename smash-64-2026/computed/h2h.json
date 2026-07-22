@@ -441,6 +441,146 @@
   },
   {
     "players": [
+      "A&B",
+      "Chameshi"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&B",
+      "Hi2u1"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&B",
+      "Mittsu-"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "A&B",
+      "Ranryoku"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&B",
+      "Supercat Meow"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&B",
+      "kix"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "A&B",
+      "mamuu"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "A&amp;B",
       "Bendy"
     ],
@@ -1951,6 +2091,86 @@
     "sets": 1,
     "by_tournament": {
       "hitstun-7-last-call": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Anonymous",
+      "Chameshi"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Anonymous",
+      "Kurabba"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Anonymous",
+      "Mittsu-"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Anonymous",
+      "kix"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
         "wins": [
           0,
           1
@@ -4841,6 +5061,46 @@
   },
   {
     "players": [
+      "Bustopher",
+      "Ranryoku"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Bustopher",
+      "Supercat Meow"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "CONNOR",
       "Darth Rancorous"
     ],
@@ -6061,6 +6321,66 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Chameshi",
+      "Key"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Chameshi",
+      "Kurabba"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Chameshi",
+      "Wario"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -14003,6 +14323,86 @@
   },
   {
     "players": [
+      "Hi2u1",
+      "Kurabba"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hi2u1",
+      "Mittsu-"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hi2u1",
+      "Somei"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Hi2u1",
+      "mamuu"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Hooded",
       "Hunter"
     ],
@@ -18592,6 +18992,66 @@
   },
   {
     "players": [
+      "Key",
+      "Ranryoku"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Key",
+      "mamuu"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Key",
+      "toted"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "KillaHertz",
       "Lalo"
     ],
@@ -19027,6 +19487,66 @@
           1
         ],
         "sets": 3
+      }
+    }
+  },
+  {
+    "players": [
+      "Kurabba",
+      "Ranryoku"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Kurabba",
+      "TEITO"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Kurabba",
+      "Wario"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
       }
     }
   },
@@ -22259,6 +22779,66 @@
   },
   {
     "players": [
+      "Mittsu-",
+      "TEITO"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Mittsu-",
+      "mamuu"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Mittsu-",
+      "toted"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "MobileGearEnjoyer",
       "NMDusk"
     ],
@@ -24659,6 +25239,46 @@
   },
   {
     "players": [
+      "Ranryoku",
+      "kix"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Ranryoku",
+      "toted"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
       "Razz",
       "Salad"
     ],
@@ -25209,6 +25829,46 @@
     "sets": 1,
     "by_tournament": {
       "keystoned-ix": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Sayurin",
+      "TEITO"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Sayurin",
+      "kix"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
         "wins": [
           0,
           1
@@ -25859,6 +26519,86 @@
   },
   {
     "players": [
+      "Somei",
+      "Supercat Meow"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Somei",
+      "TEITO"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Somei",
+      "Wario"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Somei",
+      "toted"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "Spongy",
       "SuPeRbOoMfAn"
     ],
@@ -26212,6 +26952,46 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Supercat Meow",
+      "Wario"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "TEITO",
+      "kix"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }
@@ -26609,6 +27389,46 @@
     "sets": 1,
     "by_tournament": {
       "inkafest-3": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "Wario",
+      "kix"
+    ],
+    "wins": [
+      2,
+      0
+    ],
+    "sets": 2,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          2,
+          0
+        ],
+        "sets": 2
+      }
+    }
+  },
+  {
+    "players": [
+      "Wario",
+      "mamuu"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
         "wins": [
           1,
           0
@@ -27499,6 +28319,26 @@
   },
   {
     "players": [
+      "kix",
+      "toted"
+    ],
+    "wins": [
+      1,
+      0
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          1,
+          0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
       "kurja",
       "sextc"
     ],
@@ -27552,6 +28392,26 @@
         "wins": [
           1,
           0
+        ],
+        "sets": 1
+      }
+    }
+  },
+  {
+    "players": [
+      "mamuu",
+      "toted"
+    ],
+    "wins": [
+      0,
+      1
+    ],
+    "sets": 1,
+    "by_tournament": {
+      "master-hand-72": {
+        "wins": [
+          0,
+          1
         ],
         "sets": 1
       }

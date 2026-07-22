@@ -341,7 +341,7 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_rat
         playable  = []
         dq_losses = []
         dq_count  = 0
-        players_with_real_sets = set()
+        players_with_real_sets = set()  # only ever populated from playable sets, never DQ ones
 
         for s in raw_sets:
             outcome = set_outcome(s)
@@ -365,6 +365,16 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_rat
             players_with_real_sets.add(tag_a)
             players_with_real_sets.add(tag_b)
 
+        # Built only from playable sets. A player DQ'd out of every scheduled
+        # match this tournament never lands here, so they never get a rating
+        # or a counted tournament/placement (below) — run_tournament()'s
+        # dq_losses branch computes a rating for them internally, but it's
+        # discarded since they're absent from this set. This is intentional:
+        # a 100%-DQ player didn't demonstrate anything to rate and didn't
+        # really "attend". A player who played some real sets and got DQ'd
+        # out of the rest DOES land here (via their real sets), so their DQ
+        # losses apply as a penalty on top of real performance instead of
+        # being dropped, and they count fully as having attended.
         period_players = set(t for ta, tb, _, __ in playable for t in (ta, tb))
 
         if stats_acc_ is not None:
@@ -457,6 +467,9 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_rat
 
         if stats_acc_ is not None:
             for tag in all_tournament_players:
+                # players_with_real_sets excludes anyone DQ'd out of every set
+                # this tournament (see period_players above) — sets_total/won/
+                # lost are still tracked for them elsewhere, just not this.
                 if tag in players_with_real_sets:
                     stats_acc_[tag]['tournaments'] += 1
                     place = placement_map.get(tag)
