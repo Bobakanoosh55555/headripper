@@ -958,6 +958,7 @@
         <select class="filter-select" id="ratings-mode" onchange="switchRatingsMode()">
           <option value="retroactive" selected>Retroactive</option>
           <option value="sequential">Sequential</option>
+          <option value="whole-history">Whole-History</option>
         </select>
         <span class="tooltip-icon">?</span>
         <div class="tooltip-box">
@@ -966,6 +967,9 @@
           <hr class="tooltip-divider">
           <strong>Sequential</strong>
           Processes tournaments in order, using only information available at the time (though some effort is made to give 'new' players a rough initial rating). Each tournament's ratings are final once committed. More conservative — a win is only worth what the opponent was rated at that moment. More traditional means of ranking.
+          <hr class="tooltip-divider">
+          <strong>Whole-History</strong>
+          Solves every match in the dataset jointly, instead of processing tournaments one at a time or seeding new players from a single event's placement. A new player's rating comes entirely from their real connections to the rest of the field. More resistant to one strong traveling player inflating an otherwise-isolated bracket — the tradeoff is it's the most computationally involved and least traditional of the three.
         </div>
       </div>
     </div>
@@ -1055,9 +1059,10 @@
 // ── Data ──────────────────────────────────────────────────────────────────
 
 let DB = {
-  ratings: null,            // currently active ratings
-  ratingsSequential: null,  // computed/ratings.json
-  ratingsRetroactive: null, // computed/ratings-retroactive.json
+  ratings: null,             // currently active ratings
+  ratingsSequential: null,   // computed/ratings.json
+  ratingsRetroactive: null,  // computed/ratings-retroactive.json
+  ratingsWholeHistory: null, // computed/ratings-whole-history.json
   h2h: null,
   stats: null,
   players: null,
@@ -1082,9 +1087,10 @@ async function loadJSON(path) {
 
 async function init() {
   try {
-    [DB.ratingsSequential, DB.ratingsRetroactive, DB.h2h, DB.stats, DB.players] = await Promise.all([
+    [DB.ratingsSequential, DB.ratingsRetroactive, DB.ratingsWholeHistory, DB.h2h, DB.stats, DB.players] = await Promise.all([
       loadJSON('computed/ratings.json'),
       loadJSON('computed/ratings-retroactive.json'),
+      loadJSON('computed/ratings-whole-history.json'),
       loadJSON('computed/h2h.json'),
       loadJSON('computed/stats.json'),
       loadJSON('players.json'),
@@ -1100,14 +1106,8 @@ async function init() {
       }
     }
 
-    // Build stat/rating maps
-    for (const s of DB.stats) {
-      playerMap[s.tag] = s;
-    }
-    const latestSnap = DB.ratings.snapshots[DB.ratings.snapshots.length - 1];
-    for (const r of latestSnap.ratings) {
-      ratingMap[r.tag] = r;
-    }
+    // Build stat/rating maps, synced to the active (default) ratings mode
+    syncStatsToActiveRatings();
 
     // Build H2H index
     for (const entry of DB.h2h) {
@@ -1146,11 +1146,12 @@ async function getSets(tid) {
 
 // ── Ratings mode switch ──────────────────────────────────────────────────
 
-function switchRatingsMode() {
-  const mode = document.getElementById('ratings-mode').value;
-  DB.ratings = mode === 'retroactive' ? DB.ratingsRetroactive : DB.ratingsSequential;
-
-  // Rebuild ratingMap from new active ratings
+// Rebuilds ratingMap from DB.ratings' latest snapshot and syncs DB.stats'
+// current_rank/current_rating/current_rd (and playerMap) to match. Used both
+// on initial load and on mode toggle, so the two are never out of sync — the
+// stats.json current_rank field is baked from the sequential ratings at
+// build time regardless of which mode the page defaults to.
+function syncStatsToActiveRatings() {
   const latestSnap = DB.ratings.snapshots[DB.ratings.snapshots.length - 1];
   for (const r of latestSnap.ratings) {
     ratingMap[r.tag] = r;
@@ -1161,16 +1162,23 @@ function switchRatingsMode() {
     if (!activeTags.has(tag)) delete ratingMap[tag];
   }
 
-  // Update stats current_rank/rating to match active mode
   for (const s of DB.stats) {
     const r = ratingMap[s.tag];
     s.current_rating = r ? r.rating : null;
     s.current_rd     = r ? r.rd     : null;
     s.current_rank   = r ? r.rank   : null;
   }
-  // Re-sort stats by new rank
   DB.stats.sort((a, b) => (a.current_rank || 9999) - (b.current_rank || 9999));
   for (const s of DB.stats) { playerMap[s.tag] = s; }
+}
+
+function switchRatingsMode() {
+  const mode = document.getElementById('ratings-mode').value;
+  DB.ratings = mode === 'retroactive'   ? DB.ratingsRetroactive
+             : mode === 'whole-history' ? DB.ratingsWholeHistory
+             : DB.ratingsSequential;
+
+  syncStatsToActiveRatings();
 
   renderPlayers();
   renderH2HMatrix();

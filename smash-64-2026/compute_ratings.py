@@ -12,13 +12,15 @@ Defaults (relative to script location):
     output_dir:      ./computed
 
 Outputs:
-    computed/ratings.json  - Glicko-2 rating snapshots after each tournament
-    computed/h2h.json      - Head-to-head records between every player pair
-    computed/stats.json    - Per-player career stats
+    computed/ratings.json             - Sequential Glicko-2 snapshots after each tournament
+    computed/ratings-retroactive.json - Retroactive snapshots (full-season context)
+    computed/ratings-whole-history.json - Whole-History snapshots (joint graph solve, no placement seeding)
+    computed/h2h.json                 - Head-to-head records between every player pair
+    computed/stats.json               - Per-player career stats
 
 DQ sets are excluded from all rating calculations but are counted in stats.
 
-Rating approach:
+Rating approach (Sequential/Retroactive):
   New players (no prior rating) are seeded from their final tournament
   placement before Glicko-2 runs. 1st place seeds at 1700, last place at
   1300, smooth curve in between scaled to field size. This gives the
@@ -27,6 +29,19 @@ Rating approach:
 
   Established players always use their actual Glicko-2 prior — placement
   seeding only applies to first appearances.
+
+  The 1700 ceiling isn't flat — it's pulled up toward the field's own
+  established players when any are present (see `_confidence_blend`), so a
+  stacked bracket seeds its debutants higher than a field of unknowns. Only
+  established players who lost at least one set THIS tournament count as
+  evidence of field depth: an anchor who went undefeated is evidence about
+  themselves, not about anyone below them, since nothing in the bracket
+  tested how deep the field actually was. Confidence in the field's own
+  median also scales with how many such tested anchors are present — one
+  tested anchor barely moves the ceiling off 1700; several do.
+
+Whole-History mode is structurally different: it doesn't do placement
+seeding at all. See `run_whole_history_pipeline`.
 """
 
 import sys
@@ -55,6 +70,18 @@ SEED_TOP    = 1700.0   # rating for 1st place
 SEED_BOTTOM = 1300.0   # rating for last place
 SEED_CURVE  = 0.6      # exponent — < 1 stretches top end, > 1 stretches bottom
 
+SEED_CONFIDENCE_K = 4.0   # tested anchors needed before the field-specific median is ~fully trusted
+SEED_SIGMA        = 0.09  # starting volatility for placement-seeded ratings (vs SIGMA_0=0.06) —
+                           # lets a bad seed correct faster once the player reaches a better-connected event
+
+ENTRANT_REFERENCE  = 40.0  # field size at which the seed ceiling is ~fully trusted (1.0x)
+ENTRANT_MIN_FACTOR = 0.5   # floor on how much the ceiling can be dampened for very small fields
+ENTRANT_MAX_BONUS  = 0.25  # how far above 1.0 the single largest tournament in the dataset can push the ceiling
+
+LOSS_FLOOR = 0.1   # a loss counts as this instead of 0.0 in Glicko-2's outcome value — a small
+                    # amount of "credit for competing" that softens how hard a loss pulls rating
+                    # down, without touching how much a win pulls it up (see set_outcome)
+
 
 def placement_seed(place, n):
     """
@@ -67,6 +94,45 @@ def placement_seed(place, n):
     t = 1.0 - (place - 1) / (n - 1)   # 1.0 for 1st, 0.0 for last
     spread = SEED_TOP - SEED_BOTTOM
     return SEED_BOTTOM + spread * (t ** SEED_CURVE)
+
+
+def _confidence_blend(tested_ratings, fallback):
+    """
+    Blend the median of tested_ratings toward `fallback` based on sample size.
+    Zero or few tested anchors barely move the ceiling off the global default;
+    more independent tested anchors let the field's own signal dominate.
+
+    "Tested" anchors matter here specifically: an established player who went
+    undefeated tells us nothing about how deep the rest of the field is, only
+    about themselves.
+    """
+    if not tested_ratings:
+        return fallback
+    sorted_r = sorted(tested_ratings)
+    raw_median = sorted_r[len(sorted_r) // 2]
+    n = len(tested_ratings)
+    confidence = n / (n + SEED_CONFIDENCE_K)
+    return confidence * raw_median + (1 - confidence) * fallback
+
+
+def _entrant_size_factor(n_entrants, n_entrants_max):
+    """
+    How much of the (SEED_TOP - SEED_BOTTOM) range a field's placement curve
+    can reach, scaled by field size. Steep log growth up to ENTRANT_REFERENCE
+    (a small regional vs. a mid-size major matters a lot); beyond that, growth
+    continues but gently, scaled to how this field compares to the single
+    largest tournament in the dataset — so the curve keeps extending on its
+    own if a bigger major is added later, instead of capping hard at 1.0.
+    """
+    if n_entrants <= 1:
+        return ENTRANT_MIN_FACTOR
+    if n_entrants <= ENTRANT_REFERENCE:
+        raw = math.log(n_entrants) / math.log(ENTRANT_REFERENCE)
+        return max(ENTRANT_MIN_FACTOR, raw)
+    if n_entrants_max <= ENTRANT_REFERENCE:
+        return 1.0
+    extra = math.log(n_entrants / ENTRANT_REFERENCE) / math.log(n_entrants_max / ENTRANT_REFERENCE)
+    return 1.0 + ENTRANT_MAX_BONUS * min(1.0, extra)
 
 
 # ---------------------------------------------------------------------------
@@ -250,18 +316,36 @@ def resolve(tag, alt_index):
 
 
 def is_dq(s):
-    return s.get('score_a') == 'DQ' or s.get('score_b') == 'DQ'
+    sa, sb = s.get('score_a'), s.get('score_b')
+    if sa == 'DQ' or sb == 'DQ':
+        return True
+    # Some tournament organizers leave a no-show set unreported rather than
+    # marking it DQ, and just push the bracket forward — "0 - 0" then means
+    # neither player showed up, not a legitimate 0-0 result (Smash 64 sets
+    # are always best-of-3/5, so a real completed set can never end 0-0).
+    if sa == 0 and sb == 0:
+        return True
+    return False
+
+
+def is_double_dq(s):
+    """True if BOTH sides no-showed — neither player actually competed, so
+    (unlike a normal single-sided DQ) this set should cost nobody anything:
+    both get a DQ loss recorded for bookkeeping, but no rating impact at all,
+    since there's no real opponent performance to calibrate a penalty against."""
+    sa, sb = s.get('score_a'), s.get('score_b')
+    return (sa == 'DQ' and sb == 'DQ') or (sa == 0 and sb == 0)
 
 
 def set_outcome(s):
     if is_dq(s):
         return None
     sa, sb = s.get('score_a'), s.get('score_b')
-    if sa == 'W' or sb == 'L':   return 1.0, 0.0
-    if sb == 'W' or sa == 'L':   return 0.0, 1.0
+    if sa == 'W' or sb == 'L':   return 1.0, LOSS_FLOOR
+    if sb == 'W' or sa == 'L':   return LOSS_FLOOR, 1.0
     if isinstance(sa, (int, float)) and isinstance(sb, (int, float)):
-        if sa > sb: return 1.0, 0.0
-        if sb > sa: return 0.0, 1.0
+        if sa > sb: return 1.0, LOSS_FLOOR
+        if sb > sa: return LOSS_FLOOR, 1.0
         return 0.5, 0.5
     return None
 
@@ -270,31 +354,13 @@ def h2h_key(a, b):
     return tuple(sorted([a, b]))
 
 
-def round_weight(round_name):
-    """
-    Return a weight multiplier for a set based on its round.
-    Pool sets are baseline 1.0. Bracket rounds increase toward finals.
-    This ensures a Grand Final loss doesn't disproportionately punish
-    a player who ran the entire winners bracket to get there.
-    """
-    r = round_name.lower()
-    if 'pool' in r:                    return 1.0
-    if 'round 1' in r:                 return 1.1
-    if 'round 2' in r:                 return 1.15
-    if 'round 3' in r:                 return 1.2
-    if 'quarter' in r:                 return 1.25
-    if 'semi' in r:                    return 1.35
-    if 'final' in r and 'grand' not in r: return 1.5
-    if 'grand final reset' in r:       return 1.6
-    if 'grand final' in r:             return 1.6
-    return 1.0
-
-
 # ---------------------------------------------------------------------------
 # Pipeline
 # ---------------------------------------------------------------------------
 
-def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_ratings=None):
+def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False,
+                  season_ratings=None, season_tournament_counts=None,
+                  n_entrants_max=0):
     """
     Process all tournaments and return (snapshots, h2h, stats_acc).
 
@@ -322,12 +388,15 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_rat
         gr = {}
         for tournament in tournaments[:idx + 1]:
             gr = process_one_tournament(tournament, gr, sets_dir, alt_index,
-                                        mu0, phi0, existing_h2h, existing_stats)
+                                        mu0, phi0, existing_h2h, existing_stats,
+                                        season_ratings, season_tournament_counts,
+                                        n_entrants_max)
         return gr
 
     def process_one_tournament(tournament, global_ratings, sets_dir, alt_index,
                                 mu0, phi0, h2h_acc=None, stats_acc_=None,
-                                season_ratings=None):
+                                season_ratings=None, season_tournament_counts=None,
+                                n_entrants_max=0):
         tid        = tournament['id']
         n_entrants = tournament.get('entrant_count', 0)
         sets_path  = os.path.join(sets_dir, f"{tid}.json")
@@ -377,6 +446,17 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_rat
         # being dropped, and they count fully as having attended.
         period_players = set(t for ta, tb, _, __ in playable for t in (ta, tb))
 
+        # Players who lost at least one real set this tournament. Used to
+        # decide whether an established player's rating is trustworthy
+        # evidence of field depth for placement seeding below — someone who
+        # went undefeated was never tested by the field.
+        players_with_a_loss = set()
+        for ta, tb, oa, ob in playable:
+            if oa < ob:
+                players_with_a_loss.add(ta)
+            elif ob < oa:
+                players_with_a_loss.add(tb)
+
         if stats_acc_ is not None:
             for tag_a, tag_b, oa, ob in playable:
                 stats_acc_[tag_a]['sets_total'] += 1
@@ -413,23 +493,37 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_rat
         ]
         has_established = len(established_ratings) > 0
 
+        # Only established players this field actually tested (beat at least
+        # once) count as evidence of field depth for the seed ceiling below —
+        # see _confidence_blend and the module docstring.
+        tested_established_ratings = [
+            to_display(global_ratings[t][0], 0)[0]
+            for t in period_players
+            if t in global_ratings and t in players_with_a_loss
+        ]
+
         if season_ratings is not None:
-            # Retroactive mode: use median of ALL players in this field's
-            # final season ratings as the ceiling. This means a stacked field
-            # gets a higher ceiling even if most players were new at the time.
-            field_season_ratings = sorted([
-                season_ratings[t] for t in period_players if t in season_ratings
-            ])
-            if field_season_ratings:
-                seed_top = field_season_ratings[len(field_season_ratings) // 2]
-            else:
-                seed_top = SEED_TOP
+            # Retroactive mode: same tested-anchor philosophy, but the anchor
+            # pool is field members with genuine multi-tournament season
+            # history (not just their own eventual rating from THIS event,
+            # which would be circular).
+            tested_field_season_ratings = [
+                season_ratings[t] for t in period_players
+                if t in season_ratings and t in players_with_a_loss
+                and season_tournament_counts.get(t, 0) > 1
+            ]
+            seed_top = _confidence_blend(tested_field_season_ratings, SEED_TOP)
             has_established = True  # always seed from placement in retroactive mode
         elif has_established:
-            sorted_est = sorted(established_ratings)
-            seed_top = sorted_est[len(sorted_est) // 2]
+            seed_top = _confidence_blend(tested_established_ratings, SEED_TOP)
         else:
             seed_top = SEED_TOP
+
+        # Dampen (or extend) the ceiling by how large this field actually is —
+        # doing well in a small field isn't as strong evidence as doing well
+        # in a large one. See _entrant_size_factor.
+        size_factor = _entrant_size_factor(n_entrants, n_entrants_max)
+        effective_seed_top = SEED_BOTTOM + (seed_top - SEED_BOTTOM) * size_factor
 
         prior = {}
         for tag in period_players:
@@ -439,9 +533,9 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_rat
                 place = placement_map.get(tag)
                 if has_established and place is not None and n_entrants > 1:
                     t_norm = 1.0 - (place - 1) / (n_entrants - 1)
-                    seed_mu = SEED_BOTTOM + (seed_top - SEED_BOTTOM) * (t_norm ** SEED_CURVE)
+                    seed_mu = SEED_BOTTOM + (effective_seed_top - SEED_BOTTOM) * (t_norm ** SEED_CURVE)
                     seed_mu_g2, _ = to_g2(seed_mu, 0)
-                    prior[tag] = [seed_mu_g2, phi0, SIGMA_0]
+                    prior[tag] = [seed_mu_g2, phi0, SEED_SIGMA]
                 else:
                     prior[tag] = [mu0, phi0, SIGMA_0]
 
@@ -502,13 +596,15 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_rat
                 if os.path.exists(prior_path):
                     retroactive_ratings = process_one_tournament(
                         prior_t, retroactive_ratings, sets_dir, alt_index,
-                        mu0, phi0, None, None, season_ratings
+                        mu0, phi0, None, None, season_ratings, season_tournament_counts,
+                        n_entrants_max
                     )
             global_ratings = retroactive_ratings
 
         global_ratings = process_one_tournament(
             tournament, global_ratings, sets_dir, alt_index,
-            mu0, phi0, h2h, stats_acc, season_ratings
+            mu0, phi0, h2h, stats_acc, season_ratings, season_tournament_counts,
+            n_entrants_max
         )
 
         ranked = sorted(
@@ -537,6 +633,81 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False, season_rat
     return snapshots, h2h, stats_acc
 
 
+def run_whole_history_pipeline(tournaments, sets_dir, alt_index):
+    """
+    Jointly solves the ENTIRE accumulated match graph at each tournament
+    boundary, instead of carrying forward a per-tournament sequential state
+    or seeding new players from placement at all. A new player's rating
+    emerges purely from their real connections across the whole dataset, so
+    the placement-seed inflation this module works around elsewhere (see
+    module docstring) is structurally impossible here — there's no seed
+    step to inflate.
+
+    Recomputes from scratch at every tournament boundary (re-reads every
+    prior tournament's sets file each time) rather than carrying forward
+    incremental state — O(n^2) in tournament count, trivial at this
+    dataset's size.
+    """
+    snapshots = []
+    for i, tournament in enumerate(tournaments):
+        # Match run_pipeline's behavior: no snapshot at all for a tournament
+        # missing its own sets file, so all three modes' snapshot lists stay
+        # index-aligned by tournament id (the frontend relies on this).
+        if not os.path.exists(os.path.join(sets_dir, f"{tournament['id']}.json")):
+            continue
+
+        all_playable   = []
+        all_dq_losses  = []
+        set_counts     = defaultdict(int)
+        tournament_ids = defaultdict(set)
+
+        for prior_t in tournaments[:i + 1]:
+            sets_path = os.path.join(sets_dir, f"{prior_t['id']}.json")
+            if not os.path.exists(sets_path):
+                continue
+            for s in load_json(sets_path):
+                tag_a   = resolve(s['player_a'], alt_index)
+                tag_b   = resolve(s['player_b'], alt_index)
+                outcome = set_outcome(s)
+                if outcome is None:
+                    if is_dq(s):
+                        if s.get('score_b') == 'DQ':
+                            all_dq_losses.append((tag_b, tag_a))
+                        elif s.get('score_a') == 'DQ':
+                            all_dq_losses.append((tag_a, tag_b))
+                    continue
+                all_playable.append((tag_a, tag_b, outcome[0], outcome[1]))
+                set_counts[tag_a] += 1
+                set_counts[tag_b] += 1
+                tournament_ids[tag_a].add(prior_t['id'])
+                tournament_ids[tag_b].add(prior_t['id'])
+
+        states = run_tournament(all_playable, {}, all_dq_losses)
+
+        # Same rule as the other two modes: a player with zero real (non-DQ)
+        # sets in their whole accumulated history didn't demonstrate
+        # anything to rate, even though run_tournament()'s dq_losses branch
+        # computes a rating for them internally.
+        ranked = sorted(
+            [{"tag": tag, "rank": 0,
+              "rating":      round(to_display(st[0], 0)[0], 2),
+              "rd":          round(to_display(0, st[1])[1], 2),
+              "volatility":  round(st[2], 6),
+              "sets":        set_counts[tag],
+              "tournaments": len(tournament_ids[tag])}
+             for tag, st in states.items() if tag in set_counts],
+            key=lambda x: x['rating'], reverse=True
+        )
+        for i_, p in enumerate(ranked):
+            p['rank'] = i_ + 1
+
+        snapshots.append({"after": tournament['id'], "name": tournament['name'],
+                           "date": tournament['date'], "ratings": ranked})
+        print(f"  [whole-history] {tournament['name']} ({tournament['date']}): {len(ranked)} players")
+
+    return snapshots
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -558,23 +729,36 @@ def main():
             tournaments.append(load_json(os.path.join(tournaments_dir, fname)))
     tournaments.sort(key=lambda t: t['date'])
 
+    n_entrants_max = max((t.get('entrant_count', 0) for t in tournaments), default=0)
+
     os.makedirs(output_dir, exist_ok=True)
 
-    # ── Run both pipelines ──
+    # ── Run all three pipelines ──
     print("Running sequential pipeline...")
-    seq_snaps, seq_h2h, seq_stats = run_pipeline(tournaments, sets_dir, alt_index, retroactive=False)
+    seq_snaps, seq_h2h, seq_stats = run_pipeline(tournaments, sets_dir, alt_index, retroactive=False,
+                                                  n_entrants_max=n_entrants_max)
 
     # Build season_ratings: each player's rating after their last attended tournament.
     # Used by the retroactive pass to set informed seed ceilings even for tournament 1.
+    # season_tournament_counts (their final season-long tournament count) gates
+    # which of those season ratings count as real external signal vs a
+    # debutant's own seed-derived number circularly validating itself.
     season_ratings = {}
+    season_tournament_counts = {}
     for snap in seq_snaps:
         for p in snap['ratings']:
             # Overwrite each time — last snapshot where player appears wins
             season_ratings[p['tag']] = p['rating']
+            season_tournament_counts[p['tag']] = p['tournaments']
 
     print("Running retroactive pipeline...")
     ret_snaps, _, _ = run_pipeline(tournaments, sets_dir, alt_index,
-                                    retroactive=True, season_ratings=season_ratings)
+                                    retroactive=True, season_ratings=season_ratings,
+                                    season_tournament_counts=season_tournament_counts,
+                                    n_entrants_max=n_entrants_max)
+
+    print("Running whole-history pipeline...")
+    wh_snaps = run_whole_history_pipeline(tournaments, sets_dir, alt_index)
 
     # ── Write ratings files ──
     seq_path = os.path.join(output_dir, 'ratings.json')
@@ -587,7 +771,12 @@ def main():
         json.dump({"snapshots": ret_snaps}, f, indent=2, ensure_ascii=False)
     print(f"Wrote {ret_path}")
 
-    # ── H2H (same for both — based on actual results, not ratings) ──
+    wh_path = os.path.join(output_dir, 'ratings-whole-history.json')
+    with open(wh_path, 'w', encoding='utf-8') as f:
+        json.dump({"snapshots": wh_snaps}, f, indent=2, ensure_ascii=False)
+    print(f"Wrote {wh_path}")
+
+    # ── H2H (same for all three — based on actual results, not ratings) ──
     h2h_out = [{"players": list(k), "wins": v['wins'], "sets": v['sets'],
                  "by_tournament": {t: {"wins": b['wins'], "sets": b['sets']}
                                    for t, b in v['by_tournament'].items()}}
