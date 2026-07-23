@@ -848,18 +848,10 @@
     }
   },
   {
-    "tag": "Double J",
-    "alternate_tags": [],
-    "country": "",
-    "links": {
-      "twitter": "",
-      "twitch": "",
-      "youtube": ""
-    }
-  },
-  {
     "tag": "DoubleJ",
-    "alternate_tags": [],
+    "alternate_tags": [
+      "Double J"
+    ],
     "country": "",
     "links": {
       "twitter": "",
@@ -1210,7 +1202,7 @@
     }
   },
   {
-    "tag": "GALAS ",
+    "tag": "GALAS",
     "alternate_tags": [],
     "country": "",
     "links": {
@@ -3244,9 +3236,9 @@
     }
   },
   {
-    "tag": "Tavamono",
+    "tag": "Tavomono",
     "alternate_tags": [
-      "Tavamono.Pe"
+      "Tavomono.Pe"
     ],
     "country": "",
     "links": {
