@@ -135,6 +135,31 @@ def _entrant_size_factor(n_entrants, n_entrants_max):
     return 1.0 + ENTRANT_MAX_BONUS * min(1.0, extra)
 
 
+def _played_entrant_count(tournament, sets_dir, alt_index):
+    """
+    How many of this tournament's entrants actually played at least one real
+    (non-DQ) set, as opposed to the registered `entrant_count`, which also
+    counts no-shows. Some organizers push a bracket forward without marking
+    no-show matches as DQ at all (see is_dq's 0-0 handling) — for a
+    tournament where a large fraction of entrants never played a set, raw
+    entrant_count overstates how deep the field actually was. Used as the
+    n_entrants input to _entrant_size_factor (and to compute its dataset-wide
+    n_entrants_max) instead of raw entrant_count.
+    """
+    tid = tournament['id']
+    sets_path = os.path.join(sets_dir, f"{tid}.json")
+    if not os.path.exists(sets_path):
+        return 0
+    raw_sets = load_json(sets_path)
+    played = set()
+    for s in raw_sets:
+        if set_outcome(s) is None:
+            continue
+        played.add(resolve(s['player_a'], alt_index))
+        played.add(resolve(s['player_b'], alt_index))
+    return len(played)
+
+
 # ---------------------------------------------------------------------------
 # Glicko-2 core
 # ---------------------------------------------------------------------------
@@ -418,7 +443,18 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False,
             tag_b   = resolve(s['player_b'], alt_index)
             if outcome is None:
                 dq_count += 1
-                if is_dq(s):
+                if is_double_dq(s):
+                    # Neither player showed up — both get a DQ loss recorded
+                    # for bookkeeping, but neither enters dq_losses, so this
+                    # set has zero rating impact on either of them (no real
+                    # opponent performance exists to calibrate a penalty
+                    # against).
+                    if stats_acc_ is not None:
+                        stats_acc_[tag_a]['sets_lost']  += 1
+                        stats_acc_[tag_a]['sets_total'] += 1
+                        stats_acc_[tag_b]['sets_lost']  += 1
+                        stats_acc_[tag_b]['sets_total'] += 1
+                elif is_dq(s):
                     if s.get('score_b') == 'DQ':
                         dq_losses.append((tag_b, tag_a))
                         if stats_acc_ is not None:
@@ -445,6 +481,14 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False,
         # losses apply as a penalty on top of real performance instead of
         # being dropped, and they count fully as having attended.
         period_players = set(t for ta, tb, _, __ in playable for t in (ta, tb))
+
+        # How many entrants actually played a real set, vs. the registered
+        # entrant_count (which also counts no-shows) — feeds the field-size
+        # factor below. Placement percentile (t_norm, further down) still
+        # uses the raw registered count: a player's official bracket
+        # placement is relative to the whole field they were entered into,
+        # not just the subset who showed up.
+        n_played = len(players_with_real_sets)
 
         # Players who lost at least one real set this tournament. Used to
         # decide whether an established player's rating is trustworthy
@@ -522,7 +566,7 @@ def run_pipeline(tournaments, sets_dir, alt_index, retroactive=False,
         # Dampen (or extend) the ceiling by how large this field actually is —
         # doing well in a small field isn't as strong evidence as doing well
         # in a large one. See _entrant_size_factor.
-        size_factor = _entrant_size_factor(n_entrants, n_entrants_max)
+        size_factor = _entrant_size_factor(n_played, n_entrants_max)
         effective_seed_top = SEED_BOTTOM + (seed_top - SEED_BOTTOM) * size_factor
 
         prior = {}
@@ -670,7 +714,11 @@ def run_whole_history_pipeline(tournaments, sets_dir, alt_index):
                 tag_b   = resolve(s['player_b'], alt_index)
                 outcome = set_outcome(s)
                 if outcome is None:
-                    if is_dq(s):
+                    # Double-DQ (neither showed up) intentionally does not
+                    # enter all_dq_losses — see is_double_dq / the matching
+                    # branch in process_one_tournament. Zero rating impact
+                    # either way, same as there.
+                    if is_dq(s) and not is_double_dq(s):
                         if s.get('score_b') == 'DQ':
                             all_dq_losses.append((tag_b, tag_a))
                         elif s.get('score_a') == 'DQ':
@@ -729,7 +777,10 @@ def main():
             tournaments.append(load_json(os.path.join(tournaments_dir, fname)))
     tournaments.sort(key=lambda t: t['date'])
 
-    n_entrants_max = max((t.get('entrant_count', 0) for t in tournaments), default=0)
+    # Uses played-entrant counts (not raw entrant_count) so the dataset-wide
+    # max stays on the same footing as the per-tournament value passed into
+    # _entrant_size_factor — see _played_entrant_count.
+    n_entrants_max = max((_played_entrant_count(t, sets_dir, alt_index) for t in tournaments), default=0)
 
     os.makedirs(output_dir, exist_ok=True)
 
